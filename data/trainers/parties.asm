@@ -702,6 +702,9 @@ Rival3Data:
 	db $FF, 80, PIDGEOT, 77, ALAKAZAM, 80, RHYDON, 80, EXEGGUTOR, 82, GYARADOS, 85, CHARIZARD, 0
 
 LoreleiData:
+; Val-Boreal Gym (trainer 2)
+	db 2, 52, DEWGONG, 51, CLOYSTER, 0
+; Elite Four (trainer 1)
 	db $FF, 71, DEWGONG, 69, CLOYSTER, 71, SLOWBRO, 73, JYNX, 73, LAPRAS, 0
 
 ChannelerData:

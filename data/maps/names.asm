@@ -1,4 +1,5 @@
 PalletTownName:      db "PORT-LUNE@"
+ValBorealCityName:   db "VAL-BOREAL@"
 ViridianCityName:    db "JADIELLE@"
 PewterCityName:      db "ARGENTA@"
 CeruleanCityName:    db "AZURIA@"

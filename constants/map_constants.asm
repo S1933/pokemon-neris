@@ -36,7 +36,7 @@ ENDM
 	map_const SAFFRON_CITY,                  20, 18 ; $0A
 DEF NUM_CITY_MAPS EQU const_value
 
-	map_const UNUSED_MAP_0B,                  0,  0 ; $0B
+	map_const VALBOREAL_CITY,                20, 18 ; $0B
 
 DEF FIRST_ROUTE_MAP EQU const_value
 	map_const ROUTE_1,                       10, 18 ; $0C
@@ -181,7 +181,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	end_indoor_group VICTORY_ROAD
 
 	map_const LIGHTHOUSE,                     5,  6 ; $6D
-	map_const UNUSED_MAP_6E,                  0,  0 ; $6E
+	map_const VALBOREAL_GYM,                  5,  7 ; $6E
 	map_const UNUSED_MAP_6F,                  0,  0 ; $6F
 	map_const UNUSED_MAP_70,                  0,  0 ; $70
 	map_const LANCES_ROOM,                   13, 13 ; $71

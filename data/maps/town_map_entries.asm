@@ -8,6 +8,7 @@ ExternalMapEntries:
 	table_width 3
 	; x, y, name
 	outdoor_map  2, 11, PalletTownName
+	outdoor_map  3,  8, ValBorealCityName
 	outdoor_map  2,  8, ViridianCityName
 	outdoor_map  2,  3, PewterCityName
 	outdoor_map 10,  2, CeruleanCityName
@@ -44,7 +45,7 @@ ExternalMapEntries:
 	outdoor_map  0,  6, Route23Name
 	outdoor_map 10,  1, Route24Name
 	outdoor_map 11,  0, Route25Name
-	assert_table_length FIRST_INDOOR_MAP
+	assert_table_length FIRST_INDOOR_MAP + 1
 
 
 MACRO indoor_map
@@ -58,6 +59,7 @@ InternalMapEntries:
 	table_width 4
 	; indoor map group, x, y, name
 	indoor_map PALLET_TOWN,         2, 11, PalletTownName
+	indoor_map POKEMON_LEAGUE,      3,  8, ValBorealCityName
 	indoor_map VIRIDIAN_CITY,       2,  8, ViridianCityName
 	indoor_map ROUTE_2,             2,  6, Route2Name
 	indoor_map VIRIDIAN_FOREST,     2,  4, ViridianForestName
@@ -117,5 +119,5 @@ InternalMapEntries:
 	indoor_map ROCK_TUNNEL_2,      14,  3, RockTunnelName
 	indoor_map SILPH_CO_2,         10,  5, SilphCoName
 	indoor_map POKEMON_LEAGUE_3,    0,  2, PokemonLeagueName
-	assert_table_length NUM_INDOOR_MAP_GROUPS
+	assert_table_length NUM_INDOOR_MAP_GROUPS + 1
 	db -1 ; end

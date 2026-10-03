@@ -224,6 +224,8 @@
 	const_skip 1
 	const EVENT_BEAT_ROUTE1_KAEL
 	const EVENT_BEAT_LIGHTHOUSE_LUNARIS
+	const_skip 6
+	const EVENT_BEAT_VALBOREAL_GYM_TRAINER_0
 
 ; Route 2 events
 	const_next $3D8
