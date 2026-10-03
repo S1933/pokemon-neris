@@ -5,7 +5,7 @@ IF DEF(_RED)
 	db 34, RHYHORN
 	db 30, PARAS
 	db 33, EXEGGCUTE
-	db 39, NIDORINO
+	db 39, DRAGONET
 	db 36, EXEGGCUTE
 	db 39, NIDORINA
 ENDC
@@ -14,13 +14,13 @@ IF DEF(_BLUE)
 	db 34, RHYHORN
 	db 30, PARAS
 	db 33, EXEGGCUTE
-	db 39, NIDORINA
+	db 39, DRAGONET
 	db 36, EXEGGCUTE
 	db 39, NIDORINO
 ENDC
 	db 42, VENOMOTH
 	db 34, CHANSEY
-	db 37, TAUROS
+	db 37, MARAISOR
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

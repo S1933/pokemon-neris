@@ -193,15 +193,22 @@ INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "gfx/trade.asm"
 INCLUDE "engine/pokemon/evos_moves.asm"
-INCLUDE "engine/battle/move_effects/heal.asm"
-INCLUDE "engine/battle/move_effects/transform.asm"
-INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
 
 
 SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"
 INCLUDE "engine/battle/effects.asm"
+
+
+; Moved out of "Battle Engine 7" to keep that section within one 16 KiB ROMX
+; bank. These three effects are only ever reached through the `jpfar` wrappers
+; in engine/battle/effects.asm, so they may live in any bank.
+SECTION "Battle Move Effects 7", ROMX
+
+INCLUDE "engine/battle/move_effects/heal.asm"
+INCLUDE "engine/battle/move_effects/transform.asm"
+INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
 
 
 SECTION "bank10", ROMX

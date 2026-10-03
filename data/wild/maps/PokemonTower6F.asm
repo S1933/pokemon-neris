@@ -6,7 +6,7 @@ PokemonTower6FWildMons:
 	db 32, GASTLY
 	db 26, GASTLY
 	db 25, GASTLY
-	db 34, HAUNTER
+	db 34, FANTOMIN
 	db 29, CUBONE
 	db 32, CUBONE
 	db 37, HAUNTER

@@ -278,6 +278,8 @@ EnemyRanText:
 	text_end
 
 MainInBattleLoop:
+	xor a
+	ld [wEnemyTurnTaken], a ; a new round begins; the enemy has not acted yet
 	call ReadPlayerMonCurHPAndStatus
 	ld hl, wBattleMonHP
 	ld a, [hli]
@@ -423,6 +425,7 @@ MainInBattleLoop:
 	and a
 	jp z, HandlePlayerMonFainted
 .AIActionUsedEnemyFirst
+	call MarkEnemyTurnTaken
 	call HandlePoisonBurnLeechSeed
 	jp z, HandleEnemyMonFainted
 	call DrawHUDsAndHPBars
@@ -461,6 +464,7 @@ MainInBattleLoop:
 	and a
 	jp z, HandlePlayerMonFainted
 .AIActionUsedPlayerFirst
+	call MarkEnemyTurnTaken
 	call HandlePoisonBurnLeechSeed
 	jp z, HandleEnemyMonFainted
 	call DrawHUDsAndHPBars
@@ -1291,6 +1295,7 @@ EnemySendOut:
 ; don't change wPartyGainExpFlags or wPartyFoughtCurrentEnemyFlags
 EnemySendOutFirstMon:
 	xor a
+	ld [wEnemyTurnTaken], a ; a new enemy mon is out; clear the acted marker
 	ld hl, wEnemyStatsToDouble ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
@@ -1961,6 +1966,7 @@ DrawEnemyHUDAndHPBar:
 	call DrawHPBar
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
+	call DrawEnemyTypeAndMarker
 	ld hl, wEnemyHPBarColor
 
 GetBattleHealthBarColor:
@@ -1997,6 +2003,102 @@ CenterMonName:
 .done
 	pop de
 	ret
+
+; Draw the enemy mon's type code(s) and the "already acted" marker on the
+; first row directly below the enemy HUD (row 4). Row 4 is otherwise unused:
+; the enemy HUD occupies rows 0-3, the enemy mon pic starts at column 12,
+; and the player mon pic starts at row 5, so columns 0-11 of row 4 are free.
+; Example single type: "PLA" / dual type: "PLA EAU" / acted: "PLA EAU !".
+DrawEnemyTypeAndMarker:
+	hlcoord 0, 4
+	lb bc, 1, 12
+	call ClearScreenArea
+
+	hlcoord 0, 4
+	ld a, [wEnemyMonType1]
+	call .printType
+	ld a, [wEnemyMonType2]
+	ld b, a
+	ld a, [wEnemyMonType1]
+	cp b
+	jr z, .marker ; single-type mon (both type bytes equal)
+	ld a, ' '
+	ld [hli], a
+	ld a, [wEnemyMonType2]
+	call .printType
+.marker
+	hlcoord 8, 4
+	ld a, [wEnemyTurnTaken]
+	and a
+	ld a, ' '
+	jr z, .putMarker
+	ld a, '!'
+.putMarker
+	ld [hl], a
+	ret
+
+.printType ; a = type id, hl = destination tile
+	push hl
+	call GetTypeCode ; returns hl = pointer to the 3-char code
+	ld d, h
+	ld e, l
+	pop hl
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	ret
+
+; input: a = type id; output: hl = pointer to the 3-char type code
+GetTypeCode:
+	cp NUM_TYPES
+	jr c, .ok
+	xor a
+.ok
+	push de
+	ld e, a
+	ld d, 0
+	ld hl, EnemyTypeCodes
+	add hl, de
+	add hl, de
+	add hl, de
+	pop de
+	ret
+
+MarkEnemyTurnTaken:
+	ld a, 1
+	ld [wEnemyTurnTaken], a
+	ret
+
+; Short French type codes, 3 bytes each, indexed by the type constants
+; (see constants/type_constants.asm). Only letters are used so they render
+; with the normal font tiles.
+EnemyTypeCodes:
+	table_width 3
+	db "NOR" ; NORMAL
+	db "COM" ; FIGHTING
+	db "VOL" ; FLYING
+	db "POI" ; POISON
+	db "SOL" ; GROUND
+	db "ROC" ; ROCK
+	db "OIS" ; BIRD
+	db "INS" ; BUG
+	db "SPE" ; GHOST
+REPT UNUSED_TYPES_END - UNUSED_TYPES
+	db "???" ; unused type slots
+ENDR
+	db "FEU" ; FIRE
+	db "EAU" ; WATER
+	db "PLA" ; GRASS
+	db "ELE" ; ELECTRIC
+	db "PSY" ; PSYCHIC_TYPE
+	db "GLA" ; ICE
+	db "DRG" ; DRAGON
+	assert_table_length NUM_TYPES
 
 DisplayBattleMenu::
 	call LoadScreenTilesFromBuffer1 ; restore saved screen
@@ -6733,6 +6835,8 @@ InitWildBattle:
 
 ; common code that executes after init battle code specific to trainer or wild battles
 _InitBattleCommon:
+	xor a
+	ld [wEnemyTurnTaken], a ; reset the acted marker at battle start
 	ld b, SET_PAL_BATTLE_BLACK
 	call RunPaletteCommand
 	call SlidePlayerAndEnemySilhouettesOnScreen

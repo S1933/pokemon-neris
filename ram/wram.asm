@@ -1206,7 +1206,9 @@ wBattleMon:: battle_struct wBattleMon
 
 wTrainerClass:: db
 
-	ds 1
+; set once the active enemy mon has taken its turn in the current round
+; (0 = has not acted yet, 1 = has already acted)
+wEnemyTurnTaken:: db
 
 wTrainerPicPointer:: dw
 

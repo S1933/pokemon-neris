@@ -9,7 +9,7 @@ PokemonTower7FWildMons:
 	db 29, CUBONE
 	db 32, CUBONE
 	db 37, HAUNTER
-	db 39, HAUNTER
+	db 39, FANTOMIN
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

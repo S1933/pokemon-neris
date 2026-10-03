@@ -1,28 +1,28 @@
 Route12WildMons:
 	def_grass_wildmons 15 ; encounter rate
 IF DEF(_RED)
-	db 32, ODDISH
-	db 33, PIDGEY
+	db 32, AQUAJET
+	db 33, CRABEAU
 	db 30, PIDGEY
 	db 32, VENONAT
 	db 29, ODDISH
-	db 34, VENONAT
+	db 34, SERPICOL
 	db 34, ODDISH
 	db 36, PIDGEY
-	db 37, GLOOM
-	db 39, GLOOM
+	db 37, FLORALYS
+	db 39, FLORAQUE
 ENDC
 IF DEF(_BLUE)
-	db 32, BELLSPROUT
-	db 33, PIDGEY
+	db 32, AQUAJET
+	db 33, CRABEAU
 	db 30, PIDGEY
 	db 32, VENONAT
 	db 29, BELLSPROUT
-	db 34, VENONAT
+	db 34, SERPICOL
 	db 34, BELLSPROUT
 	db 36, PIDGEY
-	db 37, WEEPINBELL
-	db 39, WEEPINBELL
+	db 37, FLORALYS
+	db 39, FLORAQUE
 ENDC
 	end_grass_wildmons
 

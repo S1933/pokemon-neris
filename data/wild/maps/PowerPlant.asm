@@ -1,8 +1,8 @@
 PowerPlantWildMons:
 	def_grass_wildmons 10 ; encounter rate
 	db 28, VOLTORB
-	db 28, MAGNEMITE
-	db 26, PIKACHU
+	db 28, VOLTOUR
+	db 26, ELECTROX
 	db 32, PIKACHU
 	db 30, MAGNEMITE
 	db 30, VOLTORB

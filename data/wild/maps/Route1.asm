@@ -1,6 +1,6 @@
 Route1WildMons:
 	def_grass_wildmons 25 ; encounter rate
-	db  4, PIDGEY
+	db  4, AILESOR
 	db  4, RATTATA
 	db  4, RATTATA
 	db  3, RATTATA
@@ -8,7 +8,7 @@ Route1WildMons:
 	db  4, PIDGEY
 	db  4, PIDGEY
 	db  6, RATTATA
-	db  6, PIDGEY
+	db  6, OISEAULO
 	db  7, PIDGEY
 	end_grass_wildmons
 

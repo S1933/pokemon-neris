@@ -1,0 +1,22 @@
+	db 0 ; pokedex id (new species, no dex slot)
+
+	db  75,  95,  60,  62,  95
+	;   hp  atk  def  spd  spc
+
+	db GRASS, POISON ; type
+	db 120 ; catch rate
+	db 155 ; base exp
+
+	INCBIN "gfx/pokemon/front/weepinbell.pic", 0, 1 ; sprite dimensions
+	dw WeepinbellPicFront, WeepinbellPicBack
+
+	db VINE_WHIP, GROWTH, NO_MOVE, NO_MOVE ; level 1 learnset
+	db GROWTH_MEDIUM_SLOW ; growth rate
+
+	; tm/hm learnset
+	tmhm SWORDS_DANCE, TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
+	     MEGA_DRAIN,   SOLARBEAM,    MIMIC,        DOUBLE_TEAM,  REFLECT,      \
+	     BIDE,         REST,         SUBSTITUTE,   CUT
+	; end
+
+	db 0 ; padding

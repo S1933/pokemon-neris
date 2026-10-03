@@ -7,7 +7,7 @@ Route21WildMons:
 	db 28, PIDGEY
 	db 39, PIDGEOTTO
 	db 42, PIDGEOTTO
-	db 37, TANGELA
+	db 37, AQUAJET
 	db 39, TANGELA
 	db 42, TANGELA
 	end_grass_wildmons

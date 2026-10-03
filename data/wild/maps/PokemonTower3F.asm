@@ -5,7 +5,7 @@ PokemonTower3FWildMons:
 	db 29, GASTLY
 	db 30, GASTLY
 	db 25, GASTLY
-	db 24, GASTLY
+	db 24, FANTOMIN
 	db 32, GASTLY
 	db 26, CUBONE
 	db 29, CUBONE

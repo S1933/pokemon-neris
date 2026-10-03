@@ -9,7 +9,7 @@ IF DEF(_RED)
 	db 39, SEEL
 	db 39, SLOWPOKE
 	db 37, SEEL
-	db 50, DEWGONG
+	db 50, GLACIETTE
 	db 49, SEADRA
 ENDC
 IF DEF(_BLUE)
@@ -21,7 +21,7 @@ IF DEF(_BLUE)
 	db 39, SEEL
 	db 39, PSYDUCK
 	db 37, SEEL
-	db 50, DEWGONG
+	db 50, GLACIETTE
 	db 49, KINGLER
 ENDC
 	end_grass_wildmons

@@ -89,6 +89,7 @@ ROMX $F
 	"Battle Core"
 ROMX $10
 	"bank10"
+	"Battle Move Effects 7"
 ROMX $11
 	"Maps 5"
 	"Pokédex Rating"
