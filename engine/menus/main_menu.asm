@@ -341,13 +341,13 @@ SpecialEnterMap::
 	jp EnterMap
 
 ContinueText:
-	db "CONTINUE"
+	db "CONTINUER"
 	next ""
 	; fallthrough
 
 NewGameText:
-	db   "NEW GAME"
-	next "OPTION@"
+	db   "NOUVEAU JEU"
+	next "OPTIONS@"
 
 CableClubOptionsText:
 	db   "TRADE CENTER"

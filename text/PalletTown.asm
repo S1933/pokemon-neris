@@ -1,56 +1,58 @@
 _PalletTownOakHeyWaitDontGoOutText::
-	text "OAK: Hey! Wait!"
-	line "Don't go out!@"
+	text "OAK: He! Attends!"
+	line "Ne sors pas!@"
 	text_end
 
 _PalletTownOakItsUnsafeText::
-	text "OAK: It's unsafe!"
-	line "Wild #MON live"
-	cont "in tall grass!"
+	text "OAK: C'est"
+	line "dangereux! Des"
+	cont "#MON sauvages"
+	cont "vivent dans les"
 
-	para "You need your own"
-	line "#MON for your"
-	cont "protection."
-	cont "I know!"
+	para "hautes herbes."
 
-	para "Here, come with"
-	line "me!"
+	para "Il te faut ton"
+	line "propre #MON"
+	cont "pour te proteger."
+	cont "Je sais!"
+
+	para "Viens avec moi!"
 	done
 
 _PalletTownGirlText::
-	text "I'm raising"
-	line "#MON too!"
+	text "J'eleve des"
+	line "#MON moi aussi!"
 
-	para "When they get"
-	line "strong, they can"
-	cont "protect me!"
+	para "Quand ils seront"
+	line "forts, ils pourront"
+	cont "me proteger!"
 	done
 
 _PalletTownFisherText::
-	text "Technology is"
-	line "incredible!"
+	text "La technologie,"
+	line "c'est incroyable!"
 
-	para "You can now store"
-	line "and recall items"
-	cont "and #MON as"
-	cont "data via PC!"
+	para "On peut maintenant"
+	line "stocker et"
+	cont "recuperer objets"
+	cont "et #MON par PC!"
 	done
 
 _PalletTownOaksLabSignText::
-	text "OAK #MON"
-	line "RESEARCH LAB"
+	text "LABORATOIRE"
+	line "#MON de OAK"
 	done
 
 _PalletTownSignText::
-	text "PALLET TOWN"
-	line "Shades of your"
-	cont "journey await!"
+	text "ARGENTA"
+	line "Une aube"
+	cont "d'aventure t'attend!"
 	done
 
 _PalletTownPlayersHouseSignText::
-	text "<PLAYER>'s house "
+	text "Maison de <PLAYER>"
 	done
 
 _PalletTownRivalsHouseSignText::
-	text "<RIVAL>'s house "
+	text "Maison de <RIVAL>"
 	done
