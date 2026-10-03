@@ -10,6 +10,7 @@ PalletTown_Blocks: INCBIN "maps/PalletTown.blk"
 Lighthouse_Blocks: INCBIN "maps/Lighthouse.blk"
 ValBorealCity_Blocks: INCBIN "maps/ValBorealCity.blk"
 ValBorealGym_Blocks: INCBIN "maps/ValBorealGym.blk"
+Academy_Blocks: INCBIN "maps/Academy.blk"
 
 INCLUDE "data/maps/headers/ViridianCity.asm"
 INCLUDE "data/maps/objects/ViridianCity.asm"
@@ -131,6 +132,10 @@ INCLUDE "data/maps/objects/ValBorealCity.asm"
 INCLUDE "data/maps/headers/ValBorealGym.asm"
 INCLUDE "scripts/ValBorealGym.asm"
 INCLUDE "data/maps/objects/ValBorealGym.asm"
+
+INCLUDE "data/maps/headers/Academy.asm"
+INCLUDE "scripts/Academy.asm"
+INCLUDE "data/maps/objects/Academy.asm"
 
 INCLUDE "data/maps/headers/ViridianMart.asm"
 INCLUDE "scripts/ViridianMart.asm"

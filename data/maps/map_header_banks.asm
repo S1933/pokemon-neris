@@ -113,7 +113,7 @@ MapHeaderBanks::
 	db BANK(Lighthouse_h) ; LIGHTHOUSE
 	db BANK(ValBorealGym_h) ; VALBOREAL_GYM
 	db $1D ; UNUSED_MAP_6F
-	db $1D ; UNUSED_MAP_70
+	db BANK(Academy_h) ; ACADEMY
 	db BANK(LancesRoom_h)
 	db $1D ; UNUSED_MAP_72
 	db $1D ; UNUSED_MAP_73

@@ -60,6 +60,7 @@ InternalMapEntries:
 	; indoor map group, x, y, name
 	indoor_map PALLET_TOWN,         2, 11, PalletTownName
 	indoor_map POKEMON_LEAGUE,      3,  8, ValBorealCityName
+	indoor_map POKEMON_LEAGUE,      2,  8, AcademyName
 	indoor_map VIRIDIAN_CITY,       2,  8, ViridianCityName
 	indoor_map ROUTE_2,             2,  6, Route2Name
 	indoor_map VIRIDIAN_FOREST,     2,  4, ViridianForestName
@@ -119,5 +120,5 @@ InternalMapEntries:
 	indoor_map ROCK_TUNNEL_2,      14,  3, RockTunnelName
 	indoor_map SILPH_CO_2,         10,  5, SilphCoName
 	indoor_map POKEMON_LEAGUE_3,    0,  2, PokemonLeagueName
-	assert_table_length NUM_INDOOR_MAP_GROUPS + 1
+	assert_table_length NUM_INDOOR_MAP_GROUPS + 2
 	db -1 ; end

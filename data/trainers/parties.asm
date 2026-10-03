@@ -611,6 +611,9 @@ RocketData:
 	db 65, GENGAR, NIDOKING, WEEZING, 0
 
 CooltrainerMData:
+; Academy tournament
+	db 58, KINGLER, STARMIE, GOLEM, 0
+	db 58, EXEGGUTOR, ARCANINE, 0
 ; Viridian Gym
 	db 51, NIDORINO, NIDOKING, 0
 ; Victory Road 3F
@@ -629,6 +632,9 @@ CooltrainerMData:
 	db 56, RHYHORN, 0
 
 CooltrainerFData:
+; Academy tournament
+	db 57, NIDOQUEEN, NINETALES, 0
+	db 57, VILEPLUME, RAICHU, PARASECT, 0
 ; Celadon Gym
 	db 32, WEEPINBELL, GLOOM, IVYSAUR, 0
 ; Victory Road 3F
@@ -644,6 +650,9 @@ CooltrainerFData:
 	db 56, PERSIAN, NINETALES, RAICHU, 0
 
 BrunoData:
+; Academy (Maitre Oran)
+	db 3, 58, ONIX, 58, HITMONCHAN, 58, MACHAMP, 0
+; Elite Four
 	db $FF, 69, ONIX, 72, HITMONCHAN, 72, HITMONLEE, 73, ONIX, 76, MACHAMP, 0
 
 BrockData:

@@ -1936,7 +1936,7 @@ wRoute1CurScript:: db
 wBluesHouseCurScript:: db
 wViridianCityCurScript:: db
 wLighthouseCurScript:: db
-	ds 1
+wAcademyCurScript:: db
 wPewterCityCurScript:: db
 wRoute3CurScript:: db
 wRoute4CurScript:: db
