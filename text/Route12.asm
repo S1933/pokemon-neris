@@ -1,139 +1,150 @@
 _Route12SnorlaxText::
-	text "A sleeping #MON"
-	line "blocks the way!"
+	text "Un #MON endormi"
+	line "bloque le chemin!"
 	done
 
 _Route12SnorlaxWokeUpText::
-	text "SNORLAX woke up!"
+	text "SNORLAX s'est"
+	line "reveille!"
 
-	para "It attacked in a"
-	line "grumpy rage!"
+	para "Il a attaque dans"
+	line "une rage furieuse!"
 	done
 
 _Route12SnorlaxCalmedDownText::
-	text "SNORLAX calmed"
-	line "down! With a big"
-	cont "yawn, it returned"
-	cont "to the mountains!"
+	text "SNORLAX s'est"
+	line "calme! Avec un"
+	cont "grand baillement,"
+	cont "il est retourne"
+	cont "dans les"
+	cont "montagnes!"
 	done
 
 _Route12Fisher1BattleText::
-	text "Yeah! I got a"
-	line "bite, here!"
+	text "Yeah! Ca mord,"
+	line "ici!"
 	done
 
 _Route12Fisher1EndBattleText::
 	text "Tch!"
-	line "Just a small fry!"
+	line "Un petit alevin!"
 	prompt
 
 _Route12Fisher1AfterBattleText::
-	text "Hang on! My line's"
-	line "snagged!"
+	text "Attends! Ma ligne"
+	line "est accrochee!"
 	done
 
 _Route12Fisher2BattleText::
-	text "Be patient!"
-	line "Fishing is a"
-	cont "waiting game!"
+	text "Sois patient! La"
+	line "peche, c'est un"
+	cont "jeu d'attente!"
 	done
 
 _Route12Fisher2EndBattleText::
-	text "That"
-	line "one got away!"
+	text "Celui-la"
+	line "s'est echappe!"
 	prompt
 
 _Route12Fisher2AfterBattleText::
-	text "With a better ROD,"
-	line "I could catch"
-	cont "better #MON!"
+	text "Avec une meilleure"
+	line "ROD, j'attraperais"
+	cont "de meilleurs"
+	cont "#MON!"
 	done
 
 _Route12CooltrainerMBattleText::
-	text "Have you found a"
+	text "As-tu trouve une"
 	line "MOON STONE?"
 	done
 
 _Route12CooltrainerMEndBattleText::
-	text "Oww!"
+	text "Aie!"
 	prompt
 
 _Route12CooltrainerMAfterBattleText::
-	text "I could have made"
-	line "my #MON evolve"
-	cont "with MOON STONE!"
+	text "J'aurais pu faire"
+	line "evoluer mon #MON"
+	cont "avec une MOON"
+	cont "STONE!"
 	done
 
 _Route12SuperNerdBattleText::
-	text "Electricity is my"
-	line "specialty!"
+	text "L'electricite,"
+	line "c'est ma"
+	cont "specialite!"
 	done
 
 _Route12SuperNerdEndBattleText::
-	text "Unplugged!"
+	text "Debranche!"
 	prompt
 
 _Route12SuperNerdAfterBattleText::
-	text "Water conducts"
-	line "electricity, so"
-	cont "you should zap"
-	cont "sea #MON!"
+	text "L'eau conduit"
+	line "l'electricite,"
+	cont "alors electrise"
+	cont "les #MON marins!"
 	done
 
 _Route12Fisher3BattleText::
-	text "The FISHING FOOL"
-	line "vs. #MON KID!"
+	text "Le PECHEUR FOU"
+	line "contre le GAMIN"
+	cont "#MON!"
 	done
 
 _Route12Fisher3EndBattleText::
-	text "Too"
-	line "much!"
+	text "Trop"
+	line "fort!"
 	prompt
 
 _Route12Fisher3AfterBattleText::
-	text "You beat me at"
-	line "#MON, but I'm"
-	cont "good at fishing!"
+	text "Tu gagnes en"
+	line "#MON, mais je"
+	cont "suis bon a la"
+	cont "peche!"
 	done
 
 _Route12Fisher4BattleText::
-	text "I'd rather be"
-	line "working!"
+	text "Je prefererais"
+	line "travailler!"
 	done
 
 _Route12Fisher4EndBattleText::
-	text "It's"
-	line "not easy..."
+	text "Ce"
+	line "n'est pas"
+	cont "facile..."
 	prompt
 
 _Route12Fisher4AfterBattleText::
-	text "It's all right."
-	line "Losing doesn't"
-	cont "bug me any more."
+	text "Tant pis. Perdre"
+	line "ne me derange"
+	cont "plus."
 	done
 
 _Route12Fisher5BattleText::
-	text "You never know"
-	line "what you could"
-	cont "catch!"
+	text "On ne sait jamais"
+	line "ce qu'on peut"
+	cont "prendre!"
 	done
 
 _Route12Fisher5EndBattleText::
-	text "Lost"
-	line "it!"
+	text "Rate!"
 	prompt
 
 _Route12Fisher5AfterBattleText::
-	text "I catch MAGIKARP"
-	line "all the time, but"
-	cont "they're so weak!"
+	text "J'attrape des"
+	line "MAGIKARP sans"
+	cont "arret, mais ils"
+	cont "sont si faibles!"
 	done
 
 _Route12SignText::
-	text "ROUTE 12 "
-	line "North to LAVENDER"
+	text "ROUTE 12"
+	line "Nord vers"
+	cont "LAVANVILLE"
 	done
 
 _Route12SportFishingSignText::
-	text "SPORT FISHING AREA"
+	text "ZONE DE PECHE"
+	line "SPORTIVE"
 	done

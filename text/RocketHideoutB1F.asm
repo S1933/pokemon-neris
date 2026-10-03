@@ -1,74 +1,76 @@
 _RocketHideoutB1FRocket5EndBattleText::
-	text "Why...?@"
+	text "Pourquoi...?@"
 	text_end
 
 _RocketHideoutB1FRocket1BattleText::
-	text "Who are you? How"
-	line "did you get here?"
+	text "Qui es-tu?"
+	line "Comment es-tu"
+	cont "entre ici?"
 	done
 
 _RocketHideoutB1FRocket1EndBattleText::
-	text "Oww!"
-	line "Beaten!"
+	text "Aie!"
+	line "Battu!"
 	prompt
 
 _RocketHideoutB1FRocket1AfterBattleText::
-	text "Are you dissing"
-	line "TEAM ROCKET?"
+	text "Tu te moques de"
+	line "la TEAM ROCKET?"
 	done
 
 _RocketHideoutB1FRocket2BattleText::
-	text "You broke into"
-	line "our operation?"
+	text "Tu t'es introduit"
+	line "dans notre"
+	cont "operation?"
 	done
 
 _RocketHideoutB1FRocket2EndBattleText::
-	text "Burnt!"
+	text "Brule!"
 	prompt
 
 _RocketHideoutB1FRocket2AfterBattleText::
-	text "You're not going"
-	line "to get away with"
-	cont "this, brat!"
+	text "Tu ne t'en"
+	line "sortiras pas"
+	cont "comme ca, morveux!"
 	done
 
 _RocketHideoutB1FRocket3BattleText::
-	text "Intruder alert!"
+	text "Alerte intrusion!"
 	done
 
 _RocketHideoutB1FRocket3EndBattleText::
-	text "I"
-	line "can't do it!"
+	text "Je"
+	line "n'y arrive pas!"
 	prompt
 
 _RocketHideoutB1FRocket3AfterBattleText::
 	text "SILPH SCOPE?"
-	line "I don't know"
-	cont "where it is!"
+	line "Je ne sais pas"
+	cont "ou c'est!"
 	done
 
 _RocketHideoutB1FRocket4BattleText::
-	text "Why did you come"
-	line "here?"
+	text "Pourquoi es-tu"
+	line "venu ici?"
 	done
 
 _RocketHideoutB1FRocket4EndBattleText::
-	text "This"
-	line "won't do!"
+	text "Ca"
+	line "ne va pas!"
 	prompt
 
 _RocketHideoutB1FRocket4AfterBattleText::
-	text "OK, I'll talk!"
-	line "Take the elevator"
-	cont "to see my BOSS!"
+	text "OK, je parle!"
+	line "Prends l'ascenseur"
+	cont "pour voir le BOSS!"
 	done
 
 _RocketHideoutB1FRocket5BattleText::
-	text "Are you lost, you"
-	line "little rat?"
+	text "Tu es perdu,"
+	line "petit rat?"
 	done
 
 _RocketHideoutB1FRocket5AfterBattleText::
-	text "Uh-oh, that fight"
-	line "opened the door!"
+	text "Ah non, ce combat"
+	line "a ouvert la porte!"
 	done

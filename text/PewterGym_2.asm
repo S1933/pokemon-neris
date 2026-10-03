@@ -1,146 +1,154 @@
 _PewterGymBrockPostBattleAdviceText::
-	text "There are all"
-	line "kinds of trainers"
-	cont "in the world!"
+	text "Il y a toutes"
+	line "sortes de"
+	cont "dresseurs dans le"
+	cont "monde!"
 
-	para "You appear to be"
-	line "very gifted as a"
-	cont "#MON trainer!"
+	para "Tu sembles etre"
+	line "un dresseur"
+	cont "#MON tres"
+	cont "doue!"
 
-	para "Go to the GYM in"
-	line "CERULEAN and test"
-	cont "your abilities!"
+	para "Va au GYM de"
+	line "CERULEAN et teste"
+	cont "tes capacites!"
 	done
 
 _PewterGymBrockWaitTakeThisText::
-	text "Wait! Take this"
-	line "with you!"
+	text "Attends! Prends"
+	line "ceci avec toi!"
 	done
 
 _PewterGymReceivedTM34Text::
-	text "<PLAYER> received"
+	text "<PLAYER> recoit"
 	line "TM34!@"
 	text_end
 
 _TM34ExplanationText::
 	text_start
 
-	para "A TM contains a"
-	line "technique that"
-	cont "can be taught to"
-	cont "#MON!"
+	para "Une TM contient"
+	line "une technique qui"
+	cont "peut etre apprise"
+	cont "a un #MON!"
 
-	para "A TM is good only"
-	line "once! So when you"
-	cont "use one to teach"
-	cont "a new technique,"
-	cont "pick the #MON"
-	cont "carefully!"
+	para "Une TM ne sert"
+	line "qu'une fois! Donc"
+	cont "quand tu en uses"
+	cont "une, choisis bien"
+	cont "ton #MON!"
 
-	para "TM34 contains"
+	para "TM34 contient"
 	line "BIDE!"
 
-	para "Your #MON will"
-	line "absorb damage in"
-	cont "battle then pay"
-	cont "it back double!"
+	para "Ton #MON"
+	line "absorbera les"
+	cont "degats puis les"
+	cont "rendra au double!"
 	done
 
 _PewterGymTM34NoRoomText::
-	text "You don't have"
-	line "room for this!"
+	text "Tu n'as pas la"
+	line "place pour ca!"
 	done
 
 _PewterGymBrockReceivedBoulderBadgeText::
-	text "I took"
-	line "you for granted."
+	text "Je t'ai"
+	line "sous-estime."
 
-	para "As proof of your"
-	line "victory, here's"
-	cont "the BOULDERBADGE!"
+	para "En preuve de ta"
+	line "victoire, voici"
+	cont "le BOULDERBADGE!"
 
-	para "<PLAYER> received"
-	line "the BOULDERBADGE!@"
+	para "<PLAYER> recoit"
+	line "le BOULDERBADGE!@"
 	text_end
 
 _PewterGymBrockBoulderBadgeInfoText::
 	text_start
 
-	para "That's an official"
-	line "#MON LEAGUE"
-	cont "BADGE!"
+	para "C'est un BADGE"
+	line "officiel de la"
+	cont "LIGUE #MON!"
 
-	para "Its bearer's"
-	line "#MON become"
-	cont "more powerful!"
+	para "Les #MON de son"
+	line "porteur deviennent"
+	cont "plus puissants!"
 
-	para "The technique"
-	line "FLASH can now be"
-	cont "used any time!"
+	para "La technique"
+	line "FLASH est"
+	cont "utilisable a"
+	cont "volonte!"
 	prompt
 
 _PewterGymCooltrainerMBattleText::
-	text "Stop right there,"
-	line "kid!"
+	text "Arrete-toi la,"
+	line "gamin!"
 
-	para "You're still light"
-	line "years from facing"
-	cont "BROCK!"
+	para "Tu es encore a"
+	line "des annees-lumiere"
+	cont "d'affronter BROCK!"
 	done
 
 _PewterGymCooltrainerMEndBattleText::
-	text "Darn!"
+	text "Zut!"
 
-	para "Light years isn't"
-	line "time! It measures"
+	para "Une annee-lumiere"
+	line "ce n'est pas du"
+	cont "temps! C'est une"
 	cont "distance!"
 	prompt
 
 _PewterGymCooltrainerMAfterBattleText::
-	text "You're pretty hot,"
-	line "but not as hot"
-	cont "as BROCK!"
+	text "Tu es fort, mais"
+	line "pas autant que"
+	cont "BROCK!"
 	done
 
 _PewterGymGuidePreAdviceText::
-	text "Hiya! I can tell"
-	line "you have what it"
-	cont "takes to become a"
-	cont "#MON champ!"
+	text "Salut! Je vois"
+	line "que tu as ce"
+	cont "qu'il faut pour"
+	cont "devenir un champ"
+	cont "#MON!"
 
-	para "I'm no trainer,"
-	line "but I can tell"
-	cont "you how to win!"
+	para "Je ne suis pas"
+	line "dresseur, mais je"
+	cont "peux te dire"
+	cont "comment gagner!"
 
-	para "Let me take you"
-	line "to the top!"
+	para "Laisse-moi te"
+	line "mener au sommet!"
 	done
 
 _PewterGymGuideBeginAdviceText::
-	text "All right! Let's"
-	line "get happening!"
+	text "Parfait! C'est"
+	line "parti!"
 	prompt
 
 _PewterGymGuideAdviceText::
-	text "The 1st #MON"
-	line "out in a match is"
-	cont "at the top of the"
-	cont "#MON LIST!"
+	text "Le 1er #MON a"
+	line "combattre est en"
+	cont "haut de la LISTE"
+	cont "#MON!"
 
-	para "By changing the"
-	line "order of #MON,"
-	cont "matches could be"
-	cont "made easier!"
+	para "En changeant"
+	line "l'ordre des"
+	cont "#MON, les"
+	cont "combats peuvent"
+	cont "etre plus"
+	cont "faciles!"
 	done
 
 _PewterGymGuideFreeServiceText::
-	text "It's a free"
-	line "service! Let's"
-	cont "get happening!"
+	text "C'est gratuit!"
+	line "Allez, c'est"
+	cont "parti!"
 	prompt
 
 _PewterGymGuidePostBattleText::
-	text "Just as I thought!"
-	line "You're #MON"
-	cont "champ material!"
+	text "Comme je le"
+	line "pensais! Tu es un"
+	cont "futur champion"
+	cont "#MON!"
 	done

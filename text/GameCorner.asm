@@ -1,190 +1,203 @@
 _GameCornerBeauty1Text::
-	text "Welcome!"
+	text "Bienvenue!"
 
-	para "You can exchange"
-	line "your coins for"
-	cont "fabulous prizes"
-	cont "next door."
+	para "Tu peux echanger"
+	line "tes jetons"
+	cont "contre de"
+	cont "superbes lots"
+	cont "a cote!"
 	done
 
 _GameCornerClerk1DoYouNeedSomeGameCoinsText::
-	text "Welcome to ROCKET"
-	line "GAME CORNER!"
+	text "Bienvenue au"
+	line "CASINOPOLE!"
 
-	para "Do you need some"
-	line "game coins?"
+	para "T'as besoin de"
+	line "jetons?"
 
-	para "It's ¥1000 for 50"
-	line "coins. Would you"
-	cont "like some?"
+	para "1000¥ les 50"
+	line "jetons. Tu en"
+	cont "veux?"
 	done
 
 _GameCornerClerk1ThanksHereAre50CoinsText::
-	text "Thanks! Here are"
-	line "your 50 coins!"
+	text "Merci! Voila"
+	line "tes 50 jetons!"
 	done
 
 _GameCornerClerk1PleaseComePlaySometimeText::
-	text "No? Please come"
-	line "play sometime!"
+	text "Non? Reviens"
+	line "jouer un peu!"
 	done
 
 _GameCornerClerk1CantAffordTheCoinsText::
-	text "You can't afford"
-	line "the coins!"
+	text "Tu n'as pas les"
+	line "moyens!"
 	done
 
 _GameCornerClerk1CoinCaseIsFullText::
-	text "Oops! Your COIN"
-	line "CASE is full."
+	text "Oups! Ta COIN"
+	line "CASE est pleine."
 	done
 
 _GameCornerClerk1DontHaveCoinCaseText::
-	text "You don't have a"
+	text "Tu n'as pas de"
 	line "COIN CASE!"
 	done
 
 _GameCornerMiddleAgedMan1Text::
-	text "Keep this quiet."
+	text "Reste discret."
 
-	para "It's rumored that"
-	line "this place is run"
-	cont "by TEAM ROCKET."
+	para "On dit que cet"
+	line "endroit est"
+	cont "tenu par la"
+	cont "TEAM ROCKET."
 	done
 
 _GameCornerBeauty2Text::
-	text "I think these"
-	line "machines have"
-	cont "different odds."
+	text "Je crois que"
+	line "ces machines"
+	cont "ont des taux"
+	cont "differents."
 	done
 
 _GameCornerFishingGuruWantToPlayText::
-	text "Kid, do you want"
-	line "to play?"
+	text "Petit, tu veux"
+	line "jouer?"
 	prompt
 
 _GameCornerFishingGuruReceived10CoinsText::
-	text "<PLAYER> received"
-	line "10 coins!@"
+	text "<PLAYER> recoit"
+	line "10 jetons!@"
 	text_end
 
 _GameCornerFishingGuruDontNeedMyCoinsText::
-	text "You don't need my"
-	line "coins!"
+	text "Tu n'as pas"
+	line "besoin de mes"
+	cont "jetons!"
 	done
 
 _GameCornerFishingGuruWinsComeAndGoText::
-	text "Wins seem to come"
-	line "and go."
+	text "Les gains vont"
+	line "et viennent."
 	done
 
 _GameCornerMiddleAgedWomanText::
-	text "I'm having a"
-	line "wonderful time!"
+	text "Je passe un"
+	line "moment super!"
 	done
 
 _GameCornerGymGuideChampInMakingText::
-	text "Hey!"
+	text "He!"
 
-	para "You have better"
-	line "things to do,"
-	cont "champ in making!"
+	para "Tu as mieux a"
+	line "faire, futur"
+	cont "champion!"
 
-	para "CELADON GYM's"
-	line "LEADER is ERIKA!"
-	cont "She uses grass-"
-	cont "type #MON!"
+	para "La CHAMPIONNE"
+	line "d'ARENE de"
+	cont "CELADOPOLE est"
+	cont "ERIKA!"
 
-	para "She might appear"
-	line "docile, but don't"
-	cont "be fooled!"
+	para "Elle utilise"
+	line "des #MON de"
+	cont "type plante!"
+
+	para "Elle parait"
+	line "douce, mais ne"
+	cont "t'y fie pas!"
 	done
 
 _GameCornerGymGuideTheyOfferRarePokemonText::
-	text "They offer rare"
-	line "#MON that can"
-	cont "be exchanged for"
-	cont "your coins."
+	text "Ils offrent des"
+	line "#MON rares"
+	cont "echangeables"
+	cont "contre jetons."
 
-	para "But, I just can't"
-	line "seem to win!"
+	para "Mais je n'arrive"
+	line "pas a gagner!"
 	done
 
 _GameCornerGamblerText::
-	text "Games are scary!"
-	line "It's so easy to"
-	cont "get hooked!"
+	text "Les jeux font"
+	line "peur! On y"
+	cont "prend gout vite!"
 	done
 
 _GameCornerClerk2WantSomeCoinsText::
-	text "What's up? Want"
-	line "some coins?"
+	text "Quoi de neuf?"
+	line "Des jetons?"
 	prompt
 
 _GameCornerClerk2Received20CoinsText::
-	text "<PLAYER> received"
-	line "20 coins!@"
+	text "<PLAYER> recoit"
+	line "20 jetons!@"
 	text_end
 
 _GameCornerClerk2YouHaveLotsOfCoinsText::
-	text "You have lots of"
-	line "coins!"
+	text "Tu as plein"
+	line "de jetons!"
 	done
 
 _GameCornerClerk2INeedMoreCoinsText::
-	text "Darn! I need more"
-	line "coins for the"
-	cont "#MON I want!"
+	text "Zut! Il me faut"
+	line "plus de jetons"
+	cont "pour le #MON"
+	cont "que je veux!"
 	done
 
 _GameCornerGentlemanThrowingMeOffText::
-	text "Hey, what? You're"
-	line "throwing me off!"
-	cont "Here are some"
-	cont "coins, shoo!"
+	text "He, quoi? Tu me"
+	line "deranges! Tiens,"
+	cont "prends des"
+	cont "jetons, ouste!"
 	prompt
 
 _GameCornerGentlemanReceived20CoinsText::
-	text "<PLAYER> received"
-	line "20 coins!@"
+	text "<PLAYER> recoit"
+	line "20 jetons!@"
 	text_end
 
 _GameCornerGentlemanYouGotYourOwnCoinsText::
-	text "You've got your"
-	line "own coins!"
+	text "Tu as tes"
+	line "propres jetons!"
 	done
 
 _GameCornerGentlemanCloselyWatchTheReelsText::
-	text "The trick is to"
-	line "watch the reels"
-	cont "closely!"
+	text "L'astuce, c'est"
+	line "de bien fixer"
+	cont "les rouleaux!"
 	done
 
 _GameCornerRocketImGuardingThisPosterText::
-	text "I'm guarding this"
-	line "poster!"
-	cont "Go away, or else!"
+	text "Je garde cette"
+	line "affiche! Va-t'en,"
+	cont "ou sinon!"
 	done
 
 _GameCornerRocketBattleEndText::
-	text "Dang!"
+	text "Zut!"
 	prompt
 
 _GameCornerRocketAfterBattleText::
-	text "Our hideout might"
-	line "be discovered! I"
-	cont "better tell BOSS!"
+	text "Notre planque"
+	line "risque d'etre"
+	cont "decouverte!"
+	cont "Je dois le dire"
+	cont "au BOSS!"
 	done
 
 _GameCornerPosterSwitchBehindPosterText::
-	text "Hey!"
+	text "He!"
 
-	para "A switch behind"
-	line "the poster!?"
-	cont "Let's push it!@"
+	para "Un interrupteur"
+	line "derriere"
+	cont "l'affiche!?"
+	cont "Poussons-le!@"
 	text_end
 
 _GameCornerOopsForgotCoinCaseText::
-	text "Oops! Forgot the"
-	line "COIN CASE!"
+	text "Oups! J'ai"
+	line "oublie la"
+	cont "COIN CASE!"
 	done

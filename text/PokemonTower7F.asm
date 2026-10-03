@@ -1,78 +1,87 @@
 _PokemonTower7FMrFujiRescueText::
-	text "MR.FUJI: Heh? You"
-	line "came to save me?"
+	text "MR.FUJI: Hein? Tu"
+	line "es venu me"
+	cont "sauver?"
 
-	para "Thank you. But, I"
-	line "came here of my"
-	cont "own free will."
+	para "Merci. Mais je"
+	line "suis venu de"
+	cont "mon plein gre."
 
-	para "I came to calm"
-	line "the soul of"
-	cont "CUBONE's mother."
+	para "Je suis venu"
+	line "calmer l'ame de"
+	cont "la mere de"
+	cont "CUBONE."
 
-	para "I think MAROWAK's"
-	line "spirit has gone"
-	cont "to the afterlife."
+	para "Je crois que"
+	line "l'esprit de"
+	cont "MAROWAK est"
+	cont "parti dans"
+	cont "l'au-dela."
 
-	para "I must thank you"
-	line "for your kind"
-	cont "concern!"
+	para "Je dois te"
+	line "remercier pour"
+	cont "ta gentillesse!"
 
-	para "Follow me to my"
-	line "home, #MON"
-	cont "HOUSE at the foot"
-	cont "of this tower."
+	para "Suis-moi chez"
+	line "moi, la MAISON"
+	cont "#MON au pied"
+	cont "de cette tour."
 	done
 
 _PokemonTower7FRocket1BattleText::
-	text "What do you want?"
-	line "Why are you here?"
+	text "Qu'est-ce que"
+	line "tu veux?"
+	cont "Pourquoi es-tu"
+	cont "la?"
 	done
 
 _PokemonTower7FRocket1EndBattleText::
-	text "I give up!"
+	text "Je capitule!"
 	prompt
 
 _PokemonTower7FRocket1AfterBattleText::
-	text "I'm not going to"
-	line "forget this!"
+	text "Je ne vais pas"
+	line "oublier ca!"
 	done
 
 _PokemonTower7FRocket2BattleText::
-	text "This old guy came"
-	line "and complained"
-	cont "about us harming"
-	cont "useless #MON!"
+	text "Ce vieux est"
+	line "venu reprocher"
+	cont "de malmener"
+	cont "des #MON"
+	cont "inutiles!"
 
-	para "We're talking it"
-	line "over as adults!"
+	para "On parle entre"
+	line "adultes!"
 	done
 
 _PokemonTower7FRocket2EndBattleText::
-	text "Please!"
-	line "No more!"
+	text "Pitie!"
+	line "Arretez!"
 	prompt
 
 _PokemonTower7FRocket2AfterBattleText::
-	text "#MON are only"
-	line "good for making"
-	cont "money!"
+	text "Les #MON ne"
+	line "servent qu'a"
+	cont "faire du fric!"
 
-	para "Stay out of our"
-	line "business!"
+	para "Occupe-toi de"
+	line "tes affaires!"
 	done
 
 _PokemonTower7FRocket3BattleText::
-	text "You're not saving"
-	line "anyone, kid!"
+	text "Tu ne sauveras"
+	line "personne, gamin!"
 	done
 
 _PokemonTower7FRocket3EndBattleText::
-	text "Don't"
-	line "fight us ROCKETs!"
+	text "Ne nous"
+	line "affronte pas,"
+	cont "la ROCKET!"
 	prompt
 
 _PokemonTower7FRocket3AfterBattleText::
-	text "You're not getting"
-	line "away with this!"
+	text "Tu ne t'en"
+	line "sortiras pas"
+	cont "comme ca!"
 	done

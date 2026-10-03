@@ -1,67 +1,83 @@
 _Route24CooltrainerM1YouBeatOurContestText::
-	text "Congratulations!"
-	line "You beat our 5"
-	cont "contest trainers!@"
+	text "Felicitations!"
+	line "Tu as battu"
+	cont "nos 5"
+	cont "dresseurs du"
+	cont "concours!@"
 	text_end
 
 _Route24CooltrainerM1YouJustEarnedAPrizeText::
 	text_start
 
-	para "You just earned a"
-	line "fabulous prize!"
+	para "Tu as gagne"
+	line "un prix"
+	cont "fabuleux!"
 	prompt
 
 _Route24CooltrainerM1ReceivedNuggetText::
-	text "<PLAYER> received"
-	line "a @"
+	text "<PLAYER> obtient"
+	line "un @"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
 _Route24CooltrainerM1NoRoomText::
-	text "You don't have"
-	line "any room!"
+	text "Tu n'as"
+	line "pas de"
+	cont "place!"
 	done
 
 _Route24CooltrainerM1JoinTeamRocketText::
-	text "By the way, would"
-	line "you like to join"
+	text "Au fait, tu"
+	line "veux"
+	cont "rejoindre la"
 	cont "TEAM ROCKET?"
 
-	para "We're a group"
-	line "dedicated to evil"
-	cont "using #MON!"
+	para "On est un"
+	line "groupe qui"
+	cont "fait le mal"
+	cont "avec les #MON!"
 
-	para "Want to join?"
+	para "Tu veux nous"
+	line "rejoindre?"
 
-	para "Are you sure?"
+	para "T'es sur?"
 
-	para "Come on, join us!"
+	para "Allez,"
+	line "rejoins-nous!"
 
-	para "I'm telling you"
-	line "to join!"
+	para "Je te dis"
+	line "de nous"
+	cont "rejoindre!"
 
-	para "OK, you need"
-	line "convincing!"
+	para "OK, faut te"
+	line "convaincre!"
 
-	para "I'll make you an"
-	line "offer you can't"
-	cont "refuse!"
+	para "Je vais te"
+	line "faire une"
+	cont "offre"
+	cont "irrefusable!"
 	done
 
 _Route24CooltrainerM1DefeatedText::
 	text "Arrgh!"
-	line "You are good!"
+	line "Tu es"
+	cont "fort!"
 	prompt
 
 _Route24CooltrainerM1YouCouldBecomeATopLeaderText::
-	text "With your ability,"
-	line "you could become"
-	cont "a top leader in"
+	text "Avec ton"
+	line "talent, tu"
+	cont "pourrais"
+	cont "devenir un"
+	cont "grand chef"
+	cont "de la"
 	cont "TEAM ROCKET!"
 	done
 
 _Route24CooltrainerM2BattleText::
-	text "I saw your feat"
-	line "from the grass!"
+	text "J'ai vu ton"
+	line "exploit"
+	cont "depuis"
+	cont "l'herbe!"
 	done

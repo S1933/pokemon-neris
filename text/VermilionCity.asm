@@ -1,69 +1,73 @@
 _VermilionCityBeautyText::
-	text "We're careful"
-	line "about pollution!"
+	text "On fait"
+	line "attention a la"
+	cont "pollution!"
 
-	para "We've heard GRIMER"
-	line "multiplies in"
-	cont "toxic sludge!"
+	para "On dit que GRIMER"
+	line "se multiplie dans"
+	cont "la boue toxique!"
 	done
 
 _VermilionCityGambler1DidYouSeeText::
-	text "Did you see S.S."
-	line "ANNE moored in"
-	cont "the harbor?"
+	text "Tu as vu le S.S."
+	line "ANNE a quai dans"
+	cont "le port?"
 	done
 
 _VermilionCityGambler1SSAnneDepartedText::
-	text "So, S.S.ANNE has"
-	line "departed!"
+	text "Le S.S.ANNE a donc"
+	line "appareille!"
 
-	para "She'll be back in"
-	line "about a year."
+	para "Il reviendra dans"
+	line "environ un an."
 	done
 
 _VermilionCitySailor1WelcomeToSSAnneText::
-	text "Welcome to S.S."
-	line "ANNE!"
-	done
-
-_VermilionCitySailor1DoYouHaveATicketText::
-	text "Welcome to S.S."
-	line "ANNE!"
-
-	para "Excuse me, do you"
-	line "have a ticket?"
-	prompt
-
-_VermilionCitySailor1FlashedTicketText::
-	text "<PLAYER> flashed"
-	line "the S.S.TICKET!"
-
-	para "Great! Welcome to"
+	text "Bienvenue sur le"
 	line "S.S.ANNE!"
 	done
 
+_VermilionCitySailor1DoYouHaveATicketText::
+	text "Bienvenue sur le"
+	line "S.S.ANNE!"
+
+	para "Excuse-moi, as-tu"
+	line "un ticket?"
+	prompt
+
+_VermilionCitySailor1FlashedTicketText::
+	text "<PLAYER> montre le"
+	line "S.S.TICKET!"
+
+	para "Parfait!"
+	line "Bienvenue sur le"
+	cont "S.S.ANNE!"
+	done
+
 _VermilionCitySailor1YouNeedATicketText::
-	text "<PLAYER> doesn't"
-	line "have the needed"
-	cont "S.S.TICKET."
+	text "<PLAYER> n'a pas"
+	line "le S.S.TICKET"
+	cont "requis."
 
-	para "Sorry!"
+	para "Desole!"
 
-	para "You need a ticket"
-	line "to get aboard."
+	para "Il te faut un"
+	line "ticket pour monter"
+	cont "a bord."
 	done
 
 _VermilionCitySailor1ShipSetSailText::
-	text "The ship set sail."
+	text "Le bateau a pris"
+	line "le large."
 	done
 
 _VermilionCityGambler2Text::
-	text "I'm putting up a"
-	line "building on this"
-	cont "plot of land."
+	text "Je construis un"
+	line "batiment sur ce"
+	cont "terrain."
 
-	para "My #MON is"
-	line "tamping the land."
+	para "Mon #MON tasse la"
+	line "terre."
 	done
 
 _VermilionCityMachopText::
@@ -74,55 +78,58 @@ _VermilionCityMachopText::
 _VermilionCityMachopStompingTheLandFlatText::
 	text_start
 
-	para "A MACHOP is"
-	line "stomping the land"
-	cont "flat."
+	para "Un MACHOP tasse la"
+	line "terre."
 	done
 
 _VermilionCitySailor2Text::
-	text "S.S.ANNE is a"
-	line "famous luxury"
-	cont "cruise ship."
+	text "Le S.S.ANNE est un"
+	line "celebre paquebot"
+	cont "de luxe."
 
-	para "We visit VERMILION"
-	line "once a year."
+	para "On vient a CARMIN"
+	line "une fois par an."
 	done
 
 _VermilionCitySignText::
-	text "VERMILION CITY"
-	line "The Port of"
-	cont "Exquisite Sunsets"
+	text "CARMIN SUR MER"
+	line "Le port aux"
+	cont "couchants"
+	cont "sublimes"
 	done
 
 _VermilionCityNoticeSignText::
-	text "NOTICE!"
+	text "AVIS!"
 
-	para "ROUTE 12 may be"
-	line "blocked off by a"
-	cont "sleeping #MON."
+	para "La ROUTE 12 est"
+	line "peut-etre bloquee"
+	cont "par un #MON"
+	cont "endormi."
 
-	para "Detour through"
-	line "ROCK TUNNEL to"
-	cont "LAVENDER TOWN."
+	para "Passez par le"
+	line "TUNNEL ROCHEUX"
+	cont "vers LAVANVILLE."
 
-	para "VERMILION POLICE"
+	para "POLICE DE CARMIN"
 	done
 
 _VermilionCityPokemonFanClubSignText::
-	text "#MON FAN CLUB"
-	line "All #MON fans"
-	cont "welcome!"
+	text "FAN CLUB #MON"
+	line "Tous les fans de"
+	cont "#MON sont"
+	cont "bienvenus!"
 	done
 
 _VermilionCityGymSignText::
-	text "VERMILION CITY"
-	line "#MON GYM"
-	cont "LEADER: LT.SURGE"
+	text "CARMIN SUR MER"
+	line "ARENE #MON"
+	cont "CHAMPION:"
+	cont "LT.SURGE"
 
-	para "The Lightning "
-	line "American!"
+	para "L'Americain"
+	line "fulgurant!"
 	done
 
 _VermilionCityHarborSignText::
-	text "VERMILION HARBOR"
+	text "PORT DE CARMIN"
 	done

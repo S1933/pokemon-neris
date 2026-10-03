@@ -1,51 +1,56 @@
 _Route19CooltrainerM1BattleText::
-	text "Have to warm up"
-	line "before my swim!"
+	text "Je dois"
+	line "m'echauffer"
+	cont "avant de nager!"
 	done
 
 _Route19CooltrainerM1EndBattleText::
-	text "All"
-	line "warmed up!"
+	text "Bien"
+	line "echauffe!"
 	prompt
 
 _Route19CooltrainerM1AfterBattleText::
-	text "Thanks, kid! I'm"
-	line "ready for a swim!"
+	text "Merci, gamin!"
+	line "Je peux nager"
+	cont "maintenant!"
 	done
 
 _Route19CooltrainerM2BattleText::
-	text "Wait! You'll have"
-	line "a heart attack!"
+	text "Attends! Tu vas"
+	line "avoir une crise"
+	cont "cardiaque!"
 	done
 
 _Route19CooltrainerM2EndBattleText::
-	text "Ooh!"
-	line "That's chilly!"
+	text "Oh!"
+	line "C'est glacial!"
 	prompt
 
 _Route19CooltrainerM2AfterBattleText::
-	text "Watch out for"
+	text "Attention aux"
 	line "TENTACOOL!"
 	done
 
 _Route19Swimmer1BattleText::
-	text "I love swimming!"
-	line "What about you?"
+	text "J'adore nager!"
+	line "Et toi?"
 	done
 
 _Route19Swimmer1EndBattleText::
-	text "Belly"
-	line "flop!"
+	text "Plat"
+	line "ventre!"
 	prompt
 
 _Route19Swimmer1AfterBattleText::
-	text "I can beat #MON"
-	line "at swimming!"
+	text "Je bats les"
+	line "#MON a la"
+	cont "nage!"
 	done
 
 _Route19Swimmer2BattleText::
-	text "What's beyond the"
-	line "horizon?"
+	text "Qu'y a-t-il"
+	line "derriere"
+	cont "l'horizon?"
 	done
 
 _Route19Swimmer2EndBattleText::
@@ -53,105 +58,116 @@ _Route19Swimmer2EndBattleText::
 	prompt
 
 _Route19Swimmer2AfterBattleText::
-	text "I see a couple of"
-	line "islands!"
+	text "Je vois deux"
+	line "iles!"
 	done
 
 _Route19Swimmer3BattleText::
-	text "I tried diving"
-	line "for #MON, but"
-	cont "it was a no go!"
+	text "J'ai plonge"
+	line "pour un #MON,"
+	cont "mais rien a"
+	cont "faire!"
 	done
 
 _Route19Swimmer3EndBattleText::
-	text "Help!"
+	text "Au secours!"
 	prompt
 
 _Route19Swimmer3AfterBattleText::
-	text "You have to fish"
-	line "for sea #MON!"
+	text "Il faut pecher"
+	line "les #MON de"
+	cont "mer!"
 	done
 
 _Route19Swimmer4BattleText::
-	text "I look at the"
-	line "sea to forget!"
+	text "Je regarde la"
+	line "mer pour"
+	cont "oublier!"
 	done
 
 _Route19Swimmer4EndBattleText::
-	text "Ooh!"
-	line "Traumatic!"
+	text "Oh!"
+	line "Quel trauma!"
 	prompt
 
 _Route19Swimmer4AfterBattleText::
-	text "I'm looking at the"
-	line "sea to forget!"
+	text "Je regarde la"
+	line "mer pour"
+	cont "oublier!"
 	done
 
 _Route19Swimmer5BattleText::
-	text "Oh, I just love"
-	line "your ride! Can I"
-	cont "have it if I win?"
+	text "Oh, j'adore ta"
+	line "monture! Je peux"
+	cont "l'avoir si je"
+	cont "gagne?"
 	done
 
 _Route19Swimmer5EndBattleText::
 	text "Oh!"
-	line "I lost!"
+	line "J'ai perdu!"
 	prompt
 
 _Route19Swimmer5AfterBattleText::
-	text "It's still a long"
-	line "way to go to"
-	cont "SEAFOAM ISLANDS."
+	text "Il reste"
+	line "encore du"
+	cont "chemin jusqu'aux"
+	cont "ILES ECUMES."
 	done
 
 _Route19Swimmer6BattleText::
-	text "Swimming's great!"
-	line "Sunburns aren't!"
+	text "Nager, c'est"
+	line "super! Les coups"
+	cont "de soleil, non!"
 	done
 
 _Route19Swimmer6EndBattleText::
-	text "Shocker!"
+	text "Surprise!"
 	prompt
 
 _Route19Swimmer6AfterBattleText::
-	text "My boy friend"
-	line "wanted to swim to"
-	cont "SEAFOAM ISLANDS."
+	text "Mon copain"
+	line "voulait nager"
+	cont "jusqu'aux ILES"
+	cont "ECUMES."
 	done
 
 _Route19Swimmer7BattleText::
-	text "These waters are"
-	line "treacherous!"
+	text "Ces eaux sont"
+	line "traitresses!"
 	done
 
 _Route19Swimmer7EndBattleText::
-	text "Ooh!"
-	line "Dangerous!"
+	text "Oh!"
+	line "Dangereux!"
 	prompt
 
 _Route19Swimmer7AfterBattleText::
-	text "I got a cramp!"
-	line "Glub, glub..."
+	text "J'ai une"
+	line "crampe! Glub,"
+	cont "glub..."
 	done
 
 _Route19Swimmer8BattleText::
-	text "I swam here, but"
-	line "I'm tired."
+	text "J'ai nage"
+	line "jusqu'ici, mais"
+	cont "je suis fatigue."
 	done
 
 _Route19Swimmer8EndBattleText::
-	text "I'm"
-	line "exhausted..."
+	text "Je suis"
+	line "epuise..."
 	prompt
 
 _Route19Swimmer8AfterBattleText::
-	text "LAPRAS is so big,"
-	line "it must keep you"
-	cont "dry on water."
+	text "LAPRAS est si"
+	line "grand qu'il te"
+	cont "garde au sec"
+	cont "sur l'eau."
 	done
 
 _Route19SignText::
-	text "SEA ROUTE 19"
-	line "FUCHSIA CITY -"
-	cont "SEAFOAM ISLANDS"
+	text "ROUTE MARINE 19"
+	line "PARMANIE -"
+	cont "ILES ECUMES"
 	done

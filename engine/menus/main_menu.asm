@@ -350,9 +350,9 @@ NewGameText:
 	next "OPTIONS@"
 
 CableClubOptionsText:
-	db   "TRADE CENTER"
+	db   "ECHANGE"
 	next "COLOSSEUM"
-	next "CANCEL@"
+	next "ANNULE@"
 
 DisplayContinueGameInfo:
 	xor a
@@ -435,10 +435,10 @@ PrintPlayTime:
 	jp PrintNumber
 
 SaveScreenInfoText:
-	db   "PLAYER"
+	db   "JOUEUR"
 	next "BADGES    "
 	next "#DEX    "
-	next "TIME@"
+	next "TEMPS@"
 
 DisplayOptionMenu:
 	hlcoord 0, 0
@@ -595,19 +595,19 @@ DisplayOptionMenu:
 	jp .eraseOldMenuCursor
 
 TextSpeedOptionText:
-	db   "TEXT SPEED"
-	next " FAST  MEDIUM SLOW@"
+	db   "VITESSE TEXTE"
+	next " VITE  MOYEN  LENT@"
 
 BattleAnimationOptionText:
-	db   "BATTLE ANIMATION"
-	next " ON       OFF@"
+	db   "ANIMATION COMBAT"
+	next " OUI      NON@"
 
 BattleStyleOptionText:
-	db   "BATTLE STYLE"
-	next " SHIFT    SET@"
+	db   "STYLE COMBAT"
+	next " CHANGE   FIXE@"
 
 OptionMenuCancelText:
-	db "CANCEL@"
+	db "ANNULE@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:

@@ -1,40 +1,51 @@
 _Route11Gate2FOaksAideItemfinderDescriptionText::
-	text "There are items on"
-	line "the ground that"
-	cont "can't be seen."
+	text "Il y a des"
+	line "objets au sol"
+	cont "invisibles."
 
-	para "ITEMFINDER will"
-	line "detect an item"
-	cont "close to you."
+	para "L'ITEMFINDER"
+	line "detecte un"
+	cont "objet proche"
+	cont "de toi."
 
-	para "It can't pinpoint"
-	line "it, so you have"
-	cont "to look yourself!"
+	para "Il ne peut"
+	line "pas le"
+	cont "localiser"
+	cont "tout seul,"
+	cont "cherche"
+	cont "toi-meme!"
 	done
 
 _Route11Gate2FLeftBinocularsSnorlaxText::
-	text "Looked into the"
-	line "binoculars."
+	text "Tu regardes"
+	line "dans les"
+	cont "jumelles."
 
-	para "A big #MON is"
-	line "asleep on a road!"
+	para "Un gros"
+	line "#MON dort"
+	cont "sur la"
+	cont "route!"
 	done
 
 _Route11Gate2FLeftBinocularsNoSnorlaxText::
-	text "Looked into the"
-	line "binoculars."
+	text "Tu regardes"
+	line "dans les"
+	cont "jumelles."
 
-	para "It's a beautiful"
-	line "view!"
+	para "Quelle"
+	line "belle vue!"
 	done
 
 _Route11Gate2FRightBinocularsText::
-	text "Looked into the"
-	line "binoculars."
+	text "Tu regardes"
+	line "dans les"
+	cont "jumelles."
 
-	para "The only way to"
-	line "get from CERULEAN"
-	cont "CITY to LAVENDER"
-	cont "is by way of the"
-	cont "ROCK TUNNEL."
+	para "Le seul"
+	line "chemin"
+	cont "d'AZURIA a"
+	cont "LAVANVILLE"
+	cont "passe par"
+	cont "le ROCK"
+	cont "TUNNEL."
 	done

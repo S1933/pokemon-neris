@@ -24,7 +24,8 @@ _PalletTownGirlText::
 	line "#MON moi aussi!"
 
 	para "Quand ils seront"
-	line "forts, ils pourront"
+	line "forts, ils"
+	cont "pourront"
 	cont "me proteger!"
 	done
 
@@ -44,9 +45,10 @@ _PalletTownOaksLabSignText::
 	done
 
 _PalletTownSignText::
-	text "ARGENTA"
+	text "BOURG PALETTE"
 	line "Une aube"
-	cont "d'aventure t'attend!"
+	cont "d'aventure"
+	cont "t'attend!"
 	done
 
 _PalletTownPlayersHouseSignText::

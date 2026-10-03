@@ -1,173 +1,215 @@
 _Route14CooltrainerM1BattleText::
-	text "You need to use"
-	line "TMs to teach good"
-	cont "moves to #MON!"
+	text "Utilise des"
+	line "TMs pour"
+	cont "apprendre de"
+	cont "bonnes"
+	cont "capacites!"
 	done
 
 _Route14CooltrainerM1EndBattleText::
-	text "Not"
-	line "good enough!"
+	text "Pas"
+	line "assez bon!"
 	prompt
 
 _Route14CooltrainerM1AfterBattleText::
-	text "You have some HMs"
-	line "right? #MON"
-	cont "can't ever forget"
-	cont "those moves."
+	text "Tu as des HMs"
+	line "non? Les"
+	cont "#MON"
+	cont "oublient"
+	cont "jamais ces"
+	cont "capacites."
 	done
 
 _Route14CooltrainerM2BattleText::
-	text "My bird #MON"
-	line "should be ready"
-	cont "for battle."
+	text "Mes #MON"
+	line "oiseaux"
+	cont "devraient"
+	cont "etre prets"
+	cont "a combattre."
 	done
 
 _Route14CooltrainerM2EndBattleText::
-	text "Not"
-	line "ready yet!"
+	text "Pas"
+	line "encore"
+	cont "prets!"
 	prompt
 
 _Route14CooltrainerM2AfterBattleText::
-	text "They need to learn"
-	line "better moves."
+	text "Ils doivent"
+	line "apprendre de"
+	cont "meilleures"
+	cont "capacites."
 	done
 
 _Route14CooltrainerM3BattleText::
-	text "TMs are on sale"
-	line "in CELADON!"
-	cont "But, only a few"
-	cont "people have HMs!"
+	text "Les TMs sont"
+	line "en vente a"
+	cont "CELADON!"
+
+	para "Mais peu"
+	line "de gens"
+	cont "ont des HMs!"
 	done
 
 _Route14CooltrainerM3EndBattleText::
-	text "Aww,"
-	line "bummer!"
+	text "Oh,"
+	line "dommage!"
 	prompt
 
 _Route14CooltrainerM3AfterBattleText::
-	text "Teach #MON"
-	line "moves of the same"
-	cont "element type for"
-	cont "more power."
+	text "Apprends"
+	line "des"
+	cont "capacites du"
+	cont "meme type"
+	cont "pour plus"
+	cont "de force."
 	done
 
 _Route14CooltrainerM4BattleText::
-	text "Have you taught"
-	line "your bird #MON"
-	cont "how to FLY?"
+	text "As-tu appris"
+	line "a tes #MON"
+	cont "oiseaux a"
+	cont "utiliser FLY?"
 	done
 
 _Route14CooltrainerM4EndBattleText::
-	text "Shot"
-	line "down in flames!"
+	text "Abattu"
+	line "en plein"
+	cont "vol!"
 	prompt
 
 _Route14CooltrainerM4AfterBattleText::
-	text "Bird #MON are"
-	line "my true love!"
+	text "Les #MON"
+	line "oiseaux"
+	cont "sont mon"
+	cont "vrai amour!"
 	done
 
 _Route14CooltrainerM5BattleText::
-	text "Have you heard of"
-	line "the legendary"
-	cont "#MON?"
+	text "As-tu"
+	line "entendu"
+	cont "parler des"
+	cont "#MON"
+	cont "legendaires?"
 	done
 
 _Route14CooltrainerM5EndBattleText::
-	text "Why?"
-	line "Why'd I lose?"
+	text "Pourquoi?"
+	line "j'ai perdu?"
 	prompt
 
 _Route14CooltrainerM5AfterBattleText::
-	text "The 3 legendary"
-	line "#MON are all"
-	cont "birds of prey."
+	text "Les 3 #MON"
+	line "legendaires"
+	cont "sont des"
+	cont "oiseaux"
+	cont "de proie."
 	done
 
 _Route14CooltrainerM6BattleText::
-	text "I'm not into it,"
-	line "but OK! Let's go!"
+	text "Ca ne me"
+	line "dit rien,"
+	cont "mais OK!"
+	cont "Allons-y!"
 	done
 
 _Route14CooltrainerM6EndBattleText::
-	text "I"
-	line "knew it!"
+	text "Je"
+	line "le savais!"
 	prompt
 
 _Route14CooltrainerM6AfterBattleText::
-	text "Winning, losing,"
-	line "it doesn't matter"
-	cont "in the long run!"
+	text "Gagner,"
+	line "perdre, ca"
+	cont "n'a pas"
+	cont "d'importance"
+	cont "au final!"
 	done
 
 _Route14Biker1BattleText::
-	text "C'mon, c'mon."
-	line "Let's go, let's"
-	cont "go, let's go!"
+	text "Allez,"
+	line "allez."
+	cont "On y va,"
+	cont "on y va,"
+	cont "on y va!"
 	done
 
 _Route14Biker1EndBattleText::
 	text "Arrg!"
-	line "Lost! Get lost!"
+	line "Perdu!"
+	cont "Fiche le camp!"
 	prompt
 
 _Route14Biker1AfterBattleText::
-	text "What, what, what?"
-	line "What do you want?"
+	text "Quoi, quoi,"
+	line "quoi?"
+	cont "Tu veux"
+	cont "quoi?"
 	done
 
 _Route14Biker2BattleText::
-	text "Perfect! I need to"
-	line "burn some time!"
+	text "Parfait! Je"
+	line "dois tuer"
+	cont "le temps!"
 	done
 
 _Route14Biker2EndBattleText::
-	text "What?"
-	line "You!?"
+	text "Quoi?"
+	line "Toi!?"
 	prompt
 
 _Route14Biker2AfterBattleText::
-	text "Raising #MON"
-	line "is a drag, man."
+	text "Entrainer"
+	line "des #MON,"
+	cont "c'est"
+	cont "penible."
 	done
 
 _Route14Biker3BattleText::
-	text "We ride out here"
-	line "because there's"
-	cont "more room!"
+	text "On roule ici"
+	line "car il y a"
+	cont "plus de"
+	cont "place!"
 	done
 
 _Route14Biker3EndBattleText::
-	text "Wipe out!"
+	text "Chute!"
 	prompt
 
 _Route14Biker3AfterBattleText::
-	text "It's cool you"
-	line "made your #MON"
-	cont "so strong!"
+	text "C'est cool"
+	line "d'avoir"
+	cont "des #MON"
+	cont "si forts!"
 
-	para "Might is right!"
-	line "And you know it!"
+	para "La force"
+	line "prime!"
+	cont "Et tu le"
+	cont "sais!"
 	done
 
 _Route14Biker4BattleText::
-	text "#MON fight?"
-	line "Cool! Rumble!"
+	text "Des #MON"
+	line "qui se"
+	cont "battent?"
+	cont "Cool!"
+	cont "Baston!"
 	done
 
 _Route14Biker4EndBattleText::
-	text "Blown"
-	line "away!"
+	text "Balaye!"
 	prompt
 
 _Route14Biker4AfterBattleText::
-	text "You know who'd"
-	line "win, you and me"
-	cont "one on one!"
+	text "Tu sais qui"
+	line "gagnerait"
+	cont "entre toi"
+	cont "et moi, en"
+	cont "duel!"
 	done
 
 _Route14SignText::
 	text "ROUTE 14"
-	line "West to FUCHSIA"
-	cont "CITY"
+	line "A l'ouest de"
+	cont "FUCHSIA CITY"
 	done

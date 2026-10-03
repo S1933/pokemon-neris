@@ -1,21 +1,23 @@
 _CeladonMartRoofLittleGirlGiveHerWhichDrinkText::
-	text "Give her which"
-	line "drink?"
+	text "Quelle"
+	line "boisson lui"
+	cont "donner?"
 	done
 
 _CeladonMartRoofLittleGirlYayFreshWaterText::
-	text "Yay!"
+	text "Super!"
 
 	para "FRESH WATER!"
 
-	para "Thank you!"
+	para "Merci!"
 
-	para "You can have this"
-	line "from me!@"
+	para "Tu peux"
+	line "prendre ca,"
+	cont "de ma part!@"
 	text_end
 
 _CeladonMartRoofLittleGirlReceivedTM13Text::
-	text "<PLAYER> received"
+	text "<PLAYER> obtient"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
@@ -26,26 +28,28 @@ _CeladonMartRoofLittleGirlTM13ExplanationText::
 
 	para "@"
 	text_ram wStringBuffer
-	text " contains"
+	text " contient"
 	line "ICE BEAM!"
 
-	para "It can freeze the"
-	line "target sometimes!@"
+	para "Ca peut geler"
+	line "la cible"
+	cont "parfois!@"
 	text_end
 
 _CeladonMartRoofLittleGirlYaySodaPopText::
-	text "Yay!"
+	text "Super!"
 
 	para "SODA POP!"
 
-	para "Thank you!"
+	para "Merci!"
 
-	para "You can have this"
-	line "from me!@"
+	para "Tu peux"
+	line "prendre ca,"
+	cont "de ma part!@"
 	text_end
 
 _CeladonMartRoofLittleGirlReceivedTM48Text::
-	text "<PLAYER> received"
+	text "<PLAYER> obtient"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
@@ -56,97 +60,113 @@ _CeladonMartRoofLittleGirlTM48ExplanationText::
 
 	para "@"
 	text_ram wStringBuffer
-	text " contains"
+	text " contient"
 	line "ROCK SLIDE!"
 
-	para "It can spook the"
-	line "target sometimes!@"
+	para "Ca peut"
+	line "effrayer la"
+	cont "cible"
+	cont "parfois!@"
 	text_end
 
 _CeladonMartRoofLittleGirlYayLemonadeText::
-	text "Yay!"
+	text "Super!"
 
 	para "LEMONADE!"
 
-	para "Thank you!"
+	para "Merci!"
 
-	para "You can have this"
-	line "from me!@"
+	para "Tu peux"
+	line "prendre ca,"
+	cont "de ma part!@"
 	text_end
 
 _CeladonMartRoofLittleGirlReceivedTM49Text::
-	text "<PLAYER> received"
+	text "<PLAYER> obtient"
 	line "TM49!@"
 	text_end
 
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
-	para "TM49 contains"
+	para "TM49 contient"
 	line "TRI ATTACK!@"
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::
-	text "You don't have"
-	line "space for this!@"
+	text "Tu n'as"
+	line "pas la"
+	cont "place!@"
 	text_end
 
 _CeladonMartRoofLittleGirlImNotThirstyText::
-	text "No thank you!"
-	line "I'm not thirsty"
-	cont "after all!@"
+	text "Non merci!"
+	line "Je n'ai pas"
+	cont "soif apres"
+	cont "tout!@"
 	text_end
 
 _CeladonMartRoofSuperNerdText::
-	text "My sister is a"
-	line "trainer, believe"
-	cont "it or not."
+	text "Ma soeur"
+	line "est"
+	cont "dresseuse,"
+	cont "crois-le ou"
+	cont "non."
 
-	para "But, she's so"
-	line "immature, she"
-	cont "drives me nuts!"
+	para "Mais elle"
+	line "est si"
+	cont "gamine"
+	cont "qu'elle me"
+	cont "rend fou!"
 	done
 
 _CeladonMartRoofLittleGirlImThirstyText::
-	text "I'm thirsty!"
-	line "I want something"
-	cont "to drink!"
+	text "J'ai soif!"
+	line "Je veux"
+	cont "boire"
+	cont "quelque"
+	cont "chose!"
 	done
 
 _CeladonMartRoofLittleGirlGiveHerADrinkText::
-	text "I'm thirsty!"
-	line "I want something"
-	cont "to drink!"
+	text "J'ai soif!"
+	line "Je veux"
+	cont "boire"
+	cont "quelque"
+	cont "chose!"
 
-	para "Give her a drink?"
+	para "Donne-lui a"
+	line "boire?"
 	done
 
 _CeladonMartRoofCurrentFloorSignText::
-	text "ROOFTOP SQUARE:"
-	line "VENDING MACHINES"
+	text "TERRASSE:"
+	line "DISTRIBUTEURS"
 	done
 
 _VendingMachineText1::
-	text "A vending machine!"
-	line "Here's the menu!"
+	text "Un distributeur!"
+	line "Voici le menu!"
 	prompt
 
 _VendingMachineText4::
-	text "Oops, not enough"
-	line "money!"
+	text "Oups! Pas"
+	line "assez"
+	cont "d'argent!"
 	done
 
 _VendingMachineText5::
 	text_ram wStringBuffer
 	text_start
-	line "popped out!"
+	line "est sorti!"
 	done
 
 _VendingMachineText6::
-	text "There's no more"
-	line "room for stuff!"
+	text "Plus de place"
+	line "pour tes"
+	cont "affaires!"
 	done
 
 _VendingMachineText7::
-	text "Not thirsty!"
+	text "Pas soif!"
 	done

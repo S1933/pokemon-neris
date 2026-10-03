@@ -1,18 +1,21 @@
 _SafariZoneEastRestHouseScientistText::
-	text "How many did you"
-	line "catch? I'm bushed"
-	cont "from the work!"
+	text "T'en as attrape"
+	line "combien? Je suis"
+	cont "creve de"
+	cont "travail!"
 	done
 
 _SafariZoneEastRestHouseRockerText::
-	text "I caught a"
-	line "CHANSEY!"
+	text "J'ai attrape"
+	line "un CHANSEY!"
 
-	para "That makes this"
-	line "all worthwhile!"
+	para "Ca valait"
+	line "vraiment le"
+	cont "coup!"
 	done
 
 _SafariZoneEastRestHouseSilphWorkerMText::
-	text "Whew! I'm tired"
-	line "from all the fun!"
+	text "Ouf! Je suis"
+	line "creve a force"
+	cont "de m'amuser!"
 	done

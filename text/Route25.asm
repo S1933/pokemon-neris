@@ -1,156 +1,168 @@
 _Route25Youngster1BattleText::
-	text "Local trainers"
-	line "come here to"
-	cont "practice!"
+	text "Les dresseurs"
+	line "du coin viennent"
+	cont "s'entrainer ici!"
 	done
 
 _Route25Youngster1EndBattleText::
-	text "You're"
-	line "decent."
+	text "Tu te"
+	line "defends bien."
 	prompt
 
 _Route25Youngster1AfterBattleText::
-	text "All #MON have"
-	line "weaknesses. It's"
-	cont "best to raise"
-	cont "different kinds."
+	text "Tous les #MON"
+	line "ont des"
+	cont "faiblesses."
+	cont "Mieux vaut en"
+	cont "elever de"
+	cont "plusieurs"
+	cont "sortes."
 	done
 
 _Route25Youngster2BattleText::
-	text "Dad took me to a"
-	line "great party on"
-	cont "S.S.ANNE at"
-	cont "VERMILION CITY!"
+	text "Papa m'a emmene"
+	line "a une fete sur"
+	cont "le S.S.ANNE a"
+	cont "CARMIN SUR MER!"
 	done
 
 _Route25Youngster2EndBattleText::
-	text "I'm"
-	line "not mad!"
+	text "Je ne suis"
+	line "pas fache!"
 	prompt
 
 _Route25Youngster2AfterBattleText::
-	text "On S.S.ANNE, I"
-	line "saw trainers from"
-	cont "around the world."
+	text "Sur le S.S.ANNE,"
+	line "j'ai vu des"
+	cont "dresseurs du"
+	cont "monde entier."
 	done
 
 _Route25CooltrainerMBattleText::
-	text "I'm a cool guy."
-	line "I've got a girl"
-	cont "friend!"
+	text "Je suis cool."
+	line "J'ai une"
+	cont "petite amie!"
 	done
 
 _Route25CooltrainerMEndBattleText::
-	text "Aww,"
-	line "darn..."
+	text "Oh,"
+	line "mince..."
 	prompt
 
 _Route25CooltrainerMAfterBattleText::
-	text "Oh well. My girl"
-	line "will cheer me up."
+	text "Tant pis. Ma"
+	line "copine va me"
+	cont "remonter le moral."
 	done
 
 _Route25CooltrainerF1BattleText::
-	text "Hi! My boy"
-	line "friend is cool!"
+	text "Salut! Mon"
+	line "copain est cool!"
 	done
 
 _Route25CooltrainerF1EndBattleText::
-	text "I was in"
-	line "bad condition!"
+	text "J'etais pas"
+	line "en forme!"
 	prompt
 
 _Route25CooltrainerF1AfterBattleText::
-	text "I wish my guy was"
-	line "as good as you!"
+	text "J'aimerais"
+	line "qu'il soit aussi"
+	cont "fort que toi!"
 	done
 
 _Route25Youngster3BattleText::
-	text "I knew I had to"
-	line "fight you!"
+	text "Je savais que"
+	line "je devais me"
+	cont "battre contre toi!"
 	done
 
 _Route25Youngster3EndBattleText::
-	text "I knew"
-	line "I'd lose too!"
+	text "Je savais que"
+	line "j'allais perdre"
+	cont "aussi!"
 	prompt
 
 _Route25Youngster3AfterBattleText::
-	text "If your #MON"
-	line "gets confused or"
-	cont "falls asleep,"
-	cont "switch it!"
+	text "Si ton #MON"
+	line "devient confus"
+	cont "ou s'endort,"
+	cont "change-le!"
 	done
 
 _Route25CooltrainerF2BattleText::
-	text "My friend has a"
-	line "cute #MON."
-	cont "I'm so jealous!"
+	text "Mon ami a un"
+	line "#MON trop mignon."
+	cont "Je suis"
+	cont "jalouse!"
 	done
 
 _Route25CooltrainerF2EndBattleText::
-	text "I'm"
-	line "not so jealous!"
+	text "Je ne suis"
+	line "plus si"
+	cont "jalouse!"
 	prompt
 
 _Route25CooltrainerF2AfterBattleText::
-	text "You came from MT."
-	line "MOON? May I have"
-	cont "a CLEFAIRY?"
+	text "Tu viens du"
+	line "MONT SELENITE?"
+	cont "Je peux avoir un"
+	cont "CLEFAIRY?"
 	done
 
 _Route25Hiker1BattleText::
-	text "I just got down"
-	line "from MT.MOON,"
-	cont "but I'm ready!"
+	text "Je descends du"
+	line "MONT SELENITE,"
+	cont "mais je suis"
+	cont "pret!"
 	done
 
 _Route25Hiker1EndBattleText::
-	text "You"
-	line "worked hard!"
+	text "Tu as"
+	line "bien travaille!"
 	prompt
 
 _Route25Hiker1AfterBattleText::
-	text "Drat!"
-	line "A ZUBAT bit me"
-	cont "back in there."
+	text "Zut! Un ZUBAT"
+	line "m'a mordu la-bas."
 	done
 
 _Route25Hiker2BattleText::
-	text "I'm off to see a"
-	line "#MON collector"
-	cont "at the cape!"
+	text "Je vais voir"
+	line "un collectionneur"
+	cont "de #MON au cap!"
 	done
 
 _Route25Hiker2EndBattleText::
-	text "You"
-	line "got me."
+	text "Tu m'as"
+	line "eu."
 	prompt
 
 _Route25Hiker2AfterBattleText::
-	text "The collector has"
-	line "many rare kinds"
-	cont "of #MON."
+	text "Le collectionneur"
+	line "a plein de #MON"
+	cont "rares."
 	done
 
 _Route25Hiker3BattleText::
-	text "You're going to"
-	line "see BILL? First,"
-	cont "let's fight!"
+	text "Tu vas voir"
+	line "BILL? D'abord,"
+	cont "on se bat!"
 	done
 
 _Route25Hiker3EndBattleText::
-	text "You're"
-	line "something."
+	text "Tu es"
+	line "hors pair."
 	prompt
 
 _Route25Hiker3AfterBattleText::
-	text "The trail below"
-	line "is a shortcut to"
-	cont "CERULEAN CITY."
+	text "Le sentier en"
+	line "bas mene a"
+	cont "AZURIA."
 	done
 
 _Route25BillSignText::
-	text "SEA COTTAGE"
-	line "BILL lives here!"
+	text "CABANON DE"
+	line "BORD DE MER"
+	cont "BILL vit ici!"
 	done

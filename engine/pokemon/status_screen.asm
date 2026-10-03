@@ -210,7 +210,7 @@ TypesIDNoOTText:
 	next "@"
 
 StatusText:
-	db "STATUS/@"
+	db "STATUT/@"
 
 OKText:
 	db "OK@"
@@ -281,9 +281,9 @@ PrintStatsBox:
 	ret
 
 .StatsText:
-	db   "ATTACK"
+	db   "ATTAQUE"
 	next "DEFENSE"
-	next "SPEED"
+	next "VITESSE"
 	next "SPECIAL@"
 
 StatusScreen2:
@@ -458,8 +458,8 @@ CalcExpToLevelUp:
 	ret
 
 StatusScreenExpText:
-	db   "EXP POINTS"
-	next "LEVEL UP@"
+	db   "POINTS EXP"
+	next "NIVEAU +@"
 
 StatusScreen_ClearName:
 	ld bc, NAME_LENGTH - 1

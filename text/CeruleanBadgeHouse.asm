@@ -1,97 +1,106 @@
 _CeruleanBadgeHouseMiddleAgedManText::
-	text "#MON BADGEs"
-	line "are owned only by"
-	cont "skilled trainers."
-
-	para "I see you have"
-	line "at least one."
-
-	para "Those BADGEs have"
-	line "amazing secrets!"
+	text "Les BADGEs"
+	line "#MON sont"
+	cont "l'apanage des"
+	cont "dresseurs doues."
+	para "Je vois que tu"
+	line "en as au moins"
+	cont "un."
+	para "Ces BADGEs ont"
+	line "des secrets"
+	cont "incroyables!"
 	prompt
 
 _CeruleanBadgeHouseMiddleAgedManWhichBadgeText::
-	text "Now then..."
-
-	para "Which of the 8"
-	line "BADGEs should I"
-	cont "describe?"
+	text "Bien..."
+	para "Lequel des 8"
+	line "BADGEs veux-tu"
+	cont "que je"
+	cont "decriye?"
 	done
 
 _CeruleanBadgeHouseMiddleAgedManVisitAnyTimeText::
-	text "Come visit me any"
-	line "time you wish."
+	text "Viens me voir"
+	line "quand tu veux."
 	done
 
 _CeruleanBadgeHouseBoulderBadgeText::
-	text "The ATTACK of all"
-	line "#MON increases"
-	cont "a little bit."
-
-	para "It also lets you"
-	line "use FLASH any"
-	cont "time you desire."
+	text "L'ATTAQUE de"
+	line "tous les #MON"
+	cont "augmente un"
+	cont "peu."
+	para "Il permet"
+	line "aussi d'utiliser"
+	cont "FLASH a volonte."
 	prompt
 
 _CeruleanBadgeHouseCascadeBadgeText::
-	text "#MON up to L30"
-	line "will obey you."
-
-	para "Any higher, they"
-	line "become unruly!"
-
-	para "It also lets you"
-	line "use CUT outside"
-	cont "of battle."
+	text "Les #MON"
+	line "jusqu'au N.30"
+	cont "t'obeiront."
+	para "Au-dela, ils"
+	line "deviennent"
+	cont "rebelles!"
+	para "Il permet"
+	line "aussi d'utiliser"
+	cont "CUT hors"
+	cont "combat."
 	prompt
 
 _CeruleanBadgeHouseThunderBadgeText::
-	text "The SPEED of all"
-	line "#MON increases"
-	cont "a little bit."
-
-	para "It also lets you"
-	line "use FLY outside"
-	cont "of battle."
+	text "La VITESSE de"
+	line "tous les #MON"
+	cont "augmente un"
+	cont "peu."
+	para "Il permet"
+	line "aussi d'utiliser"
+	cont "FLY hors"
+	cont "combat."
 	prompt
 
 _CeruleanBadgeHouseRainbowBadgeText::
-	text "#MON up to L50"
-	line "will obey you."
-
-	para "Any higher, they"
-	line "become unruly!"
-
-	para "It also lets you"
-	line "use STRENGTH out-"
-	cont "side of battle."
+	text "Les #MON"
+	line "jusqu'au N.50"
+	cont "t'obeiront."
+	para "Au-dela, ils"
+	line "deviennent"
+	cont "rebelles!"
+	para "Il permet"
+	line "aussi d'utiliser"
+	cont "STRENGTH"
+	cont "hors combat."
 	prompt
 
 _CeruleanBadgeHouseSoulBadgeText::
-	text "The DEFENSE of all"
-	line "#MON increases"
-	cont "a little bit."
-
-	para "It also lets you"
-	line "use SURF outside"
-	cont "of battle."
+	text "La DEFENSE de"
+	line "tous les #MON"
+	cont "augmente un"
+	cont "peu."
+	para "Il permet"
+	line "aussi d'utiliser"
+	cont "SURF hors"
+	cont "combat."
 	prompt
 
 _CeruleanBadgeHouseMarshBadgeText::
-	text "#MON up to L70"
-	line "will obey you."
-
-	para "Any higher, they"
-	line "become unruly!"
+	text "Les #MON"
+	line "jusqu'au N.70"
+	cont "t'obeiront."
+	para "Au-dela, ils"
+	line "deviennent"
+	cont "rebelles!"
 	prompt
 
 _CeruleanBadgeHouseVolcanoBadgeText::
-	text "Your #MON's"
-	line "SPECIAL abilities"
-	cont "increase a bit."
+	text "Les"
+	line "capacites"
+	cont "SPECIALES de"
+	cont "tes #MON"
+	cont "augmentent"
+	cont "un peu."
 	prompt
 
 _CeruleanBadgeHouseEarthBadgeText::
-	text "All #MON will"
-	line "obey you!"
+	text "Tous les #MON"
+	line "t'obeiront!"
 	prompt

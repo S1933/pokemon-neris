@@ -1,45 +1,49 @@
 _PokemonTower4FChanneler1BattleText::
-	text "GHOST! No!"
+	text "FANTOME! Non!"
 	line "Kwaaah!"
 	done
 
 _PokemonTower4FChanneler1EndBattleText::
-	text "Where"
-	line "is the GHOST?"
+	text "Ou est le"
+	line "FANTOME?"
 	prompt
 
 _PokemonTower4FChanneler1AfterBattleText::
-	text "I must have been"
-	line "dreaming..."
+	text "J'ai du"
+	line "rever..."
 	done
 
 _PokemonTower4FChanneler2BattleText::
-	text "Be cursed with"
-	line "me! Kwaaah!"
+	text "Sois maudit"
+	line "avec moi!"
+	cont "Kwaaah!"
 	done
 
 _PokemonTower4FChanneler2EndBattleText::
-	text "What!"
+	text "Quoi!"
 	prompt
 
 _PokemonTower4FChanneler2AfterBattleText::
-	text "We can't crack"
-	line "the identity of"
-	cont "the GHOSTs."
+	text "On n'arrive"
+	line "pas a percer"
+	cont "l'identite des"
+	cont "FANTOMES."
 	done
 
 _PokemonTower4FChanneler3BattleText::
 	text "Huhuhu..."
-	line "Beat me not!"
+	line "Ne me bats"
+	cont "pas!"
 	done
 
 _PokemonTower4FChanneler3EndBattleText::
-	text "Huh?"
-	line "Who? What?"
+	text "Hein? Qui?"
+	line "Quoi?"
 	prompt
 
 _PokemonTower4FChanneler3AfterBattleText::
-	text "May the departed"
-	line "souls of #MON"
-	cont "rest in peace..."
+	text "Que les ames"
+	line "des #MON"
+	cont "reposent en"
+	cont "paix..."
 	done

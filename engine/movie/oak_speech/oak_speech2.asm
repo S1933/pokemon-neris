@@ -185,7 +185,7 @@ DisplayIntroNameTextBox:
 	jp HandleMenuInput
 
 .namestring
-	db "NAME@"
+	db "NOM@"
 
 INCLUDE "data/player/names.asm"
 

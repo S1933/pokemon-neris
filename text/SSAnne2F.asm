@@ -1,63 +1,79 @@
 _SSAnne2FWaiterText::
-	text "This ship, she is"
-	line "a luxury liner"
-	cont "for trainers!"
+	text "Ce navire"
+	line "est un paquebot"
+	cont "de luxe"
+	cont "pour dresseurs!"
 
-	para "At every port, we"
-	line "hold parties with"
-	cont "invited trainers!"
+	para "Dans chaque"
+	line "port, on fait"
+	cont "la fete avec"
+	cont "les dresseurs"
+	cont "invites!"
 	done
 
 _SSAnne2FRivalText::
 	text "<RIVAL>: Bonjour!"
 	line "<PLAYER>!"
 
-	para "Imagine seeing"
-	line "you here!"
+	para "Je te"
+	line "retrouve ici!"
 
-	para "<PLAYER>, were you"
-	line "really invited?"
+	para "<PLAYER>,"
+	line "tu es"
+	cont "vraiment"
+	cont "invite?"
 
-	para "So how's your"
-	line "#DEX coming?"
+	para "Alors, ton"
+	line "#DEX avance?"
 
-	para "I already caught"
-	line "40 kinds, pal!"
+	para "J'en ai"
+	line "deja attrape"
+	cont "40 sortes,"
+	cont "mon vieux!"
 
-	para "Different kinds"
-	line "are everywhere!"
+	para "Il y en a"
+	line "partout,"
+	cont "de toutes"
+	cont "sortes!"
 
-	para "Crawl around in"
-	line "grassy areas!"
+	para "Cherche dans"
+	line "les zones"
+	cont "d'herbes!"
 	done
 
 _SSAnne2FRivalDefeatedText::
-	text "Humph!"
+	text "Pff!"
 
-	para "At least you're"
-	line "raising your"
-	cont "#MON!"
+	para "Au moins"
+	line "tu entraines"
+	cont "tes #MON!"
 	prompt
 
 _SSAnne2FRivalVictoryText::
-	text "<PLAYER>! What are"
-	line "you, seasick?"
+	text "<PLAYER>! Tu"
+	line "as le mal"
+	cont "de mer?"
 
-	para "You should shape"
-	line "up, pal!"
+	para "Ressaisis-"
+	line "toi, mon"
+	cont "vieux!"
 	prompt
 
 _SSAnne2FRivalCutMasterText::
-	text "<RIVAL>: I heard"
-	line "there was a CUT"
-	cont "master on board."
+	text "<RIVAL>: On dit"
+	line "qu'il y a un"
+	cont "maitre de CUT"
+	cont "a bord."
 
-	para "But, he was just a"
-	line "seasick, old man!"
+	para "Mais ce"
+	line "n'etait qu'un"
+	cont "vieil homme"
+	cont "malade!"
 
-	para "But, CUT itself is"
-	line "really useful!"
+	para "Mais CUT"
+	line "est vraiment"
+	cont "utile!"
 
-	para "You should go see"
-	line "him! Smell ya!"
+	para "Va le voir!"
+	line "A plus!"
 	done

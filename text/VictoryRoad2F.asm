@@ -3,9 +3,10 @@ _VictoryRoad2FMoltresBattleText::
 	text_end
 
 _VictoryRoad2FHikerBattleText::
-	text "VICTORY ROAD is"
-	line "the final test"
-	cont "for trainers!"
+	text "VICTORY ROAD"
+	line "est le test"
+	cont "final des"
+	cont "dresseurs!"
 	done
 
 _VictoryRoad2FHikerEndBattleText::
@@ -13,74 +14,82 @@ _VictoryRoad2FHikerEndBattleText::
 	prompt
 
 _VictoryRoad2FHikerAfterBattleText::
-	text "If you get stuck,"
-	line "try moving some"
-	cont "boulders around!"
+	text "Si tu"
+	line "bloques,"
+	cont "bouge des"
+	cont "rochers!"
 	done
 
 _VictoryRoad2FSuperNerd1BattleText::
-	text "Ah, so you wish"
-	line "to challenge the"
-	cont "ELITE FOUR?"
+	text "Ah, tu veux"
+	line "donc defier"
+	cont "le CONSEIL"
+	cont "des 4?"
 	done
 
 _VictoryRoad2FSuperNerd1EndBattleText::
-	text "You"
-	line "got me!"
+	text "Tu"
+	line "m'as eu!"
 	prompt
 
 _VictoryRoad2FSuperNerd1AfterBattleText::
-	text "<RIVAL> also came"
-	line "through here!"
+	text "<RIVAL> est"
+	line "passe par"
+	cont "ici aussi!"
 	done
 
 _VictoryRoad2FCooltrainerMBattleText::
-	text "Come on!"
-	line "I'll whip you!"
+	text "Vas-y!"
+	line "Je vais te"
+	cont "battre!"
 	done
 
 _VictoryRoad2FCooltrainerMEndBattleText::
-	text "I got"
-	line "whipped!"
+	text "Je me"
+	line "suis fait"
+	cont "battre!"
 	prompt
 
 _VictoryRoad2FCooltrainerMAfterBattleText::
-	text "You earned the"
-	line "right to be on"
+	text "Tu as gagne"
+	line "le droit"
+	cont "d'etre sur"
 	cont "VICTORY ROAD!"
 	done
 
 _VictoryRoad2FSuperNerd2BattleText::
-	text "If you can get"
-	line "through here, you"
-	cont "can go meet the"
-	cont "ELITE FOUR!"
+	text "Si tu passes"
+	line "par ici,"
+	cont "tu pourras"
+	cont "voir le"
+	cont "CONSEIL des 4!"
 	done
 
 _VictoryRoad2FSuperNerd2EndBattleText::
-	text "No!"
-	line "Unbelievable!"
+	text "Non!"
+	line "Incroyable!"
 	prompt
 
 _VictoryRoad2FSuperNerd2AfterBattleText::
-	text "I can beat you"
-	line "when it comes to"
-	cont "knowledge about"
-	cont "#MON!"
+	text "Je te bats"
+	line "quand il"
+	cont "s'agit de"
+	cont "connaitre"
+	cont "les #MON!"
 	done
 
 _VictoryRoad2FSuperNerd3BattleText::
-	text "Is VICTORY ROAD"
-	line "too tough?"
+	text "VICTORY ROAD"
+	line "trop dure?"
 	done
 
 _VictoryRoad2FSuperNerd3EndBattleText::
-	text "Well"
-	line "done!"
+	text "Bien"
+	line "joue!"
 	prompt
 
 _VictoryRoad2FSuperNerd3AfterBattleText::
-	text "Many trainers give"
-	line "up the challenge"
-	cont "here."
+	text "Beaucoup"
+	line "abandonnent"
+	cont "ici."
 	done

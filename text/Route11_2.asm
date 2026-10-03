@@ -1,28 +1,31 @@
 _Route11SuperNerd2EndBattleText::
-	text "Whoa!"
-	line "You spark plug!"
+	text "Wouah! Sacree"
+	line "etincelle!"
 	prompt
 
 _Route11SuperNerd2AfterBattleText::
-	text "Well, better get"
-	line "back to work."
+	text "Bon, je"
+	line "retourne"
+	cont "travailler."
 	done
 
 _Route11Youngster4BattleText::
-	text "My #MON should"
-	line "be ready by now!"
+	text "Mes #MON"
+	line "devraient etre"
+	cont "prets!"
 	done
 
 _Route11Youngster4EndBattleText::
-	text "Too"
-	line "much, too young!"
+	text "Trop, c'est"
+	line "trop jeune!"
 	prompt
 
 _Route11Youngster4AfterBattleText::
-	text "I better go find"
-	line "stronger ones!"
+	text "Je vais"
+	line "chercher des"
+	cont "plus forts!"
 	done
 
 _Route11DiglettsCaveSignText::
-	text "DIGLETT's CAVE"
+	text "CAVE de DIGLETT"
 	done

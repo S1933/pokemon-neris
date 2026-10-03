@@ -1,64 +1,87 @@
 _SSAnneCaptainsRoomRubCaptainsBackText::
-	text "CAPTAIN: Ooargh..."
-	line "I feel hideous..."
-	cont "Urrp! Seasick..."
+	text "CAPITAINE:"
+	line "Argh..."
+	cont "Je me sens"
+	cont "mal..."
+	cont "Beurk! Le"
+	cont "mal de mer..."
 
-	para "<PLAYER> rubbed"
-	line "the CAPTAIN's"
-	cont "back!"
+	para "<PLAYER> masse"
+	line "le dos du"
+	cont "CAPITAINE!"
 
-	para "Rub-rub..."
-	line "Rub-rub...@"
+	para "Frotte"
+	line "frotte..."
+	cont "Frotte"
+	cont "frotte...@"
 	text_end
 
 _SSAnneCaptainsRoomCaptainIFeelMuchBetterText::
-	text "CAPTAIN: Whew!"
-	line "Thank you! I"
-	cont "feel much better!"
+	text "CAPITAINE:"
+	line "Ouf!"
+	cont "Merci! Je"
+	cont "me sens"
+	cont "beaucoup"
+	cont "mieux!"
 
-	para "You want to see"
-	line "my CUT technique?"
+	para "Tu veux voir"
+	line "ma technique"
+	cont "CUT?"
 
-	para "I could show you"
-	line "if I wasn't ill..."
+	para "Je te la"
+	line "montrerais"
+	cont "si je"
+	cont "n'etais"
+	cont "pas malade..."
 
-	para "I know! You can"
-	line "have this!"
+	para "Je sais!"
+	line "Prends ca!"
 
-	para "Teach it to your"
-	line "#MON and you"
-	cont "can see it CUT"
-	cont "any time!"
+	para "Apprends-la"
+	line "a ton #MON"
+	cont "et il pourra"
+	cont "couper quand"
+	cont "tu veux!"
 	prompt
 
 _SSAnneCaptainsRoomCaptainReceivedHM01Text::
-	text "<PLAYER> got"
+	text "<PLAYER> obtient"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
 _SSAnneCaptainsRoomCaptainNotSickAnymoreText::
-	text "CAPTAIN: Whew!"
+	text "CAPITAINE:"
+	line "Ouf!"
 
-	para "Now that I'm not"
-	line "sick any more, I"
-	cont "guess it's time."
+	para "Maintenant"
+	line "que je"
+	cont "vais mieux,"
+	cont "je crois"
+	cont "qu'il est"
+	cont "temps."
 	done
 
 _SSAnneCaptainsRoomCaptainHM01NoRoomText::
-	text "Oh no! You have"
-	line "no room for this!"
+	text "Oh non!"
+	line "Tu n'as"
+	cont "pas la"
+	cont "place pour"
+	cont "ca!"
 	done
 
 _SSAnneCaptainsRoomTrashText::
-	text "Yuck! Shouldn't"
-	line "have looked!"
+	text "Beurk!"
+	line "J'aurais pas"
+	cont "du regarder!"
 	done
 
 _SSAnneCaptainsRoomSeasickBookText::
-	text "How to Conquer"
-	line "Seasickness..."
-	cont "The CAPTAIN's"
-	cont "reading this!"
+	text "Comment"
+	line "vaincre le"
+	cont "mal de mer..."
+	cont "Le"
+	cont "CAPITAINE"
+	cont "lit ceci!"
 	done

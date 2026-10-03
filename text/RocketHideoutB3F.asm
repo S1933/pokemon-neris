@@ -1,35 +1,36 @@
 _RocketHideoutB3FRocket1BattleText::
-	text "Stop meddling in"
-	line "TEAM ROCKET's"
-	cont "affairs!"
+	text "Cesse de te meler"
+	line "des affaires de la"
+	cont "TEAM ROCKET!"
 	done
 
 _RocketHideoutB3FRocket1EndBattleText::
-	text "Oof!"
-	line "Taken down!"
+	text "Ouf!"
+	line "Terrasse!"
 	prompt
 
 _RocketHideoutB3FRocket1AfterBattleText::
-	text "SILPH SCOPE?"
-	line "The machine the"
-	cont "BOSS stole. It's"
-	cont "here somewhere."
+	text "Le SILPH SCOPE?"
+	line "La machine que le"
+	cont "BOSS a volee. Elle"
+	cont "est quelque part"
+	cont "ici."
 	done
 
 _RocketHideout3BattleText::
-	text "We got word from"
-	line "upstairs that you"
-	cont "were coming!"
+	text "On nous a"
+	line "prevenus que tu"
+	cont "montais!"
 	done
 
 _RocketHideout3EndBattleText3::
-	text "What?"
-	line "I lost? No!"
+	text "Quoi?"
+	line "J'ai perdu? Non!"
 	prompt
 
 _RocketHide3AfterBattleText3::
-	text "Go ahead and go!"
-	line "But, you need the"
-	cont "LIFT KEY to run"
-	cont "the elevator!"
+	text "Vas-y, avance!"
+	line "Mais il te faut la"
+	cont "LIFT KEY pour"
+	cont "l'ascenseur!"
 	done

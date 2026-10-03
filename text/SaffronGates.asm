@@ -1,38 +1,45 @@
 _SaffronGateGuardGeeImThirstyText::
-	text "I'm on guard duty."
-	line "Gee, I'm thirsty,"
-	cont "though!"
+	text "Je monte la"
+	line "garde. Puree,"
+	cont "j'ai soif!"
 
-	para "Oh wait there,"
-	line "the road's closed."
+	para "Ah, attends, la"
+	line "route est"
+	cont "fermee."
 	done
 
 _SaffronGateGuardImParchedText::
-	text "Whoa, boy!"
-	line "I'm parched!"
+	text "Oh la la!"
+	line "J'ai la gorge"
+	cont "seche!"
 	cont "..."
-	cont "Huh? I can have"
-	cont "this drink?"
-	cont "Gee, thanks!@"
+	cont "Hein? Je peux"
+	cont "avoir ce"
+	cont "verre?"
+	cont "Merci!@"
 	text_end
 
 _SaffronGateGuardYouCanGoOnThroughText::
 	text_start
 
 	para "..."
-	line "Glug glug..."
+	line "Glou glou..."
 	cont "..."
 	cont "Gulp..."
-	cont "If you want to go"
-	cont "to SAFFRON CITY..."
+	cont "Si tu veux"
+	cont "aller a"
+	cont "SAFRANIA..."
 	cont "..."
-	cont "You can go on"
-	cont "through. I'll"
-	cont "share this with"
-	cont "the other guards!"
+	cont "Tu peux"
+	cont "passer. Je"
+	cont "partagerai ca"
+	cont "avec les"
+	cont "autres gardes!"
 	done
 
 _SaffronGateGuardThanksForTheDrinkText::
-	text "Hi, thanks for"
-	line "the cool drinks!"
+	text "Salut, merci"
+	line "pour les"
+	cont "boissons"
+	cont "fraiches!"
 	done

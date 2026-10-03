@@ -1,69 +1,77 @@
 _SSAnneKitchenCook1Text::
-	text "You, mon petit!"
-	line "We're busy here!"
-	cont "Out of the way!"
+	text "Toi, mon petit!"
+	line "On est occupes"
+	cont "ici! Pousse-toi!"
 	done
 
 _SSAnneKitchenCook2Text::
-	text "I saw an odd ball"
-	line "in the trash."
+	text "J'ai vu une"
+	line "BALL bizarre"
+	cont "dans la poubelle."
 	done
 
 _SSAnneKitchenCook3Text::
-	text "I'm so busy I'm"
-	line "getting dizzy!"
+	text "Je suis si"
+	line "occupe que je"
+	cont "tourne de"
+	cont "l'oeil!"
 	done
 
 _SSAnneKitchenCook4Text::
-	text "Hum-de-hum-de-"
-	line "ho..."
-
-	para "I peel spuds"
-	line "every day!"
-	cont "Hum-hum..."
+	text "Hum-de-hum-"
+	line "de-ho..."
+	para "J'epluche des"
+	line "patates tous"
+	cont "les jours! Hum..."
 	done
 
 _SSAnneKitchenCook5Text::
-	text "Did you hear about"
-	line "SNORLAX?"
-
-	para "All it does is"
-	line "eat and sleep!"
+	text "Tu as entendu"
+	line "parler de"
+	cont "SNORLAX?"
+	para "Il ne fait"
+	line "que manger et"
+	cont "dormir!"
 	done
 
 _SSAnneKitchenCook6Text::
-	text "Snivel...Sniff..."
-
-	para "I only get to"
-	line "peel onions..."
-	cont "Snivel..."
+	text "Renifle..."
+	line "Snif..."
+	para "Je ne fais que"
+	line "peler des"
+	cont "oignons..."
+	cont "Renifle..."
 	done
 
 _SSAnneKitchenCook7MainCourseIsText::
-	text "Er-hem! Indeed I"
-	line "am le CHEF!"
-
-	para "Le main course is"
+	text "Hum! Oui, je"
+	line "suis le CHEF!"
+	para "Le plat"
+	line "principal est"
 	prompt
 
 SSAnneKitchenCook7SalmonDuSaladText::
-	text "Salmon du Salad!"
-
-	para "Les guests may"
-	line "gripe it's fish"
-	cont "again, however!"
+	text "Salade de"
+	line "saumon!"
+	para "Les invites"
+	line "vont raler:"
+	cont "encore du"
+	cont "poisson!"
 	done
 
 SSAnneKitchenCook7EelsAuBarbecueText::
-	text "Eels au Barbecue!"
-
-	para "Les guests will"
-	line "mutiny, I fear."
+	text "Anguilles au"
+	line "barbecue!"
+	para "Les invites"
+	line "vont se"
+	cont "revolter, je"
+	cont "crains."
 	done
 
 SSAnneKitchenCook7PrimeBeefSteakText::
-	text "Prime Beef Steak!"
-
-	para "But, have I enough"
-	line "fillets du beef?"
+	text "Steak de"
+	line "boeuf!"
+	para "Mais ai-je"
+	line "assez de"
+	cont "filets?"
 	done

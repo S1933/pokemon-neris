@@ -3,12 +3,12 @@ _SeafoamIslandsB4FArticunoBattleText::
 	text_end
 
 _SeafoamIslandsB4FBouldersSignText::
-	text "Boulders might"
-	line "change the flow"
-	cont "of water!"
+	text "Les rochers"
+	line "peuvent changer"
+	cont "le cours d'eau!"
 	done
 
 _SeafoamIslandsB4FDangerSignText::
 	text "DANGER"
-	line "Fast current!"
+	line "Courant rapide!"
 	done

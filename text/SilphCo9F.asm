@@ -1,21 +1,22 @@
 SilphCo9FNurseYouLookTiredText::
-	text "You look tired!"
-	line "You should take a"
-	cont "quick nap!"
+	text "Tu as l'air"
+	line "fatigue! Tu"
+	cont "devrais faire"
+	cont "une sieste!"
 	prompt
 
 SilphCo9FNurseDontGiveUpText::
-	text "Don't give up!"
+	text "N'abandonne pas!"
 	done
 
 SilphCo9FNurseThankYouText::
-	text "Thank you so"
-	line "much!"
+	text "Merci beaucoup!"
 	done
 
 _SilphCo9FRocket1BattleText::
-	text "Your #MON seem"
-	line "to adore you, kid!"
+	text "Tes #MON"
+	line "semblent"
+	cont "t'adorer, gamin!"
 	done
 
 _SilphCo9FRocket1EndBattleText::
@@ -23,40 +24,42 @@ _SilphCo9FRocket1EndBattleText::
 	prompt
 
 _SilphCo9FRocket1AfterBattleText::
-	text "If I had started"
-	line "as a trainer at"
-	cont "your age..."
+	text "Si j'avais"
+	line "commence dresseur"
+	cont "a ton age..."
 	done
 
 _SilphCo9FScientistBattleText::
-	text "Your #MON have"
-	line "weak points! I"
-	cont "can nail them!"
+	text "Tes #MON ont"
+	line "des points"
+	cont "faibles! Je peux"
+	cont "les viser!"
 	done
 
 _SilphCo9FScientistEndBattleText::
-	text "You"
-	line "hammered me!"
+	text "Tu"
+	line "m'as pulverise!"
 	prompt
 
 _SilphCo9FScientistAfterBattleText::
-	text "Exploiting weak"
-	line "spots does work!"
-	cont "Think about"
-	cont "element types!"
+	text "Exploiter les"
+	line "points faibles,"
+	cont "ca marche! Pense"
+	cont "aux types!"
 	done
 
 _SilphCo9FRocket2BattleText::
-	text "I am one of the 4"
-	line "ROCKET BROTHERS!"
+	text "Je suis l'un des 4"
+	line "FRERES ROCKET!"
 	done
 
 _SilphCo9FRocket2EndBattleText::
 	text "Warg!"
-	line "Brothers, I lost!"
+	line "Les freres, j'ai"
+	cont "perdu!"
 	prompt
 
 _SilphCo9FRocket2AfterBattleText::
-	text "My brothers will"
-	line "avenge me!"
+	text "Mes freres me"
+	line "vengeront!"
 	done

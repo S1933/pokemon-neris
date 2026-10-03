@@ -1,28 +1,29 @@
 _PokemonFanClubPikachuFanNormalText::
-	text "Won't you admire"
-	line "my PIKACHU's"
-	cont "adorable tail?"
+	text "N'admires-tu pas"
+	line "l'adorable queue"
+	cont "de mon PIKACHU?"
 	done
 
 _PokemonFanClubPikachuFanBetterText::
-	text "Humph! My PIKACHU"
-	line "is twice as cute"
-	cont "as that one!"
+	text "Humph! Mon PIKACHU"
+	line "est deux fois plus"
+	cont "mignon que ca!"
 	done
 
 _PokemonFanClubSeelFanNormalText::
-	text "I just love my"
-	line "SEEL!"
+	text "J'adore mon SEEL!"
 
-	para "It squeals when I"
-	line "hug it!"
+	para "Il glapit quand"
+	line "je le serre dans"
+	cont "mes bras!"
 	done
 
 _PokemonFanClubSeelFanBetterText::
-	text "Oh dear!"
+	text "Oh la la!"
 
-	para "My SEEL is far"
-	line "more attractive!"
+	para "Mon SEEL est"
+	line "bien plus"
+	cont "attirant!"
 	done
 
 _PokemonFanClubPikachuText::
@@ -35,56 +36,57 @@ _PokemonFanClubSeelText::
 	done
 
 _PokemonFanClubChairmanIntroText::
-	text "I chair the"
-	line "#MON Fan Club!"
+	text "Je preside le"
+	line "#MON FAN CLUB!"
 
-	para "I have collected"
-	line "over 100 #MON!"
-
-	para "I'm very fussy"
-	line "when it comes to"
+	para "J'ai collectionne"
+	line "plus de 100"
 	cont "#MON!"
 
-	para "So..."
+	para "Je suis tres"
+	line "difficile en"
+	cont "matiere de #MON!"
 
-	para "Did you come"
-	line "visit to hear"
-	cont "about my #MON?"
+	para "Alors..."
+
+	para "Tu es venu pour"
+	line "entendre parler"
+	cont "de mes #MON?"
 	done
 
 _PokemonFanClubChairmanStoryText::
-	text "Good!"
-	line "Then listen up!"
+	text "Bien!"
+	line "Alors ecoute!"
 
-	para "My favorite"
-	line "RAPIDASH..."
+	para "Mon RAPIDASH"
+	line "prefere..."
 
-	para "It...cute..."
-	line "lovely...smart..."
-	cont "plus...amazing..."
-	cont "you think so?..."
-	cont "oh yes...it..."
-	cont "stunning..."
-	cont "kindly..."
-	cont "love it!"
+	para "Il...mignon..."
+	line "adorable, malin..."
+	cont "et...incroyable..."
+	cont "tu trouves pas?..."
+	cont "oh oui...il..."
+	cont "epoustouflant..."
+	cont "gentil..."
+	cont "j'adore!"
 
-	para "Hug it...when..."
-	cont "sleeping...warm"
-	cont "and cuddly..."
-	cont "spectacular..."
-	cont "ravishing..."
-	cont "...Oops! Look at"
-	cont "the time! I kept"
-	cont "you too long!"
+	para "Le serrer..."
+	line "endormi...chaud"
+	cont "et douillet..."
+	cont "spectaculaire..."
+	cont "ravissant..."
+	cont "...Oups! Regarde"
+	cont "l'heure! Je t'ai"
+	cont "trop retenu!"
 
-	para "Thanks for hearing"
-	line "me out! I want"
-	cont "you to have this!"
+	para "Merci de m'avoir"
+	line "ecoute! Je veux"
+	cont "te donner ceci!"
 	prompt
 
 _PokemonFanClubReceivedBikeVoucherText::
-	text "<PLAYER> received"
-	line "a @"
+	text "<PLAYER> recoit"
+	line "un @"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
@@ -92,54 +94,57 @@ _PokemonFanClubReceivedBikeVoucherText::
 _PokemonFanClubExplainBikeVoucherText::
 	text_start
 
-	para "Exchange that for"
-	line "a BICYCLE!"
+	para "Echange-le contre"
+	line "un BICYCLE!"
 
-	para "Don't worry, my"
-	line "FEAROW will FLY"
-	cont "me anywhere!"
+	para "T'inquiete, mon"
+	line "FEAROW m'emmenera"
+	cont "ou je veux en"
+	cont "volant!"
 
-	para "So, I don't need a"
-	line "BICYCLE!"
+	para "Donc je n'ai pas"
+	line "besoin de"
+	cont "BICYCLE!"
 
-	para "I hope you like"
-	line "cycling!"
+	para "J'espere que tu"
+	line "aimes le velo!"
 	done
 
 _PokemonFanClubNoStoryText::
-	text "Oh. Come back"
-	line "when you want to"
-	cont "hear my story!"
+	text "Oh. Reviens"
+	line "quand tu voudras"
+	cont "entendre mon"
+	cont "histoire!"
 	done
 
 _PokemonFanClubChairFinalText::
-	text "Hello, <PLAYER>!"
+	text "Bonjour, <PLAYER>!"
 
-	para "Did you come see"
-	line "me about my"
-	cont "#MON again?"
+	para "Tu es venu me"
+	line "voir pour mes"
+	cont "#MON encore?"
 
-	para "No? Too bad!"
+	para "Non? Dommage!"
 	done
 
 _PokemonFanClubBagFullText::
-	text "Make room for"
-	line "this!"
+	text "Fais de la place"
+	line "pour ca!"
 	done
 
 _PokemonFanClubReceptionistText::
-	text "Our Chairman is"
-	line "very vocal about"
-	cont "#MON."
+	text "Notre president"
+	line "parle beaucoup"
+	cont "des #MON."
 	done
 
 _PokemonFanClubSign1Text::
-	text "Let's all listen"
-	line "politely to other"
-	cont "trainers!"
+	text "Ecoutons tous"
+	line "poliment les"
+	cont "autres dresseurs!"
 	done
 
 _PokemonFanClubSign2Text::
-	text "If someone brags,"
-	line "brag right back!"
+	text "Si on se vante,"
+	line "vante-toi aussi!"
 	done

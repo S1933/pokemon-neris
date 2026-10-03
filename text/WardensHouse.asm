@@ -1,7 +1,6 @@
 _WardensHouseWardenGibberish1Text::
-	text "WARDEN: Hif fuff"
+	text "GARDIEN: Hif fuff"
 	line "hefifoo!"
-
 	para "Ha lof ha feef ee"
 	line "hafahi ho. Heff"
 	cont "hee fwee!"
@@ -18,69 +17,72 @@ _WardensHouseWardenGibberish3Text::
 	done
 
 _WardensHouseWardenGaveTheGoldTeethText::
-	text "<PLAYER> gave the"
-	line "GOLD TEETH to the"
-	cont "WARDEN!@"
+	text "<PLAYER> donne"
+	line "les GOLD TEETH"
+	cont "au GARDIEN!@"
 	text_end
 
 _WardensHouseWardenTeethPoppedInHisTeethText::
 	text_start
-
-	para "The WARDEN popped"
-	line "in his teeth!"
+	para "Le GARDIEN a"
+	line "remis sa"
+	cont "dentier!"
 	prompt
 
 _WardensHouseWardenThanksText::
-	text "WARDEN: Thanks,"
-	line "kid! No one could"
-	cont "understand a word"
-	cont "that I said."
-
-	para "I couldn't work"
-	line "that way."
-	cont "Let me give you"
-	cont "something for"
-	cont "your trouble."
+	text "GARDIEN: Merci,"
+	line "petit! Personne"
+	cont "ne comprenait"
+	cont "un mot de ce"
+	cont "que je disais."
+	para "Je ne pouvais"
+	line "pas travailler"
+	cont "comme ca. Tiens,"
+	cont "un cadeau pour"
+	cont "la peine."
 	prompt
 
 _WardensHouseWardenReceivedHM04Text::
-	text "<PLAYER> received"
+	text "<PLAYER> recoit"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
 _WardensHouseWardenHM04ExplanationText::
-	text "WARDEN: HM04"
-	line "teaches STRENGTH!"
-
-	para "It lets #MON"
-	line "move boulders"
-	cont "when you're out-"
-	cont "side of battle."
-
-	para "Oh yes, did you"
-	line "find SECRET HOUSE"
-	cont "in SAFARI ZONE?"
-
-	para "If you do, you"
-	line "win an HM!"
-
-	para "I hear it's the"
-	line "rare SURF HM."
+	text "GARDIEN: HM04"
+	line "enseigne"
+	cont "STRENGTH!"
+	para "Il permet aux"
+	line "#MON de"
+	cont "deplacer des"
+	cont "rochers hors"
+	cont "combat."
+	para "Ah oui, as-tu"
+	line "trouve la"
+	cont "MAISON SECRETE"
+	cont "du PARC SAFARI?"
+	para "Si oui, tu"
+	line "gagnes une HM!"
+	para "On dit que"
+	line "c'est la rare"
+	cont "HM SURF."
 	done
 
 _WardensHouseWardenHM04NoRoomText::
-	text "Your pack is"
-	line "stuffed full!"
+	text "Ton sac est"
+	line "completement"
+	cont "plein!"
 	done
 
 _WardensHouseDisplayPhotosAndFossilsText::
-	text "#MON photos"
-	line "and fossils."
+	text "Photos de"
+	line "#MON et"
+	cont "fossiles."
 	done
 
 _WardensHouseDisplayMerchandiseText::
-	text "Old #MON"
-	line "merchandise."
+	text "Vieille"
+	line "marchandise"
+	cont "#MON."
 	done

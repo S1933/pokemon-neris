@@ -1,46 +1,57 @@
 _Route1Youngster1MartSampleText::
-	text "Hi! I work at a"
-	line "#MON MART."
+	text "Salut! Je"
+	line "travaille"
+	cont "au #MON MART."
 
-	para "It's a convenient"
-	line "shop, so please"
-	cont "visit us in"
+	para "C'est une"
+	line "boutique"
+	cont "pratique,"
+	cont "passe nous"
+	cont "voir a"
 	cont "VIRIDIAN CITY."
 
-	para "I know, I'll give"
-	line "you a sample!"
-	cont "Here you go!"
+	para "Tiens, je"
+	line "vais te"
+	cont "donner un"
+	cont "echantillon!"
+	cont "Voila!"
 	prompt
 
 _Route1Youngster1GotPotionText::
-	text "<PLAYER> got"
+	text "<PLAYER> obtient"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
 _Route1Youngster1AlsoGotPokeballsText::
-	text "We also carry"
-	line "# BALLs for"
-	cont "catching #MON!"
+	text "On vend aussi"
+	line "des # BALLs"
+	cont "pour capturer"
+	cont "des #MON!"
 	done
 
 _Route1Youngster1NoRoomText::
-	text "You have too much"
-	line "stuff with you!"
+	text "Tu as trop"
+	line "de trucs"
+	cont "sur toi!"
 	done
 
 _Route1Youngster2Text::
-	text "See those ledges"
-	line "along the road?"
+	text "Tu vois ces"
+	line "corniches le"
+	cont "long de la"
+	cont "route?"
 
-	para "It's a bit scary,"
-	line "but you can jump"
-	cont "from them."
+	para "Ca fait un"
+	line "peu peur,"
+	cont "mais tu peux"
+	cont "sauter."
 
-	para "You can get back"
-	line "to PALLET TOWN"
-	cont "quicker that way."
+	para "Tu peux"
+	line "revenir a"
+	cont "PALLET TOWN"
+	cont "plus vite."
 	done
 
 _Route1SignText::

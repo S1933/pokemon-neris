@@ -1,13 +1,15 @@
 _CinnabarLabMetronomeRoomScientist1Text::
 	text "Tch-tch-tch!"
-	line "I made a cool TM!"
+	line "J'ai fait une TM"
+	cont "geniale!"
 
-	para "It can cause all"
-	line "kinds of fun!"
+	para "Elle peut faire"
+	line "plein de trucs"
+	cont "marrants!"
 	prompt
 
 _CinnabarLabMetronomeRoomScientist1ReceivedTM35Text::
-	text "<PLAYER> received "
+	text "<PLAYER> recoit "
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
@@ -15,50 +17,54 @@ _CinnabarLabMetronomeRoomScientist1ReceivedTM35Text::
 
 _CinnabarLabMetronomeRoomScientist1TM35ExplanationText::
 	text "Tch-tch-tch!"
-	line "That's the sound"
-	cont "of a METRONOME!"
+	line "C'est le bruit"
+	cont "d'un METRONOME!"
 
-	para "It tweaks your"
-	line "#MON's brain"
-	cont "into using moves"
-	cont "it doesn't know!"
+	para "Il force ton"
+	line "#MON a utiliser"
+	cont "des attaques"
+	cont "qu'il ignore!"
 	done
 
 _CinnabarLabMetronomeRoomScientist1TM35NoRoomText::
-	text "Your pack is"
-	line "crammed full!"
+	text "Ton sac est"
+	line "plein a craquer!"
 	done
 
 _CinnabarLabMetronomeRoomScientist2Text::
-	text "EEVEE can evolve"
-	line "into 1 of 3 kinds"
-	cont "of #MON."
+	text "EEVEE peut"
+	line "evoluer en 1 des"
+	cont "3 types de"
+	cont "#MON."
 	done
 
 _CinnabarLabMetronomeRoomPCText::
-	text "There's an e-mail"
-	line "message!"
+	text "Il y a un"
+	line "e-mail!"
 
 	para "..."
 
-	para "The 3 legendary"
-	line "bird #MON are"
+	para "Les 3 #MON"
+	line "oiseaux"
+	cont "legendaires sont"
 	cont "ARTICUNO, ZAPDOS"
-	cont "and MOLTRES."
+	cont "et MOLTRES."
 
-	para "Their whereabouts"
-	line "are unknown."
+	para "Leur repaire"
+	line "est inconnu."
 
-	para "We plan to explore"
-	line "the cavern close"
-	cont "to CERULEAN."
+	para "Nous allons"
+	line "explorer la"
+	cont "caverne pres"
+	cont "d'AZURIA."
 
-	para "From: #MON"
-	line "RESEARCH TEAM"
+	para "De: EQUIPE de"
+	line "RECHERCHE #MON"
 
 	para "..."
 	done
 
 _CinnabarLabMetronomeRoomAmberPipeText::
-	text "An amber pipe!"
+	text "Une pipe en"
+	line "ambre!"
 	done

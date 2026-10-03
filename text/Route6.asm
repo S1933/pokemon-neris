@@ -1,97 +1,104 @@
 _Route6CooltrainerM1BattleText::
-	text "Who's there?"
-	line "Quit listening in"
-	cont "on us!"
-	done
-
-_Route6CooltrainerM1EndBattleText::
-	text "I"
-	line "just can't win!"
-	prompt
-
-_Route6CooltrainerAfterBattleText::
-	text "Whisper..."
-	line "whisper..."
-	done
-
-_Route6CooltrainerF1BattleText::
-	text "Excuse me! This"
-	line "is a private"
+	text "Qui va la? Arrete"
+	line "d'ecouter notre"
 	cont "conversation!"
 	done
 
+_Route6CooltrainerM1EndBattleText::
+	text "Je"
+	line "ne gagne"
+	cont "jamais!"
+	prompt
+
+_Route6CooltrainerAfterBattleText::
+	text "Chuchote..."
+	line "chuchote..."
+	done
+
+_Route6CooltrainerF1BattleText::
+	text "Excuse-moi! C'est"
+	line "une conversation"
+	cont "privee!"
+	done
+
 _Route6CooltrainerF1EndBattleText::
-	text "Ugh!"
-	line "I hate losing!"
+	text "Rah!"
+	line "Je deteste"
+	cont "perdre!"
 	prompt
 
 _Route6Youngster1BattleText::
-	text "There aren't many"
-	line "bugs out here."
+	text "Il n'y a pas"
+	line "beaucoup"
+	cont "d'insectes ici."
 	done
 
 _Route6Youngster1EndBattleText::
-	text "No!"
-	line "You're kidding!"
+	text "Non!"
+	line "Tu plaisantes!"
 	prompt
 
 _Route6Youngster1AfterBattleText::
-	text "I like bugs, so"
-	line "I'm going back to"
-	cont "VIRIDIAN FOREST."
+	text "J'aime les"
+	line "insectes, je"
+	cont "retourne a la"
+	cont "FORET DE JADIELLE."
 	done
 
 _Route6CooltrainerM2BattleText::
-	text "Huh? You want"
-	line "to talk to me?"
+	text "Hein? Tu veux me"
+	line "parler?"
 	done
 
 _Route6CooltrainerM2EndBattleText::
-	text "I"
-	line "didn't start it!"
+	text "Je"
+	line "n'ai pas"
+	cont "commence!"
 	prompt
 
 _Route6CooltrainerM2AfterBattleText::
-	text "I should carry"
-	line "more #MON with"
-	cont "me for safety."
+	text "Je devrais prendre"
+	line "plus de #MON avec"
+	cont "moi, par securite."
 	done
 
 _Route6CooltrainerF2BattleText::
-	text "Me? Well, OK."
-	line "I'll play!"
+	text "Moi? Bon, OK."
+	line "Je joue!"
 	done
 
 _Route6CooltrainerF2EndBattleText::
-	text "Just"
-	line "didn't work!"
+	text "Ca"
+	line "n'a pas"
+	cont "marche!"
 	prompt
 
 _Route6CooltrainerF2AfterBattleText::
-	text "I want to get"
-	line "stronger! What's"
-	cont "your secret?"
+	text "Je veux devenir"
+	line "plus forte! C'est"
+	cont "quoi ton secret?"
 	done
 
 _Route6Youngster2BattleText::
-	text "I've never seen"
-	line "you around!"
-	cont "Are you good?"
+	text "Je ne t'ai jamais"
+	line "vu par ici! Tu es"
+	cont "fort?"
 	done
 
 _Route6Youngster2EndBattleText::
-	text "You"
-	line "are too good!"
+	text "Tu"
+	line "es trop fort!"
 	prompt
 
 _Route6Youngster2AfterBattleText::
-	text "Are my #MON"
-	line "weak? Or, am I"
-	cont "just bad?"
+	text "Mes #MON sont"
+	line "faibles? Ou c'est"
+	cont "moi qui suis"
+	cont "mauvais?"
 	done
 
 _Route6UndergroundPathSignText::
-	text "UNDERGROUND PATH"
-	line "CERULEAN CITY -"
-	cont "VERMILION CITY"
+	text "SOUTERRAIN"
+	line "AZURIA -"
+	cont "CARMIN SUR MER"
 	done

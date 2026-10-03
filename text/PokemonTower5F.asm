@@ -1,37 +1,41 @@
 _PokemonTower5FChanneler1Text::
-	text "Come, child! I"
-	line "sealed this space"
-	cont "with white magic!"
+	text "Viens, enfant!"
+	line "J'ai scelle ce"
+	cont "lieu par magie"
+	cont "blanche!"
 
-	para "You can rest here!"
+	para "Tu peux te"
+	line "reposer ici!"
 	done
 
 _PokemonTower5FChanneler2BattleText::
-	text "Give...me..."
-	line "your...soul..."
+	text "Donne...moi..."
+	line "ton...ame..."
 	done
 
 _PokemonTower5FChanneler2EndBattleText::
-	text "Gasp!"
+	text "Han!"
 	prompt
 
 _PokemonTower5FChanneler2AfterBattleText::
-	text "I was under"
-	line "possession!"
+	text "J'etais"
+	line "possede!"
 	done
 
 _PokemonTower5FChanneler3BattleText::
-	text "You...shall..."
-	line "join...us..."
+	text "Tu...vas..."
+	line "nous"
+	cont "rejoindre..."
 	done
 
 _PokemonTower5FChanneler3EndBattleText::
-	text "What"
-	line "a nightmare!"
+	text "Quel"
+	line "cauchemar!"
 	prompt
 
 _PokemonTower5FChanneler3AfterBattleText::
-	text "I was possessed!"
+	text "J'etais"
+	line "possede!"
 	done
 
 _PokemonTower5FChanneler4BattleText::
@@ -43,8 +47,8 @@ _PokemonTower5FChanneler4EndBattleText::
 	prompt
 
 _PokemonTower5FChanneler4AfterBattleText::
-	text "I regained my"
-	line "senses!"
+	text "J'ai repris"
+	line "mes esprits!"
 	done
 
 _PokemonTower5FChanneler5BattleText::
@@ -53,19 +57,22 @@ _PokemonTower5FChanneler5BattleText::
 	done
 
 _PokemonTower5FChanneler5EndBattleText::
-	text "Whoo!"
+	text "Wou!"
 	prompt
 
 _PokemonTower5FChanneler5AfterBattleText::
-	text "I fell to evil"
-	line "spirits despite"
-	cont "my training!"
+	text "Des esprits"
+	line "malins m'ont eu"
+	cont "malgre mon"
+	cont "entrainement!"
 	done
 
 _PokemonTower5FPurifiedZoneText::
-	text "Entered purified,"
-	line "protected zone!"
+	text "Zone purifiee"
+	line "et protegee"
+	cont "atteinte!"
 
-	para "<PLAYER>'s #MON"
-	line "are fully healed!"
+	para "Les #MON de"
+	line "<PLAYER> sont"
+	cont "soignes a fond!"
 	done

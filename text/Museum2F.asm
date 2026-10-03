@@ -1,45 +1,49 @@
 _Museum2FYoungsterText::
 	text "MOON STONE?"
 
-	para "What's so special"
-	line "about it?"
+	para "Qu'a-t-elle de si"
+	line "special?"
 	done
 
 _Museum2FGrampsText::
-	text "July 20, 1969!"
+	text "20 juillet 1969!"
 
-	para "The 1st lunar"
-	line "landing!"
+	para "Le 1er alunissage!"
 
-	para "I bought a color"
-	line "TV to watch it!"
+	para "J'ai achete une"
+	line "tele couleur pour"
+	cont "le voir!"
 	done
 
 _Museum2FScientistText::
-	text "We have a space"
-	line "exhibit now."
+	text "Nous avons une"
+	line "expo spatiale"
+	cont "desormais."
 	done
 
 _Museum2FBrunetteGirlText::
-	text "I want a PIKACHU!"
-	line "It's so cute!"
+	text "Je veux un"
+	line "PIKACHU! Il est"
+	cont "trop mignon!"
 
-	para "I asked my Daddy"
-	line "to catch me one!"
+	para "J'ai demande a mon"
+	line "papa de m'en"
+	cont "attraper un!"
 	done
 
 _Museum2FHikerText::
-	text "Yeah, a PIKACHU"
-	line "soon, I promise!"
+	text "Oui, un PIKACHU"
+	line "bientot, promis!"
 	done
 
 _Museum2FSpaceShuttleSignText::
-	text "SPACE SHUTTLE"
+	text "NAVETTE SPATIALE"
 	line "COLUMBIA"
 	done
 
 _Museum2FMoonStoneSignText::
-	text "Meteorite that"
-	line "fell on MT.MOON."
+	text "Meteorite tombee"
+	line "sur le MONT"
+	cont "SELENITE."
 	cont "(MOON STONE?)"
 	done

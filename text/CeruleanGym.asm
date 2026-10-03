@@ -1,133 +1,181 @@
 _CeruleanGymMistyPreBattleText::
-	text "Hi, you're a new"
-	line "face!"
+	text "Salut, t'es"
+	line "un nouveau"
+	cont "visage!"
 
-	para "Trainers who want"
-	line "to turn pro have"
-	cont "to have a policy"
-	cont "about #MON!"
-
-	para "What is your"
-	line "approach when you"
-	cont "catch #MON?"
-
-	para "My policy is an"
-	line "all-out offensive"
-	cont "with water-type"
+	para "Les"
+	line "dresseurs qui"
+	cont "veulent"
+	cont "devenir pros"
+	cont "doivent avoir"
+	cont "une strategie"
+	cont "avec les"
 	cont "#MON!"
+
+	para "Comment tu"
+	line "vois les"
+	cont "choses quand"
+	cont "tu captures"
+	cont "des #MON?"
+
+	para "Ma regle,"
+	line "c'est"
+	cont "l'offensive"
+	cont "totale avec"
+	cont "des #MON"
+	cont "de l'eau!"
 	done
 
 _CeruleanGymMistyTM11ExplanationText::
-	text "TM11 teaches"
-	line "BUBBLEBEAM!"
+	text "La TM11"
+	line "enseigne"
+	cont "BUBBLEBEAM!"
 
-	para "Use it on an"
-	line "aquatic #MON!"
+	para "Utilise-la"
+	line "sur un #MON"
+	cont "aquatique!"
 	done
 
 _CeruleanGymMistyCascadeBadgeInfoText::
-	text "The CASCADEBADGE"
-	line "makes all #MON"
-	cont "up to L30 obey!"
+	text "Le"
+	line "CASCADEBADGE"
+	cont "fait obeir"
+	cont "tous les"
+	cont "#MON"
+	cont "jusqu'au"
+	cont "niveau 30!"
 
-	para "That includes"
-	line "even outsiders!"
+	para "Meme les"
+	line "#MON"
+	cont "echanges!"
 
-	para "There's more, you"
-	line "can now use CUT"
-	cont "any time!"
+	para "En plus, tu"
+	line "peux utiliser"
+	cont "CUT quand"
+	cont "tu veux!"
 
-	para "You can CUT down"
-	line "small bushes to"
-	cont "open new paths!"
+	para "Tu peux"
+	line "couper les"
+	cont "petits"
+	cont "buissons"
+	cont "pour ouvrir"
+	cont "de nouveaux"
+	cont "chemins!"
 
-	para "You can also have"
-	line "my favorite TM!"
+	para "Et tu peux"
+	line "aussi avoir"
+	cont "ma TM"
+	cont "preferee!"
 	done
 
 _CeruleanGymMistyReceivedTM11Text::
-	text "<PLAYER> received"
+	text "<PLAYER> recoit"
 	line "TM11!@"
 	text_end
 
 _CeruleanGymMistyTM11NoRoomText::
-	text "You better make"
-	line "room for this!"
+	text "Tu ferais"
+	line "mieux de"
+	cont "faire de la"
+	cont "place!"
 	done
 
 _CeruleanGymMistyReceivedCascadeBadgeText::
 	text "Wow!"
-	line "You're too much!"
+	line "T'es trop"
+	cont "forte!"
 
-	para "All right!"
+	para "Tres bien!"
 
-	para "You can have the"
-	line "CASCADEBADGE to"
-	cont "show you beat me!@"
+	para "Prends le"
+	line "CASCADEBADGE"
+	cont "pour prouver"
+	cont "que tu m'as"
+	cont "battue!@"
 	text_end
 
 _CeruleanGymBattleText1::
-	text "I'm more than good"
-	line "enough for you!"
+	text "Je suis"
+	line "plus que"
+	cont "a la hauteur!"
 
-	para "MISTY can wait!"
+	para "MISTY peut"
+	line "attendre!"
 	done
 
 _CeruleanGymEndBattleText1::
-	text "You"
-	line "overwhelmed me!"
+	text "Tu m'as"
+	line "submergee!"
 	prompt
 
 _CeruleanGymAfterBattleText1::
-	text "You have to face"
-	line "other trainers to"
-	cont "find out how good"
-	cont "you really are."
+	text "Affronte"
+	line "d'autres"
+	cont "dresseurs"
+	cont "pour voir"
+	cont "ton vrai"
+	cont "niveau."
 	done
 
 _CeruleanGymBattleText2::
-	text "Splash!"
+	text "Plouf!"
 
-	para "I'm first up!"
-	line "Let's do it!"
+	para "Je passe"
+	line "en premier!"
+	cont "Allons-y!"
 	done
 
 _CeruleanGymEndBattleText2::
-	text "That"
-	line "can't be!"
+	text "C'est"
+	line "impossible!"
 	prompt
 
 _CeruleanGymAfterBattleText2::
-	text "MISTY is going to"
-	line "keep improving!"
+	text "MISTY va"
+	line "continuer"
+	cont "a progresser!"
 
-	para "She won't lose to"
-	line "someone like you!"
+	para "Elle ne"
+	line "perdra pas"
+	cont "contre"
+	cont "quelqu'un"
+	cont "comme toi!"
 	done
 
 _CeruleanGymGymGuideChampInMakingText::
-	text "Yo! Champ in"
-	line "making!"
+	text "Yo! Aspirant"
+	line "champion!"
 
-	para "Here's my advice!"
+	para "Mon conseil!"
 
-	para "The LEADER, MISTY,"
-	line "is a pro who uses"
-	cont "water #MON!"
+	para "La chef,"
+	line "MISTY,"
+	cont "est une pro"
+	cont "des #MON"
+	cont "de l'eau!"
 
-	para "You can drain all"
-	line "their water with"
-	cont "plant #MON!"
+	para "Tu peux"
+	line "assecher"
+	cont "toute leur"
+	cont "eau avec"
+	cont "des #MON"
+	cont "plantes!"
 
-	para "Or, zap them with"
-	line "electricity!"
+	para "Ou bien"
+	line "electrise-les"
+	cont "avec"
+	cont "l'electricite!"
 	done
 
 _CeruleanGymGymGuideBeatMistyText::
-	text "You beat MISTY!"
-	line "What'd I tell ya?"
+	text "Tu as battu"
+	line "MISTY!"
+	cont "Je te"
+	cont "l'avais dit!"
 
-	para "You and me kid,"
-	line "we make a pretty"
-	cont "darn good team!"
+	para "Toi et moi,"
+	line "petit, on"
+	cont "forme une"
+	cont "belle"
+	cont "equipe!"
 	done
