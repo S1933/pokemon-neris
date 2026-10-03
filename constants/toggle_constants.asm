@@ -18,6 +18,9 @@ ENDM
 	toggle_consts_for PALLET_TOWN
 	const TOGGLE_PALLET_TOWN_OAK               ; 00
 
+	toggle_consts_for LIGHTHOUSE
+	const TOGGLE_LIGHTHOUSE_LUNARIS            ; 01
+
 	toggle_consts_for VIRIDIAN_CITY
 	const TOGGLE_LYING_OLD_MAN                 ; 01
 	const TOGGLE_OLD_MAN                       ; 02

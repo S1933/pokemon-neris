@@ -7,6 +7,7 @@ CeladonCity_Blocks: INCBIN "maps/CeladonCity.blk"
 INCLUDE "data/maps/headers/PalletTown.asm"
 INCLUDE "data/maps/objects/PalletTown.asm"
 PalletTown_Blocks: INCBIN "maps/PalletTown.blk"
+Lighthouse_Blocks: INCBIN "maps/Lighthouse.blk"
 
 INCLUDE "data/maps/headers/ViridianCity.asm"
 INCLUDE "data/maps/objects/ViridianCity.asm"
@@ -116,6 +117,10 @@ INCLUDE "scripts/Route1.asm"
 INCLUDE "data/maps/headers/OaksLab.asm"
 INCLUDE "scripts/OaksLab.asm"
 INCLUDE "data/maps/objects/OaksLab.asm"
+
+INCLUDE "data/maps/headers/Lighthouse.asm"
+INCLUDE "scripts/Lighthouse.asm"
+INCLUDE "data/maps/objects/Lighthouse.asm"
 
 INCLUDE "data/maps/headers/ViridianMart.asm"
 INCLUDE "scripts/ViridianMart.asm"

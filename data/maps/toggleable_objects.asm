@@ -45,6 +45,9 @@ ToggleableObjectStates:
 	toggleable_objects_for PALLET_TOWN
 	toggle_object_state PALLETTOWN_OAK, OFF
 
+	toggleable_objects_for LIGHTHOUSE
+	toggle_object_state LIGHTHOUSE_LUNARIS,    ON
+
 	toggleable_objects_for VIRIDIAN_CITY
 	toggle_object_state VIRIDIANCITY_OLD_MAN_SLEEPY, ON
 	toggle_object_state VIRIDIANCITY_OLD_MAN,        OFF
