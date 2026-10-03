@@ -163,6 +163,7 @@ MtMoonB2F_TextPointers:
 	dw_const MtMoonB2FRocket3Text,                 TEXT_MTMOONB2F_ROCKET3
 	dw_const MtMoonB2FRocket4Text,                 TEXT_MTMOONB2F_ROCKET4
 	dw_const MtMoonB2FDomeFossilText,              TEXT_MTMOONB2F_DOME_FOSSIL
+	dw_const MtMoonB2FSolarisText,                 TEXT_MTMOONB2F_SOLARIS
 	dw_const MtMoonB2FHelixFossilText,             TEXT_MTMOONB2F_HELIX_FOSSIL
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_HP_UP
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_TM_MEGA_PUNCH
@@ -178,6 +179,9 @@ MtMoon3TrainerHeader2:
 	trainer EVENT_BEAT_MT_MOON_3_TRAINER_2, 4, MtMoonB2FRocket3BattleText, MtMoonB2FRocket3EndBattleText, MtMoonB2FRocket3AfterBattleText
 MtMoon3TrainerHeader3:
 	trainer EVENT_BEAT_MT_MOON_3_TRAINER_3, 4, MtMoonB2FRocket4BattleText, MtMoonB2FRocket4EndBattleText, MtMoonB2FRocket4AfterBattleText
+	db -1 ; end
+MtMoon3TrainerHeader4:
+	trainer EVENT_BEAT_MT_MOON_3_TRAINER_4, 0, MtMoonB2FSolarisBattleText, MtMoonB2FSolarisBattleText, MtMoonB2FSolarisBattleText
 	db -1 ; end
 
 MtMoonB2FSuperNerdText:
@@ -380,3 +384,17 @@ MtMoonB2FRocket4EndBattleText:
 MtMoonB2FRocket4AfterBattleText:
 	text_far _MtMoonB2FRocket4AfterBattleText
 	text_end
+
+MtMoonB2FSolarisText:
+	text_asm
+	ld hl, MtMoon3TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+MtMoonB2FSolarisBattleText:
+	text_far _MtMoonB2FSolarisBattleText
+	text_asm
+	ld a, MEW
+	call PlayCry
+	call WaitForSoundToFinish
+	jp TextScriptEnd

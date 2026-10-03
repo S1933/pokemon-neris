@@ -132,3 +132,10 @@ _MtMoonB2FRocket4AfterBattleText::
 	cont "avant les"
 	cont "humains."
 	done
+
+_MtMoonB2FSolarisBattleText::
+	text "Solaris!"
+	line "Le soleil est"
+	cont "ne dans la"
+	cont "montagne!"
+	done

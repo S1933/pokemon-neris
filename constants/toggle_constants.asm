@@ -206,6 +206,7 @@ ENDM
 	const TOGGLE_MT_MOON_B2F_FOSSIL_2          ; 6E
 	const TOGGLE_MT_MOON_B2F_ITEM_1            ; 6F X
 	const TOGGLE_MT_MOON_B2F_ITEM_2            ; 70 X
+	const TOGGLE_MTMOONB2F_SOLARIS            ; 71 X
 
 	toggle_consts_for SS_ANNE_2F
 	const TOGGLE_SS_ANNE_2F_RIVAL              ; 71
