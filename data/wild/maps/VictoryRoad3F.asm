@@ -5,9 +5,9 @@ VictoryRoad3FWildMons:
 	db 29, ZUBAT
 	db 55, ONIX
 	db 52, VENOMOTH
-	db 59, ONIX
-	db 56, GRAVELER
-	db 54, GOLBAT
+	db 65, VENOMBRU
+	db 67, MENTALIS
+	db 70, FULGURAX
 	db 55, MACHOKE
 	db 59, MACHOKE
 	end_grass_wildmons

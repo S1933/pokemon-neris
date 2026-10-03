@@ -12,9 +12,9 @@ ENDC
 IF DEF(_BLUE)
 	db 75, SANDSLASH
 ENDC
-	db 85, DITTO
-	db 82, DITTO
-	db 88, DITTO
+	db 62, CRAMORIL
+	db 64, OBSCURAX
+	db 66, PYROFELIS
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

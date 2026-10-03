@@ -5,9 +5,9 @@ VictoryRoad2FWildMons:
 	db 34, ZUBAT
 	db 47, ONIX
 	db 51, ONIX
-	db 55, ONIX
-	db 54, MACHOKE
-	db 52, GOLBAT
+	db 62, TERRAKOR
+	db 64, SPECTRELA
+	db 66, DRACOZELLE
 	db 52, MAROWAK
 	db 56, GRAVELER
 	end_grass_wildmons

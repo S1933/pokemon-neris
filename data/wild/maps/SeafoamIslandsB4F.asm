@@ -22,7 +22,7 @@ IF DEF(_BLUE)
 	db 38, SEEL
 	db 51, GOLDUCK
 ENDC
-	db 42, GOLBAT
+	db 62, GIVRALP
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate
