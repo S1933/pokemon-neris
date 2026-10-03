@@ -1507,3 +1507,244 @@ _VictreebelDexEntry::
 	next "d'ou personne"
 	next "n'est revenu"
 	dex
+
+	_CramorilDexEntry::
+	text "Il plonge sans br"
+	next "pour pecher sa"
+	next "proie du jour."
+	page "Son plumage seche"
+	next "au soleil et il"
+	next "adore se pavaner."
+	dex
+	_ObscuraxDexEntry::
+	text "Il distorde les"
+	next "ombres autour de"
+	next "lui pour chasser."
+	page "On dit que son"
+	next "regard efface les"
+	next "souvenirs legers."
+	dex
+	_PyrofelisDexEntry::
+	text "Sa fourrure rouge"
+	next "quand il est en"
+	next "colere ou excite."
+	page "Il marque son ter"
+	next "par de fines"
+	next "trainees brulees."
+	dex
+	_GivralpDexEntry::
+	text "Son souffle fige"
+	next "les cascades en"
+	next "escaliers de glac"
+	page "Il dort blotti"
+	next "dans les neiges"
+	next "eternelles du nor"
+	dex
+	_FulguraxDexEntry::
+	text "Il fonce plus vite"
+	next "que l'oeil ne suit"
+	next "et frappe en zigz"
+	page "Les orages rempli"
+	next "son energie"
+	next "brutale sans fin."
+	dex
+	_TerrakorDexEntry::
+	text "Son corps de pier"
+	next "dresse comme une"
+	next "petite montagne."
+	page "Un seul pas de lui"
+	next "fait trembler les"
+	next "fondations du sol."
+	dex
+	_VenombruDexEntry::
+	text "Ses bulles violet"
+	next "liberent un venin"
+	next "qui endort la pro"
+	page "Il grimpe aux murs"
+	next "en laissant une"
+	next "trace gluante."
+	dex
+	_SpectrelaDexEntry::
+	text "Il glisse au trav"
+	next "des murs et des"
+	next "songes des dormeu"
+	page "Sa lueur bleue"
+	next "annonce les nuits"
+	next "sans etoiles."
+	dex
+	_DracozelleDexEntry::
+	text "Fiere et joueuse,"
+	next "elle souffle des"
+	next "flammes tres cour"
+	page "Un jour, ses ailes"
+	next "pourront porter"
+	next "son corps entier."
+	dex
+	_MentalisDexEntry::
+	text "Ses ondes psychic"
+	next "courbent l'espace"
+	next "autour de sa tete."
+	page "Il resout des"
+	next "enigmes pour le"
+	next "seul plaisir d'ag"
+	dex
+	_PetirocDexEntry::
+	text "Il se roule en bo"
+	next "pour descendre les"
+	next "pentes a toute fo"
+	page "Sa carapace de"
+	next "pierre durcit au"
+	next "fil des combats."
+	dex
+	_AilesorDexEntry::
+	text "Ses deux grandes"
+	next "ailes coupent le"
+	next "vent comme des la"
+	page "Il chante au lever"
+	next "du jour pour"
+	next "marquer son ciel."
+	dex
+	_BuggaieDexEntry::
+	text "Sa carapace cache"
+	next "des pinces solides"
+	next "et tres agiles."
+	page "Il adore se cacher"
+	next "dans les feuilles"
+	next "mortes du matin."
+	dex
+	_FloralysDexEntry::
+	text "Sa fleur s'ouvre"
+	next "printemps et emba"
+	next "toute la clairier"
+	page "Les abeilles le"
+	next "suivent partout"
+	next "sans espoir de re"
+	dex
+	_AquajetDexEntry::
+	text "Il comprime l'eau"
+	next "dans ses poings et"
+	next "la projette au lo"
+	page "Ses vagues se"
+	next "transforment en"
+	next "coups de poing."
+	dex
+	_VoltourDexEntry::
+	text "Il tourne si vite"
+	next "qu'une aura jaune"
+	next "l'entoure en cerc"
+	page "Un seul contact"
+	next "avec lui fait sau"
+	next "les fusibles."
+	dex
+	_PsyminiDexEntry::
+	text "Sa boucle frontale"
+	next "capte les pensees"
+	next "des etres vivants."
+	page "Il bavarde en"
+	next "images avec ceux"
+	next "qui savent ecoute"
+	dex
+	_GlacietteDexEntry::
+	text "Il sculpte des"
+	next "banquises flotant"
+	next "pour y faire son"
+	page "Son souffle givre"
+	next "fait naitre des"
+	next "roses de glace."
+	dex
+	_FloraqueDexEntry::
+	text "Son urne sucree"
+	next "attire les insect"
+	next "distraits du jour."
+	page "La nuit, ses gran"
+	next "feuilles se plient"
+	next "en un cocon secre"
+	dex
+	_RocboulDexEntry::
+	text "Il se tapit en bo"
+	next "et roule droit sur"
+	next "sa cible avec for"
+	page "Les sentiers ou"
+	next "il passe restent"
+	next "marques longtemps."
+	dex
+	_SerpicolDexEntry::
+	text "Son corps en spir"
+	next "s'enroule autour"
+	next "ses adversaires."
+	page "Son sifflement"
+	next "annonce toujours"
+	next "sa premiere attaq"
+	dex
+	_ChauvespiDexEntry::
+	text "Ses ultrasons cer"
+	next "la moindre proie"
+	next "dans l'obscurite."
+	page "Il dort suspendu"
+	next "par les pieds aux"
+	next "plafonds des grot"
+	dex
+	_TerreuxDexEntry::
+	text "Il creuse sa gale"
+	next "en une seule nuit"
+	next "sous la prairie."
+	page "Son museau fouiss"
+	next "rencontre des"
+	next "tresors inattendu"
+	dex
+	_MaraisorDexEntry::
+	text "Il se confond avec"
+	next "la vase et surpre"
+	next "les passants tard"
+	page "Ses narines sente"
+	next "la pluie avant"
+	next "qu'elle ne tombe."
+	dex
+	_OiseauloDexEntry::
+	text "Il nidifie dans l"
+	next "jardins et chante"
+	next "des matins entier"
+	page "Peu farouche, il"
+	next "vole des miettes"
+	next "aux tables larges."
+	dex
+	_CrabeauDexEntry::
+	text "Il court en zigzag"
+	next "sur le sable moui"
+	next "pour fuir les fil"
+	page "Sa pince droite"
+	next "s'agrandit a chaq"
+	next "mue du printemps."
+	dex
+	_FantominDexEntry::
+	text "Il aime surprendre"
+	next "les enfants par d"
+	next "souffles tres fro"
+	page "On dit qu'il garde"
+	next "les secrets de la"
+	next "maison vide."
+	dex
+	_ElectroxDexEntry::
+	text "Il stocke la foud"
+	next "des orages dans"
+	next "sa carapace brute."
+	page "Une decharge de l"
+	next "reanime une ville"
+	next "sans son courant."
+	dex
+	_FlameletDexEntry::
+	text "Sa flamme pilote"
+	next "s'accentue quand"
+	next "apprend a combatt"
+	page "Il s'endort au co"
+	next "du feu et reve"
+	next "de grands volcans."
+	dex
+	_DragonetDexEntry::
+	text "Ses ailes le port"
+	next "a peine, mais son"
+	next "coeur porte au lo"
+	page "Il souffle des"
+	next "etincelles bleues"
+	next "en cas de danger."
+	dex

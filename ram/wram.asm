@@ -1750,10 +1750,13 @@ SECTION "Main Data", WRAM0
 
 wMainDataStart::
 
-wPokedexOwned:: flag_array NUM_POKEMON
+; 151 dex numbers for the original species + 30 for the new Néris species
+; (dex 152-181). Seeing one of the new species writes a seen bit above bit
+; 151, so both flag arrays must cover the full dex range.
+wPokedexOwned:: flag_array NUM_POKEMON + 30
 wPokedexOwnedEnd::
 
-wPokedexSeen:: flag_array NUM_POKEMON
+wPokedexSeen:: flag_array NUM_POKEMON + 30
 wPokedexSeenEnd::
 
 wNumBagItems:: db

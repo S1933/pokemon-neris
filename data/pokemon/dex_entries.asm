@@ -30,8 +30,8 @@ PokedexEntryPointers:
 	dw BlastoiseDexEntry
 	dw PinsirDexEntry
 	dw TangelaDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw PetirocDexEntry
+	dw AilesorDexEntry
 	dw GrowlitheDexEntry
 	dw OnixDexEntry
 	dw FearowDexEntry
@@ -49,26 +49,26 @@ PokedexEntryPointers:
 	dw PsyduckDexEntry
 	dw DrowzeeDexEntry
 	dw GolemDexEntry
-	dw MissingNoDexEntry
+	dw BuggaieDexEntry
 	dw MagmarDexEntry
-	dw MissingNoDexEntry
+	dw FloralysDexEntry
 	dw ElectabuzzDexEntry
 	dw MagnetonDexEntry
 	dw KoffingDexEntry
-	dw MissingNoDexEntry
+	dw AquajetDexEntry
 	dw MankeyDexEntry
 	dw SeelDexEntry
 	dw DiglettDexEntry
 	dw TaurosDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw VoltourDexEntry
+	dw PsyminiDexEntry
+	dw GlacietteDexEntry
 	dw FarfetchdDexEntry
 	dw VenonatDexEntry
 	dw DragoniteDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw FloraqueDexEntry
+	dw RocboulDexEntry
+	dw SerpicolDexEntry
 	dw DoduoDexEntry
 	dw PoliwagDexEntry
 	dw JynxDexEntry
@@ -78,23 +78,23 @@ PokedexEntryPointers:
 	dw DittoDexEntry
 	dw MeowthDexEntry
 	dw KrabbyDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw ChauvespiDexEntry
+	dw TerreuxDexEntry
+	dw MaraisorDexEntry
 	dw VulpixDexEntry
 	dw NinetalesDexEntry
 	dw PikachuDexEntry
 	dw RaichuDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw OiseauloDexEntry
+	dw CrabeauDexEntry
 	dw DratiniDexEntry
 	dw DragonairDexEntry
 	dw KabutoDexEntry
 	dw KabutopsDexEntry
 	dw HorseaDexEntry
 	dw SeadraDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw FantominDexEntry
+	dw ElectroxDexEntry
 	dw SandshrewDexEntry
 	dw SandslashDexEntry
 	dw OmanyteDexEntry
@@ -114,13 +114,13 @@ PokedexEntryPointers:
 	dw WeedleDexEntry
 	dw KakunaDexEntry
 	dw BeedrillDexEntry
-	dw MissingNoDexEntry
+	dw FlameletDexEntry
 	dw DodrioDexEntry
 	dw PrimeapeDexEntry
 	dw DugtrioDexEntry
 	dw VenomothDexEntry
 	dw DewgongDexEntry
-	dw MissingNoDexEntry
+	dw DragonetDexEntry
 	dw MissingNoDexEntry
 	dw CaterpieDexEntry
 	dw MetapodDexEntry
@@ -145,7 +145,7 @@ PokedexEntryPointers:
 	dw WeezingDexEntry
 	dw PersianDexEntry
 	dw MarowakDexEntry
-	dw MissingNoDexEntry
+	dw MentalisDexEntry
 	dw HaunterDexEntry
 	dw AbraDexEntry
 	dw AlakazamDexEntry
@@ -155,13 +155,13 @@ PokedexEntryPointers:
 	dw BulbasaurDexEntry
 	dw VenusaurDexEntry
 	dw TentacruelDexEntry
-	dw MissingNoDexEntry
+	dw DracozelleDexEntry
 	dw GoldeenDexEntry
 	dw SeakingDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw SpectrelaDexEntry
+	dw VenombruDexEntry
+	dw TerrakorDexEntry
+	dw FulguraxDexEntry
 	dw PonytaDexEntry
 	dw RapidashDexEntry
 	dw RattataDexEntry
@@ -171,16 +171,16 @@ PokedexEntryPointers:
 	dw GeodudeDexEntry
 	dw PorygonDexEntry
 	dw AerodactylDexEntry
-	dw MissingNoDexEntry
+	dw GivralpDexEntry
 	dw MagnemiteDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw PyrofelisDexEntry
+	dw ObscuraxDexEntry
 	dw CharmanderDexEntry
 	dw SquirtleDexEntry
 	dw CharmeleonDexEntry
 	dw WartortleDexEntry
 	dw CharizardDexEntry
-	dw MissingNoDexEntry
+	dw CramorilDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
@@ -1259,3 +1259,184 @@ MissingNoDexEntry:
 	db 10 ; 1.0 m
 	dw 100 ; 10.0 kg
 	db "コメント　さくせいちゅう@" ; コメント作成中 (Comment to be written)
+
+CramorilDexEntry:
+	db "PLONGEUR@"
+	db 0,8
+	dw 181
+	text_far _CramorilDexEntry
+	text_end
+ObscuraxDexEntry:
+	db "OBSCUR@"
+	db 1,1
+	dw 195
+	text_far _ObscuraxDexEntry
+	text_end
+PyrofelisDexEntry:
+	db "FELIN FEU@"
+	db 0,11
+	dw 280
+	text_far _PyrofelisDexEntry
+	text_end
+GivralpDexEntry:
+	db "GIVRE@"
+	db 1,3
+	dw 350
+	text_far _GivralpDexEntry
+	text_end
+FulguraxDexEntry:
+	db "FOUDRE@"
+	db 0,7
+	dw 224
+	text_far _FulguraxDexEntry
+	text_end
+TerrakorDexEntry:
+	db "COLOSSAL@"
+	db 1,11
+	dw 680
+	text_far _TerrakorDexEntry
+	text_end
+VenombruDexEntry:
+	db "VENIN@"
+	db 1,3
+	dw 405
+	text_far _VenombruDexEntry
+	text_end
+SpectrelaDexEntry:
+	db "SPECTRE@"
+	db 1,7
+	dw 1
+	text_far _SpectrelaDexEntry
+	text_end
+DracozelleDexEntry:
+	db "DRAGON@"
+	db 1,11
+	dw 300
+	text_far _DracozelleDexEntry
+	text_end
+MentalisDexEntry:
+	db "MENTAL@"
+	db 1,11
+	dw 545
+	text_far _MentalisDexEntry
+	text_end
+PetirocDexEntry:
+	db "CAILLOU@"
+	db 1,4
+	dw 96
+	text_far _PetirocDexEntry
+	text_end
+AilesorDexEntry:
+	db "AILLE@"
+	db 0,12
+	dw 18
+	text_far _AilesorDexEntry
+	text_end
+BuggaieDexEntry:
+	db "COQUE@"
+	db 1,8
+	dw 99
+	text_far _BuggaieDexEntry
+	text_end
+FloralysDexEntry:
+	db "FLEUR@"
+	db 1,8
+	dw 55
+	text_far _FloralysDexEntry
+	text_end
+AquajetDexEntry:
+	db "JETTEUR@"
+	db 0,12
+	dw 125
+	text_far _AquajetDexEntry
+	text_end
+VoltourDexEntry:
+	db "TOURNIS@"
+	db 1,4
+	dw 54
+	text_far _VoltourDexEntry
+	text_end
+PsyminiDexEntry:
+	db "PSI@"
+	db 0,12
+	dw 66
+	text_far _PsyminiDexEntry
+	text_end
+GlacietteDexEntry:
+	db "FLOCON@"
+	db 0,4
+	dw 168
+	text_far _GlacietteDexEntry
+	text_end
+FloraqueDexEntry:
+	db "CARNIVORE@"
+	db 0,11
+	dw 88
+	text_far _FloraqueDexEntry
+	text_end
+RocboulDexEntry:
+	db "ROCHER@"
+	db 1,4
+	dw 200
+	text_far _RocboulDexEntry
+	text_end
+SerpicolDexEntry:
+	db "SERPENT@"
+	db 1,11
+	dw 69
+	text_far _SerpicolDexEntry
+	text_end
+ChauvespiDexEntry:
+	db "SONAR@"
+	db 0,7
+	dw 75
+	text_far _ChauvespiDexEntry
+	text_end
+TerreuxDexEntry:
+	db "TERRIER@"
+	db 0,12
+	dw 83
+	text_far _TerreuxDexEntry
+	text_end
+MaraisorDexEntry:
+	db "MARAIS@"
+	db 0,4
+	dw 240
+	text_far _MaraisorDexEntry
+	text_end
+OiseauloDexEntry:
+	db "OISELET@"
+	db 0,12
+	dw 18
+	text_far _OiseauloDexEntry
+	text_end
+CrabeauDexEntry:
+	db "CRABE@"
+	db 1,4
+	dw 65
+	text_far _CrabeauDexEntry
+	text_end
+FantominDexEntry:
+	db "FANTOME@"
+	db 0,11
+	dw 1
+	text_far _FantominDexEntry
+	text_end
+ElectroxDexEntry:
+	db "PILE@"
+	db 0,11
+	dw 310
+	text_far _ElectroxDexEntry
+	text_end
+FlameletDexEntry:
+	db "FLAMME@"
+	db 0,12
+	dw 84
+	text_far _FlameletDexEntry
+	text_end
+DragonetDexEntry:
+	db "DRAGONEAU@"
+	db 1,7
+	dw 165
+	text_far _DragonetDexEntry
+	text_end
