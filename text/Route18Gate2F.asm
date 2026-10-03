@@ -3,7 +3,7 @@ _Route18Gate2FLeftBinocularsText::
 	line "dans les"
 	cont "jumelles."
 
-	para "BOURG PALETTE est"
+	para "PORT-LUNE est"
 	line "a l'ouest!"
 	done
 

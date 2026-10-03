@@ -1,11 +1,13 @@
 _PalletTownOakHeyWaitDontGoOutText::
-	text "OAK: He! Attends!"
-	line "Ne sors pas!@"
+	text "PROF.SYLVE:"
+	line "He! Attends!"
+	cont "Ne sors pas!@"
 	text_end
 
 _PalletTownOakItsUnsafeText::
-	text "OAK: C'est"
-	line "dangereux! Des"
+	text "PROF.SYLVE:"
+	line "C'est"
+	cont "dangereux! Des"
 	cont "#MON sauvages"
 	cont "vivent dans les"
 
@@ -41,11 +43,11 @@ _PalletTownFisherText::
 
 _PalletTownOaksLabSignText::
 	text "LABORATOIRE"
-	line "#MON de OAK"
+	line "de PROF.SYLVE"
 	done
 
 _PalletTownSignText::
-	text "BOURG PALETTE"
+	text "PORT-LUNE"
 	line "Une aube"
 	cont "d'aventure"
 	cont "t'attend!"

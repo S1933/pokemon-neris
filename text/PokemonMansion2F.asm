@@ -31,7 +31,7 @@ _PokemonMansion2FDiary2Text::
 	text "Journal: 10"
 	line "juillet Nous avons"
 	cont "baptise le nouveau"
-	cont "#MON, MEW."
+	cont "#MON, SOLARIS."
 	done
 
 _PokemonMansion2FSwitchText::

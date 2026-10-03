@@ -6,8 +6,9 @@ _RedsHouse1FMomWakeUpText::
 	cont "Ils l'ont dit a"
 	cont "la tele."
 
-	para "PROF.OAK, a cote,"
-	line "te cherche."
+	para "PROF.SYLVE,"
+	line "a cote, te"
+	cont "cherche."
 	done
 
 _RedsHouse1FMomYouShouldRestText::

@@ -2,8 +2,9 @@ _AgathaBeforeBattleText::
 	text "Je suis AGATHA"
 	line "du ELITE FOUR!"
 
-	para "OAK s'interesse"
-	line "beaucoup a toi,"
+	para "PROF.SYLVE"
+	line "s'interesse"
+	cont "beaucoup a toi,"
 	cont "mon enfant!"
 
 	para "Ce vieux barbon"

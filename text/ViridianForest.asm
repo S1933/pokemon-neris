@@ -100,7 +100,7 @@ _ViridianForestTrainerTips2Text::
 	text "ASTUCES"
 
 	para "Contacte"
-	line "PROF.OAK par PC"
+	line "PROF.SYLVE par PC"
 	cont "pour faire"
 	cont "evaluer ton"
 	cont "#DEX!"

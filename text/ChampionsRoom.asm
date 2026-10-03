@@ -94,11 +94,12 @@ _ChampionsRoomRivalAfterBattleText::
 	done
 
 _ChampionsRoomOakText::
-	text "OAK: <PLAYER>!"
+	text "PROF.SYLVE:"
+	line "<PLAYER>!"
 	done
 
 _ChampionsRoomOakCongratulatesPlayerText::
-	text "OAK: Tu as"
+	text "PROF.SYLVE: Tu as"
 	line "gagne! Bravo!"
 	cont "Tu es le nouveau"
 	cont "champion de la"
@@ -116,8 +117,9 @@ _ChampionsRoomOakCongratulatesPlayerText::
 	done
 
 _ChampionsRoomOakDisappointedWithRivalText::
-	text "OAK: <RIVAL>! Je"
-	line "suis decu!"
+	text "PROF.SYLVE:"
+	line "<RIVAL>! Je"
+	cont "suis decu!"
 
 	para "Je suis venu en"
 	line "apprenant que"
@@ -144,7 +146,8 @@ _ChampionsRoomOakDisappointedWithRivalText::
 	done
 
 _ChampionsRoomOakComeWithMeText::
-	text "OAK: <PLAYER>!"
+	text "PROF.SYLVE:"
+	line "<PLAYER>!"
 
 	para "Tu comprends"
 	line "que ta victoire"

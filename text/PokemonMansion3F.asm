@@ -31,9 +31,9 @@ _PokemonMansion3FScientistAfterBattleText::
 
 _PokemonMansion3FDiaryText::
 	text "Journal: 6"
-	line "fevrier MEW a"
+	line "fevrier SOLARIS a"
 	cont "donne naissance."
 
 	para "Nous avons nomme"
-	line "le bebe MEWTWO."
+	line "le bebe LUNARIS."
 	done

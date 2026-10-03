@@ -11,7 +11,7 @@ _DexCompletionText::
 	text " #MON pris"
 
 	para "Note du"
-	line "PROF.OAK :"
+	line "PROF.SYLVE :"
 	prompt
 
 _DexRatingText_Own0To9::

@@ -61,7 +61,7 @@ _CinnabarGymBlaineTM38ExplanationText::
 	para "Apprends-la a"
 	line "un #MON de feu!"
 
-	para "CHARMELEON ou"
+	para "FLAMBORAL ou"
 	line "PONYTA feraient"
 	cont "l'affaire!"
 	done

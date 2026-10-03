@@ -1,6 +1,7 @@
 _HallOfFameOakText::
-	text "OAK: Hum hum!"
-	line "Felicitations"
+	text "PROF.SYLVE:"
+	line "Hum hum!"
+	cont "Felicitations"
 	cont "<PLAYER>!"
 
 	para "Cet etage est le"

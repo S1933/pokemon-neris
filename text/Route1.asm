@@ -50,12 +50,12 @@ _Route1Youngster2Text::
 
 	para "Tu peux"
 	line "revenir a"
-	cont "PALLET TOWN"
+	cont "PORT-LUNE"
 	cont "plus vite."
 	done
 
 _Route1SignText::
 	text "ROUTE 1"
-	line "PALLET TOWN -"
+	line "PORT-LUNE -"
 	cont "VIRIDIAN CITY"
 	done

@@ -1,17 +1,17 @@
 _ViridianMartClerkSayHiToOakText::
 	text "OK! Dis bonjour"
-	line "au PROF.OAK"
+	line "au PROF.SYLVE"
 	cont "pour moi!"
 	done
 
 _ViridianMartClerkYouCameFromPalletTownText::
 	text "He! Tu viens"
-	line "de PALLET TOWN?"
+	line "de PORT-LUNE?"
 	done
 
 _ViridianMartClerkParcelQuestText::
 	text "Tu connais"
-	line "le PROF.OAK,"
+	line "le PROF.SYLVE,"
 	cont "pas vrai?"
 
 	para "Sa commande"
@@ -21,7 +21,7 @@ _ViridianMartClerkParcelQuestText::
 
 	para "<PLAYER> a"
 	line "le PAQUET"
-	cont "de OAK!@"
+	cont "de PROF.SYLVE!@"
 	text_end
 
 _ViridianMartYoungsterText::

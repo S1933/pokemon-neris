@@ -79,13 +79,13 @@ _SlowbroDexEntry::
 	dex
 
 _IvysaurDexEntry::
-	text "Quand le bulbe"
-	next "sur son dos"
-	next "grossit, il perd"
+	text "Le bourgeon sur"
+	next "son dos s'ouvre"
+	next "et libere un"
 
-	page "la force de"
-	next "tenir debout"
-	next "sur ses pattes"
+	page "parfum sucre"
+	next "qui attire les"
+	next "#MON des bois"
 	dex
 
 _ExeggutorDexEntry::
@@ -199,13 +199,13 @@ _ArcanineDexEntry::
 	dex
 
 _MewDexEntry::
-	text "Si rare qu'il est"
-	next "encore pris pour"
-	next "un mirage par"
+	text "Il dort au"
+	next "sommet des"
+	next "montagnes et"
 
-	page "les experts. Peu"
-	next "de gens l'ont vu"
-	next "dans le monde"
+	page "s'envole quand"
+	next "le soleil se"
+	next "leve a l'aube"
 	dex
 
 _GyaradosDexEntry::
@@ -269,13 +269,13 @@ _StaryuDexEntry::
 	dex
 
 _BlastoiseDexEntry::
-	text "Un #MON brutal"
-	next "aux jets d'eau"
-	next "sous pression"
+	text "Un colosse"
+	next "aux canons"
+	next "d'eau sous"
 
-	page "sur sa carapace."
-	next "Ils servent a"
-	next "charger vite"
+	page "pression sortis"
+	next "de sa lourde"
+	next "carapace"
 	dex
 
 _PinsirDexEntry::
@@ -1079,13 +1079,13 @@ _GolbatDexEntry::
 	dex
 
 _MewtwoDexEntry::
-	text "Cree par un"
-	next "savant apres"
-	next "des annees de"
+	text "Ne dans un"
+	next "faisceau de"
+	next "lumiere lunaire,"
 
-	page "sinistres"
-	next "experiences sur"
-	next "les genes"
+	page "il veille sur"
+	next "le phare et"
+	next "les marins"
 	dex
 
 _SnorlaxDexEntry::
@@ -1249,23 +1249,23 @@ _StarmieDexEntry::
 	dex
 
 _BulbasaurDexEntry::
-	text "Une drole de"
-	next "graine plantee"
-	next "sur son dos a"
+	text "Une pousse verte"
+	next "germe sur son"
+	next "dos. Elle aime"
 
-	page "la naissance."
-	next "Elle germe et"
-	next "grandit avec lui"
+	page "la lumiere du"
+	next "soleil et la"
+	next "chaleur douce"
 	dex
 
 _VenusaurDexEntry::
-	text "La plante fleurit"
-	next "quand il absorbe"
-	next "l'energie solaire."
+	text "Sa fleur geante"
+	next "capte les"
+	next "rayons du"
 
-	page "Il reste en"
-	next "mouvement pour"
-	next "chercher le soleil"
+	page "soleil pour"
+	next "decupler sa"
+	next "puissance"
 	dex
 
 _TentacruelDexEntry::
@@ -1399,53 +1399,53 @@ _MagnemiteDexEntry::
 	dex
 
 _CharmanderDexEntry::
-	text "Il prefere les"
-	next "lieux chauds."
-	next "Quand il pleut,"
+	text "Une flamme"
+	next "danse au bout"
+	next "de sa queue."
 
-	page "de la vapeur"
-	next "sort du bout"
-	next "de sa queue"
+	page "Il adore les"
+	next "endroits chauds"
+	next "et le soleil"
 	dex
 
 _SquirtleDexEntry::
-	text "Apres sa"
-	next "naissance, son dos"
-	next "gonfle et durcit"
+	text "Petit et vif,"
+	next "il file dans"
+	next "l'eau claire"
 
-	page "en une coquille."
-	next "Il crache une"
-	next "mousse puissante"
+	page "en crachant de"
+	next "puissants jets"
+	next "d'ecume"
 	dex
 
 _CharmeleonDexEntry::
 	text "Quand il agite"
 	next "sa queue en feu,"
-	next "il fait monter"
+	next "il fait grimper"
 
 	page "la temperature"
 	next "a un niveau"
-	next "insupportable"
+	next "brulant"
 	dex
 
 _WartortleDexEntry::
-	text "Se cache souvent"
-	next "dans l'eau pour"
-	next "guetter sa proie."
+	text "Sa carapace"
+	next "durcit et se"
+	next "couvre d'algues"
 
-	page "Pour nager vite,"
-	next "il remue ses"
-	next "oreilles"
+	page "Pour nager"
+	next "vite, il bat"
+	next "des pattes"
 	dex
 
 _CharizardDexEntry::
-	text "Crache un feu"
-	next "assez chaud pour"
-	next "fondre les"
+	text "Son souffle"
+	next "embrase tout"
+	next "sur son passage."
 
-	page "rochers. Il peut"
-	next "provoquer des"
-	next "incendies"
+	page "Ses ailes lui"
+	next "font dominer"
+	next "les cieux"
 	dex
 
 _OddishDexEntry::

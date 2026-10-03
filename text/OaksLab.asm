@@ -30,19 +30,19 @@ _OaksLabThoseArePokeBallsText::
 _OaksLabYouWantCharmanderText::
 	text "Alors! Tu veux"
 	line "le #MON feu,"
-	cont "CHARMANDER?"
+	cont "FLAMBINO?"
 	done
 
 _OaksLabYouWantSquirtleText::
 	text "Alors! Tu veux"
 	line "le #MON eau,"
-	cont "SQUIRTLE?"
+	cont "AQUINOU?"
 	done
 
 _OaksLabYouWantBulbasaurText::
 	text "Alors! Tu veux"
 	line "le #MON plante,"
-	cont "BULBASAUR?"
+	cont "VERDILLO?"
 	done
 
 _OaksLabMonEnergeticText::
@@ -60,32 +60,35 @@ _OaksLabReceivedMonText::
 _OaksLabLastMonText::
 	text "C'est le dernier"
 	line "#MON du"
-	cont "PROF.OAK!"
+	cont "PROF.SYLVE!"
 	done
 
 _OaksLabOak1WhichPokemonDoYouWantText::
-	text "OAK: Alors,"
-	line "<PLAYER>, quel"
-	cont "#MON veux-tu?"
+	text "PROF.SYLVE:"
+	line "Alors, <PLAYER>,"
+	cont "quel #MON veux-tu?"
 	done
 
 _OaksLabOak1YourPokemonCanFightText::
-	text "OAK: Si un"
-	line "#MON sauvage"
+	text "PROF.SYLVE:"
+	line "Si un"
+	cont "#MON sauvage"
 	cont "apparaait, ton"
 	cont "#MON peut le"
 	cont "combattre!"
 	done
 
 _OaksLabOak1RaiseYourYoungPokemonText::
-	text "OAK: <PLAYER>,"
-	line "entraine ton"
+	text "PROF.SYLVE:"
+	line "<PLAYER>,"
+	cont "entraine ton"
 	cont "#MON en le"
 	cont "faisant combattre!"
 	done
 
 _OaksLabOak1DeliverParcelText::
-	text "OAK: Oh, <PLAYER>!"
+	text "PROF.SYLVE: Oh,"
+	line "<PLAYER>!"
 
 	para "Comment va mon"
 	line "vieux #MON?"
@@ -103,7 +106,7 @@ _OaksLabOak1DeliverParcelText::
 
 	para "<PLAYER> donne"
 	line "le PAQUET de"
-	cont "OAK.@"
+	cont "PROF.SYLVE.@"
 	text_end
 
 _OaksLabOak1ParcelThanksText::
@@ -124,8 +127,9 @@ _OaksLabOak1PokemonAroundTheWorldText::
 	done
 
 _OaksLabOak1ReceivedPokeballsText::
-	text "OAK: Tu ne peux"
-	line "pas avoir de"
+	text "PROF.SYLVE:"
+	line "Tu ne peux pas"
+	cont "avoir de"
 	cont "donnees detaillees"
 	cont "en voyant juste"
 
@@ -163,8 +167,9 @@ _OaksLabGivePokeballsExplanationText::
 	done
 
 _OaksLabOak1ComeSeeMeSometimesText::
-	text "OAK: Viens me voir"
-	line "de temps en temps."
+	text "PROF.SYLVE:"
+	line "Viens me voir"
+	cont "de temps en temps."
 
 	para "Je veux suivre"
 	line "l'avancee de ton"
@@ -172,8 +177,9 @@ _OaksLabOak1ComeSeeMeSometimesText::
 	done
 
 _OaksLabOak1HowIsYourPokedexComingText::
-	text "OAK: Content de"
-	line "te voir! Ou en"
+	text "PROF.SYLVE:"
+	line "Content de"
+	cont "te voir! Ou en"
 	cont "est ton #DEX?"
 	cont "Voyons un peu!"
 	prompt
@@ -190,7 +196,7 @@ _OaksLabOak2Text::
 	done
 
 _OaksLabGirlText::
-	text "PROF.OAK est LA"
+	text "PROF.SYLVE est LA"
 	line "reference sur les"
 	cont "#MON!"
 
@@ -206,8 +212,9 @@ _OaksLabRivalFedUpWithWaitingText::
 	done
 
 _OaksLabOakChooseMonText::
-	text "OAK: <RIVAL>?"
-	line "Laisse-moi..."
+	text "PROF.SYLVE:"
+	line "<RIVAL>?"
+	cont "Laisse-moi..."
 
 	para "Ah oui, c'est"
 	line "vrai, je t'avais"
@@ -240,14 +247,16 @@ _OaksLabRivalWhatAboutMeText::
 	done
 
 _OaksLabOakBePatientText::
-	text "OAK: Patience!"
-	line "<RIVAL>, tu en"
+	text "PROF.SYLVE:"
+	line "Patience!"
+	cont "<RIVAL>, tu en"
 	cont "auras un aussi!"
 	done
 
 _OaksLabOakDontGoAwayYetText::
-	text "OAK: He! Ne pars"
-	line "pas encore!"
+	text "PROF.SYLVE:"
+	line "He! Ne pars"
+	cont "pas encore!"
 	done
 
 _OaksLabRivalIllTakeThisOneText::
@@ -307,8 +316,9 @@ _OaksLabRivalWhatDidYouCallMeForText::
 	done
 
 _OaksLabOakIHaveARequestText::
-	text "OAK: Ah oui! J'ai"
-	line "une demande a vous"
+	text "PROF.SYLVE:"
+	line "Ah oui! J'ai"
+	cont "une demande a vous"
 	cont "faire a tous"
 	cont "les deux."
 	done
@@ -330,12 +340,14 @@ _OaksLabOakMyInventionPokedexText::
 	done
 
 _OaksLabOakGotPokedexText::
-	text "OAK: <PLAYER> et"
-	line "<RIVAL>! Prenez"
+	text "PROF.SYLVE:"
+	line "<PLAYER> et"
+	cont "<RIVAL>! Prenez"
 	cont "ca avec vous!"
 
 	para "<PLAYER> recoit"
-	line "#DEX de OAK!@"
+	line "#DEX de"
+	cont "PROF.SYLVE!@"
 	text_end
 
 _OaksLabOakThatWasMyDreamText::
@@ -385,5 +397,6 @@ _OaksLabRivalLeaveItAllToMeText::
 _OaksLabScientistText::
 	text "J'etudie les"
 	line "#MON comme"
-	cont "AIDE du PROF.OAK."
+	cont "AIDE du"
+	cont "PROF.SYLVE."
 	done

@@ -34,7 +34,7 @@ _PokemonMansionB1FScientistAfterBattleText::
 _PokemonMansionB1FDiaryText::
 	text "Journal;"
 	line "1er sept."
-	cont "MEWTWO est"
+	cont "LUNARIS est"
 	cont "beaucoup"
 	cont "trop puissant."
 

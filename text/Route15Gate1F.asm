@@ -3,7 +3,7 @@ _Route15Gate1FGuardText::
 	line "sur un #DEX?"
 
 	para "L'AIDE de"
-	line "PROF.OAK est"
+	line "PROF.SYLVE est"
 	cont "passe par"
 	cont "ici."
 	done

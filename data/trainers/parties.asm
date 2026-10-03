@@ -540,6 +540,8 @@ GiovanniData:
 	db $FF, 49, NIDORINO, 46, KANGASKHAN, 49, RHYHORN, 54, NIDOQUEEN, 0
 ; Viridian Gym
 	db $FF, 59, RHYHORN, 55, DUGTRIO, 58, NIDOQUEEN, 59, NIDOKING, 65, RHYDON, 0
+; Ordre du Crepuscule - Maitre Oran (Cerulean Cave B1F, postgame)
+	db $FF, 74, GENGAR, 73, MUK, 75, NIDOKING, 78, DRAGONITE, 0
 
 RocketData:
 ; Mt. Moon B2F
@@ -603,6 +605,10 @@ RocketData:
 ; Silph Co. 11F
 	db 33, RATTATA, RATTATA, ZUBAT, RATTATA, EKANS, 0
 	db 42, CUBONE, DROWZEE, MAROWAK, 0
+; Ordre du Crepuscule - Cerulean Cave B1F grunts (postgame)
+	db 60, GOLBAT, WEEZING, MUK, 0
+	db 63, ARBOK, HYPNO, MAROWAK, 0
+	db 65, GENGAR, NIDOKING, WEEZING, 0
 
 CooltrainerMData:
 ; Viridian Gym
