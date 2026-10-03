@@ -68,7 +68,13 @@ AcademyOranEndBattleText:
 	text_far _AcademyOranEndBattleText
 	text_end
 AcademyOranAfterBattleText:
+	text_asm
+	CheckEitherEventSet EVENT_BEAT_LIGHTHOUSE_LUNARIS, EVENT_BEAT_MT_MOON_3_TRAINER_4
+	jr nz, .secret_ending
 	text_far _AcademyOranAfterBattleText
+	text_end
+.secret_ending
+	text_far _AcademySecretEndingText
 	text_end
 AcademyChamp1BattleText:
 	text_far _AcademyChamp1BattleText

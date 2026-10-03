@@ -75,3 +75,10 @@ _AcademyChamp4AfterBattleText::
 	text "ORAN t'attend"
 	line "en haut."
 	done
+
+_AcademySecretEndingText::
+	text "ORAN: Tu as"
+	line "rencontre"
+	cont "Lunaris ou"
+	cont "Solaris?!"
+	done
