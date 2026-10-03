@@ -105,7 +105,7 @@ _SaffronGymGuideChampInMakingText::
 	line "champion!"
 
 	para "Les #MON de"
-	line "SABRINA usent"
+	line "SAFIRA usent"
 	cont "du pouvoir"
 	cont "psychique,"
 	cont "pas de force!"
@@ -137,7 +137,7 @@ _SaffronGymGuideBeatSabrinaText::
 	done
 
 _SaffronGymChanneler1BattleText::
-	text "SABRINA est"
+	text "SAFIRA est"
 	line "plus jeune"
 	cont "que moi,"
 	cont "mais je"
@@ -157,7 +157,7 @@ _SaffronGymChanneler1AfterBattleText::
 	cont "gagne!"
 
 	para "Pour battre"
-	line "SABRINA,"
+	line "SAFIRA,"
 	cont "vise la"
 	cont "victoire!"
 	done
@@ -225,7 +225,7 @@ _SaffronGymYoungster2EndBattleText::
 	prompt
 
 _SaffronGymYoungster2AfterBattleText::
-	text "SABRINA a"
+	text "SAFIRA a"
 	line "battu le"
 	cont "MAITRE"
 	cont "KARATE"
@@ -253,7 +253,7 @@ _SaffronGymChanneler3AfterBattleText::
 	done
 
 _SaffronGymYoungster3BattleText::
-	text "SABRINA est"
+	text "SAFIRA est"
 	line "jeune, mais"
 	cont "c'est notre"
 	cont "CHEF!"
@@ -293,7 +293,7 @@ _SaffronGymYoungster4BattleText::
 	cont "ses psy!"
 
 	para "Tu veux"
-	line "voir SABRINA!"
+	line "voir SAFIRA!"
 	cont "Je le vois!"
 	done
 

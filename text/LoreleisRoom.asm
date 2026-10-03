@@ -1,7 +1,7 @@
 _LoreleisRoomLoreleiBeforeBattleText::
 	text "Bienvenue a la"
 	line "LIGUE #MON!"
-	para "Je suis LORELEI"
+	para "Je suis OLGA"
 	line "du CONSEIL"
 	cont "DES 4!"
 	para "Personne ne"

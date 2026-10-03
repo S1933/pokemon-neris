@@ -99,7 +99,7 @@ _CeruleanGymBattleText1::
 	line "plus que"
 	cont "a la hauteur!"
 
-	para "MISTY peut"
+	para "ONDE peut"
 	line "attendre!"
 	done
 
@@ -131,7 +131,7 @@ _CeruleanGymEndBattleText2::
 	prompt
 
 _CeruleanGymAfterBattleText2::
-	text "MISTY va"
+	text "ONDE va"
 	line "continuer"
 	cont "a progresser!"
 
@@ -149,7 +149,7 @@ _CeruleanGymGymGuideChampInMakingText::
 	para "Mon conseil!"
 
 	para "La chef,"
-	line "MISTY,"
+	line "ONDE,"
 	cont "est une pro"
 	cont "des #MON"
 	cont "de l'eau!"
@@ -169,7 +169,7 @@ _CeruleanGymGymGuideChampInMakingText::
 
 _CeruleanGymGymGuideBeatMistyText::
 	text "Tu as battu"
-	line "MISTY!"
+	line "ONDE!"
 	cont "Je te"
 	cont "l'avais dit!"
 

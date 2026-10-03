@@ -73,7 +73,7 @@ _VermilionGymLTSurgeReceivedThunderBadgeText::
 
 _VermilionGymGentlemanBattleText::
 	text "A l'armee,"
-	line "LT.SURGE"
+	line "VOLTAIC"
 	cont "etait mon"
 	cont "chef dur!"
 	done
@@ -90,7 +90,7 @@ _VermilionGymGentlemanAfterBattleText::
 	line "s'ouvre"
 	cont "pas?"
 
-	para "LT.SURGE a"
+	para "VOLTAIC a"
 	line "toujours"
 	cont "ete prudent!"
 	done
@@ -110,7 +110,7 @@ _VermilionGymSuperNerdAfterBattleText::
 	text "OK, je"
 	line "parle!"
 
-	para "LT.SURGE a"
+	para "VOLTAIC a"
 	line "dit qu'il a"
 	cont "cache des"
 	cont "interrupteurs"
@@ -131,7 +131,7 @@ _VermilionGymSailorEndBattleText::
 	prompt
 
 _VermilionGymSailorAfterBattleText::
-	text "LT.SURGE a"
+	text "VOLTAIC a"
 	line "pose deux"
 	cont "serrures!"
 
@@ -150,7 +150,7 @@ _VermilionGymGymGuideChampInMakingText::
 	text "Yo! Aspirant"
 	line "champion!"
 
-	para "LT.SURGE a"
+	para "VOLTAIC a"
 	line "un surnom."
 	cont "On l'appelle"
 	cont "l'Americain"
@@ -169,7 +169,7 @@ _VermilionGymGymGuideChampInMakingText::
 	cont "paralysie"
 	cont "aussi!"
 
-	para "LT.SURGE est"
+	para "VOLTAIC est"
 	line "tres prudent!"
 
 	para "Il faudra"

@@ -279,7 +279,7 @@ _CeruleanCityGymSign::
 	text "AZURIA"
 	line "ARENE #MON"
 	cont "CHAMPIONNE:"
-	cont "MISTY"
+	cont "ONDE"
 
 	para "La sirene"
 	line "garcon"

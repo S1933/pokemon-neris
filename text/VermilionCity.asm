@@ -124,7 +124,7 @@ _VermilionCityGymSignText::
 	text "CARMIN SUR MER"
 	line "ARENE #MON"
 	cont "CHAMPION:"
-	cont "LT.SURGE"
+	cont "VOLTAIC"
 
 	para "L'Americain"
 	line "fulgurant!"

@@ -1,5 +1,5 @@
 _PewterGymBrockPreBattleText::
-	text "BROCK, c'est"
+	text "PIERRE, c'est"
 	line "moi! Le"
 	cont "CHAMPION de"
 	cont "PEWTER!"

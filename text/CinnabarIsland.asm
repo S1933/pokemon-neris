@@ -4,7 +4,7 @@ _CinnabarIslandDoorIsLockedText::
 	done
 
 _CinnabarIslandGirlText::
-	text "BLAINE, le"
+	text "ARDO, le"
 	line "champion de"
 	cont "l'ARENE de"
 	cont "CRAMOIS'ILE, est"
@@ -34,7 +34,7 @@ _CinnabarIslandPokemonLabSignText::
 _CinnabarIslandGymSignText::
 	text "CRAMOIS'ILE"
 	line "ARENE #MON"
-	cont "CHAMPION: BLAINE"
+	cont "CHAMPION: ARDO"
 
 	para "Le maitre"
 	line "des quiz"

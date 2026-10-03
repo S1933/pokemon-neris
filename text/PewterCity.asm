@@ -17,7 +17,7 @@ _PewterCityCooltrainerMText::
 
 	para "Ce sont tous des"
 	line "BUG CATCHERs,"
-	cont "mais BROCK du"
+	cont "mais PIERRE du"
 	cont "PEWTER GYM est a"
 	cont "fond dedans!"
 	done
@@ -68,7 +68,7 @@ _PewterCitySuperNerd2ImSprayingRepelText::
 
 _PewterCityYoungsterYoureATrainerFollowMeText::
 	text "Tu es dresseur,"
-	line "non? BROCK"
+	line "non? PIERRE"
 	cont "cherche de"
 	cont "nouveaux"
 	cont "challengers!"
@@ -78,7 +78,7 @@ _PewterCityYoungsterYoureATrainerFollowMeText::
 _PewterCityYoungsterGoTakeOnBrockText::
 	text "Si tu as ce"
 	line "qu'il faut, va"
-	cont "affronter BROCK!"
+	cont "affronter PIERRE!"
 	done
 
 _PewterCityTrainerTipsText::
@@ -113,7 +113,7 @@ _PewterCityMuseumSignText::
 _PewterCityGymSignText::
 	text "PEWTER CITY"
 	line "#MON GYM"
-	cont "CHAMPION: BROCK"
+	cont "CHAMPION: PIERRE"
 
 	para "Le dresseur"
 	line "#MON de pierre!"

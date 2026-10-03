@@ -115,7 +115,7 @@ _SaffronCityFightingDojoSignText::
 _SaffronCityGymSignText::
 	text "SAFRANIA"
 	line "ARENE #MON"
-	cont "LEADER: SABRINA"
+	cont "LEADER: SAFIRA"
 
 	para "Le pro des"
 	line "#MON Psy!"

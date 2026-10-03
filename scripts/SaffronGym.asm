@@ -20,7 +20,7 @@ SaffronGym_Script:
 	db "SAFFRON CITY@"
 
 .LeaderName:
-	db "SABRINA@"
+	db "SAFIRA@"
 
 SaffronGymResetScripts:
 	xor a ; SCRIPT_SAFFRONGYM_DEFAULT

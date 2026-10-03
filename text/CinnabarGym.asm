@@ -1,7 +1,7 @@
 _CinnabarGymBlainePreBattleText::
 	text "Hah!"
 
-	para "Je suis BLAINE!"
+	para "Je suis ARDO!"
 	line "LE CHAMPION de"
 	cont "l'ARENE de"
 	cont "CRAMOIS ILE!"
@@ -149,7 +149,7 @@ _CinnabarGymSuperNerd4AfterBattleText::
 
 _CinnabarGymSuperNerd5BattleText::
 	text "Je sais pourquoi"
-	line "BLAINE est"
+	line "ARDO est"
 	cont "devenu dresseur!"
 	done
 
@@ -158,14 +158,14 @@ _CinnabarGymSuperNerd5EndBattleText::
 	prompt
 
 _CinnabarGymSuperNerd5AfterBattleText::
-	text "BLAINE s'etait"
+	text "ARDO s'etait"
 	line "perdu dans les"
 	cont "montagnes quand"
 	cont "un #MON oiseau"
 	cont "de feu apparut."
 
 	para "Sa lumiere aida"
-	line "BLAINE a trouver"
+	line "ARDO a trouver"
 	cont "son chemin!"
 	done
 
@@ -210,7 +210,7 @@ _CinnabarGymGymGuideChampInMakingText::
 	text "Yo! Champion"
 	line "en herbe!"
 
-	para "BLAINE, le"
+	para "ARDO, le"
 	line "tete brulee, est"
 	cont "un pro du #MON"
 	cont "de feu!"

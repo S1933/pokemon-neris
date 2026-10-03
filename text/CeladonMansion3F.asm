@@ -16,9 +16,9 @@ _CeladonMansion3FWriterText::
 	cont "est mignonne, non?"
 
 	para "J'aime beaucoup"
-	line "MISTY aussi!"
+	line "ONDE aussi!"
 
-	para "Oh, et SABRINA, je"
+	para "Oh, et SAFIRA, je"
 	line "l'aime bien!"
 	done
 

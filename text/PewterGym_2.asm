@@ -87,7 +87,7 @@ _PewterGymCooltrainerMBattleText::
 
 	para "Tu es encore a"
 	line "des annees-lumiere"
-	cont "d'affronter BROCK!"
+	cont "d'affronter PIERRE!"
 	done
 
 _PewterGymCooltrainerMEndBattleText::
@@ -102,7 +102,7 @@ _PewterGymCooltrainerMEndBattleText::
 _PewterGymCooltrainerMAfterBattleText::
 	text "Tu es fort, mais"
 	line "pas autant que"
-	cont "BROCK!"
+	cont "PIERRE!"
 	done
 
 _PewterGymGuidePreAdviceText::
