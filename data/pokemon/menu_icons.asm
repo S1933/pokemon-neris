@@ -151,4 +151,34 @@ MonPartyData:
 	nybble ICON_SNAKE     ; Dragonite
 	nybble ICON_MON       ; Mewtwo
 	nybble ICON_MON       ; Mew
-	end_nybble_array NUM_POKEMON
+	nybble ICON_BIRD      ; CRAMORIL
+	nybble ICON_FAIRY      ; OBSCURAX
+	nybble ICON_QUADRUPED      ; PYROFELIS
+	nybble ICON_QUADRUPED      ; GIVRALP
+	nybble ICON_MON      ; FULGURAX
+	nybble ICON_MON      ; TERRAKOR
+	nybble ICON_MON      ; VENOMBRU
+	nybble ICON_FAIRY      ; SPECTRELA
+	nybble ICON_SNAKE      ; DRACOZELLE
+	nybble ICON_MON      ; MENTALIS
+	nybble ICON_MON      ; PETIROC
+	nybble ICON_BIRD      ; AILESOR
+	nybble ICON_BUG      ; BUGGAIE
+	nybble ICON_GRASS      ; FLORALYS
+	nybble ICON_WATER      ; AQUAJET
+	nybble ICON_MON      ; VOLTOUR
+	nybble ICON_MON      ; PSYMINI
+	nybble ICON_WATER      ; GLACIETTE
+	nybble ICON_GRASS      ; FLORAQUE
+	nybble ICON_MON      ; ROCBOUL
+	nybble ICON_SNAKE      ; SERPICOL
+	nybble ICON_MON      ; CHAUVESPI
+	nybble ICON_QUADRUPED      ; TERREUX
+	nybble ICON_QUADRUPED      ; MARAISOR
+	nybble ICON_BIRD      ; OISEAULO
+	nybble ICON_MON      ; CRABEAU
+	nybble ICON_FAIRY      ; FANTOMIN
+	nybble ICON_MON      ; ELECTROX
+	nybble ICON_MON      ; FLAMELET
+	nybble ICON_SNAKE      ; DRAGONET
+	end_nybble_array NUM_POKEMON + 30
