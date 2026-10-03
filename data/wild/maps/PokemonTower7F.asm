@@ -1,15 +1,15 @@
 PokemonTower7FWildMons:
 	def_grass_wildmons 15 ; encounter rate
-	db 21, GASTLY
-	db 22, GASTLY
-	db 23, GASTLY
-	db 24, GASTLY
-	db 20, GASTLY
-	db 28, HAUNTER
-	db 22, CUBONE
-	db 24, CUBONE
-	db 28, HAUNTER
-	db 30, HAUNTER
+	db 28, GASTLY
+	db 29, GASTLY
+	db 30, GASTLY
+	db 32, GASTLY
+	db 26, GASTLY
+	db 37, HAUNTER
+	db 29, CUBONE
+	db 32, CUBONE
+	db 37, HAUNTER
+	db 39, HAUNTER
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

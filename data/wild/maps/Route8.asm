@@ -1,27 +1,27 @@
 Route8WildMons:
 	def_grass_wildmons 15 ; encounter rate
-	db 18, PIDGEY
+	db 24, PIDGEY
 IF DEF(_RED)
-	db 18, MANKEY
-	db 17, EKANS
-	db 16, GROWLITHE
-	db 20, PIDGEY
-	db 20, MANKEY
-	db 19, EKANS
-	db 17, GROWLITHE
-	db 15, GROWLITHE
-	db 18, GROWLITHE
+	db 24, MANKEY
+	db 23, EKANS
+	db 21, GROWLITHE
+	db 26, PIDGEY
+	db 26, MANKEY
+	db 25, EKANS
+	db 23, GROWLITHE
+	db 20, GROWLITHE
+	db 24, GROWLITHE
 ENDC
 IF DEF(_BLUE)
-	db 18, MEOWTH
-	db 17, SANDSHREW
-	db 16, VULPIX
-	db 20, PIDGEY
-	db 20, MEOWTH
-	db 19, SANDSHREW
-	db 17, VULPIX
-	db 15, VULPIX
-	db 18, VULPIX
+	db 24, MEOWTH
+	db 23, SANDSHREW
+	db 21, VULPIX
+	db 26, PIDGEY
+	db 26, MEOWTH
+	db 25, SANDSHREW
+	db 23, VULPIX
+	db 20, VULPIX
+	db 24, VULPIX
 ENDC
 	end_grass_wildmons
 
