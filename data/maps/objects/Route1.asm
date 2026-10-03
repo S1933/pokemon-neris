@@ -1,6 +1,7 @@
 	object_const_def
 	const_export ROUTE1_YOUNGSTER1
 	const_export ROUTE1_YOUNGSTER2
+	const_export ROUTE1_KAEL
 
 Route1_Object:
 	db $b ; border block
@@ -13,6 +14,7 @@ Route1_Object:
 	def_object_events
 	object_event  5, 24, SPRITE_YOUNGSTER, WALK, UP_DOWN, TEXT_ROUTE1_YOUNGSTER1
 	object_event 15, 13, SPRITE_YOUNGSTER, WALK, LEFT_RIGHT, TEXT_ROUTE1_YOUNGSTER2
+	object_event  4, 42, SPRITE_BLUE, STAY, DOWN, TRAINER | TEXT_ROUTE1_KAEL, OPP_RIVAL1, 1
 
 	def_warps_to ROUTE_1
 

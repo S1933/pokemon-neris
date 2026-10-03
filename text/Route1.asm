@@ -55,7 +55,32 @@ _Route1Youngster2Text::
 	done
 
 _Route1SignText::
-	text "ROUTE 1"
+	text "SENTIER EMBRUNS"
 	line "PORT-LUNE -"
 	cont "VIRIDIAN CITY"
+	done
+
+_Route1KaelBattleText::
+	text "KAEL: Tiens te"
+	line "voila! Tu as"
+	cont "ton #MON?"
+
+	para "Alors montrez"
+	line "moi sa force!"
+	done
+
+_Route1KaelEndBattleText::
+	text "Trop fort"
+	line "pour moi!"
+
+	para "On fera mieux"
+	line "la prochaine"
+	cont "fois!"
+	prompt
+
+_Route1KaelAfterBattleText::
+	text "KAEL: Je vais"
+	line "m'entrainer et"
+	cont "revenir te"
+	cont "battre!"
 	done
