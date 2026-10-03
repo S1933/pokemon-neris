@@ -1,44 +1,50 @@
-# Pokémon Néris — Design Draft (pokered base)
+# Pokémon Néris — Feuille de route (base pokered)
 
-English repo doc; in-game French names kept as proper nouns.
+## 1. Villes (implémentation en cours)
+| Ville | Concept | Lieu clé | État |
+|---|---|---|---|
+| Port-Lune | Ville portuaire, point de départ | Phare | ✅ (clone Pallet) |
+| Sentier des Embruns | Route côtière | Centre #MON | ✅ (Route 1) |
+| Val-Boréal | Ville de montagne, nord froid | Arène Glace | ✅ (reliée à la Route 23) |
+| Lumiville | Petit village agricole | Pension | ❌ |
+| Académie Néris | Ville d'endgame | Arène du tournoi | ✅ (à Jadielle) |
 
-## 1. New cities (Kanto extension, east of Route 22)
-| City | Concept | Key location |
-|---|---|---|
-| Port-Lune | Harbour town, departure point | Lighthouse, harbor |
-| Sentier des Embruns | Coastal route city 1 | Pokémon Center |
-| Val-Boréal | Mountain city, cold north | Gym — Ice leader |
-| Lumiville | Small farming village | Nursery / daycare |
-| Académie Néris | Endgame city | Final tournament arena |
+## 2. Personnages
+- **Prof. Sylve** : professeur régional, donne le starter. ✅
+- **Kael** : rival agressif, spécialiste spectre, verrouille des passages. ✅ (Sentier Embruns)
+- **Champions d'arène FR** : Pierre, Onde, Voltaic, Erika, Koga, Ardo, Safira. ✅
+- **Elite 4 Néris** : Olga, Bruno, Agatha, Peter. ✅
+- **Maître Oran** : organisateur du tournoi final. ✅ (Académie + proto Cave Azure)
 
-## 2. New characters
-- **Prof. Sylve**: regional professor, gives the starter.
-- **Rival Kael**: aggressive rival, ghost-type specialist, blocks key gates.
-- **Elite 4 Néris**: 4 new champions + final tournament organizer **Maître Oran**.
+## 3. Nouveaux Pokémon
+| Nom | Type | Rôle | État |
+|---|---|---|---|
+| Flambino | Feu | Starter feu (lvl 5) | ✅ |
+| Aquinou | Eau | Starter eau (lvl 5) | ✅ |
+| Verdillo | Plante | Starter plante (lvl 5) | ✅ |
+| Lunaris | Psy | Légendaire du Phare (lvl 70, statique) | ✅ |
+| Solaris | Feu/Vol | Légendaire du Mont Néris (lvl 70, statique) | ✅ |
+| + 25 autres | — | dex 152-181 : entrées, palettes, icônes | ✅ |
 
-## 3. New Pokémon (3 starters + 2 legendaries to start)
-| Name | Type | Role |
-|---|---|---|
-| Flambino | Fire | Fire starter (lvl 5) |
-| Aquinou | Water | Water starter (lvl 5) |
-| Verdillo | Grass | Grass starter (lvl 5) |
-| Lunaris | Psychic | Lighthouse legendary |
-| Solaris | Fire/Flying | Mountain legendary |
+## 4. Histoire post-tournoi
+- Badge débloqué : **La Marque de Néris** → ouvre l'est de l'Académie. ❌
+- Chapitre 1 : séismes étranges — Lunaris disparaît du phare. ❌
+- Chapitre 2 : **L'Ordre du Crépuscule** traque Solaris (proto jouable dans la
+  Cave Azure : 3 Rockets + boss). ⏳
+- Chapitre 3 : affrontement final au Mont Néris, fin alternative. ⏳
+- **Fin secrète (data)** : Oran réagit à l'Académie si Lunaris ou Solaris a
+  été rencontré. ✅
 
-## 4. Post-tournament story (after the final tournament)
-- New badge unlock: **La Marque de Néris** → gates open east of Académie Néris.
-- Chapter 1: strange seismic events — Lunaris disappears from the lighthouse.
-- Chapter 2: Team-like antagonist group **L'Ordre du Crépuscule** hunts Solaris.
-- Chapter 3: final showdown at Mont Néris, dual legendary battle, new ending + credits variant.
+## 5. Mécanique
+- Niveaux wilds/dresseurs +30 % (commit c89170a).
+- Cap de niveau inchangé (100) ; starter donné lvl 5.
 
-## 5. Mechanics
-- All wild/trainer levels already boosted +30% (commit c89170a).
-- Level cap stays 100; starter given at level 5 (scale up if the boost makes Pallet trainers too hard).
-
-## Build order (each step = one buildable commit)
-1. Rename title/intro to "POKEMON NERIS".
-2. Starter swap: Flambino/Aquinou/Verdillo replace Bulbasaur/Charmander/Squirtle in the intro choice.
-3. Port-Lune: clone Pallet Town map + rename, wire as start town.
-4. Lighthouse event + Lunaris static encounter.
-5. Post-tournament map gating + Ordre du Crépuscule grunts.
-6. Mont Néris finale + ending.
+## Ordre de construction (1 commit = 1 build)
+1. Renommer titre/intro « POKEMON NERIS ». ✅
+2. Swap starters Flambino/Aquinou/Verdillo. ✅
+3. Port-Lune : clone Pallet renommé, ville de départ. ✅
+4. Phare + Lunaris statique. ✅
+5. Val-Boréal + arène d'Olga (Route 23). ✅
+6. Académie + tournoi (4 champions + Oran). ✅
+7. Gating post-tournoi + Ordre du Crépuscule complet. ❌
+8. Finale Mont Néris + fin alternative complète. ❌

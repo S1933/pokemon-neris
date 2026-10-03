@@ -1,31 +1,45 @@
-# Pokémon Red and Blue [![Build Status][ci-badge]][ci]
+# Pokémon Néris
 
-This is a disassembly of Pokémon Red and Blue.
+Hack ROM de Pokémon Rouge/Bleu basé sur la désassemblée **pokered** (pret).
 
-It builds the following ROMs:
+Région **Néris** en français : nouveau départ, 3 starters inédits, 2 légendaires
+statiques, une arène de glace inédite, une Académie avec tournoi final et une
+fin secrète.
 
-- Pokemon Red (UE) [S][!].gb `sha1: ea9bcae617fdf159b045185467ae58b2e4a48b9a`
-- Pokemon Blue (UE) [S][!].gb `sha1: d7037c83e1ae5b39bde3c30787637ba1d4c48ce2`
-- BLUEMONS.GB (debug build) `sha1: 5b1456177671b79b263c614ea0e7cc9ac542e9c4`
-- dmgapae0.e69.patch `sha1: 0fb5f743696adfe1dbb2e062111f08f9bc5a293a`
-- dmgapee0.e68.patch `sha1: ed4be94dc29c64271942c87f2157bca9ca1019c7`
+## Contenu Néris (état actuel)
 
-To set up the repository, see [**INSTALL.md**](INSTALL.md).
+| Élément | Détail |
+|---|---|
+| **Départ** | Port-Lune (Pallet), Prof. Sylve, starters Flambino / Aquinou / Verdillo |
+| **Sentier Embruns** | Route 1 renommée, wilds Néris, rival Kael en combat |
+| **Phare de Port-Lune** | Nouvelle carte ; **Lunaris** (Psychic, lvl 70) en encounter statique |
+| **Mont Néris** | Mt Moon renommé ; **Solaris** (lvl 70) en encounter statique |
+| **Val-Boréal** | Nouvelle ville reliée à la Route 23 (bord ouest) |
+| **Arène d'Olga** | Championne Glace à Val-Boréal : DEWGONG 52 + CLOYSTER 51 |
+| **Académie Néris** | Jadielle (porte de l'ancienne école) : tournoi — 4 champions lvl 57-58 puis **Maître Oran** (ONIX / HITMONCHAN / MACHAMP 58) |
+| **Fin secrète** | Oran réagit si Lunaris ou Solaris a été rencontré |
+| **Pokédex** | 181 espèces (30 nouvelles avec entrées dex, palettes et icônes) |
+| **Noms FR** | Gym leaders : Pierre, Onde, Voltaic, Erika, Koga, Ardo, Safira ; Elite 4 : Olga, Bruno, Agatha, Peter |
+| **Niveaux** | wilds/dresseurs +30 % |
 
+Les 3 Rockets + boss de la Cave Azure (proto Ordre du Crépuscule) restent
+jouables.
 
-## See also
+## Construire
 
-- [**Wiki**][wiki] (includes [tutorials][tutorials])
-- [**Symbols**][symbols]
-- [**Tools**][tools]
+Voir [**INSTALL.md**](INSTALL.md). Le build produit `pokered.gbc` (titre
+« POKEMON NERIS »).
 
-You can find us on [Discord (pret, #pokered)](https://discord.gg/d5dubZ3).
+```
+make
+```
 
-For other pret projects, see [pret.github.io](https://pret.github.io/).
+## Documentation
 
-[wiki]: https://github.com/pret/pokered/wiki
-[tutorials]: https://github.com/pret/pokered/wiki/Tutorials
-[symbols]: https://github.com/pret/pokered/tree/symbols
-[tools]: https://github.com/pret/gb-asm-tools
-[ci]: https://github.com/pret/pokered/actions
-[ci-badge]: https://github.com/pret/pokered/actions/workflows/main.yml/badge.svg
+- [**docs/NERIS_DESIGN.md**](docs/NERIS_DESIGN.md) — feuille de route Néris (FR)
+- [**INSTALL.md**](INSTALL.md) — dépendances et installation
+
+## Base
+
+Désassemblée Pokémon Rouge/Bleu de [pret](https://github.com/pret/pokered) —
+voir le wiki pret pour les tutoriels de la désassemblée.
