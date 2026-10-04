@@ -25,9 +25,33 @@ Lighthouse_TextPointers:
 
 LighthouseLunarisText:
 	text_asm
+	CheckEvent EVENT_BEAT_CHAMPION_RIVAL
+	jr z, .fightLunaris
+	; Chapter 1 (post-tournament): the ground shakes, Lunaris takes flight.
+	predef PredefShakeScreenHorizontally
+	ld hl, LighthouseQuakeText
+	call PrintText
+	ld a, TOGGLE_LIGHTHOUSE_LUNARIS
+	ld [wToggleableObjectIndex], a
+	predef HideObject
+	ld a, MEWTWO
+	call PlayCry
+	call WaitForSoundToFinish
+	ld hl, LighthouseLunarisVanishedText
+	call PrintText
+	jp TextScriptEnd
+.fightLunaris
 	ld hl, LighthouseLunarisTrainerHeader
 	call TalkToTrainer
 	jp TextScriptEnd
+
+LighthouseQuakeText:
+	text_far _LighthouseQuakeText
+	text_end
+
+LighthouseLunarisVanishedText:
+	text_far _LighthouseLunarisVanishedText
+	text_end
 
 LighthouseLunarisBattleText:
 	text_far _LighthouseLunarisBattleText
