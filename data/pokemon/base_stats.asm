@@ -180,4 +180,5 @@ INCLUDE "data/pokemon/base_stats/fantomin.asm"
 INCLUDE "data/pokemon/base_stats/electrox.asm"
 INCLUDE "data/pokemon/base_stats/flamelet.asm"
 INCLUDE "data/pokemon/base_stats/dragonet.asm"
-	assert_table_length NUM_POKEMON - 1 + 30 ; discount Mew, plus 30 new MissingNo-slot species
+INCLUDE "data/pokemon/base_stats/mew.asm" ; Solaris (MEW slot) needs base data
+	assert_table_length NUM_POKEMON - 1 + 30 + 1 ; discount Mew, plus 30 new MissingNo-slot species, plus Mew itself
