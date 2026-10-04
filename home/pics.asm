@@ -16,34 +16,31 @@ UncompressMonSprite::
 ; $4A ≤ index < $74:       bank $B ("Pics 3")
 ; $74 ≤ index < $99:       bank $C ("Pics 4")
 ; $99 ≤ index:             bank $D ("Pics 5")
+; bank comes from MonsterPicBanks (gfx/pic_banks.asm, ROMX), read via a
+; 3-byte helper: the old range-based bank guess was wrong for species
+; whose base_stats borrow a pic stored in another bank
 	ld a, [wCurPartySpecies]
-	ld b, a
-	cp MEW
-	ld a, BANK(MewPicFront)
-	jr z, .GotBank
-	ld a, b
-	cp FOSSIL_KABUTOPS
-	ld a, BANK(FossilKabutopsPic)
-	jr z, .GotBank
-	ld a, b
-	cp TANGELA + 1
-	ld a, BANK("Pics 1")
-	jr c, .GotBank
-	ld a, b
-	cp MOLTRES + 1
-	ld a, BANK("Pics 2")
-	jr c, .GotBank
-	ld a, b
-	cp BEEDRILL + 2
-	ld a, BANK("Pics 3")
-	jr c, .GotBank
-	ld a, b
-	cp STARMIE + 1
-	ld a, BANK("Pics 4")
-	jr c, .GotBank
-	ld a, BANK("Pics 5")
+	ld e, a
+	ld d, $00
+	ld hl, MonsterPicBanks
+	ld a, BANK(MonsterPicBanks)
+	call GetPicBankByte
 .GotBank
 	jp UncompressSpriteData
+
+; a = bank, hl = address: returns a = [hl] in that bank, restores bank
+GetPicBankByte:
+	ld b, a
+	ldh a, [hLoadedROMBank]
+	ld c, a
+	ld a, b
+	ld [rROMB], a
+	ld a, [hl]
+	ld b, a
+	ld a, c
+	ld [rROMB], a
+	ld a, b
+	ret
 
 ; de: destination location
 LoadMonFrontSprite::

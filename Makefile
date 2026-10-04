@@ -13,6 +13,7 @@ rom_obj := \
 	maps.o \
 	ram.o \
 	text.o \
+	gfx/pic_banks.o \
 	gfx/pics.o \
 	gfx/sprites.o \
 	gfx/tilesets.o
