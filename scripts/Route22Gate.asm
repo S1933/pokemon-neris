@@ -60,8 +60,9 @@ Route22Gate_TextPointers:
 
 Route22GateGuardText:
 	text_asm
-	ld a, [wObtainedBadges]
-	bit BIT_BOULDERBADGE, a
+	; Neris: the gate to Route 23 is opened by defeating Maitre Oran
+	; (Academy tournament), not by the Boulder Badge.
+	CheckEvent EVENT_BEAT_ACADEMY_TRAINER_0
 	jr nz, .has_boulderbadge
 	ld hl, Route22GateGuardNoBoulderbadgeText
 	call PrintText

@@ -2,9 +2,9 @@ _Route22GateGuardNoBoulderbadgeText::
 	text "Seuls les"
 	line "dresseurs doues"
 	cont "peuvent passer."
-	para "Tu n'as pas"
-	line "encore le"
-	cont "BOULDERBADGE!@"
+	para "Vaincs le Maitre"
+	line "de l'ACADEMIE"
+	cont "d'abord!@"
 	text_end
 
 _Route22GateGuardICantLetYouPassText::
@@ -16,7 +16,7 @@ _Route22GateGuardICantLetYouPassText::
 	done
 
 _Route22GateGuardGoRightAheadText::
-	text "Oh! C'est le"
-	line "BOULDERBADGE!"
+	text "Tu as vaincu le"
+	line "MAITRE ORAN!"
 	cont "Vas-y!@"
 	text_end
