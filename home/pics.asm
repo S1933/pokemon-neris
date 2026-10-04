@@ -16,9 +16,6 @@ UncompressMonSprite::
 ; $4A ≤ index < $74:       bank $B ("Pics 3")
 ; $74 ≤ index < $99:       bank $C ("Pics 4")
 ; $99 ≤ index:             bank $D ("Pics 5")
-; bank comes from MonsterPicBanks (gfx/pic_banks.asm, ROMX), read via a
-; 3-byte helper: the old range-based bank guess was wrong for species
-; whose base_stats borrow a pic stored in another bank
 	ld a, [wCurPartySpecies]
 	ld e, a
 	ld d, $00
@@ -29,10 +26,11 @@ UncompressMonSprite::
 .GotBank
 	jp UncompressSpriteData
 
-; a = bank, hl = address: returns a = [hl] in that bank, restores bank
-; keeps hLoadedROMBank in sync so an interrupt firing mid-read does not
-; execute from a stale bank
+; a = bank, hl = address: returns a = [hl] in that bank, restores bank.
+; Interrupts are disabled during the switch so no ISR can fire with a
+; stale bank mapped; the window is a few machine cycles.
 GetPicBankByte:
+	di
 	ld b, a
 	ldh a, [hLoadedROMBank]
 	ld c, a
@@ -45,6 +43,7 @@ GetPicBankByte:
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld a, b
+	ei
 	ret
 
 ; de: destination location

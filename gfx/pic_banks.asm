@@ -1,7 +1,6 @@
-SECTION "Pic Banks", ROMX
-
-; exact pic bank per internal id (read by UncompressMonSprite in home/pics.asm)
+; exact pic bank per internal id, read by UncompressMonSprite (home/pics.asm)
 ; generated from each species base_stats front-pic pointer
+SECTION "Pic Banks", ROMX
 EXPORT MonsterPicBanks
 MonsterPicBanks:
 	db 0 ; NO_MON
