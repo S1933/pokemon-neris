@@ -107,6 +107,7 @@ check:
 
 registry:
 	@python3 tools/gen_registry.py
+	@python3 tools/gen_trainers.py
 
 
 RGBASMFLAGS += -Q8 -P includes.asm
