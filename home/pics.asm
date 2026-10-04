@@ -30,15 +30,19 @@ UncompressMonSprite::
 	jp UncompressSpriteData
 
 ; a = bank, hl = address: returns a = [hl] in that bank, restores bank
+; keeps hLoadedROMBank in sync so an interrupt firing mid-read does not
+; execute from a stale bank
 GetPicBankByte:
 	ld b, a
 	ldh a, [hLoadedROMBank]
 	ld c, a
 	ld a, b
+	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld a, [hl]
 	ld b, a
 	ld a, c
+	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld a, b
 	ret
