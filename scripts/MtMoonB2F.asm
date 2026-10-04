@@ -164,6 +164,7 @@ MtMoonB2F_TextPointers:
 	dw_const MtMoonB2FRocket4Text,                 TEXT_MTMOONB2F_ROCKET4
 	dw_const MtMoonB2FDomeFossilText,              TEXT_MTMOONB2F_DOME_FOSSIL
 	dw_const MtMoonB2FSolarisText,                 TEXT_MTMOONB2F_SOLARIS
+	dw_const MtMoonB2FOrdreGruntText,              TEXT_MTMOONB2F_ORDRE_GRUNT
 	dw_const MtMoonB2FHelixFossilText,             TEXT_MTMOONB2F_HELIX_FOSSIL
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_HP_UP
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_TM_MEGA_PUNCH
@@ -398,3 +399,13 @@ MtMoonB2FSolarisBattleText:
 	call PlayCry
 	call WaitForSoundToFinish
 	jp TextScriptEnd
+
+MtMoonB2FOrdreGruntText:
+	text_asm
+	CheckEvent EVENT_BEAT_MT_MOON_3_TRAINER_4
+	jr nz, .solaris_defeated
+	text_far _MtMoonB2FOrdreGruntWarningText
+	text_end
+.solaris_defeated
+	text_far _MtMoonB2FOrdreGruntFinaleText
+	text_end

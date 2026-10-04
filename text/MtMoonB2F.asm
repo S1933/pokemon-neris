@@ -139,3 +139,23 @@ _MtMoonB2FSolarisBattleText::
 	cont "ne dans la"
 	cont "montagne!"
 	done
+
+_MtMoonB2FOrdreGruntWarningText::
+	text "L'ORDRE DU"
+	line "CREPUSCULE"
+	cont "surveille"
+	cont "Solaris!"
+	cont "N'y touche pas!@"
+	text_end
+
+_MtMoonB2FOrdreGruntFinaleText::
+	text "Solaris est"
+	line "tombe..."
+	para "Tu ne sais pas"
+	line "ce que tu as"
+	cont "fait! Sans les"
+	cont "deux lumieres,"
+	cont "la marque du"
+	cont "CREPUSCULE"
+	cont "s'etendra!@"
+	text_end
