@@ -7,10 +7,6 @@ CeladonCity_Blocks: INCBIN "maps/CeladonCity.blk"
 INCLUDE "data/maps/headers/PalletTown.asm"
 INCLUDE "data/maps/objects/PalletTown.asm"
 PalletTown_Blocks: INCBIN "maps/PalletTown.blk"
-Lighthouse_Blocks: INCBIN "maps/Lighthouse.blk"
-ValBorealCity_Blocks: INCBIN "maps/ValBorealCity.blk"
-ValBorealGym_Blocks: INCBIN "maps/ValBorealGym.blk"
-Academy_Blocks: INCBIN "maps/Academy.blk"
 
 INCLUDE "data/maps/headers/ViridianCity.asm"
 INCLUDE "data/maps/objects/ViridianCity.asm"
@@ -88,6 +84,10 @@ Route1_Blocks: INCBIN "maps/Route1.blk"
 UndergroundPathRoute8_Blocks: INCBIN "maps/UndergroundPathRoute8.blk"
 
 OaksLab_Blocks: INCBIN "maps/OaksLab.blk"
+Lighthouse_Blocks: INCBIN "maps/Lighthouse.blk"
+ValBorealCity_Blocks: INCBIN "maps/ValBorealCity.blk"
+ValBorealGym_Blocks: INCBIN "maps/ValBorealGym.blk"
+Academy_Blocks: INCBIN "maps/Academy.blk"
 
 MrPsychicsHouse_Blocks:
 NameRatersHouse_Blocks:

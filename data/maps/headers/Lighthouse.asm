@@ -1,2 +1,2 @@
-	map_header Lighthouse, LIGHTHOUSE, LAB
+	map_header Lighthouse, LIGHTHOUSE, DOJO
 	end_map_header
