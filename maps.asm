@@ -87,6 +87,7 @@ OaksLab_Blocks: INCBIN "maps/OaksLab.blk"
 Lighthouse_Blocks: INCBIN "maps/Lighthouse.blk"
 ValBorealCity_Blocks: INCBIN "maps/ValBorealCity.blk"
 ValBorealGym_Blocks: INCBIN "maps/ValBorealGym.blk"
+AcademyEast_Blocks: INCBIN "maps/AcademyEast.blk"
 Academy_Blocks: INCBIN "maps/Academy.blk"
 
 MrPsychicsHouse_Blocks:
@@ -132,6 +133,10 @@ INCLUDE "data/maps/objects/ValBorealCity.asm"
 INCLUDE "data/maps/headers/ValBorealGym.asm"
 INCLUDE "scripts/ValBorealGym.asm"
 INCLUDE "data/maps/objects/ValBorealGym.asm"
+
+INCLUDE "data/maps/headers/AcademyEast.asm"
+INCLUDE "scripts/AcademyEast.asm"
+INCLUDE "data/maps/objects/AcademyEast.asm"
 
 INCLUDE "data/maps/headers/Academy.asm"
 INCLUDE "scripts/Academy.asm"

@@ -182,7 +182,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 
 	map_const LIGHTHOUSE,                     5,  6 ; $6D
 	map_const VALBOREAL_GYM,                  5,  7 ; $6E
-	map_const UNUSED_MAP_6F,                  0,  0 ; $6F
+	map_const ACADEMY_EAST,                   5,  7 ; $6F
 	map_const ACADEMY,                        5,  7 ; $70
 	map_const LANCES_ROOM,                   13, 13 ; $71
 	map_const UNUSED_MAP_72,                  0,  0 ; $72

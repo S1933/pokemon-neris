@@ -112,7 +112,7 @@ MapHeaderPointers::
 	dw VictoryRoad1F_h
 	dw Lighthouse_h ; LIGHTHOUSE
 	dw ValBorealGym_h ; VALBOREAL_GYM
-	dw LancesRoom_h ; UNUSED_MAP_6F
+	dw AcademyEast_h ; ACADEMY_EAST
 	dw Academy_h ; ACADEMY
 	dw LancesRoom_h
 	dw LancesRoom_h ; UNUSED_MAP_72

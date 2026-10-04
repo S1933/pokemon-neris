@@ -11,6 +11,8 @@ Academy_Object:
 	def_warp_events
 	warp_event  4, 11, LAST_MAP, 3
 	warp_event  5, 11, LAST_MAP, 3
+	warp_event  8, 13, ACADEMY_EAST, 1
+	warp_event  9, 13, ACADEMY_EAST, 1
 
 	def_bg_events
 
