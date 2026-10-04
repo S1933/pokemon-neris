@@ -1,23 +1,23 @@
 Route2WildMons:
 	def_grass_wildmons 25 ; encounter rate
-	db  4, RATTATA
+	db  4, OISEAULO
 	db  4, AILESOR
 	db  6, OISEAULO
-	db  6, RATTATA
-	db  7, PIDGEY
+	db  6, OISEAULO
+	db  7, OISEAULO
 IF DEF(_RED)
-	db  4, WEEDLE
-	db  3, RATTATA
-	db  7, RATTATA
+	db  4, BUGGAIE
+	db  3, OISEAULO
+	db  7, OISEAULO
 	db  6, BUGGAIE
-	db  7, WEEDLE
+	db  7, BUGGAIE
 ENDC
 IF DEF(_BLUE)
-	db  4, CATERPIE
-	db  3, RATTATA
-	db  7, RATTATA
+	db  4, FLORALYS
+	db  3, SERPICOL
+	db  7, SERPICOL
 	db  6, BUGGAIE
-	db  7, CATERPIE
+	db  7, FLORALYS
 ENDC
 	end_grass_wildmons
 

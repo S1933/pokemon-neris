@@ -1,28 +1,28 @@
 PokemonMansionB1FWildMons:
 	def_grass_wildmons 10 ; encounter rate
 IF DEF(_RED)
-	db 43, KOFFING
-	db 41, KOFFING
-	db 46, GROWLITHE
-	db 42, PONYTA
-	db 41, KOFFING
-	db 52, WEEZING
-	db 45, PONYTA
-	db 46, GRIMER
-	db 55, WEEZING
-	db 55, MUK
+	db 43, VENOMBRU
+	db 41, VENOMBRU
+	db 46, FLAMELET
+	db 42, FLAMELET
+	db 41, VENOMBRU
+	db 52, VENOMBRU
+	db 45, FLAMELET
+	db 46, VENOMBRU
+	db 55, VENOMBRU
+	db 55, VENOMBRU
 ENDC
 IF DEF(_BLUE)
-	db 43, GRIMER
-	db 41, GRIMER
-	db 46, VULPIX
-	db 42, PONYTA
-	db 41, GRIMER
-	db 52, MUK
-	db 45, PONYTA
-	db 46, KOFFING
-	db 50, MAGMAR
-	db 55, WEEZING
+	db 43, VENOMBRU
+	db 41, VENOMBRU
+	db 46, PYROFELIS
+	db 42, PYROFELIS
+	db 41, VENOMBRU
+	db 52, VENOMBRU
+	db 45, PYROFELIS
+	db 46, CHAUVESPI
+	db 50, PYROFELIS
+	db 55, CHAUVESPI
 ENDC
 	end_grass_wildmons
 

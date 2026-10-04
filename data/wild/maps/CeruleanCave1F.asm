@@ -1,19 +1,19 @@
 CeruleanCave1FWildMons:
 	def_grass_wildmons 10 ; encounter rate
-	db 60, GOLBAT
-	db 60, HYPNO
-	db 60, MAGNETON
-	db 64, DODRIO
-	db 64, VENOMOTH
+	db 60, CHAUVESPI
+	db 60, OBSCURAX
+	db 60, ELECTROX
+	db 64, AILESOR
+	db 64, VENOMBRU
 IF DEF(_RED)
-	db 68, ARBOK
+	db 68, SERPICOL
 ENDC
 IF DEF(_BLUE)
-	db 68, SANDSLASH
+	db 68, ROCBOUL
 ENDC
-	db 64, KADABRA
-	db 68, PARASECT
-	db 69, RAICHU
+	db 64, PSYMINI
+	db 68, FLORAQUE
+	db 69, FULGURAX
 	db 69, DITTO
 	end_grass_wildmons
 

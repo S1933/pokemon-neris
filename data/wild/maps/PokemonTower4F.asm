@@ -1,15 +1,15 @@
 PokemonTower4FWildMons:
 	def_grass_wildmons 10 ; encounter rate
-	db 26, GASTLY
-	db 28, GASTLY
-	db 29, GASTLY
-	db 30, GASTLY
-	db 25, GASTLY
-	db 24, GASTLY
-	db 33, HAUNTER
-	db 26, CUBONE
-	db 29, CUBONE
-	db 32, GASTLY
+	db 26, FANTOMIN
+	db 28, FANTOMIN
+	db 29, FANTOMIN
+	db 30, FANTOMIN
+	db 25, FANTOMIN
+	db 24, FANTOMIN
+	db 33, FANTOMIN
+	db 26, TERREUX
+	db 29, TERREUX
+	db 32, FANTOMIN
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

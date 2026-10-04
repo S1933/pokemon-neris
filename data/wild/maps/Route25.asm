@@ -1,28 +1,28 @@
 Route25WildMons:
 	def_grass_wildmons 15 ; encounter rate
 IF DEF(_RED)
-	db  11, WEEDLE
-	db  12, KAKUNA
-	db 17, PIDGEY
-	db 16, ODDISH
-	db 17, ODDISH
-	db 16, ABRA
-	db 19, ODDISH
-	db 13, ABRA
-	db  10, METAPOD
-	db  11, CATERPIE
+	db  11, BUGGAIE
+	db  12, BUGGAIE
+	db 17, OISEAULO
+	db 16, FLORAQUE
+	db 17, FLORAQUE
+	db 16, PSYMINI
+	db 19, FLORAQUE
+	db 13, PSYMINI
+	db  10, BUGGAIE
+	db  11, BUGGAIE
 ENDC
 IF DEF(_BLUE)
-	db  11, CATERPIE
-	db  12, METAPOD
-	db 17, PIDGEY
-	db 16, BELLSPROUT
-	db 17, BELLSPROUT
-	db 16, ABRA
-	db 19, BELLSPROUT
-	db 13, ABRA
-	db  10, KAKUNA
-	db  11, WEEDLE
+	db  11, FLORALYS
+	db  12, FLORALYS
+	db 17, AILESOR
+	db 16, FLORAQUE
+	db 17, FLORAQUE
+	db 16, MENTALIS
+	db 19, FLORAQUE
+	db 13, MENTALIS
+	db  10, SERPICOL
+	db  11, SERPICOL
 ENDC
 	end_grass_wildmons
 
