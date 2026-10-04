@@ -650,10 +650,10 @@ CooltrainerFData:
 	db 56, FANTOMIN, PYROFELIS, FULGURAX, 0
 
 BrunoData:
-; Academy (Maitre Oran)
-	db 3, 58, PETIROC, 58, AQUAJET, 58, AQUAJET, 0
-; Elite Four
+; Elite Four (trainer 1)
 	db $FF, 69, PETIROC, 72, AQUAJET, 72, AQUAJET, 73, PETIROC, 76, AQUAJET, 0
+; Academy Maitre Oran (trainer 2) — see LoreleiData ordering note.
+	db $FF, 58, PETIROC, 58, AQUAJET, 58, AQUAJET, 0
 
 BrockData:
 	db $FF, 16, ROCBOUL, 19, PETIROC, 0
@@ -711,10 +711,11 @@ Rival3Data:
 	db $FF, 80, AILESOR, 77, MENTALIS, 80, TERRAKOR, 80, FLORALYS, 82, GYARADOS, 85, CHARIZARD, 0
 
 LoreleiData:
-; Val-Boreal Gym (trainer 2)
-	db 2, 52, GIVRALP, 51, GLACIETTE, 0
 ; Elite Four (trainer 1)
 	db $FF, 71, GIVRALP, 69, GLACIETTE, 71, MARAISOR, 73, GLACIETTE, 73, LAPRAS, 0
+; Val-Boreal Gym Olga (trainer 2) — must be the SECOND line: the engine
+; walks trainer data sequentially (line 1 = trainer 1, line 2 = trainer 2).
+	db $FF, 52, GIVRALP, 51, GLACIETTE, 0
 
 ChannelerData:
 ; Unused

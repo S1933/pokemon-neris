@@ -112,16 +112,67 @@ def parse_internal_species():
 
 
 def check_parties(const_names):
+    """Party format per engine/battle/read_trainer_party.asm:
+      - normal:  db LEVEL, SPECIES..., 0
+      - special: db $FF, LEVEL, SPECIES, LEVEL, SPECIES, ..., 0
+    A stray leading byte (e.g. a 'line number' written before the data) is
+    read as the LEVEL of the whole team — this broke the Olga/Oran fights
+    once, so it is now a hard check.
+    """
     text = strip_comments(read('data/trainers/parties.asm'))
     species = set(const_names)
-    bad_species = set()
+    problems = 0
     for block in re.findall(r'^(\w+Data):\n((?:.|\n)*?)(?=^\w+Data:|\Z)',
                             text, re.M):
-        _, body = block
-        for i, line in enumerate(l for l in body.splitlines() if l.strip()):
-            if not line.strip().endswith('0'):
-                err(f'Party line in parties.asm does not end with 0: {line!r}')
-    print('Trainer parties: all entries terminated with 0')
+        name, body = block
+        idx = 0
+        for line in (l for l in body.splitlines() if l.strip()):
+            idx += 1
+            m = re.match(r'^\tdb\s+(.+?),\s*0\s*$', line)
+            if not m:
+                err(f'{name} trainer #{idx}: party line not "db ... ,0": {line.strip()!r}')
+                problems += 1
+                continue
+            toks = [t.strip() for t in m.group(1).split(',')]
+            if toks[0] == '$FF':
+                body_toks = toks[1:]
+                if len(body_toks) % 2 != 0:
+                    err(f'{name} trainer #{idx}: $FF party has odd token count')
+                    problems += 1
+                    continue
+                for k in range(0, len(body_toks), 2):
+                    lvl, sp = body_toks[k], body_toks[k + 1]
+                    if not re.match(r'^\d+$', lvl):
+                        err(f'{name} trainer #{idx}: $FF party level {lvl!r} not numeric')
+                        problems += 1
+                    if sp not in species:
+                        err(f'{name} trainer #{idx}: unknown species {sp}')
+                        problems += 1
+                    if re.match(r'^\d+$', lvl) and int(lvl) > 100:
+                        err(f'{name} trainer #{idx}: level {lvl} > 100')
+                        problems += 1
+            else:
+                if not re.match(r'^\d+$', toks[0]):
+                    err(f'{name} trainer #{idx}: party level {toks[0]!r} not numeric')
+                    problems += 1
+                    continue
+                if int(toks[0]) > 100:
+                    err(f'{name} trainer #{idx}: level {toks[0]} > 100')
+                    problems += 1
+                for sp in toks[1:]:
+                    if not re.match(r'^[A-Z][A-Z0-9_]*$', sp):
+                        # a bare number here means a stray byte was left in
+                        err(f'{name} trainer #{idx}: stray byte {sp!r} inside '
+                            f'species list (would spawn as internal id)')
+                        problems += 1
+                    elif sp not in species:
+                        err(f'{name} trainer #{idx}: unknown species {sp}')
+                        problems += 1
+    if problems == 0:
+        print('Trainer parties: format valid (normal/$FF), species known, '
+              'levels <= 100, no stray bytes')
+    else:
+        err(f'Trainer parties: {problems} problem(s)')
 
 
 def check_species_completeness(species_entries):
