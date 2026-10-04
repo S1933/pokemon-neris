@@ -23,6 +23,7 @@ UncompressMonSprite::
 	ld e, a
 	ld d, $00
 	ld hl, MonsterPicBanks
+	add hl, de
 	ld a, BANK(MonsterPicBanks)
 	call GetPicBankByte
 .GotBank

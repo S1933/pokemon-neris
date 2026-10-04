@@ -271,16 +271,31 @@ def check_species_completeness(species_entries):
 
 
 def check_placeholder_assets(species_entries):
-    """NERIS-014: flag species borrowing another species' front .pic file.
+    """NERIS-014: classify species whose front .pic is borrowed.
 
-    A borrow = the base_stats INCBINs another species' .pic. Reported as
-    INFO, not an error (rule n°3: progressive completion).
+    BORROWED_INTENTIONAL = the borrow is whitelisted (rule n°3:
+    progressive completion) and shows up in the release notes.
+    MISSING/PLACEHOLDER = no base_stats INCBIN at all, or a borrow not
+    whitelisted, which means an unfinished sprite slipped through.
     """
+    INTENTIONAL_BORROWS = {
+        # species -> source pic stem accepted for release (final art)
+    }
+    PENDING_PHASE6 = {
+        # species whose borrowed sprite is known-pending (phase 6 art):
+        # SOLARIS -> mew + the 29 species borrowing vanilla art below
+        'SOLARIS', 'PETIROC', 'AILESOR', 'BUGGAIE', 'FLORALYS', 'AQUAJET',
+        'VOLTOUR', 'PSYMINI', 'GLACIETTE', 'FLORAQUE', 'ROCBOUL', 'SERPICOL',
+        'CHAUVESPI', 'TERREUX', 'MARAISOR', 'OISEAULO', 'CRABEAU', 'FANTOMIN',
+        'ELECTROX', 'FLAMELET', 'DRAGONET', 'OBSCURAX', 'CRAMORIL', 'VENOMBRU',
+        'SPECTRELA', 'DRACOZELLE', 'MENTALIS', 'FULGURAX', 'GIVRALP',
+        'TERRAKOR', 'PYROFELIS',
+    }
     dnames = re.findall(r'\bdname "([^"]+)"',
                         strip_comments(read('data/pokemon/names.asm')))
     # names row n-1 maps to internal id n (pointer-table indexing)
     excluded = {'NO_MON', 'FOSSIL_KABUTOPS', 'FOSSIL_AERODACTYL', 'MON_GHOST'}
-    borrows = []
+    intentional, pending, unexpected, missing = [], [], [], []
     for const, idx in species_entries:
         if const is None or const in excluded:
             continue
@@ -289,13 +304,33 @@ def check_placeholder_assets(species_entries):
         if not bs_path.exists():
             continue
         text = read(f'data/pokemon/base_stats/{stem}.asm')
-        inc = re.search(r'^\tINCBIN "gfx/pokemon/front/([a-z0-9_]+)\.pic', text, re.M)
-        if inc and inc.group(1) != stem:
-            fr = dnames[idx - 1] if 0 < idx <= len(dnames) else const
-            borrows.append(f'{fr} ({const}) borrows {inc.group(1)} sprite')
-    print(f'Placeholder assets: {len(borrows)} borrowed sprite(s)')
-    for b in borrows:
+        inc = re.search(r'^\tINCBIN "gfx/pokemon/front/([a-z0-9_.]+)\.pic', text, re.M)
+        fr = dnames[idx - 1] if 0 < idx <= len(dnames) else const
+        if inc is None:
+            missing.append(f'{fr} ({const}): no front pic INCBIN in base_stats')
+            continue
+        src = inc.group(1)
+        if src == stem:
+            continue
+        if INTENTIONAL_BORROWS.get(const) == src:
+            intentional.append(f'{fr} ({const}) borrows {src} sprite (intentional)')
+        elif const in PENDING_PHASE6:
+            pending.append(f'{fr} ({const}) borrows {src} sprite (pending phase 6 art)')
+        else:
+            unexpected.append(f'{fr} ({const}) borrows {src} sprite (NOT whitelisted)')
+    print(f'Placeholder assets: {len(intentional)} intentional, '
+          f'{len(pending)} pending phase 6, '
+          f'{len(unexpected)} unexpected, {len(missing)} missing')
+    for b in intentional:
         print(f'  info: {b}')
+    for b in pending:
+        print(f'  info: {b}')
+    for b in unexpected:
+        print(f'  warn: {b}')
+    for b in missing:
+        print(f'  warn: {b}')
+    if unexpected or missing:
+        raise SystemExit(1)
 
 
 def check_wild_encounters(const_names):

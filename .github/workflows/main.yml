@@ -45,6 +45,18 @@ jobs:
           make -j$(nproc)
           .github/checkdiff.sh
 
+      - name: Néris consistency checks
+        if: ${{ github.repository_owner != 'pret' }}
+        run: |
+          make check
+          make registry
+
+      - name: Smoke test (emulator boot)
+        if: ${{ github.repository_owner != 'pret' }}
+        run: |
+          pip install --quiet pyboy
+          python3 tools/smoke_test.py
+
       - name: Checkout symbols
         if: ${{ github.repository_owner == 'pret' && github.event_name == 'push' }}
         uses: actions/checkout@v7
