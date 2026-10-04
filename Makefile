@@ -99,6 +99,15 @@ compare: $(roms) $(patches)
 tools:
 	$(MAKE) -C tools/
 
+# NERIS-002/005/007: static consistency + per-species completeness checks,
+# then regenerate the species registry (docs/POKEMON.md).
+.PHONY: check registry
+check:
+	@python3 tools/check_neris.py
+
+registry:
+	@python3 tools/gen_registry.py
+
 
 RGBASMFLAGS += -Q8 -P includes.asm
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`

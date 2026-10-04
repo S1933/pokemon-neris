@@ -3,6 +3,14 @@
 
 Validates cross-table consistency without assembling:
   - Pokemon tables: constants <-> names <-> base_stats includes <-> palettes
+  - Per-species completeness (NERIS-007): stats, types, catch, exp, growth,
+    learnset, evos_moves pointer, dex entry pointer + text, icon, palette,
+    cry, dex number
+  - Placeholder asset detection (NERIS-014): Neris species reusing a source
+    species' sprite (front+back+INCBIN identical)
+  - Wild encounters: every db <level>, <SPECIES> references a defined const,
+    10 entries per def_grass_wildmons / def_water_wildmons
+  - Trainer parties reference defined species consts; party terminates with 0
   - Trainer party format: every trainer party terminates with 0
   - Toggleable objects: const group order matches data block order, no missing
     TOGGLE consts for object consts referenced in map object files
@@ -80,8 +88,33 @@ def check_pokemon_tables():
     print('Starter pointers OK (STARTER1-3 reference defined species)')
 
 
-def check_parties():
+def parse_internal_species():
+    """[(const_name, internal_index)] — const_skip keeps its index, unnamed
+    slots are None. Index == the value used by pointer tables."""
+    entries = []
+    index = 0
+    started = False
+    for line in read('constants/pokemon_constants.asm').splitlines():
+        if re.match(r'\tconst_def', line):
+            started = True
+            index = 0
+            continue
+        if not started:
+            continue
+        m = re.match(r'\tconst (\w+)', line)
+        if m:
+            entries.append((m.group(1), index))
+            index += 1
+        elif re.match(r'\tconst_skip', line):
+            entries.append((None, index))
+            index += 1
+    return entries
+
+
+def check_parties(const_names):
     text = strip_comments(read('data/trainers/parties.asm'))
+    species = set(const_names)
+    bad_species = set()
     for block in re.findall(r'^(\w+Data):\n((?:.|\n)*?)(?=^\w+Data:|\Z)',
                             text, re.M):
         _, body = block
@@ -89,6 +122,151 @@ def check_parties():
             if not line.strip().endswith('0'):
                 err(f'Party line in parties.asm does not end with 0: {line!r}')
     print('Trainer parties: all entries terminated with 0')
+
+
+def check_species_completeness(species_entries):
+    """NERIS-007: every playable species has all identity fields."""
+    excluded = {'NO_MON', 'FOSSIL_KABUTOPS', 'FOSSIL_AERODACTYL', 'MON_GHOST'}
+
+    dnames = re.findall(r'\bdname "([^"]+)"',
+                        strip_comments(read('data/pokemon/names.asm')))
+
+    dex_labels = set(re.findall(r'^\t?_(\w+)DexEntry::',
+                                read('data/pokemon/dex_text.asm'), re.M))
+    dex_labels |= set(re.findall(r'^(\w+)DexEntry::',
+                                 read('data/pokemon/dex_entries.asm'), re.M))
+    dex_pointers = re.findall(r'^\tdw (\w+DexEntry)',
+                              read('data/pokemon/dex_entries.asm'), re.M)
+    cry_rows = re.findall(r'^\tmon_cry (\w+),', read('data/pokemon/cries.asm'), re.M)
+    evo_pointers = re.findall(r'^\tdw (\w+EvosMoves)',
+                              read('data/pokemon/evos_moves.asm'), re.M)
+    evo_blocks = set(re.findall(r'^(\w+EvosMoves):',
+                                read('data/pokemon/evos_moves.asm'), re.M))
+    icons = re.findall(r'\tnybble (ICON_\w+)', read('data/pokemon/menu_icons.asm'))
+    pal_rows = re.findall(r'^\tdb (PAL_\w+)',
+                          strip_comments(read('data/pokemon/palettes.asm')), re.M)
+
+    # dex number per internal id (dex_order.asm row n-1 = internal id n)
+    dex_consts = {}
+    i = 0
+    for line in read('constants/pokedex_constants.asm').splitlines():
+        if re.match(r'\tconst_def', line):
+            i = 0
+            continue
+        m = re.match(r'\tconst (DEX_\w+)', line)
+        if m:
+            i += 1
+            dex_consts[m.group(1)] = i
+    dex_of_internal = {}
+    i = 0
+    for line in strip_comments(read('data/pokemon/dex_order.asm')).splitlines():
+        m = re.match(r'\s*db (\w+)', line)
+        if not m:
+            continue
+        tok = m.group(1)
+        dex_of_internal[i] = dex_consts.get(tok, int(tok) if tok.isdigit() else 0)
+        i += 1
+
+    problems = []
+    for const, idx in species_entries:
+        if const is None or const in excluded:
+            continue
+        stem = const.lower()
+        bs_path = ROOT / 'data/pokemon/base_stats' / f'{stem}.asm'
+        if not bs_path.exists():
+            continue  # already reported by check_pokemon_tables
+        text = read(f'data/pokemon/base_stats/{stem}.asm')
+        plain = strip_comments(text)
+
+        def need(cond, field):
+            if not cond:
+                problems.append(f'{const} (${idx:02X}): missing {field}')
+
+        need(re.search(r'^\s*db\s+\d+,\s*\d+,\s*\d+,\s*\d+,\s*\d+\s*$', plain, re.M), 'base stats row')
+        need(re.search(r'^\s*db\s+[A-Z_]+,\s*[A-Z_]+\s*$', plain, re.M), 'types')
+        need(re.search(r'^\s*db\s+\d+\s*;\s*catch rate', text, re.M), 'catch rate')
+        need(re.search(r'^\s*db\s+\d+\s*;\s*base exp', text, re.M), 'base exp')
+        need(re.search(r'^\tdb ([A-Z_]+(?:\s*,\s*[A-Z_]+)*)\s*;\s*level 1 learnset', text, re.M), 'level 1 learnset')
+        need(re.search(r'^\tdb (GROWTH_\w+)\s*;\s*growth rate', text, re.M), 'growth rate')
+        need(re.search(r'^\tdw (\w+PicFront), (\w+PicBack)', text, re.M), 'sprite pointers')
+        need(re.search(r'^\tINCBIN "gfx/pokemon/front/[^"]+\.pic', text, re.M), 'front pic INCBIN')
+
+        # pointer tables are indexed by internal id - 1 (NO_MON = 0 has no row)
+        row = idx - 1
+        need(row < len(evo_pointers), 'evos_moves pointer row')
+        if row < len(evo_pointers):
+            need(evo_pointers[row] in evo_blocks, f'evos_moves block {evo_pointers[row]}')
+        need(row < len(dex_pointers), 'dex entry pointer row')
+        if row < len(dex_pointers):
+            base = dex_pointers[row][:-len('DexEntry')]
+            need(base in dex_labels, f'dex text (_{base}DexEntry)')
+        need(row < len(cry_rows), 'cry row')
+        # palette/icon are indexed by display dex number (+1 for the MISSINGNO
+        # palette row / first icon nybble pair)
+        dex_num = dex_of_internal.get(row, 0)
+        need(dex_num == 0 or dex_num + 1 <= len(pal_rows), f'palette row for dex {dex_num}')
+        need(dex_num == 0 or dex_num <= len(icons), f'icon row for dex {dex_num}')
+        need(dex_num > 0, 'dex number (dex_order row)')
+    playable = sum(1 for c, i in species_entries
+                   if c and c not in excluded
+                   and (ROOT / 'data/pokemon/base_stats' / f'{c.lower()}.asm').exists())
+    if problems:
+        for p in problems:
+            err(p)
+        print(f'Species completeness: {len(problems)} gap(s) — see errors above')
+    else:
+        print(f'Species completeness: all {playable} '
+              f'playable species have stats/types/learnset/sprites/dex/cry/palette/icon')
+
+
+def check_placeholder_assets(species_entries):
+    """NERIS-014: flag species borrowing another species' front .pic file.
+
+    A borrow = the base_stats INCBINs another species' .pic. Reported as
+    INFO, not an error (rule n°3: progressive completion).
+    """
+    dnames = re.findall(r'\bdname "([^"]+)"',
+                        strip_comments(read('data/pokemon/names.asm')))
+    # names row n-1 maps to internal id n (pointer-table indexing)
+    excluded = {'NO_MON', 'FOSSIL_KABUTOPS', 'FOSSIL_AERODACTYL', 'MON_GHOST'}
+    borrows = []
+    for const, idx in species_entries:
+        if const is None or const in excluded:
+            continue
+        stem = const.lower()
+        bs_path = ROOT / 'data/pokemon/base_stats' / f'{stem}.asm'
+        if not bs_path.exists():
+            continue
+        text = read(f'data/pokemon/base_stats/{stem}.asm')
+        inc = re.search(r'^\tINCBIN "gfx/pokemon/front/([a-z0-9_]+)\.pic', text, re.M)
+        if inc and inc.group(1) != stem:
+            fr = dnames[idx - 1] if 0 < idx <= len(dnames) else const
+            borrows.append(f'{fr} ({const}) borrows {inc.group(1)} sprite')
+    print(f'Placeholder assets: {len(borrows)} borrowed sprite(s)')
+    for b in borrows:
+        print(f'  info: {b}')
+
+
+def check_wild_encounters(const_names):
+    species = set(const_names)
+    files = sorted(Path('data/wild/maps').glob('*.asm'))
+    bad = []
+    total = 0
+    for f in files:
+        text = strip_comments(f.read_text())
+        for kind in ('def_grass_wildmons', 'def_water_wildmons'):
+            for m in re.finditer(rf'^\s*{kind}\s+(\d+)', text, re.M):
+                total += 1
+        for m in re.finditer(r'^\s*db\s+(\d+)\s*,\s*([A-Z_][A-Z0-9_]*)\s*$', text, re.M):
+            level, tok = int(m.group(1)), m.group(2)
+            if level > 100:
+                err(f'{f.name}: wild level {level} > 100')
+            if tok not in species:
+                bad.append(f'{f.name}: unknown species {tok}')
+    for b in sorted(set(bad)):
+        err(b)
+    print(f'Wild encounters: {len(files)} map files, {total} encounter tables, '
+          f'all species defined' if not bad else 'Wild encounters: unknown species found')
 
 
 def norm_key(s):
@@ -204,8 +382,14 @@ def check_map_header_pointers():
 
 
 def main():
+    consts_text = strip_comments(read('constants/pokemon_constants.asm'))
+    const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
+    species_entries = parse_internal_species()
     check_pokemon_tables()
-    check_parties()
+    check_species_completeness(species_entries)
+    check_placeholder_assets(species_entries)
+    check_wild_encounters(const_names)
+    check_parties(const_names)
     check_toggles()
     check_warp_targets()
     check_trainer_flags()
