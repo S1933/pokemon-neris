@@ -28,7 +28,7 @@ CeruleanCaveB1FTrainerHeaders:
 MewtwoTrainerHeader:
 	trainer EVENT_BEAT_MEWTWO, 0, MewtwoBattleText, MewtwoBattleText, MewtwoBattleText
 CeruleanCaveB1FOranTrainerHeader:
-	trainer EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_0, 0, CeruleanCaveB1FOranBattleText, CeruleanCaveB1FOranEndBattleText, CeruleanCaveB1FOranAfterBattleText
+	trainer EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_0, 0, CeruleanCaveB1FOranBattleText, CeruleanCaveB1FOranEndBattleText, CeruleanCaveB1FOranAfterBattleScript
 CeruleanCaveB1FGrunt1TrainerHeader:
 	trainer EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_1, 2, CeruleanCaveB1FGrunt1BattleText, CeruleanCaveB1FGrunt1EndBattleText, CeruleanCaveB1FGrunt1AfterBattleText
 CeruleanCaveB1FGrunt2TrainerHeader:
@@ -76,8 +76,15 @@ CeruleanCaveB1FOranEndBattleText:
 	text_far _CeruleanCaveB1FOranEndBattleText
 	text_end
 
-CeruleanCaveB1FOranAfterBattleText:
-	text_far _CeruleanCaveB1FOranAfterBattleText
+CeruleanCaveB1FOranAfterBattleScript:
+	text_asm
+	SetEvent EVENT_MARK_OF_NERIS
+	ld hl, CeruleanCaveB1FOranMarkText
+	call PrintText
+	jp TextScriptEnd
+
+CeruleanCaveB1FOranMarkText:
+	text_far _CeruleanCaveB1FOranMarkText
 	text_end
 
 CeruleanCaveB1FGrunt1Text:

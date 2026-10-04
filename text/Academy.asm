@@ -82,3 +82,21 @@ _AcademySecretEndingText::
 	cont "Lunaris ou"
 	cont "Solaris?!"
 	done
+
+_AcademyTrueEndingText::
+	text "ORAN: La MARQUE"
+	line "de NERIS..."
+	cont "Tu as demantele"
+	cont "l'ORDRE et"
+	cont "sauve les"
+	cont "legendes."
+	para "L'est de"
+	line "l'ACADEMIE"
+	cont "t'est ouvert:"
+	cont "la salle des"
+	cont "HONNEURS."
+	para "Que les deux"
+	line "lumieres veillent"
+	cont "sur toi,"
+	cont "MAITRE de NERIS!"
+	done

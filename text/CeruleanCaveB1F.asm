@@ -22,13 +22,16 @@ _CeruleanCaveB1FOranEndBattleText::
 	cont "dresseur."
 	prompt
 
-_CeruleanCaveB1FOranAfterBattleText::
-	text "La MARQUE de"
-	line "NERIS reste"
-	cont "inachevee..."
-	para "Le MONT NERIS"
-	line "t'attend..."
-	done
+_CeruleanCaveB1FOranMarkText::
+	text "Tu m'as vaincu,"
+	line "et l'ORDRE est"
+	cont "disséminé."
+	para "Reçois la"
+	line "MARQUE de NERIS!"
+	para "Elle honore ceux"
+	line "qui protègent"
+	cont "les légendes."
+	prompt
 
 _CeruleanCaveB1FGrunt1BattleText::
 	text "L'ORDRE du"
