@@ -167,12 +167,49 @@ def check_trainer_flags():
         print('Trainer flags: all trainer event flags defined')
 
 
+def check_map_header_pointers():
+    sym_path = ROOT / 'pokered.sym'
+    rom_path = ROOT / 'pokered.gbc'
+    if not sym_path.exists() or not rom_path.exists():
+        print('Map header pointers: skipped (build artifacts missing)')
+        return
+    syms = {}
+    for line in sym_path.read_text().splitlines():
+        m = re.match(r'^([0-9a-fA-F]{2}):([0-9a-fA-F]{4})\s+(\S+)$', line.strip())
+        if m:
+            syms.setdefault(m.group(3), (int(m.group(1), 16), int(m.group(2), 16)))
+    rom = rom_path.read_bytes()
+    base = syms['MapHeaderPointers'][1]
+    h_addr = {}
+    for lbl, (bk, ad) in syms.items():
+        if lbl.endswith('_h'):
+            h_addr[lbl[:-2].upper()] = (bk, ad)
+    bad = 0
+    for line in strip_comments(read('constants/map_constants.asm')).splitlines():
+        m = re.match(r'map_const (\w+),\s*(-?\d+),\s*(-?\d+)\s*;\s*\$([0-9A-Fa-f]+)', line)
+        if not m:
+            continue
+        name, mid = m.group(1), int(m.group(4), 16)
+        exp = h_addr.get(name)
+        if exp is None:
+            continue
+        off = base + 2 * mid
+        ptr = rom[off] | (rom[off + 1] << 8)
+        if ptr != exp[1]:
+            err(f'map id ${mid:02x} ({name}) header pointer is {ptr:#06x}, '
+                f'expected {exp[1]:#06x}')
+            bad += 1
+    if not bad:
+        print('Map header pointers: all map ids point to their own header')
+
+
 def main():
     check_pokemon_tables()
     check_parties()
     check_toggles()
     check_warp_targets()
     check_trainer_flags()
+    check_map_header_pointers()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')
