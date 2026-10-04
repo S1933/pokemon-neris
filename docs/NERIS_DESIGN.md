@@ -27,11 +27,11 @@
 | + 25 autres | — | dex 152-181 : entrées, palettes, icônes | ✅ |
 
 ## 4. Histoire post-tournoi
-- Badge débloqué : **La Marque de Néris** → ouvre l'est de l'Académie. ❌
+- Badge débloqué : **La Marque de Néris** → attribuée après le boss de l'Ordre (Cave Azure) ; la fin alternative complète se joue à l'Académie. ✅
 - Chapitre 1 : séismes étranges — Lunaris disparaît du phare. ❌
 - Chapitre 2 : **L'Ordre du Crépuscule** traque Solaris (proto jouable dans la
   Cave Azure : 3 Rockets + boss). ⏳
-- Chapitre 3 : affrontement final au Mont Néris, fin alternative. ⏳
+- Chapitre 3 : affrontement final au Mont Néris (Mt Moon B2F + Cave Azure), fin alternative complète à l'Académie (fin vraie avec la Marque). ✅
 - **Fin secrète (data)** : Oran réagit à l'Académie si Lunaris ou Solaris a
   été rencontré. ✅
 
@@ -46,5 +46,5 @@
 4. Phare + Lunaris statique. ✅
 5. Val-Boréal + arène d'Olga (Route 23). ✅
 6. Académie + tournoi (4 champions + Oran). ✅
-7. Gating post-tournoi + Ordre du Crépuscule complet. ❌
-8. Finale Mont Néris + fin alternative complète. ❌
+7. Gating post-tournoi + Ordre du Crépuscule complet. ✅
+8. Finale Mont Néris + fin alternative complète. ✅
