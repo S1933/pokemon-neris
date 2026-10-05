@@ -150,6 +150,7 @@ INCLUDE "data/pokemon/base_stats/dratini.asm"
 INCLUDE "data/pokemon/base_stats/dragonair.asm"
 INCLUDE "data/pokemon/base_stats/dragonite.asm"
 INCLUDE "data/pokemon/base_stats/mewtwo.asm"
+INCLUDE "data/pokemon/base_stats/mew.asm" ; MEW slot (dex 151) - must stay right after mewtwo
 INCLUDE "data/pokemon/base_stats/cramoril.asm"
 INCLUDE "data/pokemon/base_stats/obscurax.asm"
 INCLUDE "data/pokemon/base_stats/pyrofelis.asm"
@@ -180,5 +181,4 @@ INCLUDE "data/pokemon/base_stats/fantomin.asm"
 INCLUDE "data/pokemon/base_stats/electrox.asm"
 INCLUDE "data/pokemon/base_stats/flamelet.asm"
 INCLUDE "data/pokemon/base_stats/dragonet.asm"
-INCLUDE "data/pokemon/base_stats/mew.asm" ; Solaris (MEW slot) needs base data
 	assert_table_length NUM_POKEMON - 1 + 30 + 1 ; discount Mew, plus 30 new MissingNo-slot species, plus Mew itself

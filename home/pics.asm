@@ -12,10 +12,10 @@ UncompressMonSprite::
 ; index = MEW:             bank $1
 ; index = FOSSIL_KABUTOPS: bank $B
 ;       index < $1F:       bank $9 ("Pics 1")
-; $1F ≤ index < $4A:       bank $A ("Pics 2")
-; $4A ≤ index < $74:       bank $B ("Pics 3")
-; $74 ≤ index < $99:       bank $C ("Pics 4")
-; $99 ≤ index:             bank $D ("Pics 5")
+; the bank of a species' front pic is read from MonsterPicBanks
+; (gfx/pic_banks.asm), one exact entry per internal id. The old
+; range-based guess (comments below, kept for history) was wrong for
+; species whose base_stats borrow a pic stored in another bank.
 	ld a, [wCurPartySpecies]
 	ld e, a
 	ld d, $00
@@ -27,10 +27,8 @@ UncompressMonSprite::
 	jp UncompressSpriteData
 
 ; a = bank, hl = address: returns a = [hl] in that bank, restores bank.
-; Interrupts are disabled during the switch so no ISR can fire with a
-; stale bank mapped; the window is a few machine cycles.
+; hLoadedROMBank is kept in sync with rROMB the whole time.
 GetPicBankByte:
-	di
 	ld b, a
 	ldh a, [hLoadedROMBank]
 	ld c, a
@@ -43,7 +41,6 @@ GetPicBankByte:
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld a, b
-	ei
 	ret
 
 ; de: destination location
