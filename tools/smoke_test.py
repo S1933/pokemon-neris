@@ -39,6 +39,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--rom", default="pokered.gbc")
     ap.add_argument("--max-frames", type=int, default=MAX_FRAMES_DEFAULT)
+    ap.add_argument("--no-battle", action="store_true",
+                    help="skip the wild battle stage (CI constrained runs)")
     args = ap.parse_args()
 
     rom_path = ROOT / args.rom
@@ -112,10 +114,23 @@ def main():
     pb.screen.image.save(shot)
     print(f"control: start menu cursor={menu_item}, screenshot saved to "
           f"{shot.relative_to(ROOT)}")
-    pb.stop()
     if not menu_active:
+        pb.stop()
         print("FAIL control: menu WRAM unavailable")
         return 1
+
+    if not args.no_battle:
+        from battle_check import run_stage_battle
+        ok, msg = run_stage_battle(pb, wram, hold, syms)
+        print(f"battle: {msg}")
+        pb.stop()
+        if not ok:
+            print("FAIL battle stage")
+            return 1
+        print("SMOKE TEST PASSED (boot, intro, world, interactivity, battle)")
+        return 0
+
+    pb.stop()
     print("SMOKE TEST PASSED (boot, intro, world, interactivity)")
     return 0
 

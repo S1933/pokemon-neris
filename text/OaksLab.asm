@@ -385,13 +385,13 @@ _OaksLabRivalLeaveItAllToMeText::
 	cont "plaisir, tu ne me"
 	cont "sers a rien!"
 
-	para "Je sais! J'emprunte"
+	para "Je vais prendre"
 	line "une CARTE de"
 	cont "ma soeur!"
 
 	para "Je lui dirai de"
-	line "ne pas t'en preter,"
-	cont "<PLAYER>! Hahaha!"
+	line "ne pas te la"
+	cont "preter! Hahaha!"
 	done
 
 _OaksLabScientistText::
