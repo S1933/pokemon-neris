@@ -110,19 +110,10 @@ def main():
         return 1
     print(f"world: ok (Port-Lune, after {frames} frames of play)")
 
-    # Stage 3: the Start menu opens (wCurrentMenuItem is set by any
-    # menu). The wandering girl NPC can open a dialog at the worst
-    # moment: close any text and retry a few times.
-    menu_item = None
-    for _ in range(5):
-        from battle_check import _close_box
-        _close_box(pb)
-        hold(["start"], 20)
-        pb.tick(30, False)
-        pb.tick(1, True)  # ensure a fresh rendered frame for the screenshot
-        menu_item = wram("wCurrentMenuItem")
-        if menu_item is not None and 0 <= menu_item <= 4:
-            break
+    # Stage 3: the Start menu opens (wCurrentMenuItem is set by any menu)
+    hold(["start"], 20)
+    pb.tick(30, False)
+    menu_item = wram("wCurrentMenuItem")
     menu_active = menu_item is not None and 0 <= menu_item <= 4
     shot = ROOT / "docs" / "smoke_test.png"
     shot.parent.mkdir(parents=True, exist_ok=True)
