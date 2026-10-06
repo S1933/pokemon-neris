@@ -194,38 +194,47 @@ def _step_to(pb, wram, key, done, max_tries=14, step_frames=22):
 
 
 def _walk_town_exit(pb, wram, frames):
-    """Deterministic verified route to the north exit opening (5,0),
-    then one step north into Route 1.
+    """Walk to the north exit (5,0) then step into Route 1. Closes any
+    NPC dialog after every press: the wandering girl NPC frequently
+    intercepts the player and a pending dialog swallows all inputs,
+    which reads as a blocked tile. The 10x9 Port-Lune layout: spawn
+    (4..5,6..8), column x=1 walkable rows 8..3 (rows 2-1 blocked at
+    row 2 x1=0x08 but row 1 x1=0x01 walkable), row 3 fully walkable,
+    exit opening (5,0) with (5,1)=0x01 grass and (5,2)=0x08 tree.
 
-    Layout of the fork's Port-Lune (10x9): the house-exit spawn lands
-    around (4..5, 7..8) (broken warp wiring). Row 8 (beach) is fully
-    walkable but pressing down at row 8 steps onto the south connection
-    (Route 21), so we never walk down while on row 8. Column x=1 is
-    clear from row 8 up to row 3; row 3 is a full clearing; the north
-    opening is (5,0).
+    Route: up to row 3, west to x=1, north to row 1, east to x=5,
+    north through the opening.
     """
+    def step(k, f=10):
+        nonlocal frames
+        _press(pb, k, f)
+        frames += f + 2
+        _close_box(pb)
+
     def xy():
         return wram("wXCoord"), wram("wYCoord")
 
-    # 1. get to the beach row 8 (at most one step down; 40-frame
-    # presses move TWO tiles, and two steps down from row 7/8 would
-    # walk onto the south connection to Route 21)
-    if xy()[1] != 8:
-        _press(pb, "down", 22)
-        frames += 24
-    if xy()[1] != 8:
-        return frames  # cannot reach row 8: give up this attempt
-    # 2. left to column x=1
-    frames += _step_to(pb, wram, "left", lambda: xy()[0] == 1)
-    # 3. north along x=1 until row 3 (rows 2..0 blocked by trees)
-    frames += _step_to(pb, wram, "up", lambda: xy()[1] <= 3)
-    # 4. east along the row-3 clearing to the exit column
-    frames += _step_to(pb, wram, "right", lambda: xy()[0] >= 5)
-    # 5. north through the opening (5,2)->(5,1)->(5,0)
-    frames += _step_to(pb, wram, "up", lambda: xy()[1] == 0)
+    # The house door is directly above the spawn (5,5): step west
+    # FIRST (along row 6/7 to x=1), then north up the clear left
+    # column to row 1, east to the exit column, then out.
+    for _ in range(5):
+        if xy()[0] <= 1 or wram("wCurMap") != PALLET_TOWN:
+            break
+        step("left")
+    for _ in range(7):
+        if xy()[1] <= 1 or wram("wCurMap") != PALLET_TOWN:
+            break
+        step("up")
+    for _ in range(6):
+        if xy()[0] >= 5 or wram("wCurMap") != PALLET_TOWN:
+            break
+        step("right")
+    for _ in range(3):
+        if xy()[1] == 0 or wram("wCurMap") != PALLET_TOWN:
+            break
+        step("up")
     if wram("wCurMap") == PALLET_TOWN and xy()[1] == 0:
-        _press(pb, "up", 40)
-        frames += 42
+        step("up", 18)
     return frames
 
 
