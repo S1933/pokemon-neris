@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
-"""Reproduce the post-intro soft-lock (NERIS-061, OPEN).
+"""Intro + overworld sanity probe (post-mortem of the "soft-lock").
 
-After a fresh game (title -> START -> Oak intro -> naming), the player
-appears in the bedroom but the overworld engine never starts:
-  - wCurMap stays 0 (PALLET_TOWN) while the bedroom is on screen
-  - wYCoord / wXCoord stay 0 while the sprite stands mid-room
-  - D-pad and START do nothing (menu never opens, joypad ignored)
-  - A re-opens the SNES hidden-event text in a loop
+Reads WRAM DIRECTLY: PyBoy's memory[] does NOT emulate the C000-DFFF
+echo mirror, so reads through 0xC000+<offset> return zeros. (Earlier
+probes used echo reads and made the game look soft-locked; it is not.)
 
-Reproduced on pokered.gbc at master AND at v0.1.0-rc1, so this is NOT
-a regression of the MonsterPicBanks fixes.
+Flow: title -> START -> mash A through the intro (naming screens
+included) -> periodically finish/close the SNES hidden-event text box
+(the new-game spawn stands on that tile) and try to walk, so control is
+taken as soon as the intro hands it over -> walk until wCurMap ==
+PALLET_TOWN (Port-Lune).
 
-Usage: python3 tools/intro_probe.py [--rom pokered.gbc]
-Exits 0 if the player reaches the overworld (lock gone), 1 if still locked.
+Exits 0 when Port-Lune is reached with control, 1 otherwise.
 """
 import argparse
 import re
@@ -26,8 +25,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--rom", default="pokered.gbc")
     args = ap.parse_args()
-    logging_default = __import__("logging")
-    logging_default.getLogger("pyboy").setLevel(logging_default.ERROR)
+    logging = __import__("logging")
+    logging.getLogger("pyboy").setLevel(logging.ERROR)
     from pyboy import PyBoy
 
     syms = {}
@@ -39,10 +38,7 @@ def main():
     pb = PyBoy(str(ROOT / args.rom), sound_emulated=False)
 
     def mem(n):
-        a = syms[n][1]
-        if a >= 0xD000:
-            return pb.memory[0xE000 - 0x2000 + (a - 0xD000)]
-        return pb.memory[a]
+        return pb.memory[syms[n][1]]  # direct read; D000-DFFF is real WRAM
 
     def tap(k, f=12):
         pb.button_press(k)
@@ -54,32 +50,35 @@ def main():
     tap("start")
     pb.tick(400, True)
 
-    for i in range(900):
+    for i in range(5000):
         tap("a")
-        if i % 3 == 2:
-            tap("start")
         pb.tick(1, True)
+        if i % 20 == 19:
+            # advance/close the SNES text (B skips pages, closes at the
+            # end), then sweep the room: the 2F->1F stairs warp sits at
+            # (7, 1) (top-right), the bedroom spawn at (3, 6) in bed.
+            tap("b")
+            pb.tick(6, True)
+            tap("b")
+            pb.tick(6, True)
+            for key, frames in (("down", 60), ("right", 90),
+                                ("up", 90), ("left", 60)):
+                pb.button_press(key)
+                for _ in range(frames):
+                    pb.tick(1, True)
+                pb.button_release(key)
+                pb.tick(6, True)
         if mem("wCurMap") == 0 and mem("wYCoord") != 0:
-            print(f"overworld reached at iter {i} "
-                  f"(map={mem('wCurMap')} y={mem('wYCoord')} "
-                  f"x={mem('wXCoord')})")
+            print(f"Port-Lune reached at iter {i} "
+                  f"(map=0 y={mem('wYCoord')} x={mem('wXCoord')})")
             pb.stop()
             return 0
 
-    tap("b", 15)
-    pb.tick(15, True)
-    pb.button_press("down")
-    for _ in range(120):
-        pb.tick(1, True)
-    pb.button_release("down")
-    pb.tick(10, True)
-    moved = mem("wYCoord") != 0 or mem("wXCoord") != 0
     pb.screen.image.save(ROOT / "docs" / "intro_probe.png")
     pb.stop()
-    print(f"locked: map={mem('wCurMap')} y={mem('wYCoord')} "
-          f"x={mem('wXCoord')} moved={moved} "
-          f"(screenshot docs/intro_probe.png)")
-    return 0 if moved else 1
+    print(f"not in Port-Lune: map={mem('wCurMap')} y={mem('wYCoord')} "
+          f"x={mem('wXCoord')} (screenshot docs/intro_probe.png)")
+    return 1
 
 
 if __name__ == "__main__":

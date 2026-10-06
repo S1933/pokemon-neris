@@ -58,8 +58,8 @@ def main():
         if sym not in syms:
             return None
         _, addr = syms[sym]
-        if addr >= 0xD000:
-            return pb.memory[0xE000 - 0x2000 + (addr - 0xD000)]
+        # PyBoy memory[] does not implement the C000-DFFF echo mirror:
+        # D000-DFFF is real WRAM, read it directly.
         return pb.memory[addr]
 
     def hold(keys, frames):
@@ -78,14 +78,20 @@ def main():
         return 1
     print("boot: ok (no crash after 8s of emulated time)")
 
-    # Stage 2: mash A through title + intro until we stand in Port-Lune
-    # (wCurMap == 0) and it stays 0 without input.
+    # Stage 2: mash A through title + intro, then walk out of the
+    # bedroom (SNES text box + stairs at 7,1) until we stand in
+    # Port-Lune (wCurMap == 0).
     frames = 60 * 8
     reached = False
+    msg = ""
     while frames < args.max_frames:
         hold(["a"], 45)
         frames += 45
-        if wram("wCurMap") == 0:
+        from battle_check import walk_to_town
+        ok, msg = walk_to_town(pb, wram)
+        frames += 1
+        if ok:
+            print(f"  walk: {msg}")
             # confirm it is stable, no input, 2 seconds
             stable = True
             for _ in range(120):
@@ -98,8 +104,8 @@ def main():
                 reached = True
                 break
     if not reached:
-        print(f"FAIL world: wCurMap never reached 0 "
-              f"(last={wram('wCurMap')}, frames={frames})")
+        print(f"FAIL world: Port-Lune never reached "
+              f"(last={wram('wCurMap')}, frames={frames}, msg={msg})")
         pb.stop()
         return 1
     print(f"world: ok (Port-Lune, after {frames} frames of play)")
