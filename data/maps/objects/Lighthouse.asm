@@ -5,8 +5,8 @@ Lighthouse_Object:
 	db $3 ; border block
 
 	def_warp_events
-	warp_event  4, 11, LAST_MAP, 4
-	warp_event  5, 11, LAST_MAP, 4
+	warp_event  4, 11, LAST_MAP, 3
+	warp_event  5, 11, LAST_MAP, 3
 
 	def_bg_events
 

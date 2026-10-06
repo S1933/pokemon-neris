@@ -193,39 +193,46 @@ def _step_to(pb, wram, key, done, max_tries=14, step_frames=22):
     return frames
 
 
-def _walk_town_exit(pb, wram, frames):
-    """Deterministic verified route to the north exit opening (5,0),
-    then one step north into Route 1.
+_WALKABLE = {0x01, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x61, 0x62, 0x63,
+             0x64, 0x65, 0x38, 0x39, 0x3c, 0x3d, 0x74, 0x77, 0x56,
+             0x10}
 
-    Layout of the fork's Port-Lune (10x9): the house-exit spawn lands
-    around (4..5, 7..8) (broken warp wiring). Row 8 (beach) is fully
-    walkable but pressing down at row 8 steps onto the south connection
-    (Route 21), so we never walk down while on row 8. Column x=1 is
-    clear from row 8 up to row 3; row 3 is a full clearing; the north
-    opening is (5,0).
+
+def _walk_town_exit(pb, wram, frames):
+    """Segment route to the north exit: up the current column to the
+    row-3 clearing, east to column 8 (Route 1's path with the +3
+    connection offset), north to row 0, then one step up into Route 1.
+    Empirically walkable in this fork: 01 grass, 0a/0b path, roof
+    tiles 74/77/56, flowers 38-3d, bushes 3c/3d. Overshoots are
+    tolerated by the done() predicates.
     """
     def xy():
         return wram("wXCoord"), wram("wYCoord")
 
-    # 1. get to the beach row 8 (at most one step down; 40-frame
-    # presses move TWO tiles, and two steps down from row 7/8 would
-    # walk onto the south connection to Route 21)
-    if xy()[1] != 8:
-        _press(pb, "down", 22)
-        frames += 24
-    if xy()[1] != 8:
-        return frames  # cannot reach row 8: give up this attempt
-    # 2. left to column x=1
-    frames += _step_to(pb, wram, "left", lambda: xy()[0] == 1)
-    # 3. north along x=1 until row 3 (rows 2..0 blocked by trees)
-    frames += _step_to(pb, wram, "up", lambda: xy()[1] <= 3)
-    # 4. east along the row-3 clearing to the exit column
-    frames += _step_to(pb, wram, "right", lambda: xy()[0] >= 5)
-    # 5. north through the opening (5,2)->(5,1)->(5,0)
-    frames += _step_to(pb, wram, "up", lambda: xy()[1] == 0)
-    if wram("wCurMap") == PALLET_TOWN and xy()[1] == 0:
-        _press(pb, "up", 40)
-        frames += 42
+    # up to the row-3 clearing. A 10-frame press starts one step and
+    # the engine finishes it on release: exactly one tile per press.
+    for _ in range(4):
+        if wram("wYCoord") <= 3 or wram("wCurMap") != PALLET_TOWN:
+            break
+        _press(pb, "up", 10)
+        frames += 12
+    # west to column 3: the connection strip makes rows 0-2 come from
+    # Route 1 (offset 3); its walkable column here is x0 -> pallet x3
+    # (column 8 is walled off at row 2 by tile 0x31)
+    for _ in range(4):
+        if wram("wXCoord") <= 3 or wram("wCurMap") != PALLET_TOWN:
+            break
+        _press(pb, "left", 10)
+        frames += 12
+    # north to row 0 (rows 0-2 are the Route 1 connection strip)
+    for _ in range(4):
+        if wram("wYCoord") == 0 or wram("wCurMap") != PALLET_TOWN:
+            break
+        _press(pb, "up", 10)
+        frames += 12
+    if wram("wCurMap") == PALLET_TOWN and wram("wYCoord") == 0:
+        _press(pb, "up", 18)
+        frames += 20
     return frames
 
 
