@@ -542,6 +542,25 @@ def check_blackout_fly_warps():
               'all in FlyWarpDataPtr in front of the door')
 
 
+def check_map_header_banks():
+    """A map placed in a vanilla UNUSED_MAP slot must also get its
+    MapHeaderBanks row: a stale literal bank loads the header from the
+    wrong ROM bank and the game crashes on entering the map."""
+    ptrs = re.findall(r'^\tdw (\w+)(.*)$', read('data/maps/map_header_pointers.asm'), re.M)
+    banks = re.findall(r'^\tdb (.*?)\s*(?:;.*)?$', read('data/maps/map_header_banks.asm'), re.M)
+    if len(ptrs) != len(banks):
+        err(f'MapHeaderPointers has {len(ptrs)} rows, MapHeaderBanks {len(banks)}')
+    bad = 0
+    for mid, ((ptr, comment), bank) in enumerate(zip(ptrs, banks)):
+        if 'UNUSED_MAP' not in comment and bank != f'BANK({ptr})':
+            err(f'map id ${mid:02X} ({ptr}): MapHeaderBanks row is {bank!r}, '
+                f'expected BANK({ptr})')
+            bad += 1
+    if not bad:
+        print(f'Map header banks: {len(ptrs)} rows, every used map points '
+              'to its own header bank')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -557,6 +576,7 @@ def main():
     check_map_header_pointers()
     check_text_lines()
     check_blackout_fly_warps()
+    check_map_header_banks()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')
