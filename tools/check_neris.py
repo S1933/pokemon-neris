@@ -858,6 +858,71 @@ def check_town_map_entries():
               f'{len(ints)} indoor rows in group order')
 
 
+def check_port_lune():
+    """Port-Lune (PALLET_TOWN, 10x9 blocks) layout, on the step grid as the
+    engine reads it (lower-left tile of each step, like check_edge_warps):
+      - the player's house stays whole: vanilla pret/pokered draws it with
+        blocks $38 $39 / $3c $3d at block columns 2-3, rows 1-2, and grass
+        $01 under its right half;
+      - every warp sits on an OVERWORLD door tile;
+      - walking with collisions from the house exit (5,6) reaches every
+        warp and the north exit to Route 1 (row 0).
+    """
+    blk = (ROOT / 'maps/PalletTown.blk').read_bytes()
+    bst = (ROOT / 'gfx/blocksets/overworld.bst').read_bytes()
+
+    def tile_ids(path, pattern):
+        line = re.search(pattern + r'\s*\w+ ([^\n]*)', read(path)).group(1)
+        return {int(t, 16) for t in re.findall(r'\$([0-9A-Fa-f]{2})', line)}
+
+    doors = tile_ids('data/tilesets/warp_tile_ids.asm',
+                     r'\.OverworldWarpTileIDs:')
+    coll = tile_ids('data/tilesets/collision_tile_ids.asm', r'Overworld_Coll::')
+
+    def tile(x, y):
+        block = blk[(y // 2) * 10 + x // 2]
+        return bst[block * 16 + ((y % 2) * 2 + 1) * 4 + (x % 2) * 2]
+
+    def walkable(x, y):
+        return 0 <= x < 20 and 0 <= y < 18 and tile(x, y) in coll
+
+    before = len(errors)
+    house = {(2, 1): 0x38, (3, 1): 0x39, (2, 2): 0x3c, (3, 2): 0x3d,
+             (3, 3): 0x01}
+    for (c, r), b in house.items():
+        if blk[r * 10 + c] != b:
+            err(f'Port-Lune player house: block ({c},{r}) is '
+                f'${blk[r * 10 + c]:02X}, expected ${b:02X}')
+
+    warps = {(int(x), int(y)): dest for x, y, dest in re.findall(
+        r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)',
+        strip_comments(read('data/maps/objects/PalletTown.asm')), re.M)}
+    for (x, y), dest in warps.items():
+        if tile(x, y) not in doors:
+            err(f'Port-Lune warp ({x},{y}) -> {dest}: tile ${tile(x, y):02X} '
+                'is not an OVERWORLD door tile')
+
+    # stepping on a warp leaves town: warps are reached, never crossed
+    seen, todo = {(5, 6)}, [(5, 6)]
+    while todo:
+        x, y = todo.pop()
+        for n in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if walkable(*n) and n not in seen:
+                seen.add(n)
+                if n not in warps:
+                    todo.append(n)
+    for (x, y), dest in warps.items():
+        if (x, y) not in seen:
+            err(f'Port-Lune warp ({x},{y}) -> {dest}: unreachable from the '
+                'house exit (5,6)')
+    if not any(y == 0 for _, y in seen):
+        err('Port-Lune north exit: unreachable from the house exit (5,6)')
+
+    if len(errors) == before:
+        print(f'Port-Lune: player house whole, {len(warps)} warps on door '
+              'tiles, all reachable with the north exit')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -879,6 +944,7 @@ def main():
     check_town_map_entries()
     check_blackout_fly_warps()
     check_map_header_banks()
+    check_port_lune()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')
