@@ -416,6 +416,44 @@ def check_warp_targets():
     print(f'Warp targets: {len(referenced)} distinct maps, all defined')
 
 
+def check_last_map_warps():
+    """`warp_event x, y, LAST_MAP, n` lands on warp n of wLastMap, which
+    WarpFound2 (home/overworld.asm) only sets when leaving an outside map
+    (CheckIfInOutsideMap: OVERWORLD or PLATEAU tileset). So for every
+    outside map P warping into map I, P's warp n must lead back to I.
+    """
+    # (map, warp y) -> parent, where the map script overrides wLastMap
+    # by player position: Route22Gate sets ROUTE_23 north of y=4, else ROUTE_22
+    scripted = {('ROUTE_22_GATE', 0): 'ROUTE_23', ('ROUTE_22_GATE', 7): 'ROUTE_22'}
+    consts = re.findall(r'map_const (\w+)',
+                        strip_comments(read('constants/map_constants.asm')))
+    labels = re.findall(r'^\tdw (\w+)_h', read('data/maps/map_header_pointers.asm'), re.M)
+    tileset, warps = {}, {}
+    for const, label in zip(consts, labels):
+        hdr = read(f'data/maps/headers/{label}.asm')
+        tileset[const] = re.search(r'map_header\s+\w+,\s*\w+,\s*(\w+)', hdr).group(1)
+        warps[const] = re.findall(
+            r'warp_event\s+[^,]+,\s*(\d+),\s*(\w+),\s*(\d+)',
+            strip_comments(read(f'data/maps/objects/{label}.asm')))
+    outside = sorted(k for k, t in tileset.items() if t in ('OVERWORLD', 'PLATEAU'))
+    checked = 0
+    for inner, inner_warps in warps.items():
+        entered_from = [p for p in outside if any(t == inner for _, t, _ in warps[p])]
+        for i, (y, target, n) in enumerate(inner_warps, 1):
+            if target != 'LAST_MAP':
+                continue
+            n = int(n)
+            override = scripted.get((inner, int(y)))
+            for parent in [override] if override else entered_from:
+                checked += 1
+                pw = warps[parent]
+                dest = pw[n - 1][1] if n <= len(pw) else None
+                if dest != inner:
+                    err(f'{inner} warp {i} exits to LAST_MAP warp {n}, but warp {n} of '
+                        f'parent {parent} leads to {dest}, not {inner}')
+    print(f'LAST_MAP warps: {checked} (exit warp, parent) pairs checked')
+
+
 def check_trainer_flags():
     consts_text = strip_comments(read('constants/event_constants.asm'))
     events = set(re.findall(r'\bconst (EVENT_\w+)', consts_text))
@@ -510,6 +548,7 @@ def main():
     check_parties(const_names)
     check_toggles()
     check_warp_targets()
+    check_last_map_warps()
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
