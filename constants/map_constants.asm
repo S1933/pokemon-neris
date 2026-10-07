@@ -181,9 +181,15 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	end_indoor_group VICTORY_ROAD
 
 	map_const LIGHTHOUSE,                     5,  6 ; $6D
+	end_indoor_group PALLET_TOWN_2
+
 	map_const VALBOREAL_GYM,                  5,  7 ; $6E
+	end_indoor_group VALBOREAL_CITY
+
 	map_const ACADEMY_EAST,                   5,  7 ; $6F
 	map_const ACADEMY,                        5,  7 ; $70
+	end_indoor_group ACADEMY
+
 	map_const LANCES_ROOM,                   13, 13 ; $71
 	map_const UNUSED_MAP_72,                  0,  0 ; $72
 	map_const UNUSED_MAP_73,                  0,  0 ; $73

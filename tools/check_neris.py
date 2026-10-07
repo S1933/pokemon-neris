@@ -470,6 +470,38 @@ def check_toggles():
               'counts aligned, object consts defined')
 
 
+def check_object_const_order():
+    """Object consts are positional: the n-th const_export is the n-th
+    object_event. A const whose TEXT_<const> belongs to another slot means
+    scripts and toggles address the wrong sprite (MtMoonB2F once did).
+    ponytail: name-based, so a misordered const whose text id differs from
+    its name (vanilla Bill/Daisy style) goes unseen.
+    """
+    misplaced, warnings, maps = 0, [], 0
+    for obj in sorted(Path('data/maps/objects').glob('*.asm')):
+        text = strip_comments(obj.read_text())
+        consts = re.findall(r'^\s*const_export\s+(\w+)', text, re.M)
+        texts = [m.group(1) if m else None for m in
+                 (re.search(r'\bTEXT_(\w+)', args) for args in
+                  re.findall(r'^\s*object_event\s+(.*)$', text, re.M))]
+        if not texts:
+            continue
+        maps += 1
+        if len(consts) != len(texts):
+            warnings.append(f'{obj.name}: {len(consts)} const_export for '
+                            f'{len(texts)} object_event')
+        for i, const in enumerate(consts):
+            if const in texts and texts.index(const) != i:
+                err(f'{obj.name}: {const} is const #{i + 1} but '
+                    f'TEXT_{const} is object_event #{texts.index(const) + 1}')
+                misplaced += 1
+    if not misplaced:
+        print(f'Object const order: {maps} maps, const_export order matches '
+              'object_event order')
+    for w in warnings:
+        print(f'  warn: {w}')
+
+
 def check_warp_targets():
     consts_text = strip_comments(read('constants/map_constants.asm'))
     maps = set(re.findall(r'map_const (\w+)', consts_text)) | {'LAST_MAP'}
@@ -482,6 +514,44 @@ def check_warp_targets():
         if target not in maps:
             err(f'warp_event in {src} references unknown map {target}')
     print(f'Warp targets: {len(referenced)} distinct maps, all defined')
+
+
+def check_last_map_warps():
+    """`warp_event x, y, LAST_MAP, n` lands on warp n of wLastMap, which
+    WarpFound2 (home/overworld.asm) only sets when leaving an outside map
+    (CheckIfInOutsideMap: OVERWORLD or PLATEAU tileset). So for every
+    outside map P warping into map I, P's warp n must lead back to I.
+    """
+    # (map, warp y) -> parent, where the map script overrides wLastMap
+    # by player position: Route22Gate sets ROUTE_23 north of y=4, else ROUTE_22
+    scripted = {('ROUTE_22_GATE', 0): 'ROUTE_23', ('ROUTE_22_GATE', 7): 'ROUTE_22'}
+    consts = re.findall(r'map_const (\w+)',
+                        strip_comments(read('constants/map_constants.asm')))
+    labels = re.findall(r'^\tdw (\w+)_h', read('data/maps/map_header_pointers.asm'), re.M)
+    tileset, warps = {}, {}
+    for const, label in zip(consts, labels):
+        hdr = read(f'data/maps/headers/{label}.asm')
+        tileset[const] = re.search(r'map_header\s+\w+,\s*\w+,\s*(\w+)', hdr).group(1)
+        warps[const] = re.findall(
+            r'warp_event\s+[^,]+,\s*(\d+),\s*(\w+),\s*(\d+)',
+            strip_comments(read(f'data/maps/objects/{label}.asm')))
+    outside = sorted(k for k, t in tileset.items() if t in ('OVERWORLD', 'PLATEAU'))
+    checked = 0
+    for inner, inner_warps in warps.items():
+        entered_from = [p for p in outside if any(t == inner for _, t, _ in warps[p])]
+        for i, (y, target, n) in enumerate(inner_warps, 1):
+            if target != 'LAST_MAP':
+                continue
+            n = int(n)
+            override = scripted.get((inner, int(y)))
+            for parent in [override] if override else entered_from:
+                checked += 1
+                pw = warps[parent]
+                dest = pw[n - 1][1] if n <= len(pw) else None
+                if dest != inner:
+                    err(f'{inner} warp {i} exits to LAST_MAP warp {n}, but warp {n} of '
+                        f'parent {parent} leads to {dest}, not {inner}')
+    print(f'LAST_MAP warps: {checked} (exit warp, parent) pairs checked')
 
 
 def check_trainer_flags():
@@ -567,6 +637,49 @@ def check_text_lines():
         err(f'text: {p}')
 
 
+def check_town_map_entries():
+    """LoadTownMapEntry (engine/items/town_map.asm) indexes ExternalMapEntries
+    by outdoor map id, and returns the first InternalMapEntries row whose
+    INDOORGROUP_ bound is strictly greater than the indoor map id. So the
+    outdoor rows must follow the outdoor map ids one for one (row name ==
+    map const name), and the indoor rows must list the end_indoor_group
+    groups in constants order (which makes the bounds strictly increasing).
+    """
+    outdoor, groups, indoor = [], [], False
+    for line in strip_comments(read('constants/map_constants.asm')).splitlines():
+        indoor = indoor or 'FIRST_INDOOR_MAP EQU' in line
+        m = re.match(r'\tmap_const (\w+)', line)
+        if m and not indoor:
+            outdoor.append(m.group(1))
+        m = re.match(r'\tend_indoor_group (\w+)', line)
+        if m:
+            groups.append(m.group(1))
+    text = strip_comments(read('data/maps/town_map_entries.asm'))
+    ext = re.findall(r'^\toutdoor_map\s+\d+,\s*\d+,\s*(\w+)', text, re.M)
+    ints = re.findall(r'^\tindoor_map\s+(\w+),', text, re.M)
+    bad = 0
+    if len(ext) != len(outdoor):
+        err(f'ExternalMapEntries: {len(ext)} rows for {len(outdoor)} outdoor maps')
+        bad += 1
+    for i, (const, name) in enumerate(zip(outdoor, ext)):
+        if norm_key(const) + 'NAME' != norm_key(name):
+            err(f'ExternalMapEntries row ${i:02X} is {name}, map id ${i:02X} '
+                f'is {const}')
+            bad += 1
+            break  # one shift misaligns every later row
+    if ints != groups:
+        i = next((k for k, (a, b) in enumerate(zip(ints, groups)) if a != b),
+                 min(len(ints), len(groups)))
+        err(f'InternalMapEntries row {i}: '
+            f'{ints[i] if i < len(ints) else "<end>"}, expected group '
+            f'{groups[i] if i < len(groups) else "<end>"} '
+            f'({len(ints)} rows for {len(groups)} indoor groups)')
+        bad += 1
+    if not bad:
+        print(f'Town map entries: {len(ext)} outdoor rows aligned on map ids, '
+              f'{len(ints)} indoor rows in group order')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -578,10 +691,13 @@ def main():
     check_parties(const_names)
     check_party_order()
     check_toggles()
+    check_object_const_order()
     check_warp_targets()
+    check_last_map_warps()
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
+    check_town_map_entries()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')
