@@ -531,6 +531,49 @@ def check_text_lines():
         err(f'text: {p}')
 
 
+def check_town_map_entries():
+    """LoadTownMapEntry (engine/items/town_map.asm) indexes ExternalMapEntries
+    by outdoor map id, and returns the first InternalMapEntries row whose
+    INDOORGROUP_ bound is strictly greater than the indoor map id. So the
+    outdoor rows must follow the outdoor map ids one for one (row name ==
+    map const name), and the indoor rows must list the end_indoor_group
+    groups in constants order (which makes the bounds strictly increasing).
+    """
+    outdoor, groups, indoor = [], [], False
+    for line in strip_comments(read('constants/map_constants.asm')).splitlines():
+        indoor = indoor or 'FIRST_INDOOR_MAP EQU' in line
+        m = re.match(r'\tmap_const (\w+)', line)
+        if m and not indoor:
+            outdoor.append(m.group(1))
+        m = re.match(r'\tend_indoor_group (\w+)', line)
+        if m:
+            groups.append(m.group(1))
+    text = strip_comments(read('data/maps/town_map_entries.asm'))
+    ext = re.findall(r'^\toutdoor_map\s+\d+,\s*\d+,\s*(\w+)', text, re.M)
+    ints = re.findall(r'^\tindoor_map\s+(\w+),', text, re.M)
+    bad = 0
+    if len(ext) != len(outdoor):
+        err(f'ExternalMapEntries: {len(ext)} rows for {len(outdoor)} outdoor maps')
+        bad += 1
+    for i, (const, name) in enumerate(zip(outdoor, ext)):
+        if norm_key(const) + 'NAME' != norm_key(name):
+            err(f'ExternalMapEntries row ${i:02X} is {name}, map id ${i:02X} '
+                f'is {const}')
+            bad += 1
+            break  # one shift misaligns every later row
+    if ints != groups:
+        i = next((k for k, (a, b) in enumerate(zip(ints, groups)) if a != b),
+                 min(len(ints), len(groups)))
+        err(f'InternalMapEntries row {i}: '
+            f'{ints[i] if i < len(ints) else "<end>"}, expected group '
+            f'{groups[i] if i < len(groups) else "<end>"} '
+            f'({len(ints)} rows for {len(groups)} indoor groups)')
+        bad += 1
+    if not bad:
+        print(f'Town map entries: {len(ext)} outdoor rows aligned on map ids, '
+              f'{len(ints)} indoor rows in group order')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -546,6 +589,7 @@ def main():
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
+    check_town_map_entries()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')
