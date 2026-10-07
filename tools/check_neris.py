@@ -402,6 +402,38 @@ def check_toggles():
               'counts aligned, object consts defined')
 
 
+def check_object_const_order():
+    """Object consts are positional: the n-th const_export is the n-th
+    object_event. A const whose TEXT_<const> belongs to another slot means
+    scripts and toggles address the wrong sprite (MtMoonB2F once did).
+    ponytail: name-based, so a misordered const whose text id differs from
+    its name (vanilla Bill/Daisy style) goes unseen.
+    """
+    misplaced, warnings, maps = 0, [], 0
+    for obj in sorted(Path('data/maps/objects').glob('*.asm')):
+        text = strip_comments(obj.read_text())
+        consts = re.findall(r'^\s*const_export\s+(\w+)', text, re.M)
+        texts = [m.group(1) if m else None for m in
+                 (re.search(r'\bTEXT_(\w+)', args) for args in
+                  re.findall(r'^\s*object_event\s+(.*)$', text, re.M))]
+        if not texts:
+            continue
+        maps += 1
+        if len(consts) != len(texts):
+            warnings.append(f'{obj.name}: {len(consts)} const_export for '
+                            f'{len(texts)} object_event')
+        for i, const in enumerate(consts):
+            if const in texts and texts.index(const) != i:
+                err(f'{obj.name}: {const} is const #{i + 1} but '
+                    f'TEXT_{const} is object_event #{texts.index(const) + 1}')
+                misplaced += 1
+    if not misplaced:
+        print(f'Object const order: {maps} maps, const_export order matches '
+              'object_event order')
+    for w in warnings:
+        print(f'  warn: {w}')
+
+
 def check_warp_targets():
     consts_text = strip_comments(read('constants/map_constants.asm'))
     maps = set(re.findall(r'map_const (\w+)', consts_text)) | {'LAST_MAP'}
@@ -509,6 +541,7 @@ def main():
     check_wild_encounters(const_names)
     check_parties(const_names)
     check_toggles()
+    check_object_const_order()
     check_warp_targets()
     check_trainer_flags()
     check_map_header_pointers()
