@@ -175,6 +175,74 @@ def check_parties(const_names):
         err(f'Trainer parties: {problems} problem(s)')
 
 
+def check_party_order():
+    """H1/H2: map objects pick a party by position (OPP_<CLASS>, n), so a
+    party inserted before vanilla ones shifts every vanilla reference.
+    The first VANILLA[class] parties of each class are pret/pokered's (edited
+    in place at most). Every party after them must sit under a section
+    comment starting with '; Neris:' and be referenced by a map object.
+    """
+    # party count per class in pret/pokered (commit d47f74ee)
+    VANILLA = {
+        'Youngster': 13, 'BugCatcher': 14, 'Lass': 18, 'Sailor': 8,
+        'JrTrainerM': 9, 'JrTrainerF': 24, 'Pokemaniac': 7, 'SuperNerd': 12,
+        'Hiker': 14, 'Biker': 15, 'Burglar': 9, 'Engineer': 3,
+        'UnusedJuggler': 0, 'Fisher': 11, 'Swimmer': 15, 'CueBall': 9,
+        'Gambler': 7, 'Beauty': 15, 'Psychic': 4, 'Rocker': 2, 'Juggler': 8,
+        'Tamer': 6, 'BirdKeeper': 17, 'Blackbelt': 9, 'Rival1': 9,
+        'ProfOak': 3, 'Chief': 0, 'Scientist': 13, 'Giovanni': 3,
+        'Rocket': 41, 'CooltrainerM': 10, 'CooltrainerF': 8, 'Bruno': 1,
+        'Brock': 1, 'Misty': 1, 'LtSurge': 1, 'Erika': 1, 'Koga': 1,
+        'Blaine': 1, 'Sabrina': 1, 'Gentleman': 5, 'Rival2': 12,
+        'Rival3': 3, 'Lorelei': 1, 'Channeler': 24, 'Agatha': 1, 'Lance': 1,
+    }
+    text = read('data/trainers/parties.asm')
+    classes = re.findall(r'^\tdw (\w+)Data$', text, re.M)
+    consts = re.findall(r'^\ttrainer_const (\w+)',
+                        read('constants/trainer_constants.asm'), re.M)[1:]
+    block_of = {f'OPP_{c}': b for c, b in zip(consts, classes)}
+    refs = set()
+    for obj in Path('data/maps/objects').glob('*.asm'):
+        for c, n in re.findall(r'\b(OPP_\w+),\s*(\d+)',
+                               strip_comments(obj.read_text())):
+            if c in block_of:
+                refs.add((block_of[c], int(n)))
+    # (class, party number) -> marked; a comment block opens a section
+    marked = {}
+    cls, idx, neris, prev_comment = None, 0, False, False
+    for line in text.splitlines():
+        m = re.match(r'^(\w+)Data:', line)
+        if m:
+            cls, idx, neris = m.group(1), 0, False
+        elif cls and line.startswith(';'):
+            if not prev_comment:
+                neris = line.startswith('; Neris:')
+        elif cls and re.match(r'^\tdb\b', line):
+            idx += 1
+            marked[(cls, idx)] = neris
+        prev_comment = line.startswith(';')
+    before, added = len(errors), 0
+    for c in classes:
+        n = VANILLA.get(c)
+        total = sum(1 for k in marked if k[0] == c)
+        if n is None or total < n:
+            err(f'{c}Data: {total} parties, pret/pokered has {n}')
+            continue
+        for i in range(1, total + 1):
+            if i <= n and marked[(c, i)]:
+                err(f'{c}Data #{i}: Neris party inside the vanilla range '
+                    f'(1-{n}); move it to the end of the class')
+            elif i > n and not marked[(c, i)]:
+                err(f'{c}Data #{i}: party past the vanilla range (1-{n}) '
+                    f'without a "; Neris:" section comment')
+            elif i > n and (c, i) not in refs:
+                err(f'{c}Data #{i}: Neris party referenced by no map object')
+            added += i > n
+    if len(errors) == before:
+        print(f'Trainer party order: vanilla positions kept, {added} Neris '
+              'parties appended and referenced')
+
+
 def check_species_completeness(species_entries):
     """NERIS-007: every playable species has all identity fields."""
     excluded = {'NO_MON', 'FOSSIL_KABUTOPS', 'FOSSIL_AERODACTYL', 'MON_GHOST'}
@@ -508,6 +576,7 @@ def main():
     check_placeholder_assets(species_entries)
     check_wild_encounters(const_names)
     check_parties(const_names)
+    check_party_order()
     check_toggles()
     check_warp_targets()
     check_trainer_flags()

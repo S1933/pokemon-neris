@@ -540,7 +540,7 @@ GiovanniData:
 	db $FF, 49, SERPICOL, 46, KANGASKHAN, 49, ROCBOUL, 54, TERRAKOR, 0
 ; Viridian Gym
 	db $FF, 59, ROCBOUL, 55, TERREUX, 58, TERRAKOR, 59, TERRAKOR, 65, TERRAKOR, 0
-; Ordre du Crepuscule - Maitre Oran (Cerulean Cave B1F, postgame)
+; Neris: Ordre du Crepuscule - Maitre Oran (Cerulean Cave B1F, postgame)
 	db $FF, 74, SPECTRELA, 73, VENOMBRU, 75, TERRAKOR, 78, DRACOZELLE, 0
 
 RocketData:
@@ -605,15 +605,12 @@ RocketData:
 ; Silph Co. 11F
 	db 33, OISEAULO, OISEAULO, CHAUVESPI, OISEAULO, SERPICOL, 0
 	db 42, TERREUX, PSYMINI, TERREUX, 0
-; Ordre du Crepuscule - Cerulean Cave B1F grunts (postgame)
+; Neris: Ordre du Crepuscule - Cerulean Cave B1F grunts (postgame)
 	db 60, CHAUVESPI, VENOMBRU, VENOMBRU, 0
 	db 63, SERPICOL, OBSCURAX, TERREUX, 0
 	db 65, SPECTRELA, TERRAKOR, VENOMBRU, 0
 
 CooltrainerMData:
-; Academy tournament
-	db 58, CRABEAU, GLACIETTE, TERRAKOR, 0
-	db 58, FLORALYS, PYROFELIS, 0
 ; Viridian Gym
 	db 51, SERPICOL, TERRAKOR, 0
 ; Victory Road 3F
@@ -630,11 +627,11 @@ CooltrainerMData:
 ; Viridian Gym
 	db 51, TERREUX, TERREUX, 0
 	db 56, ROCBOUL, 0
+; Neris: Academy tournament
+	db 58, CRABEAU, GLACIETTE, TERRAKOR, 0
+	db 58, FLORALYS, PYROFELIS, 0
 
 CooltrainerFData:
-; Academy tournament
-	db 57, TERRAKOR, PYROFELIS, 0
-	db 57, FLORALYS, FULGURAX, FLORAQUE, 0
 ; Celadon Gym
 	db 32, FLORALYS, FLORAQUE, IVYSAUR, 0
 ; Victory Road 3F
@@ -648,11 +645,14 @@ CooltrainerFData:
 	db 59, IVYSAUR, VENUSAUR, 0
 	db 59, FLORAQUE, TERRAKOR, 0
 	db 56, FANTOMIN, PYROFELIS, FULGURAX, 0
+; Neris: Academy tournament
+	db 57, TERRAKOR, PYROFELIS, 0
+	db 57, FLORALYS, FULGURAX, FLORAQUE, 0
 
 BrunoData:
 ; Elite Four (trainer 1)
 	db $FF, 69, PETIROC, 72, AQUAJET, 72, AQUAJET, 73, PETIROC, 76, AQUAJET, 0
-; Academy Maitre Oran (trainer 2) — see LoreleiData ordering note.
+; Neris: Academy Maitre Oran (trainer 2) — see LoreleiData ordering note.
 	db $FF, 58, PETIROC, 58, AQUAJET, 58, AQUAJET, 0
 
 BrockData:
@@ -713,7 +713,7 @@ Rival3Data:
 LoreleiData:
 ; Elite Four (trainer 1)
 	db $FF, 71, GIVRALP, 69, GLACIETTE, 71, MARAISOR, 73, GLACIETTE, 73, LAPRAS, 0
-; Val-Boreal Gym Olga (trainer 2) — must be the SECOND line: the engine
+; Neris: Val-Boreal Gym Olga (trainer 2) — must be the SECOND line: the engine
 ; walks trainer data sequentially (line 1 = trainer 1, line 2 = trainer 2).
 	db $FF, 52, GIVRALP, 51, GLACIETTE, 0
 
