@@ -17,7 +17,7 @@ sprite was loaded from the right pic:
 Walking uses render=False frames for speed; only occasional frames are
 rendered so screenshots stay available.
 
-The battle screenshot is saved to docs/smoke_battle.png for review.
+The battle screenshot is saved to smoke_battle.png (git-ignored) for review.
 """
 import re
 import sys
@@ -295,7 +295,7 @@ def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 180):
     front_ptr = pb.memory[hdr] | (pb.memory[hdr + 1] << 8)
 
     want = cr.load_sym().get(front_label)
-    shot = ROOT / "docs" / "smoke_battle.png"
+    shot = ROOT / "smoke_battle.png"
     pb.screen.image.save(shot)
 
     if want is None:

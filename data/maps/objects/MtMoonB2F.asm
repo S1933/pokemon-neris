@@ -1,11 +1,11 @@
 	object_const_def
-	const_export MTMOONB2F_SOLARIS
-const_export MTMOONB2F_ORDRE_GRUNT
 	const_export MTMOONB2F_SUPER_NERD
 	const_export MTMOONB2F_ROCKET1
 	const_export MTMOONB2F_ROCKET2
 	const_export MTMOONB2F_ROCKET3
 	const_export MTMOONB2F_ROCKET4
+	const_export MTMOONB2F_SOLARIS
+	const_export MTMOONB2F_ORDRE_GRUNT
 	const_export MTMOONB2F_DOME_FOSSIL
 	const_export MTMOONB2F_HELIX_FOSSIL
 	const_export MTMOONB2F_HP_UP
