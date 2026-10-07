@@ -175,6 +175,74 @@ def check_parties(const_names):
         err(f'Trainer parties: {problems} problem(s)')
 
 
+def check_party_order():
+    """H1/H2: map objects pick a party by position (OPP_<CLASS>, n), so a
+    party inserted before vanilla ones shifts every vanilla reference.
+    The first VANILLA[class] parties of each class are pret/pokered's (edited
+    in place at most). Every party after them must sit under a section
+    comment starting with '; Neris:' and be referenced by a map object.
+    """
+    # party count per class in pret/pokered (commit d47f74ee)
+    VANILLA = {
+        'Youngster': 13, 'BugCatcher': 14, 'Lass': 18, 'Sailor': 8,
+        'JrTrainerM': 9, 'JrTrainerF': 24, 'Pokemaniac': 7, 'SuperNerd': 12,
+        'Hiker': 14, 'Biker': 15, 'Burglar': 9, 'Engineer': 3,
+        'UnusedJuggler': 0, 'Fisher': 11, 'Swimmer': 15, 'CueBall': 9,
+        'Gambler': 7, 'Beauty': 15, 'Psychic': 4, 'Rocker': 2, 'Juggler': 8,
+        'Tamer': 6, 'BirdKeeper': 17, 'Blackbelt': 9, 'Rival1': 9,
+        'ProfOak': 3, 'Chief': 0, 'Scientist': 13, 'Giovanni': 3,
+        'Rocket': 41, 'CooltrainerM': 10, 'CooltrainerF': 8, 'Bruno': 1,
+        'Brock': 1, 'Misty': 1, 'LtSurge': 1, 'Erika': 1, 'Koga': 1,
+        'Blaine': 1, 'Sabrina': 1, 'Gentleman': 5, 'Rival2': 12,
+        'Rival3': 3, 'Lorelei': 1, 'Channeler': 24, 'Agatha': 1, 'Lance': 1,
+    }
+    text = read('data/trainers/parties.asm')
+    classes = re.findall(r'^\tdw (\w+)Data$', text, re.M)
+    consts = re.findall(r'^\ttrainer_const (\w+)',
+                        read('constants/trainer_constants.asm'), re.M)[1:]
+    block_of = {f'OPP_{c}': b for c, b in zip(consts, classes)}
+    refs = set()
+    for obj in Path('data/maps/objects').glob('*.asm'):
+        for c, n in re.findall(r'\b(OPP_\w+),\s*(\d+)',
+                               strip_comments(obj.read_text())):
+            if c in block_of:
+                refs.add((block_of[c], int(n)))
+    # (class, party number) -> marked; a comment block opens a section
+    marked = {}
+    cls, idx, neris, prev_comment = None, 0, False, False
+    for line in text.splitlines():
+        m = re.match(r'^(\w+)Data:', line)
+        if m:
+            cls, idx, neris = m.group(1), 0, False
+        elif cls and line.startswith(';'):
+            if not prev_comment:
+                neris = line.startswith('; Neris:')
+        elif cls and re.match(r'^\tdb\b', line):
+            idx += 1
+            marked[(cls, idx)] = neris
+        prev_comment = line.startswith(';')
+    before, added = len(errors), 0
+    for c in classes:
+        n = VANILLA.get(c)
+        total = sum(1 for k in marked if k[0] == c)
+        if n is None or total < n:
+            err(f'{c}Data: {total} parties, pret/pokered has {n}')
+            continue
+        for i in range(1, total + 1):
+            if i <= n and marked[(c, i)]:
+                err(f'{c}Data #{i}: Neris party inside the vanilla range '
+                    f'(1-{n}); move it to the end of the class')
+            elif i > n and not marked[(c, i)]:
+                err(f'{c}Data #{i}: party past the vanilla range (1-{n}) '
+                    f'without a "; Neris:" section comment')
+            elif i > n and (c, i) not in refs:
+                err(f'{c}Data #{i}: Neris party referenced by no map object')
+            added += i > n
+    if len(errors) == before:
+        print(f'Trainer party order: vanilla positions kept, {added} Neris '
+              'parties appended and referenced')
+
+
 def check_species_completeness(species_entries):
     """NERIS-007: every playable species has all identity fields."""
     excluded = {'NO_MON', 'FOSSIL_KABUTOPS', 'FOSSIL_AERODACTYL', 'MON_GHOST'}
@@ -402,6 +470,38 @@ def check_toggles():
               'counts aligned, object consts defined')
 
 
+def check_object_const_order():
+    """Object consts are positional: the n-th const_export is the n-th
+    object_event. A const whose TEXT_<const> belongs to another slot means
+    scripts and toggles address the wrong sprite (MtMoonB2F once did).
+    ponytail: name-based, so a misordered const whose text id differs from
+    its name (vanilla Bill/Daisy style) goes unseen.
+    """
+    misplaced, warnings, maps = 0, [], 0
+    for obj in sorted(Path('data/maps/objects').glob('*.asm')):
+        text = strip_comments(obj.read_text())
+        consts = re.findall(r'^\s*const_export\s+(\w+)', text, re.M)
+        texts = [m.group(1) if m else None for m in
+                 (re.search(r'\bTEXT_(\w+)', args) for args in
+                  re.findall(r'^\s*object_event\s+(.*)$', text, re.M))]
+        if not texts:
+            continue
+        maps += 1
+        if len(consts) != len(texts):
+            warnings.append(f'{obj.name}: {len(consts)} const_export for '
+                            f'{len(texts)} object_event')
+        for i, const in enumerate(consts):
+            if const in texts and texts.index(const) != i:
+                err(f'{obj.name}: {const} is const #{i + 1} but '
+                    f'TEXT_{const} is object_event #{texts.index(const) + 1}')
+                misplaced += 1
+    if not misplaced:
+        print(f'Object const order: {maps} maps, const_export order matches '
+              'object_event order')
+    for w in warnings:
+        print(f'  warn: {w}')
+
+
 def check_warp_targets():
     consts_text = strip_comments(read('constants/map_constants.asm'))
     maps = set(re.findall(r'map_const (\w+)', consts_text)) | {'LAST_MAP'}
@@ -414,6 +514,139 @@ def check_warp_targets():
         if target not in maps:
             err(f'warp_event in {src} references unknown map {target}')
     print(f'Warp targets: {len(referenced)} distinct maps, all defined')
+
+
+def check_edge_warps():
+    """A warp only fires (home/overworld.asm CheckWarpsNoCollision) if the
+    tile under the player is a warp tile of the tileset
+    (data/tilesets/warp_tile_ids.asm, read at screen coord 8,9 = the step's
+    lower-left tile), or else via ExtraWarpCheck. On edge-mode maps that is
+    IsPlayerFacingEdgeOfMap (engine/overworld/player_state.asm): the step
+    must be on the map border (x=0, y=0, x=2*w-1, y=2*h-1). A warp on a
+    plain floor tile inside the map can never be taken.
+    """
+    # ExtraWarpCheck: these tilesets/maps use IsWarpTileInFrontOfPlayer
+    # (carpet tiles) instead of the edge rule; not covered here
+    carpet_tilesets = {'OVERWORLD', 'SHIP', 'SHIP_PORT', 'PLATEAU'}
+    carpet_maps = {'ROCKET_HIDEOUT_B1F', 'ROCKET_HIDEOUT_B2F',
+                   'ROCKET_HIDEOUT_B4F', 'ROCK_TUNNEL_1F'}
+    edge_maps = {'SS_ANNE_3F'}
+
+    def incbins(path):
+        # label -> INCBIN path; consecutive labels share the next INCBIN
+        out, pending = {}, []
+        for line in strip_comments(read(path)).splitlines():
+            pending += re.findall(r'^(\w+)::?', line)
+            m = re.search(r'INCBIN "([^"]+)"', line)
+            if m:
+                out.update((lbl, m.group(1)) for lbl in pending)
+                pending = []
+        return out
+
+    tileset_consts = re.findall(r'^\tconst (\w+)', strip_comments(
+        read('constants/tileset_constants.asm')), re.M)
+    tileset_labels = re.findall(r'^\ttileset (\w+),', strip_comments(
+        read('data/tilesets/tileset_headers.asm')), re.M)
+    block_files = incbins('gfx/tilesets.asm')
+    bst = {c: (ROOT / block_files[f'{lbl}_Block']).read_bytes()
+           for c, lbl in zip(tileset_consts, tileset_labels)}
+
+    # warp tile lists, with label fallthrough as in the asm
+    warp_tiles, open_labels = {}, []
+    for line in strip_comments(read('data/tilesets/warp_tile_ids.asm')).splitlines():
+        m = re.match(r'^\.(\w+)WarpTileIDs:', line)
+        if m:
+            open_labels.append(m.group(1))
+            warp_tiles.setdefault(m.group(1), set())
+            continue
+        m = re.match(r'^\t(db|warp_tiles)\b(.*)', line)
+        if not m or not open_labels:
+            continue
+        ids = {int(t, 16) for t in re.findall(r'\$([0-9A-Fa-f]{2})', m.group(2))}
+        for lbl in open_labels:
+            warp_tiles[lbl] |= ids
+        if m.group(1) == 'warp_tiles' or '-1' in m.group(2):
+            open_labels = []
+    tiles_of = {c: warp_tiles[lbl] for c, lbl in zip(tileset_consts, tileset_labels)}
+
+    sizes = {n: (int(w), int(h)) for n, w, h in re.findall(
+        r'map_const (\w+),\s*(\d+),\s*(\d+)',
+        strip_comments(read('constants/map_constants.asm')))}
+    blk_files = incbins('maps.asm')
+
+    checked, inaccessible, before = 0, 0, len(errors)
+    for hdr in sorted(Path(ROOT / 'data/maps/headers').glob('*.asm')):
+        m = re.search(r'map_header (\w+),\s*(\w+),\s*(\w+)',
+                      strip_comments(hdr.read_text()))
+        label, mapc, tileset = m.groups()
+        if mapc not in edge_maps and (tileset in carpet_tilesets
+                                      or mapc in carpet_maps):
+            continue
+        w, h = sizes[mapc]
+        blk = (ROOT / blk_files[f'{label}_Blocks']).read_bytes()
+        obj = read(f'data/maps/objects/{label}.asm')
+        for n, (x, y, dest, note) in enumerate(re.findall(
+                r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)[^;\n]*(;.*)?$',
+                obj, re.M), 1):
+            # pret marks its dummy warps "; inaccessible" (SilphCo1F,
+            # SilphCo11F): unreachable on purpose, so not a defect
+            if 'inaccessible' in note:
+                inaccessible += 1
+                continue
+            x, y = int(x), int(y)
+            checked += 1
+            if x >= 2 * w or y >= 2 * h:
+                err(f'{label} warp {n} ({x},{y}) -> {dest}: outside the '
+                    f'{2 * w}x{2 * h} step grid')
+                continue
+            block = blk[(y // 2) * w + x // 2]
+            tile = bst[tileset][block * 16 + ((y % 2) * 2 + 1) * 4 + (x % 2) * 2]
+            on_edge = x in (0, 2 * w - 1) or y in (0, 2 * h - 1)
+            if tile not in tiles_of[tileset] and not on_edge:
+                err(f'{label} warp {n} ({x},{y}) -> {dest}: tile ${tile:02X} '
+                    f'is not a {tileset} warp tile and the step is not on the '
+                    f'map edge (x=0/{2 * w - 1}, y=0/{2 * h - 1}): unreachable')
+    if len(errors) == before:
+        print(f'Edge warps: {checked} warps on edge-mode maps, all on a warp '
+              f'tile or the map edge ({inaccessible} marked inaccessible)')
+
+
+def check_last_map_warps():
+    """`warp_event x, y, LAST_MAP, n` lands on warp n of wLastMap, which
+    WarpFound2 (home/overworld.asm) only sets when leaving an outside map
+    (CheckIfInOutsideMap: OVERWORLD or PLATEAU tileset). So for every
+    outside map P warping into map I, P's warp n must lead back to I.
+    """
+    # (map, warp y) -> parent, where the map script overrides wLastMap
+    # by player position: Route22Gate sets ROUTE_23 north of y=4, else ROUTE_22
+    scripted = {('ROUTE_22_GATE', 0): 'ROUTE_23', ('ROUTE_22_GATE', 7): 'ROUTE_22'}
+    consts = re.findall(r'map_const (\w+)',
+                        strip_comments(read('constants/map_constants.asm')))
+    labels = re.findall(r'^\tdw (\w+)_h', read('data/maps/map_header_pointers.asm'), re.M)
+    tileset, warps = {}, {}
+    for const, label in zip(consts, labels):
+        hdr = read(f'data/maps/headers/{label}.asm')
+        tileset[const] = re.search(r'map_header\s+\w+,\s*\w+,\s*(\w+)', hdr).group(1)
+        warps[const] = re.findall(
+            r'warp_event\s+[^,]+,\s*(\d+),\s*(\w+),\s*(\d+)',
+            strip_comments(read(f'data/maps/objects/{label}.asm')))
+    outside = sorted(k for k, t in tileset.items() if t in ('OVERWORLD', 'PLATEAU'))
+    checked = 0
+    for inner, inner_warps in warps.items():
+        entered_from = [p for p in outside if any(t == inner for _, t, _ in warps[p])]
+        for i, (y, target, n) in enumerate(inner_warps, 1):
+            if target != 'LAST_MAP':
+                continue
+            n = int(n)
+            override = scripted.get((inner, int(y)))
+            for parent in [override] if override else entered_from:
+                checked += 1
+                pw = warps[parent]
+                dest = pw[n - 1][1] if n <= len(pw) else None
+                if dest != inner:
+                    err(f'{inner} warp {i} exits to LAST_MAP warp {n}, but warp {n} of '
+                        f'parent {parent} leads to {dest}, not {inner}')
+    print(f'LAST_MAP warps: {checked} (exit warp, parent) pairs checked')
 
 
 def check_trainer_flags():
@@ -561,6 +794,49 @@ def check_map_header_banks():
               'to its own header bank')
 
 
+def check_town_map_entries():
+    """LoadTownMapEntry (engine/items/town_map.asm) indexes ExternalMapEntries
+    by outdoor map id, and returns the first InternalMapEntries row whose
+    INDOORGROUP_ bound is strictly greater than the indoor map id. So the
+    outdoor rows must follow the outdoor map ids one for one (row name ==
+    map const name), and the indoor rows must list the end_indoor_group
+    groups in constants order (which makes the bounds strictly increasing).
+    """
+    outdoor, groups, indoor = [], [], False
+    for line in strip_comments(read('constants/map_constants.asm')).splitlines():
+        indoor = indoor or 'FIRST_INDOOR_MAP EQU' in line
+        m = re.match(r'\tmap_const (\w+)', line)
+        if m and not indoor:
+            outdoor.append(m.group(1))
+        m = re.match(r'\tend_indoor_group (\w+)', line)
+        if m:
+            groups.append(m.group(1))
+    text = strip_comments(read('data/maps/town_map_entries.asm'))
+    ext = re.findall(r'^\toutdoor_map\s+\d+,\s*\d+,\s*(\w+)', text, re.M)
+    ints = re.findall(r'^\tindoor_map\s+(\w+),', text, re.M)
+    bad = 0
+    if len(ext) != len(outdoor):
+        err(f'ExternalMapEntries: {len(ext)} rows for {len(outdoor)} outdoor maps')
+        bad += 1
+    for i, (const, name) in enumerate(zip(outdoor, ext)):
+        if norm_key(const) + 'NAME' != norm_key(name):
+            err(f'ExternalMapEntries row ${i:02X} is {name}, map id ${i:02X} '
+                f'is {const}')
+            bad += 1
+            break  # one shift misaligns every later row
+    if ints != groups:
+        i = next((k for k, (a, b) in enumerate(zip(ints, groups)) if a != b),
+                 min(len(ints), len(groups)))
+        err(f'InternalMapEntries row {i}: '
+            f'{ints[i] if i < len(ints) else "<end>"}, expected group '
+            f'{groups[i] if i < len(groups) else "<end>"} '
+            f'({len(ints)} rows for {len(groups)} indoor groups)')
+        bad += 1
+    if not bad:
+        print(f'Town map entries: {len(ext)} outdoor rows aligned on map ids, '
+              f'{len(ints)} indoor rows in group order')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -570,11 +846,16 @@ def main():
     check_placeholder_assets(species_entries)
     check_wild_encounters(const_names)
     check_parties(const_names)
+    check_party_order()
     check_toggles()
+    check_object_const_order()
     check_warp_targets()
+    check_edge_warps()
+    check_last_map_warps()
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
+    check_town_map_entries()
     check_blackout_fly_warps()
     check_map_header_banks()
     if errors:

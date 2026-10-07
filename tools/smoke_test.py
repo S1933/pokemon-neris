@@ -9,10 +9,11 @@ Stages:
   3. control : the Start menu opens (the game is interactive, not a cutscene)
 
 Usage: python3 tools/smoke_test.py [--rom pokered.gbc] [--max-frames N]
-Exit 0 = all stages passed. Saves docs/smoke_test.png for visual review.
+Exit 0 = all stages passed. Saves smoke_test.png (git-ignored) for visual
+review.
 
-Needs pyboy: python3 -m venv .venv && .venv/bin/pip install pyboy
-(On the Pi the pokemon-agent venv provides it: see docs/TESTING.md.)
+Needs pyboy + Pillow, pinned as in CI:
+  python3 -m venv .venv && .venv/bin/pip install pyboy==2.7.0 pillow==12.3.0
 """
 
 import argparse
@@ -115,8 +116,7 @@ def main():
     pb.tick(30, False)
     menu_item = wram("wCurrentMenuItem")
     menu_active = menu_item is not None and 0 <= menu_item <= 4
-    shot = ROOT / "docs" / "smoke_test.png"
-    shot.parent.mkdir(parents=True, exist_ok=True)
+    shot = ROOT / "smoke_test.png"
     pb.screen.image.save(shot)
     print(f"control: start menu cursor={menu_item}, screenshot saved to "
           f"{shot.relative_to(ROOT)}")

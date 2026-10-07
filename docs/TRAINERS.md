@@ -7,6 +7,10 @@ Seuls les dresseurs placés dans une map apparaissent._
 | Map | Dresseur | Équipe (niveaux) |
 |---|---|---|
 | Academy | Maître Oran — Académie (finale du tournoi) (#2) | petiroc 58, aquajet 58, aquajet 58 |
+| Academy | CooltrainerM (#11) | crabeau 58, glaciette 58, terrakor 58 |
+| Academy | CooltrainerF (#9) | terrakor 57, pyrofelis 57 |
+| Academy | CooltrainerF (#10) | floralys 57, fulgurax 57, floraque 57 |
+| Academy | CooltrainerM (#12) | floralys 58, pyrofelis 58 |
 | AgathasRoom | Agatha (#1) | spectrela 73, chauvespi 73, fantomin 72, serpicol 76, spectrela 78 |
 | BrunosRoom | Elite Four (#1) | petiroc 69, aquajet 72, aquajet 72, petiroc 73, aquajet 76 |
 | CeladonGym | Erika (#1) | floraque 38, floralys 32, floralys 38 |
@@ -15,10 +19,11 @@ Seuls les dresseurs placés dans une map apparaissent._
 | CeladonGym | Beauty (#2) | floralys 32, floralys 32 |
 | CeladonGym | Lass (#18) | floraque 30, floraque 30 |
 | CeladonGym | Beauty (#3) | floralys 34 |
-| CeruleanCaveB1F | Viridian Gym (#3) | rocboul 59, terreux 55, terrakor 58, terrakor 59, terrakor 65 |
-| CeruleanCaveB1F | Rocket (#41) | terreux 42, psymini 42, terreux 42 |
+| CeladonGym | CooltrainerF (#1) | floralys 32, floraque 32, ivysaur 32 |
+| CeruleanCaveB1F | Ordre du Crépuscule — Maître Oran (Cerulean Cave B1F, postgame) (#4) | spectrela 74, venombru 73, terrakor 75, dracozelle 78 |
 | CeruleanCaveB1F | Rocket (#42) | chauvespi 60, venombru 60, venombru 60 |
 | CeruleanCaveB1F | Rocket (#43) | serpicol 63, obscurax 63, terreux 63 |
+| CeruleanCaveB1F | Rocket (#44) | spectrela 65, terrakor 65, venombru 65 |
 | CeruleanCity | Rocket (#5) | aquajet 23, psymini 23 |
 | CeruleanGym | Misty (#1) | aquajet 24, glaciette 28 |
 | CeruleanGym | Swimmer (#1) | dragonet 21, glaciette 21 |
@@ -244,14 +249,23 @@ Seuls les dresseurs placés dans une map apparaissent._
 | VermilionGym | Gentleman (#3) | electrox 30 |
 | VermilionGym | Rocker (#1) | voltour 26, voltour 26, voltour 26 |
 | VermilionGym | Sailor (#8) | electrox 28, electrox 28 |
+| VictoryRoad1F | CooltrainerF (#5) | fantomin 58, pyrofelis 58 |
+| VictoryRoad1F | CooltrainerM (#5) | ivysaur 55, wartortle 55, charmeleon 55, charizard 55 |
 | VictoryRoad2F | Blackbelt (#9) | aquajet 56, aquajet 56, aquajet 56 |
 | VictoryRoad2F | Juggler (#2) | psymini 54, obscurax 54, psymini 54, psymini 54 |
 | VictoryRoad2F | Tamer (#5) | fantomin 58, mentalis 58 |
 | VictoryRoad2F | Pokemaniac (#6) | charmeleon 52, lapras 52, oiseaulo 52 |
 | VictoryRoad2F | Juggler (#5) | mentalis 63 |
+| VictoryRoad3F | CooltrainerM (#2) | floralys 56, glaciette 56, pyrofelis 56 |
+| VictoryRoad3F | CooltrainerF (#2) | floralys 56, floralys 56, floraque 56 |
+| VictoryRoad3F | CooltrainerM (#3) | crabeau 56, venombru 56, blastoise 56 |
+| VictoryRoad3F | CooltrainerF (#3) | floraque 56, givralp 56, chansey 56 |
 | ViridianGym | Viridian Gym (#3) | rocboul 59, terreux 55, terrakor 58, terrakor 59, terrakor 65 |
+| ViridianGym | CooltrainerM (#9) | terreux 51, terreux 51 |
 | ViridianGym | Blackbelt (#6) | aquajet 52, aquajet 52 |
 | ViridianGym | Tamer (#3) | rocboul 56 |
 | ViridianGym | Blackbelt (#7) | aquajet 56 |
+| ViridianGym | CooltrainerM (#10) | rocboul 56 |
 | ViridianGym | Blackbelt (#8) | aquajet 50, aquajet 50, aquajet 50 |
 | ViridianGym | Tamer (#4) | serpicol 51, tauros 51 |
+| ViridianGym | CooltrainerM (#1) | serpicol 51, terrakor 51 |
