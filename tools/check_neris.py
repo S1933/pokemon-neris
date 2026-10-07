@@ -866,7 +866,12 @@ def check_port_lune():
         $01 under its right half;
       - every warp sits on an OVERWORLD door tile;
       - walking with collisions from the house exit (5,6) reaches every
-        warp and the north exit to Route 1 (row 0).
+        warp and the north exit to Route 1 (row 0);
+      - Oak spawns on screen of the player at the north exit;
+      - the opening cutscene (scripts/PalletTown.asm) only walks Oak and
+        the player over open steps and ends on the OAKS_LAB door: scripted
+        moves ignore collisions, so a solid or door step shows a sprite
+        walking through a building.
     """
     blk = (ROOT / 'maps/PalletTown.blk').read_bytes()
     bst = (ROOT / 'gfx/blocksets/overworld.bst').read_bytes()
@@ -894,9 +899,9 @@ def check_port_lune():
             err(f'Port-Lune player house: block ({c},{r}) is '
                 f'${blk[r * 10 + c]:02X}, expected ${b:02X}')
 
+    objects = strip_comments(read('data/maps/objects/PalletTown.asm'))
     warps = {(int(x), int(y)): dest for x, y, dest in re.findall(
-        r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)',
-        strip_comments(read('data/maps/objects/PalletTown.asm')), re.M)}
+        r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)', objects, re.M)}
     for (x, y), dest in warps.items():
         if tile(x, y) not in doors:
             err(f'Port-Lune warp ({x},{y}) -> {dest}: tile ${tile(x, y):02X} '
@@ -918,9 +923,70 @@ def check_port_lune():
     if not any(y == 0 for _, y in seen):
         err('Port-Lune north exit: unreachable from the house exit (5,6)')
 
+    def open_step(x, y):
+        return walkable(x, y) and tile(x, y) not in doors
+
+    # Oak walks from his object_event to the step below the player, who
+    # stands on the north exit (10,1) or (11,1); FindPathToPlayer
+    # (engine/overworld/pathfinding.asm) reduces the larger remaining
+    # distance each step, X on a tie
+    oak = tuple(map(int, re.search(
+        r'object_event\s+(\d+),\s*(\d+),\s*SPRITE_OAK', objects).groups()))
+    for target in ((10, 2), (11, 2)):
+        # CalcPositionOfPlayerRelativeToNPC reads screen pixels: off screen
+        # (more than 4 steps from the player), Oak's distance is garbage
+        # and the path overruns wNPCMovementDirections2 into wMiscFlags
+        if abs(oak[0] - target[0]) > 4 or abs(oak[1] - 1) > 4:
+            err(f'Port-Lune cutscene: Oak at {oak} is off screen for the '
+                f'player on ({target[0]},1)')
+        x, y = oak
+        path = [oak]
+        while (x, y) != target:
+            dx, dy = target[0] - x, target[1] - y
+            if abs(dx) >= abs(dy):
+                x += 1 if dx > 0 else -1
+            else:
+                y += 1 if dy > 0 else -1
+            path.append((x, y))
+        bad = [s for s in path if not open_step(*s)]
+        if bad:
+            err(f'Port-Lune cutscene: Oak from {oak} to {target} crosses '
+                f'solid or door steps {bad}')
+
+    # then both walk to the lab (engine/overworld/auto_movement.asm),
+    # PalletMovementScript_OakMoveLeft having put the player on (10,1) and
+    # Oak on (10,2); the player's list is a joypad state stack, consumed
+    # from its end
+    auto = strip_comments(read('engine/overworld/auto_movement.asm'))
+
+    def rle(label):
+        body = re.search(label + r':(.*?)db -1', auto, re.S).group(1)
+        return [(d, int(n)) for d, n in re.findall(
+            r'db \w+_(UP|DOWN|LEFT|RIGHT), (\d+)', body)]
+
+    moves = {'UP': (0, -1), 'DOWN': (0, 1), 'LEFT': (-1, 0), 'RIGHT': (1, 0)}
+    for who, (x, y), steps in (
+            ('Oak', (10, 2), rle('RLEList_ProfOakWalkToLab')),
+            ('player', (10, 1), rle('RLEList_PlayerWalkToLab')[::-1])):
+        bad = []
+        for d, n in steps:
+            for _ in range(n):
+                if warps.get((x, y)) == 'OAKS_LAB':
+                    break  # warped into the lab
+                x, y = x + moves[d][0], y + moves[d][1]
+                if (x, y) not in warps and not open_step(x, y):
+                    bad.append((x, y))
+        if bad:
+            err(f'Port-Lune cutscene: {who} walk to the lab crosses solid or '
+                f'door steps {bad}')
+        if warps.get((x, y)) != 'OAKS_LAB':
+            err(f'Port-Lune cutscene: {who} walk to the lab ends on {(x, y)}, '
+                'not on the OAKS_LAB warp')
+
     if len(errors) == before:
         print(f'Port-Lune: player house whole, {len(warps)} warps on door '
-              'tiles, all reachable with the north exit')
+              'tiles, all reachable with the north exit, '
+              'opening cutscene on open steps')
 
 
 def main():
