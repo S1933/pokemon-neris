@@ -7,6 +7,9 @@ Stages:
                starting town (wCurMap == 0, Port-Lune) and it stays there
                with no input for 2 seconds
   3. control : the Start menu opens (the game is interactive, not a cutscene)
+  4. battle  : the bot plays the opening (Prof. Sylve cutscene, starter,
+               Kael in the lab), reaches the Route 1 grass and a wild
+               battle starts with the right enemy sprite (--no-battle skips)
 
 Usage: python3 tools/smoke_test.py [--rom pokered.gbc] [--max-frames N]
 Exit 0 = all stages passed. Saves smoke_test.png (git-ignored) for visual
