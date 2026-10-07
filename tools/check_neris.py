@@ -531,6 +531,12 @@ def check_edge_warps():
     carpet_maps = {'ROCKET_HIDEOUT_B1F', 'ROCKET_HIDEOUT_B2F',
                    'ROCKET_HIDEOUT_B4F', 'ROCK_TUNNEL_1F'}
     edge_maps = {'SS_ANNE_3F'}
+    # (map, warp number): vanilla dummy warps on plain floor, unreachable
+    # in pret too (its "; inaccessible" comments, #591), not a defect
+    dummy_warps = {
+        ('SILPH_CO_1F', 5),   # -> SILPH_CO_3F, floor tile $01 at (16,10)
+        ('SILPH_CO_11F', 3),  # -> LAST_MAP, floor tile $1F at (5,5)
+    }
 
     def incbins(path):
         # label -> INCBIN path; consecutive labels share the next INCBIN
@@ -585,12 +591,10 @@ def check_edge_warps():
         w, h = sizes[mapc]
         blk = (ROOT / blk_files[f'{label}_Blocks']).read_bytes()
         obj = read(f'data/maps/objects/{label}.asm')
-        for n, (x, y, dest, note) in enumerate(re.findall(
-                r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)[^;\n]*(;.*)?$',
-                obj, re.M), 1):
-            # pret marks its dummy warps "; inaccessible" (SilphCo1F,
-            # SilphCo11F): unreachable on purpose, so not a defect
-            if 'inaccessible' in note:
+        for n, (x, y, dest) in enumerate(re.findall(
+                r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)',
+                strip_comments(obj), re.M), 1):
+            if (mapc, n) in dummy_warps:
                 inaccessible += 1
                 continue
             x, y = int(x), int(y)
@@ -608,7 +612,7 @@ def check_edge_warps():
                     f'map edge (x=0/{2 * w - 1}, y=0/{2 * h - 1}): unreachable')
     if len(errors) == before:
         print(f'Edge warps: {checked} warps on edge-mode maps, all on a warp '
-              f'tile or the map edge ({inaccessible} marked inaccessible)')
+              f'tile or the map edge ({inaccessible} dummy warps excepted)')
 
 
 def check_last_map_warps():
