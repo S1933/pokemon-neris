@@ -7,14 +7,14 @@ _LighthouseLunarisBattleText::
 
 _LighthouseQuakeText::
 	text "Le phare tremble!"
-	line "Un séisme secoue"
-	cont "toute la région"
-	cont "de Néris!"
+	line "Un seisme secoue"
+	cont "toute la region"
+	cont "de Neris!"
 	done
 
 _LighthouseLunarisVanishedText::
 	text "Lunaris fixe le"
-	line "Mont Néris..."
+	line "Mont Neris..."
 	cont "Puis il s'envole"
 	cont "dans la nuit!"
 	done

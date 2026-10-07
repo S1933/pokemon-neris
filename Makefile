@@ -105,10 +105,12 @@ tools:
 .PHONY: check registry
 check:
 	@python3 tools/check_neris.py
+	@python3 tools/check_rom.py
 
 registry:
 	@python3 tools/gen_registry.py
 	@python3 tools/gen_trainers.py
+	@python3 tools/gen_pic_banks.py
 
 
 RGBASMFLAGS += -Q8 -P includes.asm

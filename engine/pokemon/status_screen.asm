@@ -459,7 +459,7 @@ CalcExpToLevelUp:
 
 StatusScreenExpText:
 	db   "POINTS EXP"
-	next "NIVEAU +@"
+	next "A NIVEAU @"
 
 StatusScreen_ClearName:
 	ld bc, NAME_LENGTH - 1

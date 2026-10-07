@@ -25,12 +25,12 @@ _CeruleanCaveB1FOranEndBattleText::
 _CeruleanCaveB1FOranMarkText::
 	text "Tu m'as vaincu,"
 	line "et l'ORDRE est"
-	cont "disséminé."
-	para "Reçois la"
+	cont "dissemine."
+	para "Recois la"
 	line "MARQUE de NERIS!"
 	para "Elle honore ceux"
-	line "qui protègent"
-	cont "les légendes."
+	line "qui protegent"
+	cont "les legendes."
 	prompt
 
 _CeruleanCaveB1FGrunt1BattleText::

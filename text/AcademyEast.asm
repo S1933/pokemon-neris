@@ -6,7 +6,7 @@ _AcademyEastCuratorDefaultText::
 	cont "l'ACADEMIE."
 	para "Elle reste"
 	line "fermee tant que"
-	cont "l'ORDRE rôde."
+	cont "l'ORDRE rode."
 	done
 
 _AcademyEastCuratorMarkedText::

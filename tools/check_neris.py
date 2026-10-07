@@ -467,6 +467,38 @@ def check_map_header_pointers():
         print('Map header pointers: all map ids point to their own header')
 
 
+def check_text_lines():
+    """Translated dialog (text/) fits the 18-char text box; only ASCII
+    from the charmap (accented characters or '+' are unmapped and break
+    encoding). Vanilla predef texts (data/text/) are exempt from the
+    length rule but still scanned for unmapped characters.
+    """
+    import glob
+    problems = []
+    for path in glob.glob(str(ROOT / 'text' / '*.asm')) + \
+            glob.glob(str(ROOT / 'data' / 'text' / '*.asm')):
+        enforce_length = '/text/' in path and '/data/' not in path
+        for n, line in enumerate(Path(path).read_text().splitlines(), 1):
+            m = re.search(r'"([^"]*)"', line)
+            if not m:
+                continue
+            if re.match(r'\s*(text|line|cont|next)\b', line) is None:
+                continue
+            content = m.group(1)
+            effective = content.replace('<PLAYER>', 'x' * 7) \
+                               .replace('<RIVAL>', 'x' * 7) \
+                               .rstrip('@')
+            if enforce_length and len(effective) > 18:
+                problems.append(f'{Path(path).name}:{n}: {len(effective)} chars: '
+                                f'"{content}"')
+            bad = [c for c in content if ord(c) > 127 and c != chr(0xA5)]
+            if bad:
+                problems.append(f'{Path(path).name}:{n}: unmapped char(s) '
+                                f'{bad} in "{content}"')
+    for p in problems:
+        err(f'text: {p}')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -480,6 +512,7 @@ def main():
     check_warp_targets()
     check_trainer_flags()
     check_map_header_pointers()
+    check_text_lines()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')

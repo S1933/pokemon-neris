@@ -9,8 +9,8 @@ PalletTown_Object:
 	def_warp_events
 	warp_event  5,  5, REDS_HOUSE_1F, 1
 	warp_event 13,  5, BLUES_HOUSE, 1
+	warp_event  6,  7, LIGHTHOUSE, 1
 	warp_event 12, 11, OAKS_LAB, 2
-	warp_event 15, 13, LIGHTHOUSE, 1
 
 	def_bg_events
 	bg_event 13, 13, TEXT_PALLETTOWN_OAKSLAB_SIGN
