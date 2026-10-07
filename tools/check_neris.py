@@ -416,6 +416,101 @@ def check_warp_targets():
     print(f'Warp targets: {len(referenced)} distinct maps, all defined')
 
 
+def check_edge_warps():
+    """A warp only fires (home/overworld.asm CheckWarpsNoCollision) if the
+    tile under the player is a warp tile of the tileset
+    (data/tilesets/warp_tile_ids.asm, read at screen coord 8,9 = the step's
+    lower-left tile), or else via ExtraWarpCheck. On edge-mode maps that is
+    IsPlayerFacingEdgeOfMap (engine/overworld/player_state.asm): the step
+    must be on the map border (x=0, y=0, x=2*w-1, y=2*h-1). A warp on a
+    plain floor tile inside the map can never be taken.
+    """
+    # ExtraWarpCheck: these tilesets/maps use IsWarpTileInFrontOfPlayer
+    # (carpet tiles) instead of the edge rule; not covered here
+    carpet_tilesets = {'OVERWORLD', 'SHIP', 'SHIP_PORT', 'PLATEAU'}
+    carpet_maps = {'ROCKET_HIDEOUT_B1F', 'ROCKET_HIDEOUT_B2F',
+                   'ROCKET_HIDEOUT_B4F', 'ROCK_TUNNEL_1F'}
+    edge_maps = {'SS_ANNE_3F'}
+
+    def incbins(path):
+        # label -> INCBIN path; consecutive labels share the next INCBIN
+        out, pending = {}, []
+        for line in strip_comments(read(path)).splitlines():
+            pending += re.findall(r'^(\w+)::?', line)
+            m = re.search(r'INCBIN "([^"]+)"', line)
+            if m:
+                out.update((lbl, m.group(1)) for lbl in pending)
+                pending = []
+        return out
+
+    tileset_consts = re.findall(r'^\tconst (\w+)', strip_comments(
+        read('constants/tileset_constants.asm')), re.M)
+    tileset_labels = re.findall(r'^\ttileset (\w+),', strip_comments(
+        read('data/tilesets/tileset_headers.asm')), re.M)
+    block_files = incbins('gfx/tilesets.asm')
+    bst = {c: (ROOT / block_files[f'{lbl}_Block']).read_bytes()
+           for c, lbl in zip(tileset_consts, tileset_labels)}
+
+    # warp tile lists, with label fallthrough as in the asm
+    warp_tiles, open_labels = {}, []
+    for line in strip_comments(read('data/tilesets/warp_tile_ids.asm')).splitlines():
+        m = re.match(r'^\.(\w+)WarpTileIDs:', line)
+        if m:
+            open_labels.append(m.group(1))
+            warp_tiles.setdefault(m.group(1), set())
+            continue
+        m = re.match(r'^\t(db|warp_tiles)\b(.*)', line)
+        if not m or not open_labels:
+            continue
+        ids = {int(t, 16) for t in re.findall(r'\$([0-9A-Fa-f]{2})', m.group(2))}
+        for lbl in open_labels:
+            warp_tiles[lbl] |= ids
+        if m.group(1) == 'warp_tiles' or '-1' in m.group(2):
+            open_labels = []
+    tiles_of = {c: warp_tiles[lbl] for c, lbl in zip(tileset_consts, tileset_labels)}
+
+    sizes = {n: (int(w), int(h)) for n, w, h in re.findall(
+        r'map_const (\w+),\s*(\d+),\s*(\d+)',
+        strip_comments(read('constants/map_constants.asm')))}
+    blk_files = incbins('maps.asm')
+
+    checked, inaccessible, before = 0, 0, len(errors)
+    for hdr in sorted(Path(ROOT / 'data/maps/headers').glob('*.asm')):
+        m = re.search(r'map_header (\w+),\s*(\w+),\s*(\w+)',
+                      strip_comments(hdr.read_text()))
+        label, mapc, tileset = m.groups()
+        if mapc not in edge_maps and (tileset in carpet_tilesets
+                                      or mapc in carpet_maps):
+            continue
+        w, h = sizes[mapc]
+        blk = (ROOT / blk_files[f'{label}_Blocks']).read_bytes()
+        obj = read(f'data/maps/objects/{label}.asm')
+        for n, (x, y, dest, note) in enumerate(re.findall(
+                r'^\s*warp_event\s+(\d+),\s*(\d+),\s*(\w+)[^;\n]*(;.*)?$',
+                obj, re.M), 1):
+            # pret marks its dummy warps "; inaccessible" (SilphCo1F,
+            # SilphCo11F): unreachable on purpose, so not a defect
+            if 'inaccessible' in note:
+                inaccessible += 1
+                continue
+            x, y = int(x), int(y)
+            checked += 1
+            if x >= 2 * w or y >= 2 * h:
+                err(f'{label} warp {n} ({x},{y}) -> {dest}: outside the '
+                    f'{2 * w}x{2 * h} step grid')
+                continue
+            block = blk[(y // 2) * w + x // 2]
+            tile = bst[tileset][block * 16 + ((y % 2) * 2 + 1) * 4 + (x % 2) * 2]
+            on_edge = x in (0, 2 * w - 1) or y in (0, 2 * h - 1)
+            if tile not in tiles_of[tileset] and not on_edge:
+                err(f'{label} warp {n} ({x},{y}) -> {dest}: tile ${tile:02X} '
+                    f'is not a {tileset} warp tile and the step is not on the '
+                    f'map edge (x=0/{2 * w - 1}, y=0/{2 * h - 1}): unreachable')
+    if len(errors) == before:
+        print(f'Edge warps: {checked} warps on edge-mode maps, all on a warp '
+              f'tile or the map edge ({inaccessible} marked inaccessible)')
+
+
 def check_trainer_flags():
     consts_text = strip_comments(read('constants/event_constants.asm'))
     events = set(re.findall(r'\bconst (EVENT_\w+)', consts_text))
@@ -510,6 +605,7 @@ def main():
     check_parties(const_names)
     check_toggles()
     check_warp_targets()
+    check_edge_warps()
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
