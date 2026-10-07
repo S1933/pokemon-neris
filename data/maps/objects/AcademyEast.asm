@@ -2,8 +2,8 @@ AcademyEast_Object:
 	db $3 ; border block
 
 	def_warp_events
-	warp_event  4, 11, ACADEMY, 3
-	warp_event  5, 11, ACADEMY, 4
+	warp_event  4, 13, ACADEMY, 3
+	warp_event  5, 13, ACADEMY, 4
 
 	def_bg_events
 
