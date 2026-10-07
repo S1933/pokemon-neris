@@ -474,7 +474,7 @@ def check_object_const_order():
     """Object consts are positional: the n-th const_export is the n-th
     object_event. A const whose TEXT_<const> belongs to another slot means
     scripts and toggles address the wrong sprite (MtMoonB2F once did).
-    ponytail: name-based, so a misordered const whose text id differs from
+    Limitation: name-based, so a misordered const whose text id differs from
     its name (vanilla Bill/Daisy style) goes unseen.
     """
     misplaced, warnings, maps = 0, [], 0
