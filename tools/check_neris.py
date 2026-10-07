@@ -620,6 +620,18 @@ def check_last_map_warps():
     # (map, warp y) -> parent, where the map script overrides wLastMap
     # by player position: Route22Gate sets ROUTE_23 north of y=4, else ROUTE_22
     scripted = {('ROUTE_22_GATE', 0): 'ROUTE_23', ('ROUTE_22_GATE', 7): 'ROUTE_22'}
+    # maps with a LAST_MAP warp but no outside map warping in: wLastMap is
+    # not statically known, so each one needs a reason here
+    no_outside_parent = {
+        # orphaned by Neris: Viridian's warp 3 now leads to ACADEMY
+        'VIRIDIAN_SCHOOL_HOUSE',
+        # pret's unused slots, reached by no warp
+        'CERULEAN_TRASHED_HOUSE_COPY', 'UNDERGROUND_PATH_ROUTE_6_COPY',
+        'UNDERGROUND_PATH_ROUTE_7_COPY', 'CINNABAR_MART_COPY', 'UNUSED_MAP_E7',
+        # entered only from SilphCo 7F/10F; its LAST_MAP warp is pret's
+        # "; inaccessible" dummy
+        'SILPH_CO_11F',
+    }
     consts = re.findall(r'map_const (\w+)',
                         strip_comments(read('constants/map_constants.asm')))
     labels = re.findall(r'^\tdw (\w+)_h', read('data/maps/map_header_pointers.asm'), re.M)
@@ -631,7 +643,7 @@ def check_last_map_warps():
             r'warp_event\s+[^,]+,\s*(\d+),\s*(\w+),\s*(\d+)',
             strip_comments(read(f'data/maps/objects/{label}.asm')))
     outside = sorted(k for k, t in tileset.items() if t in ('OVERWORLD', 'PLATEAU'))
-    checked = 0
+    checked, before = 0, len(errors)
     for inner, inner_warps in warps.items():
         entered_from = [p for p in outside if any(t == inner for _, t, _ in warps[p])]
         for i, (y, target, n) in enumerate(inner_warps, 1):
@@ -639,6 +651,9 @@ def check_last_map_warps():
                 continue
             n = int(n)
             override = scripted.get((inner, int(y)))
+            if not (override or entered_from or inner in no_outside_parent):
+                err(f'{inner} warp {i} exits to LAST_MAP, but no outside map '
+                    'warps into it: wLastMap is unknown')
             for parent in [override] if override else entered_from:
                 checked += 1
                 pw = warps[parent]
@@ -646,7 +661,9 @@ def check_last_map_warps():
                 if dest != inner:
                     err(f'{inner} warp {i} exits to LAST_MAP warp {n}, but warp {n} of '
                         f'parent {parent} leads to {dest}, not {inner}')
-    print(f'LAST_MAP warps: {checked} (exit warp, parent) pairs checked')
+    if len(errors) == before:
+        print(f'LAST_MAP warps: {checked} (exit warp, parent) pairs checked, '
+              f'{len(no_outside_parent)} maps without outside parent excepted')
 
 
 def check_trainer_flags():
