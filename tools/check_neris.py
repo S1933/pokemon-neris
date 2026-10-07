@@ -202,7 +202,7 @@ def check_party_order():
                         read('constants/trainer_constants.asm'), re.M)[1:]
     block_of = {f'OPP_{c}': b for c, b in zip(consts, classes)}
     refs = set()
-    for obj in Path('data/maps/objects').glob('*.asm'):
+    for obj in (ROOT / 'data/maps/objects').glob('*.asm'):
         for c, n in re.findall(r'\b(OPP_\w+),\s*(\d+)',
                                strip_comments(obj.read_text())):
             if c in block_of:
@@ -478,7 +478,7 @@ def check_object_const_order():
     its name (vanilla Bill/Daisy style) goes unseen.
     """
     misplaced, warnings, maps = 0, [], 0
-    for obj in sorted(Path('data/maps/objects').glob('*.asm')):
+    for obj in sorted((ROOT / 'data/maps/objects').glob('*.asm')):
         text = strip_comments(obj.read_text())
         consts = re.findall(r'^\s*const_export\s+(\w+)', text, re.M)
         texts = [m.group(1) if m else None for m in
@@ -581,7 +581,7 @@ def check_edge_warps():
     blk_files = incbins('maps.asm')
 
     checked, inaccessible, before = 0, 0, len(errors)
-    for hdr in sorted(Path(ROOT / 'data/maps/headers').glob('*.asm')):
+    for hdr in sorted((ROOT / 'data/maps/headers').glob('*.asm')):
         m = re.search(r'map_header (\w+),\s*(\w+),\s*(\w+)',
                       strip_comments(hdr.read_text()))
         label, mapc, tileset = m.groups()
