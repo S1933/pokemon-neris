@@ -499,6 +499,49 @@ def check_text_lines():
         err(f'text: {p}')
 
 
+def check_blackout_fly_warps():
+    """H4: healing at a nurse sets wLastBlackoutMap to wLastMap, i.e. the
+    outdoor map whose warp led into the Pokecenter. Blackout/Dig/Teleport
+    then scan FlyWarpDataPtr (no terminator) for that id, so every such map
+    needs an entry, landing one tile below its Pokecenter door.
+    """
+    map_text = strip_comments(read('constants/map_constants.asm'))
+    outdoor = re.findall(r'map_const (\w+)',
+                         map_text.split('DEF FIRST_INDOOR_MAP')[0])
+    by_key = {norm_key(m): m for m in outdoor}
+    nurse_maps = {norm_key(p.stem) for p in (ROOT / 'scripts').glob('*.asm')
+                  if 'script_pokecenter_nurse' in p.read_text()}
+    doors = {}
+    for obj in (ROOT / 'data/maps/objects').glob('*.asm'):
+        mapname = by_key.get(norm_key(obj.stem))
+        if mapname is None:
+            continue
+        for x, y, target in re.findall(r'warp_event\s+(\d+),\s*(\d+),\s*(\w+)',
+                                       strip_comments(obj.read_text())):
+            if norm_key(target) in nurse_maps:
+                doors.setdefault(mapname, set()).add((int(x), int(y) + 1))
+    warps_text = strip_comments(read('data/maps/special_warps.asm'))
+    entries = dict(re.findall(r'fly_warp_spec (\w+),\s*\.(\w+)', warps_text))
+    spots = {label: (mapname, int(x), int(y)) for label, mapname, x, y in
+             re.findall(r'^\.(\w+):\s*fly_warp (\w+),\s*(\d+),\s*(\d+)',
+                        warps_text, re.M)}
+    bad = 0
+    for mapname, fronts in sorted(doors.items()):
+        spot = spots.get(entries.get(mapname))
+        if spot is None:
+            err(f'{mapname} leads to a Pokecenter but has no FlyWarpDataPtr '
+                'entry (blackout/Dig/Teleport would read past the table)')
+            bad += 1
+        elif spot[0] != mapname or (spot[1], spot[2]) not in fronts:
+            err(f'FlyWarpDataPtr {mapname} lands at {spot[0]} ({spot[1]}, '
+                f'{spot[2]}), expected one of {sorted(fronts)} below a '
+                'Pokecenter door')
+            bad += 1
+    if not bad:
+        print(f'Blackout warps: {len(doors)} maps leading to a Pokecenter, '
+              'all in FlyWarpDataPtr in front of the door')
+
+
 def main():
     consts_text = strip_comments(read('constants/pokemon_constants.asm'))
     const_names = re.findall(r'^\tconst ([A-Z0-9_]+)', consts_text, re.M)
@@ -513,6 +556,7 @@ def main():
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
+    check_blackout_fly_warps()
     if errors:
         print()
         print(f'{len(errors)} problem(s):')
