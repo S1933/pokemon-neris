@@ -1,50 +1,52 @@
 # Phase 3 blocker: Port-Lune north exit does not transfer to Route 1
 
-## Symptom
-After exiting the player's house in Port-Lune (PalletTown), the smoke
-test bot can never walk north into Route 1 (Sentier Embruns). The
-player reaches (5,2) (or (3,2)/(8,2) depending on build) but the tile
-directly above (row 1 of the connection strip) is always blocked, so
-the north map transfer never fires. Walking east along row 2 lets the
-player stand on tiles that route 1 marks blocked (0x31) and vice versa.
+**Status: closed (2026-10-07).** The map and the engine were never broken.
+The smoke-test bot was. `tools/smoke_test.py` now passes its `battle` stage.
 
-## What was ruled out
-- Engine: home/overworld.asm and engine/overworld/* are identical to
-  vanilla pret except the "hold B to run" feature (DoPlayerSpeedup).
-  The warp check (CheckWarpsNoCollision / door tile logic) is vanilla.
-- Tilesets: gfx/tilesets/overworld.* and warp_tile_ids.asm identical.
-- Warp data: wNumberOfWarps/wWarpEntries load correctly in WRAM with
-  the right coordinates and destination maps.
-- Door warps work when the map has EXACT vanilla geometry: with the
-  fork's original 10x9 PalletTown, stepping up from (5,6) onto the
-  door tile (5,5) warps into REDS_HOUSE_1F, exactly like vanilla.
+## Symptom (as reported)
+After leaving the player's house in Port-Lune (PalletTown), the smoke-test
+bot never walked north into Route 1 (Sentier Embruns). It stalled around
+row 1/2 of the town, and the `battle` stage (wild battle on Route 1) failed.
 
-## What was tried and failed
-- Enlarging Port-Lune to 16x14 (offset 0), then 16x14 with connection
-  offsets +/-3, then 20x18 with offsets +/-5: in ALL variants the door
-  warps stop firing and the north connection strip collision does not
-  line up. Vanilla-geometry builds always work.
-- Navigating the north strip empirically: on 10x9 offset 0, (5,2) is
-  walkable but (5,1) is blocked although Route1's row 16 x5 is 0x0b
-  (walkable). Reads like the collision of the connection strip rows
-  does not match the drawn strip - or the bot's understanding of the
-  strip rows is off by something.
+## Mechanism
+Two independent faults, both in the bot:
 
-## Still unknown / next steps
-1. Build a RELIABLE vanilla intro bot (walk_to_town flakes on vanilla:
-   sometimes times out in the intro/naming screens). Then run the exact
-   same north-exit sequence on the vanilla ROM: if vanilla blocks at
-   (5,1) too, the bot's reading is wrong, not the fork.
-2. If vanilla transfers, dump the collision code path (GetTileAndTileColl
-   / wTileMap lookups) for the connection strip rows in both ROMs and
-   compare the buffer bytes under the player.
-3. Note: the fork's ORIGINAL PalletTown warps (13,5), (12,11) and the
-   fork-added LIGHTHOUSE (15,13) are the vanilla-style coordinates;
-   they were never proven broken. The "house exit lands on the beach"
-   observation matches vanilla behaviour of the LAST_MAP exit spawn.
-4. The gen1 connection strip geometry (rows 0-2 of a north-connected
-   map) is the remaining suspect: verify against pret documentation
-   (docs/pret map_connection format) before touching the maps again.
+1. **Blocks vs steps.** `wXCoord`/`wYCoord` count steps (two per block).
+   Port-Lune is 10x9 blocks, so 20x18 steps. The old BFS in
+   `tools/battle_check.py` searched a 10x9 grid (`_TOWN_W, _TOWN_H = 10, 9`),
+   which is the block size. The north opening is at step x=10/11 (block 5),
+   outside that grid. The "blocked (5,1)" it kept hitting is a tree in block 2.
+2. **Vanilla Prof. Oak intercept.** In the right place, it still could not
+   have left. `PalletTownDefaultScript` (`scripts/PalletTown.asm`, unchanged
+   from vanilla) fires when `wYCoord == 1` and `EVENT_FOLLOWED_OAK_INTO_LAB`
+   is not set. It sets `wJoyIgnore = PAD_SELECT | PAD_START | PAD_CTRL_PAD`
+   and starts the Prof. Sylve cutscene ("He! Attends!"). From then on no
+   arrow key moves the player until the cutscene is advanced with A. The
+   bot never pressed A there and never took a starter, so a wild battle on
+   Route 1 was unreachable by construction.
 
-The 16x14 enlargement was reverted in 7fc7248d; do NOT re-apply a map
-resize until the vanilla control test explains the strip behaviour.
+Because of fault 2, the map resizes tried and reverted in 7fc7248d could not
+have fixed anything.
+
+## Resolution
+`tools/battle_check.py` now drives the opening from WRAM state:
+
+- navigation is a BFS on the step grid (`2*wCurMapWidth` x
+  `2*wCurMapHeight`). It learns collisions from failed steps, relearns
+  when no path is left (wandering NPCs), and avoids warp tiles read from
+  `wWarpEntries`;
+- whenever a text box, menu, script lock (`wFontLoaded`, `wJoyIgnore`) or
+  battle (`wIsInBattle`) holds the d-pad, the bot presses A. That plays the
+  Prof. Sylve cutscene, takes the starter, fights Kael in the lab and closes
+  every dialog;
+- the goals depend on map and progress (`wPartyCount`): north-exit row,
+  then a Poke Ball in the lab, then the lab exit, then Route 1. On Route 1
+  the bot paces on the first grass step, tested the way the game tests it
+  (`wTileMap` (9,9) == `wGrassTile`), until `wIsInBattle == 1`;
+- the stage fails if no trainer battle was fought in the lab.
+
+While doing this, the enemy-sprite check was found to read
+`wMonHeader + 1` (base HP) instead of `wMonHFrontSprite`. It now reads the
+symbol. It had never run before, because the stage was unreachable.
+
+No game data or script was changed.

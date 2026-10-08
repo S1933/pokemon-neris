@@ -5,19 +5,21 @@ bedroom REDS_HOUSE_2F) mash through the intro, close the SNES text box,
 walk down to 1F and out of the house until wCurMap == PALLET_TOWN
 (Port-Lune, map 0).
 
-run_stage_battle: from Port-Lune, walk north into the Route 1 grass
-(Sentier Embruns) until a wild battle starts, then verify the enemy
-sprite was loaded from the right pic:
-  - wEnemyMonSpecies must be set (wIsInBattle is unreliable in this
-    fork: it reads 34 during battles);
+run_stage_battle: from Port-Lune, play the real opening (Prof. Sylve
+cutscene at the north exit, starter in the lab, battle against Kael, out
+of the lab), walk north into the Route 1 grass (Sentier Embruns) until a
+wild battle starts (wIsInBattle == 1), then verify the enemy sprite was
+loaded from the right pic:
+  - wEnemyMonSpecies must be set;
   - wMonHFrontSprite must equal the *PicFront address declared in the
     species' base_stats file (what tools/check_rom.py expects);
   - the decompressed sprite buffers must not be empty.
 
-Walking uses render=False frames for speed; only occasional frames are
-rendered so screenshots stay available.
+The bot is driven by WRAM state (map, step coordinates, text/joypad
+locks, party, battle flag), never by a fixed route; it is deterministic
+for a given ROM. Walking uses render=False frames for speed.
 
-The battle screenshot is saved to docs/smoke_battle.png for review.
+The battle screenshot is saved to smoke_battle.png (git-ignored) for review.
 """
 import re
 import sys
@@ -67,67 +69,159 @@ def _close_box(pb):
         _press(pb, "b", 10)
 
 
-# Port-Lune town navigation: walk to (5,0) (the north exit opening)
-# with BFS over the 10x9 grid, learning blocked tiles as moves fail.
-# Needed because the fork's warp wiring is broken (LIGHTHOUSE warp at
-# (15,13) is out of bounds for the 10x9 map, shifting LAST_MAP warp
-# indices): the house-exit spawn lands on the beach instead of the
-# door, so a fixed route is fragile.
-_TOWN_W, _TOWN_H = 10, 9
+# Step-grid navigation. wXCoord/wYCoord count steps (2 per block), so a
+# map is 2*wCurMapWidth x 2*wCurMapHeight steps (20x18 for Port-Lune).
+# Collisions are learnt: a free step that does not move the player
+# marks its target blocked (forgotten when no path is left, so a
+# wandering NPC only blocks a tile for a while). Warp tiles other than
+# the goal are avoided.
+OAKS_LAB = 40       # 0x28
+ROUTE_1 = 12        # 0x0C
+PAD_CTRL_PAD = 0xF0
+_DIRS = (("up", 0, -1), ("down", 0, 1), ("left", -1, 0), ("right", 1, 0))
 
 
-def _navigate(pb, wram, tx, ty, frames, step_frames=25, budget=3000,
-              state=None):
-    if state is None:
-        state = {"blocked": set()}
-    blocked = state["blocked"]
-    doors = {(5, 5)}  # warp tiles: reaching them warps away, avoid
-    while frames < budget and wram("wCurMap") == PALLET_TOWN:
-        sx, sy = wram("wXCoord"), wram("wYCoord")
-        if (sx, sy) == (tx, ty):
-            # standing on the exit opening: step north into Route 1
-            _press(pb, "up", 40)
-            frames += 42
-            return wram("wCurMap") != PALLET_TOWN, frames
-        # BFS from (sx,sy) to (tx,ty) on the walkable-so-far grid
-        from collections import deque
-        prev, seen = {}, {(sx, sy)}
-        q = deque([(sx, sy)])
-        goal = None
-        while q:
-            cx, cy = q.popleft()
-            if (cx, cy) == (tx, ty):
-                goal = (cx, cy)
-                break
-            for dx, dy, k in ((0, -1, "up"), (0, 1, "down"),
-                              (-1, 0, "left"), (1, 0, "right")):
-                nx, ny = cx + dx, cy + dy
-                if 0 <= nx < _TOWN_W and 0 <= ny < _TOWN_H and \
-                        (nx, ny) not in blocked and (nx, ny) not in doors \
-                        and (nx, ny) not in seen:
-                    seen.add((nx, ny))
-                    prev[(nx, ny)] = (cx, cy, k)
-                    q.append((nx, ny))
+def _free(wram):
+    """True when the overworld takes d-pad input: no text box or menu
+    (wFontLoaded bit 0), no scripted d-pad lock (wJoyIgnore), no battle."""
+    return not (wram("wFontLoaded") & 1 or wram("wJoyIgnore") & PAD_CTRL_PAD
+                or wram("wIsInBattle"))
+
+
+def _settle(pb, wram, limit=40):
+    """Tick until the current step animation is over."""
+    n = 0
+    while wram("wWalkCounter") and n < limit:
+        pb.tick(1, False)
+        n += 1
+    pb.tick(1, False)
+    return n + 1
+
+
+def _step(pb, wram, key, limit=24):
+    """Hold `key` until the player moves, the map changes or the game
+    takes control; returns the frames used."""
+    start = (wram("wCurMap"), wram("wXCoord"), wram("wYCoord"))
+    pb.button_press(key)
+    n = 0
+    while n < limit:
+        pb.tick(1, False)
+        n += 1
+        if (wram("wCurMap"), wram("wXCoord"), wram("wYCoord")) != start \
+                or not _free(wram):
+            break
+    pb.button_release(key)
+    return n + _settle(pb, wram)
+
+
+def _warps(pb, syms):
+    base = _wram_addr(syms, "wWarpEntries")
+    n = pb.memory[_wram_addr(syms, "wNumberOfWarps")]
+    return {(pb.memory[base + 4 * i + 1], pb.memory[base + 4 * i])
+            for i in range(n)}
+
+
+def _first_move(start, goal, w, h, avoid):
+    """BFS on the step grid; first direction of a shortest path or None."""
+    from collections import deque
+    first = {start: None}
+    q = deque([start])
+    while q:
+        cur = q.popleft()
+        if cur == goal:
+            return first[cur]
+        for k, dx, dy in _DIRS:
+            nxt = (cur[0] + dx, cur[1] + dy)
+            if 0 <= nxt[0] < w and 0 <= nxt[1] < h and nxt not in first \
+                    and (nxt == goal or nxt not in avoid):
+                first[nxt] = first[cur] or k
+                q.append(nxt)
+    return None
+
+
+def _goal(wram):
+    """(x, y, action) for the current map and progress: walk to (x, y),
+    then press each key of `action`. None when the bot has nowhere to go."""
+    m, has_mon = wram("wCurMap"), wram("wPartyCount") > 0
+    if m == PALLET_TOWN:
+        # no starter: step onto the north-exit row (y=1), which starts
+        # the vanilla Prof. Sylve cutscene (PalletTownDefaultScript);
+        # with a starter: leave north into Route 1
+        return (10, 1, ()) if not has_mon else (10, 0, ("up",))
+    if m == OAKS_LAB:
+        # no starter: face the middle Poke Ball (7,3) from below and
+        # take it; then leave through the bottom-edge exit (4,11)
+        return (7, 4, ("up", "a")) if not has_mon else (4, 11, ("down",))
+    if m == ROUTE_1:
+        return (10, 0, ("up",))  # northwards, until grass is found
+    return None
+
+
+def _on_grass(pb, syms):
+    """The game's own test (TryDoWildEncounter): the tile at screen
+    (9,9) of the step the player stands on is the tileset's grass tile."""
+    tile = pb.memory[_wram_addr(syms, "wTileMap") + 20 * 9 + 9]
+    return tile == pb.memory[_wram_addr(syms, "wGrassTile")]
+
+
+def _play_to_wild_battle(pb, wram, syms, max_frames, trainer_battles):
+    """Play from Port-Lune until a wild battle starts on Route 1.
+    A advances every text, cutscene, menu and battle that holds the
+    d-pad (YES to the starter, FIGHT and the first move against Kael).
+    Maps where a trainer battle was fought go into `trainer_battles`.
+    Returns (ok, frames)."""
+    frames, blocked, grass = 0, {}, None
+    while frames < max_frames:
+        m = wram("wCurMap")
+        if m == ROUTE_1 and wram("wIsInBattle") == 1:
+            return True, frames
+        if wram("wIsInBattle") == 2:
+            trainer_battles.add(m)
+        if not _free(wram):
+            _press(pb, "a", 4)
+            frames += 6
+            continue
+        pos = (wram("wXCoord"), wram("wYCoord"))
+        if m == ROUTE_1 and grass is None and _on_grass(pb, syms):
+            grass = pos
+        # on Route 1, pace off and back onto the first grass step: each
+        # step onto it rolls a wild encounter
+        goal = (*grass, ("pace",)) if m == ROUTE_1 and grass else _goal(wram)
         if goal is None:
             return False, frames
-        path = []
-        cur = goal
-        while cur != (sx, sy):
-            px, py, k = prev[cur]
-            path.append((k, cur))
-            cur = (px, py)
-        for k, target in path:
-            _press(pb, k, step_frames)
-            frames += step_frames + 2
-            nx, ny = wram("wXCoord"), wram("wYCoord")
-            if (nx, ny) == target:
+        gx, gy, action = goal
+        if pos == (gx, gy):
+            pb.tick(1, False)  # a goal with no action waits for a script
+            frames += 1
+            for k in action:
+                if k == "a":
+                    _press(pb, "a", 4)
+                    frames += 6
+                elif k == "pace":
+                    for d, _, _ in _DIRS:
+                        frames += _step(pb, wram, d)
+                        if (wram("wXCoord"), wram("wYCoord")) != pos:
+                            break
+                else:
+                    frames += _step(pb, wram, k)
+            continue
+        w, h = 2 * wram("wCurMapWidth"), 2 * wram("wCurMapHeight")
+        seen = blocked.setdefault(m, set())
+        avoid = seen | (_warps(pb, syms) - {(gx, gy)})
+        k = _first_move(pos, (gx, gy), w, h, avoid)
+        if k is None:
+            seen.clear()  # an NPC may have moved: relearn
+            k = _first_move(pos, (gx, gy), w, h, _warps(pb, syms))
+            if k is None:  # mid-warp: the map header is still loading
+                pb.tick(1, False)
+                frames += 1
                 continue
-            # move failed or warped elsewhere
-            if wram("wCurMap") != PALLET_TOWN:
-                return (nx, ny) == (tx, ty), frames
-            blocked.add(target)
-            break
-    return wram("wCurMap") != PALLET_TOWN, frames
+        frames += _step(pb, wram, k)
+        if _free(wram) and wram("wCurMap") == m and \
+                (wram("wXCoord"), wram("wYCoord")) == pos:
+            dx, dy = {d: (x, y) for d, x, y in _DIRS}[k]
+            seen.add((pos[0] + dx, pos[1] + dy))
+    return False, frames
 
 
 def walk_to_town(pb, wram, max_frames=60 * 300):
@@ -179,110 +273,25 @@ def walk_to_town(pb, wram, max_frames=60 * 300):
                    f"x={wram('wXCoord')})")
 
 
-def _step_to(pb, wram, key, done, max_tries=14, step_frames=22):
-    """Walk in `key` until done() or stuck; returns frames used."""
-    frames = 0
-    for _ in range(max_tries):
-        if done():
-            break
-        last = (wram("wXCoord"), wram("wYCoord"))
-        _press(pb, key, step_frames)
-        frames += step_frames + 2
-        if (wram("wXCoord"), wram("wYCoord")) == last:
-            break  # blocked
-    return frames
-
-
-def _walk_town_exit(pb, wram, frames):
-    """Walk to the north exit (5,0) then step into Route 1. Closes any
-    NPC dialog after every press: the wandering girl NPC frequently
-    intercepts the player and a pending dialog swallows all inputs,
-    which reads as a blocked tile. The 10x9 Port-Lune layout: spawn
-    (4..5,6..8), column x=1 walkable rows 8..3 (rows 2-1 blocked at
-    row 2 x1=0x08 but row 1 x1=0x01 walkable), row 3 fully walkable,
-    exit opening (5,0) with (5,1)=0x01 grass and (5,2)=0x08 tree.
-
-    Route: up to row 3, west to x=1, north to row 1, east to x=5,
-    north through the opening.
-    """
-    def step(k, f=10):
-        nonlocal frames
-        _press(pb, k, f)
-        frames += f + 2
-        _close_box(pb)
-
-    def xy():
-        return wram("wXCoord"), wram("wYCoord")
-
-    # The house door is directly above the spawn (5,5): step west
-    # FIRST (along row 6/7 to x=1), then north up the clear left
-    # column to row 1, east to the exit column, then out.
-    for _ in range(5):
-        if xy()[0] <= 1 or wram("wCurMap") != PALLET_TOWN:
-            break
-        step("left")
-    for _ in range(7):
-        if xy()[1] <= 1 or wram("wCurMap") != PALLET_TOWN:
-            break
-        step("up")
-    for _ in range(6):
-        if xy()[0] >= 5 or wram("wCurMap") != PALLET_TOWN:
-            break
-        step("right")
-    for _ in range(3):
-        if xy()[1] == 0 or wram("wCurMap") != PALLET_TOWN:
-            break
-        step("up")
-    if wram("wCurMap") == PALLET_TOWN and xy()[1] == 0:
-        step("up", 18)
-    return frames
-
-
-def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 180):
+def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 600):
     """Returns (ok, message). Called after the world stage (Port-Lune)."""
     dexval, types, id2const = _tables()
 
     # leave any open menu/text
     _close_box(pb)
 
-    # walk north into the Route 1 grass until a wild battle starts
-    # (wIsInBattle is unreliable in this fork; use wEnemyMonSpecies).
-    # The house door sits at the exit spawn: clear it rightwards first.
-    frames = 0
-    nav_state = {"blocked": set()}
-    while frames < max_frames:
-        m = wram("wCurMap")
-        if m == REDS_HOUSE_1F:
-            # walked back into the house: escape again (door at 2..3,7)
-            _close_box(pb)
-            frames += 44
-            for key, f in (("down", 100), ("right", 100), ("left", 60)):
-                _press(pb, key, f)
-                frames += f + 2
-                if wram("wCurMap") == PALLET_TOWN:
-                    break
-            continue
-        if m == PALLET_TOWN:
-            f0 = frames
-            frames = _walk_town_exit(pb, wram, frames)
-            if frames == f0 and wram("wCurMap") == PALLET_TOWN:
-                # no progress at all: nudge so the loop advances
-                _press(pb, "up", 60)
-                frames += 62
-        else:
-            # Route 1: keep pushing north into the grass
-            for key, f in (("up", 110), ("right", 40), ("up", 110),
-                           ("left", 40)):
-                _press(pb, key, f)
-                frames += f + 2
-        if wram("wEnemyMonSpecies"):
-            break
-    else:
-        return False, (f"no wild battle after {frames} frames of walking "
-                       f"(map={wram('wCurMap')}, y={wram('wYCoord')})")
+    fought = set()
+    ok, frames = _play_to_wild_battle(pb, wram, syms, max_frames, fought)
+    if not ok:
+        return False, (f"no wild battle after {frames} frames of play "
+                       f"(map={wram('wCurMap')}, x={wram('wXCoord')}, "
+                       f"y={wram('wYCoord')}, party={wram('wPartyCount')})")
+    if OAKS_LAB not in fought:
+        return False, "wild battle reached without the Kael battle in the lab"
 
-    # let the battle intro play out a bit
-    pb.tick(60 * 3, True)
+    # let the battle intro play out a bit (the sprite buffers are checked
+    # while the enemy pic is still decompressed in them)
+    pb.tick(60 * 3, False)
 
     species = wram("wEnemyMonSpecies")
     const = id2const.get(species)
@@ -291,12 +300,10 @@ def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 180):
     exp = cr.parse_base_stats(const, dexval, types)
     front_label = exp["front_label"] + "PicFront"
 
-    hdr = _wram_addr(syms, "wMonHeader") + 1  # wMonHFrontSprite
+    hdr = _wram_addr(syms, "wMonHFrontSprite")
     front_ptr = pb.memory[hdr] | (pb.memory[hdr + 1] << 8)
 
     want = cr.load_sym().get(front_label)
-    shot = ROOT / "docs" / "smoke_battle.png"
-    pb.screen.image.save(shot)
 
     if want is None:
         return False, f"{front_label} not found in .sym"
@@ -315,7 +322,15 @@ def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 180):
     if len(distinct) < 8:
         return False, (f"sprite buffers look empty ({len(distinct)} distinct "
                        f"byte values)")
+    # the screen is still dark at 3s: capture "Wild ... appeared!", where
+    # the game waits for A
+    pb.tick(60 * 7, False)
+    pb.tick(1, True)
+    shot = ROOT / "smoke_battle.png"
+    pb.screen.image.save(shot)
     return True, (f"wild battle ok: {const} (id {species:#04x}), front ptr "
                   f"{got:#06x} == {front_label}, buffers fine "
                   f"({len(distinct)} distinct bytes), "
-                  f"screenshot {shot.relative_to(ROOT)}")
+                  f"screenshot {shot.relative_to(ROOT)}; reached after "
+                  f"{frames} frames of play (starter taken, Kael fought "
+                  f"in the lab)")

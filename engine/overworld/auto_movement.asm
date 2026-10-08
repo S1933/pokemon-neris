@@ -127,20 +127,22 @@ PalletMovementScript_WalkToLab:
 	ld [wNPCMovementScriptFunctionNum], a
 	ret
 
+; Port-Lune: the lighthouse tower fills the vanilla corner west of the lab,
+; so both walk around the lab from the east
 RLEList_ProfOakWalkToLab:
 	db NPC_MOVEMENT_DOWN, 5
-	db NPC_MOVEMENT_LEFT, 1
+	db NPC_MOVEMENT_RIGHT, 6
 	db NPC_MOVEMENT_DOWN, 5
-	db NPC_MOVEMENT_RIGHT, 3
+	db NPC_MOVEMENT_LEFT, 4
 	db NPC_MOVEMENT_UP, 1
 	db NPC_CHANGE_FACING, 1
 	db -1 ; end
 
 RLEList_PlayerWalkToLab:
 	db PAD_UP, 2
-	db PAD_RIGHT, 3
+	db PAD_LEFT, 4
 	db PAD_DOWN, 5
-	db PAD_LEFT, 1
+	db PAD_RIGHT, 6
 	db PAD_DOWN, 6
 	db -1 ; end
 
