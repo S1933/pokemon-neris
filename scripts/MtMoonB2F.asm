@@ -403,9 +403,17 @@ MtMoonB2FSolarisBattleText:
 MtMoonB2FOrdreGruntText:
 	text_asm
 	CheckEvent EVENT_BEAT_MT_MOON_3_TRAINER_4
-	jr nz, .solaris_defeated
+	ld hl, .WarningText
+	jr z, .print
+	ld hl, .FinaleText
+.print
+	call PrintText
+	jp TextScriptEnd
+
+.WarningText:
 	text_far _MtMoonB2FOrdreGruntWarningText
 	text_end
-.solaris_defeated
+
+.FinaleText:
 	text_far _MtMoonB2FOrdreGruntFinaleText
 	text_end
