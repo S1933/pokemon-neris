@@ -16,7 +16,7 @@ fin secrète.
 | **Mont Néris** | Mt Moon renommé ; **Solaris** (lvl 70) en encounter statique |
 | **Val-Boréal** | Nouvelle ville reliée à la Route 23 (bord ouest) |
 | **Arène d'Olga** | Championne Glace à Val-Boréal : DEWGONG 52 + CLOYSTER 51 |
-| **Académie Néris** | Jadielle (porte de l'ancienne école) : tournoi — 4 champions lvl 57-58 puis **Maître Oran** (ONIX / HITMONCHAN / MACHAMP 58) |
+| **Académie Néris** | Jadielle (porte de l'ancienne école) : tournoi — 4 champions lvl 57-58 ; **Maître Oran** (ONIX / HITMONCHAN / MACHAMP 58) refuse le combat tant que les 4 ne sont pas battus |
 | **Fin secrète** | Oran réagit si Lunaris ou Solaris a été rencontré |
 | **Pokédex** | 181 espèces (30 nouvelles avec entrées dex, palettes et icônes) |
 | **Noms FR** | Gym leaders : Pierre, Onde, Voltaic, Erika, Koga, Ardo, Safira ; Elite 4 : Olga, Bruno, Agatha, Peter |

@@ -1,3 +1,10 @@
+_AcademyOranLockedText::
+	text "ORAN: Bats"
+	line "d'abord les 4"
+	cont "CHAMPIONS de"
+	cont "l'ACADEMIE."
+	done
+
 _AcademyOranBattleText::
 	text "ORAN: Bienvenue"
 	line "a l'ACADEMIE."

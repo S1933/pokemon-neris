@@ -37,8 +37,19 @@ Academy_TextPointers:
 
 AcademyOranText:
 	text_asm
+	CheckEvent EVENT_BEAT_ACADEMY_TRAINER_0
+	jr nz, .talk
+	CheckBothEventsSet EVENT_BEAT_ACADEMY_TRAINER_1, EVENT_BEAT_ACADEMY_TRAINER_2
+	jr nz, .locked
+	CheckBothEventsSet EVENT_BEAT_ACADEMY_TRAINER_3, EVENT_BEAT_ACADEMY_TRAINER_4
+	jr nz, .locked
+.talk
 	ld hl, AcademyTrainerHeader0
 	call TalkToTrainer
+	jp TextScriptEnd
+.locked
+	ld hl, AcademyOranLockedText
+	call PrintText
 	jp TextScriptEnd
 AcademyChamp1Text:
 	text_asm
@@ -60,6 +71,10 @@ AcademyChamp4Text:
 	ld hl, AcademyTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
+
+AcademyOranLockedText:
+	text_far _AcademyOranLockedText
+	text_end
 
 AcademyOranBattleText:
 	text_far _AcademyOranBattleText
