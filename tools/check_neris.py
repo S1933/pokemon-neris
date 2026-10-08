@@ -807,6 +807,34 @@ def check_text_asm_flow():
         print(f'text_asm: {blocks} blocks, no text data reached as code')
 
 
+def check_dex_size():
+    """C2: NUM_POKEMON is the vanilla dex (151); the Neris dex runs to
+    NUM_NERIS_DEX (181). A NUM_POKEMON use outside the files below sizes or
+    bounds something by 151 and drops dex 152-181 (Rhydon trap, 151-bit
+    flag arrays).
+    """
+    import glob
+    allowed = {
+        'constants/pokedex_constants.asm': 'defines NUM_POKEMON and NUM_NERIS_DEX',
+        'engine/events/pokedex_rating.asm': 'T3: rating table on the 151 dex',
+        'scripts/CeladonMansion3F.asm': 'T3: diploma threshold on the 151 dex',
+    }
+    problems = []
+    for path in sorted(glob.glob(str(ROOT / '**' / '*.asm'), recursive=True)):
+        rel = str(Path(path).relative_to(ROOT))
+        if rel in allowed:
+            continue
+        for n, line in enumerate(strip_comments(Path(path).read_text())
+                                 .splitlines(), 1):
+            if re.search(r'\bNUM_POKEMON\b', line):
+                problems.append(f'{rel}:{n}: NUM_POKEMON bounds the dex to 151, '
+                                f'use NUM_NERIS_DEX')
+    for p in problems:
+        err(f'dex size: {p}')
+    if not problems:
+        print(f'dex size: NUM_POKEMON only in {len(allowed)} allowed files')
+
+
 def check_blackout_fly_warps():
     """H4: healing at a nurse sets wLastBlackoutMap to wLastMap, i.e. the
     outdoor map whose warp led into the Pokecenter. Blackout/Dig/Teleport
@@ -1061,6 +1089,7 @@ def main():
     check_map_header_pointers()
     check_text_lines()
     check_text_asm_flow()
+    check_dex_size()
     check_town_map_entries()
     check_blackout_fly_warps()
     check_map_header_banks()
