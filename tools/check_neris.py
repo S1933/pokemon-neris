@@ -974,7 +974,7 @@ def check_port_lune():
                 if warps.get((x, y)) == 'OAKS_LAB':
                     break  # warped into the lab
                 x, y = x + moves[d][0], y + moves[d][1]
-                if (x, y) not in warps and not open_step(x, y):
+                if warps.get((x, y)) != 'OAKS_LAB' and not open_step(x, y):
                     bad.append((x, y))
         if bad:
             err(f'Port-Lune cutscene: {who} walk to the lab crosses solid or '
