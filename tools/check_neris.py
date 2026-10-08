@@ -759,6 +759,54 @@ def check_text_lines():
         err(f'text: {p}')
 
 
+def check_text_asm_flow():
+    """Text data inside a text_asm block is never run as code: after
+    text_asm, a text command reached by fall-through or by a jr/jp to its
+    label executes text bytes as CPU instructions. Data must sit behind
+    ld hl, <label> / call PrintText / jp TextScriptEnd.
+    """
+    import glob
+    data_cmd = re.compile(r'(text_\w+|text|next|line|para|cont|done|prompt|'
+                          r'page|dex|sound_\w+)$')
+    terminal = re.compile(r'(jp|jr)\s+[^,]+$|(ret|reti)$|jp\s+hl$')
+    problems, blocks = [], 0
+    for path in sorted(glob.glob(str(ROOT / '**' / '*.asm'), recursive=True)):
+        if '/macros/' in path:
+            continue
+        lines = strip_comments(Path(path).read_text()).splitlines()
+        jumped = {m.group(1) for line in lines
+                  for m in [re.search(r'\b(?:jr|jp)\s+(?:\w+\s*,\s*)?(\.\w+)', line)]
+                  if m}
+        in_block = reachable = False
+        for n, raw in enumerate(lines, 1):
+            line = raw.strip()
+            if not line:
+                continue
+            if re.match(r'\w+::?', line):  # global label ends the block
+                in_block = reachable = False
+                continue
+            op = line.split()[0]
+            if op == 'text_asm':
+                in_block = reachable = True
+                blocks += 1
+                continue
+            if not in_block:
+                continue
+            if line.startswith('.'):
+                if line.rstrip(':') in jumped:
+                    reachable = True
+                continue
+            if reachable and data_cmd.match(op):
+                problems.append(f'{Path(path).relative_to(ROOT)}:{n}: '
+                                f'{op} executed as code after text_asm')
+            if terminal.match(line):
+                reachable = False
+    for p in problems:
+        err(f'text_asm: {p}')
+    if not problems:
+        print(f'text_asm: {blocks} blocks, no text data reached as code')
+
+
 def check_blackout_fly_warps():
     """H4: healing at a nurse sets wLastBlackoutMap to wLastMap, i.e. the
     outdoor map whose warp led into the Pokecenter. Blackout/Dig/Teleport
@@ -1012,6 +1060,7 @@ def main():
     check_trainer_flags()
     check_map_header_pointers()
     check_text_lines()
+    check_text_asm_flow()
     check_town_map_entries()
     check_blackout_fly_warps()
     check_map_header_banks()
