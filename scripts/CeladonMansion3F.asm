@@ -30,7 +30,7 @@ CeladonMansion3FGameDesignerText:
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
 	ld a, [wNumSetBits]
-	cp NUM_POKEMON - 1 ; discount Mew
+	cp NUM_NERIS_DEX - 1 ; discount Solaris (the Mew slot)
 	jr nc, .completed_dex
 	ld hl, .Text
 	jr .done

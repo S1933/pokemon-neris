@@ -1,5 +1,9 @@
 """Stage helpers for tools/smoke_test.py.
 
+run_stage_lighthouse: from Port-Lune with no starter, walk up to the
+lighthouse door; it is guarded until the first badge, so the player stays
+in Port-Lune (wCurMap == 0) and no battle starts.
+
 walk_to_town: from the new-game state (player in bed on the SNES tile,
 bedroom REDS_HOUSE_2F) mash through the intro, close the SNES text box,
 walk down to 1F and out of the house until wCurMap == PALLET_TOWN
@@ -217,11 +221,55 @@ def _play_to_wild_battle(pb, wram, syms, max_frames, trainer_battles):
                 frames += 1
                 continue
         frames += _step(pb, wram, k)
+        dx, dy = {d: (x, y) for d, x, y in _DIRS}[k]
+        # a step that lands neither ahead nor on a ledge's far side was
+        # walled off, or undone by a map script (the lighthouse lock)
         if _free(wram) and wram("wCurMap") == m and \
-                (wram("wXCoord"), wram("wYCoord")) == pos:
-            dx, dy = {d: (x, y) for d, x, y in _DIRS}[k]
+                (wram("wXCoord"), wram("wYCoord")) not in \
+                {(pos[0] + dx, pos[1] + dy), (pos[0] + 2 * dx, pos[1] + 2 * dy)}:
             seen.add((pos[0] + dx, pos[1] + dy))
     return False, frames
+
+
+LIGHTHOUSE = 109     # 0x6D
+
+
+def run_stage_lighthouse(pb, wram, syms, max_frames=60 * 60):
+    """Before the first badge, the lighthouse door is guarded: from
+    Port-Lune with no starter, walking up to the LIGHTHOUSE warp leaves
+    the player in Port-Lune, out of battle. Returns (ok, message)."""
+    base = _wram_addr(syms, "wWarpEntries")
+    door = next(((pb.memory[base + 4 * i + 1], pb.memory[base + 4 * i])
+                 for i in range(wram("wNumberOfWarps"))
+                 if pb.memory[base + 4 * i + 3] == LIGHTHOUSE), None)
+    if door is None:
+        return False, "no LIGHTHOUSE warp in Port-Lune"
+    frames, blocked, tries = 0, set(), 0
+    while frames < max_frames and tries < 3:
+        if wram("wCurMap") != PALLET_TOWN or wram("wIsInBattle"):
+            break
+        if not _free(wram):  # start menu or a text: close it
+            _press(pb, "b", 4)
+            frames += 6
+            continue
+        pos = (wram("wXCoord"), wram("wYCoord"))
+        k = _first_move(pos, door, 2 * wram("wCurMapWidth"),
+                        2 * wram("wCurMapHeight"),
+                        blocked | (_warps(pb, syms) - {door}))
+        if k is None:  # door cut off: bump into it again, 3 times
+            blocked.clear()
+            tries += 1
+            continue
+        frames += _step(pb, wram, k)
+        if _free(wram) and (wram("wXCoord"), wram("wYCoord")) == pos:
+            dx, dy = {d: (x, y) for d, x, y in _DIRS}[k]
+            blocked.add((pos[0] + dx, pos[1] + dy))
+    where = (wram("wCurMap"), wram("wXCoord"), wram("wYCoord"))
+    if where[0] != PALLET_TOWN or wram("wIsInBattle"):
+        return False, (f"door {door} let the player through: map, x, y = "
+                       f"{where}, wIsInBattle={wram('wIsInBattle')}")
+    return True, (f"door {door} guarded, player stopped at {where[1:]} "
+                  f"after {frames} frames")
 
 
 def walk_to_town(pb, wram, max_frames=60 * 300):

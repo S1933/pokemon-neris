@@ -1,7 +1,3 @@
-_MewtwoBattleText::
-	text "Lunaris!@"
-	text_end
-
 _CeruleanCaveB1FOranLockedText::
 	text "Reviens quand"
 	line "tu seras"
@@ -31,7 +27,14 @@ _CeruleanCaveB1FOranMarkText::
 	para "Elle honore ceux"
 	line "qui protegent"
 	cont "les legendes."
-	prompt
+	done
+
+_CeruleanCaveB1FOranAfterBattleText::
+	text "La MARQUE de"
+	line "NERIS est a toi."
+	para "Protege bien"
+	line "les legendes."
+	done
 
 _CeruleanCaveB1FGrunt1BattleText::
 	text "L'ORDRE du"

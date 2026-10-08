@@ -37,8 +37,19 @@ Academy_TextPointers:
 
 AcademyOranText:
 	text_asm
+	CheckEvent EVENT_BEAT_ACADEMY_TRAINER_0
+	jr nz, .talk
+	CheckBothEventsSet EVENT_BEAT_ACADEMY_TRAINER_1, EVENT_BEAT_ACADEMY_TRAINER_2
+	jr nz, .locked
+	CheckBothEventsSet EVENT_BEAT_ACADEMY_TRAINER_3, EVENT_BEAT_ACADEMY_TRAINER_4
+	jr nz, .locked
+.talk
 	ld hl, AcademyTrainerHeader0
 	call TalkToTrainer
+	jp TextScriptEnd
+.locked
+	ld hl, AcademyOranLockedText
+	call PrintText
 	jp TextScriptEnd
 AcademyChamp1Text:
 	text_asm
@@ -61,6 +72,10 @@ AcademyChamp4Text:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+AcademyOranLockedText:
+	text_far _AcademyOranLockedText
+	text_end
+
 AcademyOranBattleText:
 	text_far _AcademyOranBattleText
 	text_end
@@ -73,14 +88,29 @@ AcademyOranAfterBattleText:
 	jr nz, .true_ending
 	CheckEitherEventSet EVENT_BEAT_LIGHTHOUSE_LUNARIS, EVENT_BEAT_MT_MOON_3_TRAINER_4
 	jr nz, .secret_ending
+	ld hl, .NormalEndingText
+	jr .print
+.true_ending
+	ld hl, .TrueEndingText
+	jr .print
+.secret_ending
+	ld hl, .SecretEndingText
+.print
+	call PrintText
+	jp TextScriptEnd
+
+.NormalEndingText:
 	text_far _AcademyOranAfterBattleText
 	text_end
-.true_ending
+
+.TrueEndingText:
 	text_far _AcademyTrueEndingText
 	text_end
-.secret_ending
+
+.SecretEndingText:
 	text_far _AcademySecretEndingText
 	text_end
+
 AcademyChamp1BattleText:
 	text_far _AcademyChamp1BattleText
 	text_end

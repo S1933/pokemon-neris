@@ -71,7 +71,7 @@ DexRatingsTable:
 	dbw 130, DexRatingText_Own120To129
 	dbw 140, DexRatingText_Own130To139
 	dbw 150, DexRatingText_Own140To149
-	dbw NUM_POKEMON + 1, DexRatingText_Own150To151
+	dbw NUM_NERIS_DEX + 1, DexRatingText_Own150To151 ; also 151-181 owned
 
 DexRatingText_Own0To9:
 	text_far _DexRatingText_Own0To9

@@ -16,6 +16,10 @@ Validates cross-table consistency without assembling:
     TOGGLE consts for object consts referenced in map object files
   - Map tables: every map id referenced in warp events / map constants exists
   - Event flags referenced in trainer headers exist in event_constants
+  - Sighted trainer headers watch the object that talks through them
+  - OPP_RIVAL1 map trainers take their team from the player's starter
+  - Each legendary stands on one map only
+  - No trainer's after-battle text sets an event
 
 Usage: python3 tools/check_neris.py  (exit 1 on failure)
 """
@@ -290,10 +294,11 @@ def check_species_completeness(species_entries):
     for const, idx in species_entries:
         if const is None or const in excluded:
             continue
-        stem = const.lower()
+        stem = const.lower().replace('_', '')  # NIDORAN_M -> nidoranm.asm
         bs_path = ROOT / 'data/pokemon/base_stats' / f'{stem}.asm'
         if not bs_path.exists():
-            continue  # already reported by check_pokemon_tables
+            problems.append(f'{const} (${idx:02X}): no data/pokemon/base_stats/{stem}.asm')
+            continue
         text = read(f'data/pokemon/base_stats/{stem}.asm')
         plain = strip_comments(text)
 
@@ -328,7 +333,8 @@ def check_species_completeness(species_entries):
         need(dex_num > 0, 'dex number (dex_order row)')
     playable = sum(1 for c, i in species_entries
                    if c and c not in excluded
-                   and (ROOT / 'data/pokemon/base_stats' / f'{c.lower()}.asm').exists())
+                   and (ROOT / 'data/pokemon/base_stats'
+                        / f"{c.lower().replace('_', '')}.asm").exists())
     if problems:
         for p in problems:
             err(p)
@@ -367,7 +373,7 @@ def check_placeholder_assets(species_entries):
     for const, idx in species_entries:
         if const is None or const in excluded:
             continue
-        stem = const.lower()
+        stem = const.lower().replace('_', '')
         bs_path = ROOT / 'data/pokemon/base_stats' / f'{stem}.asm'
         if not bs_path.exists():
             continue
@@ -378,7 +384,7 @@ def check_placeholder_assets(species_entries):
             missing.append(f'{fr} ({const}): no front pic INCBIN in base_stats')
             continue
         src = inc.group(1)
-        if src == stem:
+        if src.replace('.', '') == stem:  # mr.mime.pic
             continue
         if INTENTIONAL_BORROWS.get(const) == src:
             intentional.append(f'{fr} ({const}) borrows {src} sprite (intentional)')
@@ -691,6 +697,146 @@ def check_trainer_flags():
         print('Trainer flags: all trainer event flags defined')
 
 
+def map_trainers(script, obj):
+    """Objects of a map that fight through a trainer header: their text
+    script loads the header (ld hl, <header> / call TalkToTrainer).
+    Returns [(object index, object line, header sprite index, sight range)].
+    The header's sprite index is CURRENT_TRAINER_BIT: def_trainers' start,
+    plus one per header.
+    """
+    objects = [line for line in strip_comments(obj.read_text()).splitlines()
+               if re.match(r'\s*object_event\b', line)]
+    lines = strip_comments(script.read_text()).splitlines()
+    headers, label, index = {}, None, None
+    for line in lines:
+        m = re.match(r'\s*def_trainers\b\s*(\d*)', line)
+        if m:
+            index = int(m.group(1) or 1)
+        elif re.match(r'\w+:', line):
+            label = line.split(':')[0]
+        elif index is not None and re.match(r'\s*trainer\s+EVENT_', line):
+            headers[label] = (index, int(line.split(',')[1]))
+            index += 1
+    texts = dict((t, l) for l, t in re.findall(r'dw_const\s+(\w+),\s*(TEXT_\w+)',
+                                               '\n'.join(lines)))
+    loads, label = {}, None
+    for line in lines:
+        if re.match(r'\w+:', line):
+            label = line.split(':')[0]
+        m = re.match(r'\s*ld hl,\s*(\w+)', line)
+        if m and m.group(1) in headers:
+            loads.setdefault(label, m.group(1))
+    found = []
+    for i, line in enumerate(objects, 1):
+        args = [a.strip() for a in line.split(',')]
+        text = args[5].split('|')[-1].strip() if len(args) > 5 else ''
+        header = loads.get(texts.get(text))
+        if header:
+            found.append((i, line, *headers[header]))
+    return found
+
+
+def check_trainer_sprites():
+    """CheckForEngagingTrainers watches the line of sight of the object at
+    the header's sprite index and tests that header's flag. For a header
+    with a sight range it must be the object talking through it: otherwise
+    the trainer never engages, or a beaten one engages again.
+    """
+    problems, watched = [], 0
+    for script in sorted((ROOT / 'scripts').glob('*.asm')):
+        obj = ROOT / 'data/maps/objects' / script.name
+        if not obj.exists():
+            continue
+        for i, _, sprite, sight in map_trainers(script, obj):
+            if not sight:
+                continue
+            watched += 1
+            if sprite != i:
+                problems.append(f'scripts/{script.name}: the header of object '
+                                f'{i} (sight {sight}) watches object {sprite}')
+    for p in problems:
+        err(f'trainer sprite: {p}')
+    if not problems:
+        print(f'Trainer sprites: {watched} sighted trainers watch their own object')
+
+
+def check_rival_teams():
+    """A map trainer facing the player as OPP_RIVAL1 carries a fixed team in
+    its object data, picked before the player's starter is known. Its map
+    script must overwrite it with GetRival1TrainerNo, the lab's starter ->
+    team selection, before EngageMapTrainer reads it.
+    """
+    problems, rivals = [], 0
+    for script in sorted((ROOT / 'scripts').glob('*.asm')):
+        obj = ROOT / 'data/maps/objects' / script.name
+        if not obj.exists():
+            continue
+        for i, line, _, _ in map_trainers(script, obj):
+            if not re.search(r',\s*OPP_RIVAL1\s*,', line):
+                continue
+            rivals += 1
+            if not re.search(r'\bcall\s+GetRival1TrainerNo\b',
+                             strip_comments(script.read_text())):
+                problems.append(f'data/maps/objects/{obj.name}: object {i} is an '
+                                f'OPP_RIVAL1 trainer with a fixed team, '
+                                f'{script.name} never calls GetRival1TrainerNo')
+    for p in problems:
+        err(f'rival team: {p}')
+    if not problems:
+        print(f'Rival teams: {rivals} OPP_RIVAL1 map trainer(s) pick the team by starter')
+
+
+def check_unique_legendaries():
+    """A legendary is a one-off static encounter: the same species standing
+    on two maps gives the player a second copy (the vanilla Mewtwo kept in
+    Cerulean Cave once doubled Lunaris, also a MEWTWO slot).
+    """
+    seen = {}
+    for obj in sorted((ROOT / 'data/maps/objects').glob('*.asm')):
+        for m in re.finditer(r'^\s*object_event\b.*,\s*'
+                             r'(ARTICUNO|ZAPDOS|MOLTRES|MEWTWO|MEW)\s*,\s*\d+\s*$',
+                             strip_comments(obj.read_text()), re.M):
+            seen.setdefault(m.group(1), []).append(obj.name)
+    for species, maps in sorted(seen.items()):
+        if len(maps) > 1:
+            err(f'legendary: {species} stands on {len(maps)} maps: '
+                f'{", ".join(maps)}')
+    if all(len(m) == 1 for m in seen.values()):
+        print(f'Legendaries: {len(seen)} species, one map each')
+
+
+def check_after_battle_events():
+    """A trainer header's after-battle text only runs when the player talks
+    to the beaten trainer again: an event set there is missed by a player
+    who walks away after the win (Oran's Mark of Neris once was). Set it in
+    a post-battle map script instead. A map with its own post-battle script
+    (call EndTrainerBattle) is trusted to show the text after the win, as
+    Lance's does; limitation: it is not checked to show that very text.
+    """
+    problems, headers = [], 0
+    for script in sorted((ROOT / 'scripts').glob('*.asm')):
+        lines = strip_comments(script.read_text()).splitlines()
+        if any(re.match(r'\s*call\s+EndTrainerBattle\b', l) for l in lines):
+            continue
+        blocks, label = {}, None
+        for line in lines:
+            if re.match(r'\w+:', line):
+                label = line.split(':')[0]
+            elif label:
+                blocks.setdefault(label, []).append(line)
+        for line in lines:
+            m = re.match(r'\s*trainer\s+EVENT_\w+,[^,]*,[^,]*,[^,]*,\s*(\w+)', line)
+            if not m:
+                continue
+            headers += 1
+            if any(re.match(r'\s*SetEvent\b', l) for l in blocks.get(m.group(1), [])):
+                problems.append(f'scripts/{script.name}: {m.group(1)} sets an event')
+    for p in problems:
+        err(f'after-battle text: {p}')
+    if not problems:
+        print(f'After-battle texts: {headers} trainer headers, none sets an event')
+
+
 def check_map_header_pointers():
     sym_path = ROOT / 'pokered.sym'
     rom_path = ROOT / 'pokered.gbc'
@@ -757,6 +903,80 @@ def check_text_lines():
                                 f'{bad} in "{content}"')
     for p in problems:
         err(f'text: {p}')
+
+
+def check_text_asm_flow():
+    """Text data inside a text_asm block is never run as code: after
+    text_asm, a text command reached by fall-through or by a jr/jp to its
+    label executes text bytes as CPU instructions. Data must sit behind
+    ld hl, <label> / call PrintText / jp TextScriptEnd.
+    """
+    import glob
+    data_cmd = re.compile(r'(text_\w+|text|next|line|para|cont|done|prompt|'
+                          r'page|dex|sound_\w+)$')
+    terminal = re.compile(r'(jp|jr)\s+[^,]+$|(ret|reti)$|jp\s+hl$')
+    problems, blocks = [], 0
+    for path in sorted(glob.glob(str(ROOT / '**' / '*.asm'), recursive=True)):
+        if '/macros/' in path:
+            continue
+        lines = strip_comments(Path(path).read_text()).splitlines()
+        jumped = {m.group(1) for line in lines
+                  for m in [re.search(r'\b(?:jr|jp)\s+(?:\w+\s*,\s*)?(\.\w+)', line)]
+                  if m}
+        in_block = reachable = False
+        for n, raw in enumerate(lines, 1):
+            line = raw.strip()
+            if not line:
+                continue
+            if re.match(r'\w+::?', line):  # global label ends the block
+                in_block = reachable = False
+                continue
+            op = line.split()[0]
+            if op == 'text_asm':
+                in_block = reachable = True
+                blocks += 1
+                continue
+            if not in_block:
+                continue
+            if line.startswith('.'):
+                if line.rstrip(':') in jumped:
+                    reachable = True
+                continue
+            if reachable and data_cmd.match(op):
+                problems.append(f'{Path(path).relative_to(ROOT)}:{n}: '
+                                f'{op} executed as code after text_asm')
+            if terminal.match(line):
+                reachable = False
+    for p in problems:
+        err(f'text_asm: {p}')
+    if not problems:
+        print(f'text_asm: {blocks} blocks, no text data reached as code')
+
+
+def check_dex_size():
+    """C2: NUM_POKEMON is the vanilla dex (151); the Neris dex runs to
+    NUM_NERIS_DEX (181). A NUM_POKEMON use outside the files below sizes or
+    bounds something by 151 and drops dex 152-181 (Rhydon trap, 151-bit
+    flag arrays).
+    """
+    import glob
+    allowed = {
+        'constants/pokedex_constants.asm': 'defines NUM_POKEMON and NUM_NERIS_DEX',
+    }
+    problems = []
+    for path in sorted(glob.glob(str(ROOT / '**' / '*.asm'), recursive=True)):
+        rel = str(Path(path).relative_to(ROOT))
+        if rel in allowed:
+            continue
+        for n, line in enumerate(strip_comments(Path(path).read_text())
+                                 .splitlines(), 1):
+            if re.search(r'\bNUM_POKEMON\b', line):
+                problems.append(f'{rel}:{n}: NUM_POKEMON bounds the dex to 151, '
+                                f'use NUM_NERIS_DEX')
+    for p in problems:
+        err(f'dex size: {p}')
+    if not problems:
+        print(f'dex size: NUM_POKEMON only in {", ".join(allowed)}')
 
 
 def check_blackout_fly_warps():
@@ -870,7 +1090,8 @@ def check_port_lune():
       - the player's house stays whole: vanilla pret/pokered draws it with
         blocks $38 $39 / $3c $3d at block columns 2-3, rows 1-2, and grass
         $01 under its right half;
-      - every warp sits on an OVERWORLD door tile;
+      - every warp sits on an OVERWORLD door tile, and every door tile
+        has a warp;
       - walking with collisions from the house exit (5,6) reaches every
         warp and the north exit to Route 1 (row 0);
       - Oak spawns on screen of the player at the north exit;
@@ -911,6 +1132,12 @@ def check_port_lune():
         if tile(x, y) not in doors:
             err(f'Port-Lune warp ({x},{y}) -> {dest}: tile ${tile(x, y):02X} '
                 'is not an OVERWORLD door tile')
+
+    # a door tile without a warp is a fake facade (the old 3-door tower)
+    fake = [(x, y) for y in range(18) for x in range(20)
+            if tile(x, y) in doors and (x, y) not in warps]
+    if fake:
+        err(f'Port-Lune: door tiles without a warp {fake}')
 
     # stepping on a warp leaves town: warps are reached, never crossed
     seen, todo = {(5, 6)}, [(5, 6)]
@@ -989,8 +1216,8 @@ def check_port_lune():
                 'not on the OAKS_LAB warp')
 
     if len(errors) == before:
-        print(f'Port-Lune: player house whole, {len(warps)} warps on door '
-              'tiles, all reachable with the north exit, '
+        print(f'Port-Lune: player house whole, {len(warps)} warps on the '
+              f'{len(warps)} door tiles, all reachable with the north exit, '
               'opening cutscene on open steps')
 
 
@@ -1010,8 +1237,14 @@ def main():
     check_edge_warps()
     check_last_map_warps()
     check_trainer_flags()
+    check_trainer_sprites()
+    check_rival_teams()
+    check_unique_legendaries()
+    check_after_battle_events()
     check_map_header_pointers()
     check_text_lines()
+    check_text_asm_flow()
+    check_dex_size()
     check_town_map_entries()
     check_blackout_fly_warps()
     check_map_header_banks()

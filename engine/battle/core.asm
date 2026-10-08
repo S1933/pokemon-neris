@@ -1966,7 +1966,9 @@ DrawEnemyHUDAndHPBar:
 	call DrawHPBar
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
+	push de ; e = HP bar length, read by GetHealthBarColor
 	call DrawEnemyTypeAndMarker
+	pop de
 	ld hl, wEnemyHPBarColor
 
 GetBattleHealthBarColor:

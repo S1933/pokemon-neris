@@ -723,7 +723,7 @@
 ; Cerulean Cave events
 	const_next $8C0
 	const_skip
-	const EVENT_BEAT_MEWTWO
+	const_skip ; was EVENT_BEAT_MEWTWO: Cerulean Cave has no Mewtwo any more
 	const EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_0
 	const EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_1
 	const EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_2

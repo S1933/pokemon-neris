@@ -4,6 +4,7 @@ PalletTown_Script:
 	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 .next
 	call EnableAutoTextBoxDrawing
+	call PalletTownLighthouseLockScript
 	ld hl, PalletTown_ScriptPointers
 	ld a, [wPalletTownCurScript]
 	jp CallFunctionInTable
@@ -149,11 +150,41 @@ PalletTownDaisyScript:
 PalletTownNoopScript:
 	ret
 
+; Until Brock is beaten, stepping in front of the lighthouse door makes the
+; keeper speak and pushes the player back down (the Viridian gym lock).
+PalletTownLighthouseLockScript:
+	CheckEvent EVENT_BEAT_BROCK
+	ret nz
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	ld a, [wYCoord]
+	cp 12
+	ret nz
+	ld a, [wXCoord]
+	cp 5
+	ret nz
+	ld a, TEXT_PALLETTOWN_KEEPER
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ldh [hJoyHeld], a
+	call StartSimulatingJoypadStates
+	ld a, 1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, PAD_DOWN
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld [wJoyIgnore], a
+	ret
+
 PalletTown_TextPointers:
 	def_text_pointers
 	dw_const PalletTownOakText,              TEXT_PALLETTOWN_OAK
 	dw_const PalletTownGirlText,             TEXT_PALLETTOWN_GIRL
 	dw_const PalletTownFisherText,           TEXT_PALLETTOWN_FISHER
+	dw_const PalletTownKeeperText,           TEXT_PALLETTOWN_KEEPER
 	dw_const PalletTownOaksLabSignText,      TEXT_PALLETTOWN_OAKSLAB_SIGN
 	dw_const PalletTownSignText,             TEXT_PALLETTOWN_SIGN
 	dw_const PalletTownPlayersHouseSignText, TEXT_PALLETTOWN_PLAYERSHOUSE_SIGN
@@ -197,6 +228,24 @@ PalletTownGirlText:
 
 PalletTownFisherText:
 	text_far _PalletTownFisherText
+	text_end
+
+PalletTownKeeperText:
+	text_asm
+	ld hl, .ClosedText
+	CheckEvent EVENT_BEAT_BROCK
+	jr z, .print
+	ld hl, .OpenText
+.print
+	call PrintText
+	jp TextScriptEnd
+
+.ClosedText:
+	text_far _PalletTownKeeperClosedText
+	text_end
+
+.OpenText:
+	text_far _PalletTownKeeperOpenText
 	text_end
 
 PalletTownOaksLabSignText:
