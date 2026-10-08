@@ -13,10 +13,10 @@ fin secrète.
 | **Départ** | Port-Lune (Pallet), Prof. Sylve, starters Flambino / Aquinou / Verdillo |
 | **Sentier Embruns** | Route 1 renommée, wilds Néris, rival Kael en combat |
 | **Phare de Port-Lune** | Nouvelle carte ; **Lunaris** (Psychic, lvl 70) en encounter statique |
-| **Mont Néris** | Mt Moon renommé ; **Solaris** (lvl 70) en encounter statique |
+| **Mont Néris** | Mt Moon renommé ; **Solaris** (Psychic, lvl 70) en encounter statique |
 | **Val-Boréal** | Nouvelle ville reliée à la Route 23 (bord ouest) |
-| **Arène d'Olga** | Championne Glace à Val-Boréal : DEWGONG 52 + CLOYSTER 51 |
-| **Académie Néris** | Jadielle (porte de l'ancienne école) : tournoi — 4 champions lvl 57-58 ; **Maître Oran** (ONIX / HITMONCHAN / MACHAMP 58) refuse le combat tant que les 4 ne sont pas battus |
+| **Arène d'Olga** | Championne Glace à Val-Boréal : GIVRALP 52 + GLACIETTE 51 |
+| **Académie Néris** | Jadielle (porte de l'ancienne école) : tournoi — 4 champions lvl 57-58 ; **Maître Oran** (PETIROC / AQUAJET / AQUAJET 58) refuse le combat tant que les 4 ne sont pas battus |
 | **Fin secrète** | Oran réagit si Lunaris ou Solaris a été rencontré |
 | **Pokédex** | 181 espèces (30 nouvelles avec entrées dex, palettes et icônes) |
 | **Noms FR** | Gym leaders : Pierre, Onde, Voltaic, Erika, Koga, Ardo, Safira ; Elite 4 : Olga, Bruno, Agatha, Peter |
@@ -33,6 +33,12 @@ Voir [**INSTALL.md**](INSTALL.md). Le build produit `pokered.gbc` (titre
 ```
 make
 ```
+
+## Sauvegardes
+
+Une sauvegarde d'une version antérieure n'est pas compatible : les objets
+des cartes sont enregistrés par index, et ces index ont changé. Commencez
+une nouvelle partie.
 
 ## Documentation
 
