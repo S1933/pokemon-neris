@@ -16,6 +16,8 @@ Validates cross-table consistency without assembling:
     TOGGLE consts for object consts referenced in map object files
   - Map tables: every map id referenced in warp events / map constants exists
   - Event flags referenced in trainer headers exist in event_constants
+  - Sighted trainer headers watch the object that talks through them
+  - OPP_RIVAL1 map trainers take their team from the player's starter
 
 Usage: python3 tools/check_neris.py  (exit 1 on failure)
 """
@@ -691,6 +693,95 @@ def check_trainer_flags():
         print('Trainer flags: all trainer event flags defined')
 
 
+def map_trainers(script, obj):
+    """Objects of a map that fight through a trainer header: their text
+    script loads the header (ld hl, <header> / call TalkToTrainer).
+    Returns [(object index, object line, header sprite index, sight range)].
+    The header's sprite index is CURRENT_TRAINER_BIT: def_trainers' start,
+    plus one per header.
+    """
+    objects = [line for line in strip_comments(obj.read_text()).splitlines()
+               if re.match(r'\s*object_event\b', line)]
+    lines = strip_comments(script.read_text()).splitlines()
+    headers, label, index = {}, None, None
+    for line in lines:
+        m = re.match(r'\s*def_trainers\b\s*(\d*)', line)
+        if m:
+            index = int(m.group(1) or 1)
+        elif re.match(r'\w+:', line):
+            label = line.split(':')[0]
+        elif index is not None and re.match(r'\s*trainer\s+EVENT_', line):
+            headers[label] = (index, int(line.split(',')[1]))
+            index += 1
+    texts = dict((t, l) for l, t in re.findall(r'dw_const\s+(\w+),\s*(TEXT_\w+)',
+                                               '\n'.join(lines)))
+    loads, label = {}, None
+    for line in lines:
+        if re.match(r'\w+:', line):
+            label = line.split(':')[0]
+        m = re.match(r'\s*ld hl,\s*(\w+)', line)
+        if m and m.group(1) in headers:
+            loads.setdefault(label, m.group(1))
+    found = []
+    for i, line in enumerate(objects, 1):
+        args = [a.strip() for a in line.split(',')]
+        text = args[5].split('|')[-1].strip() if len(args) > 5 else ''
+        header = loads.get(texts.get(text))
+        if header:
+            found.append((i, line, *headers[header]))
+    return found
+
+
+def check_trainer_sprites():
+    """CheckForEngagingTrainers watches the line of sight of the object at
+    the header's sprite index and tests that header's flag. For a header
+    with a sight range it must be the object talking through it: otherwise
+    the trainer never engages, or a beaten one engages again.
+    """
+    problems, watched = [], 0
+    for script in sorted((ROOT / 'scripts').glob('*.asm')):
+        obj = ROOT / 'data/maps/objects' / script.name
+        if not obj.exists():
+            continue
+        for i, _, sprite, sight in map_trainers(script, obj):
+            if not sight:
+                continue
+            watched += 1
+            if sprite != i:
+                problems.append(f'scripts/{script.name}: the header of object '
+                                f'{i} (sight {sight}) watches object {sprite}')
+    for p in problems:
+        err(f'trainer sprite: {p}')
+    if not problems:
+        print(f'Trainer sprites: {watched} sighted trainers watch their own object')
+
+
+def check_rival_teams():
+    """A map trainer facing the player as OPP_RIVAL1 carries a fixed team in
+    its object data, picked before the player's starter is known. Its map
+    script must overwrite it with GetRival1TrainerNo, the lab's starter ->
+    team selection, before EngageMapTrainer reads it.
+    """
+    problems, rivals = [], 0
+    for script in sorted((ROOT / 'scripts').glob('*.asm')):
+        obj = ROOT / 'data/maps/objects' / script.name
+        if not obj.exists():
+            continue
+        for i, line, _, _ in map_trainers(script, obj):
+            if not re.search(r',\s*OPP_RIVAL1\s*,', line):
+                continue
+            rivals += 1
+            if not re.search(r'\bcall\s+GetRival1TrainerNo\b',
+                             strip_comments(script.read_text())):
+                problems.append(f'data/maps/objects/{obj.name}: object {i} is an '
+                                f'OPP_RIVAL1 trainer with a fixed team, '
+                                f'{script.name} never calls GetRival1TrainerNo')
+    for p in problems:
+        err(f'rival team: {p}')
+    if not problems:
+        print(f'Rival teams: {rivals} OPP_RIVAL1 map trainer(s) pick the team by starter')
+
+
 def check_map_header_pointers():
     sym_path = ROOT / 'pokered.sym'
     rom_path = ROOT / 'pokered.gbc'
@@ -1091,6 +1182,8 @@ def main():
     check_edge_warps()
     check_last_map_warps()
     check_trainer_flags()
+    check_trainer_sprites()
+    check_rival_teams()
     check_map_header_pointers()
     check_text_lines()
     check_text_asm_flow()

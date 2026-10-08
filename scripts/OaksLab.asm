@@ -376,6 +376,20 @@ OaksLabRivalChallengesPlayerScript:
 	ld [wOaksLabCurScript], a
 	ret
 
+; returns in a the OPP_RIVAL1 team countering the player's starter
+; (Route 1 calls it too: same bank)
+GetRival1TrainerNo:
+	ld a, [wRivalStarter]
+	cp STARTER2
+	ld a, $1
+	ret z
+	ld a, [wRivalStarter]
+	cp STARTER3
+	ld a, $2
+	ret z
+	ld a, $3
+	ret
+
 OaksLabRivalStartBattleScript:
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
@@ -384,19 +398,7 @@ OaksLabRivalStartBattleScript:
 	; define which team rival uses, and fight it
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
-	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .not_squirtle
-	ld a, $1
-	jr .done
-.not_squirtle
-	cp STARTER3
-	jr nz, .not_bulbasaur
-	ld a, $2
-	jr .done
-.not_bulbasaur
-	ld a, $3
-.done
+	call GetRival1TrainerNo
 	ld [wTrainerNo], a
 	ld a, OAKSLAB_RIVAL
 	ld [wSpriteIndex], a
