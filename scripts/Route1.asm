@@ -1,5 +1,9 @@
 Route1_Script:
 	call EnableAutoTextBoxDrawing
+	; Kael's object data holds team 1: pick the one matching the starter,
+	; read by EngageMapTrainer whether he sees the player or is talked to
+	call GetRival1TrainerNo
+	ld [wMapSpriteExtraData + (ROUTE1_KAEL - 1) * 2 + 1], a
 	ld hl, Route1TrainerHeaders
 	ld de, Route1_ScriptPointers
 	ld a, [wRoute1CurScript]
