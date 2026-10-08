@@ -388,7 +388,6 @@ ToggleableObjectStates:
 	toggle_object_state CERULEANCAVE2F_FULL_RESTORE, ON
 
 	toggleable_objects_for CERULEAN_CAVE_B1F
-	toggle_object_state CERULEANCAVEB1F_MEWTWO,     ON
 	toggle_object_state CERULEANCAVEB1F_ULTRA_BALL, ON
 	toggle_object_state CERULEANCAVEB1F_MAX_REVIVE, ON
 
