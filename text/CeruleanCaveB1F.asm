@@ -1,7 +1,3 @@
-_MewtwoBattleText::
-	text "Lunaris!@"
-	text_end
-
 _CeruleanCaveB1FOranLockedText::
 	text "Reviens quand"
 	line "tu seras"

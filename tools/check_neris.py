@@ -18,6 +18,7 @@ Validates cross-table consistency without assembling:
   - Event flags referenced in trainer headers exist in event_constants
   - Sighted trainer headers watch the object that talks through them
   - OPP_RIVAL1 map trainers take their team from the player's starter
+  - Each legendary stands on one map only
 
 Usage: python3 tools/check_neris.py  (exit 1 on failure)
 """
@@ -782,6 +783,25 @@ def check_rival_teams():
         print(f'Rival teams: {rivals} OPP_RIVAL1 map trainer(s) pick the team by starter')
 
 
+def check_unique_legendaries():
+    """A legendary is a one-off static encounter: the same species standing
+    on two maps gives the player a second copy (the vanilla Mewtwo kept in
+    Cerulean Cave once doubled Lunaris, also a MEWTWO slot).
+    """
+    seen = {}
+    for obj in sorted((ROOT / 'data/maps/objects').glob('*.asm')):
+        for m in re.finditer(r'^\s*object_event\b.*,\s*'
+                             r'(ARTICUNO|ZAPDOS|MOLTRES|MEWTWO|MEW)\s*,\s*\d+\s*$',
+                             strip_comments(obj.read_text()), re.M):
+            seen.setdefault(m.group(1), []).append(obj.name)
+    for species, maps in sorted(seen.items()):
+        if len(maps) > 1:
+            err(f'legendary: {species} stands on {len(maps)} maps: '
+                f'{", ".join(maps)}')
+    if all(len(m) == 1 for m in seen.values()):
+        print(f'Legendaries: {len(seen)} species, one map each')
+
+
 def check_map_header_pointers():
     sym_path = ROOT / 'pokered.sym'
     rom_path = ROOT / 'pokered.gbc'
@@ -1184,6 +1204,7 @@ def main():
     check_trainer_flags()
     check_trainer_sprites()
     check_rival_teams()
+    check_unique_legendaries()
     check_map_header_pointers()
     check_text_lines()
     check_text_asm_flow()

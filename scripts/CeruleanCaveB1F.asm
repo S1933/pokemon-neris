@@ -15,7 +15,6 @@ CeruleanCaveB1F_ScriptPointers:
 
 CeruleanCaveB1F_TextPointers:
 	def_text_pointers
-	dw_const CeruleanCaveB1FMewtwoText, TEXT_CERULEANCAVEB1F_MEWTWO
 	dw_const PickUpItemText,            TEXT_CERULEANCAVEB1F_ULTRA_BALL
 	dw_const PickUpItemText,            TEXT_CERULEANCAVEB1F_MAX_REVIVE
 	dw_const CeruleanCaveB1FOranText,   TEXT_CERULEANCAVEB1F_ORAN
@@ -24,9 +23,7 @@ CeruleanCaveB1F_TextPointers:
 	dw_const CeruleanCaveB1FGrunt3Text, TEXT_CERULEANCAVEB1F_GRUNT3
 
 CeruleanCaveB1FTrainerHeaders:
-	def_trainers
-MewtwoTrainerHeader:
-	trainer EVENT_BEAT_MEWTWO, 0, MewtwoBattleText, MewtwoBattleText, MewtwoBattleText
+	def_trainers 2
 CeruleanCaveB1FOranTrainerHeader:
 	trainer EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_0, 0, CeruleanCaveB1FOranBattleText, CeruleanCaveB1FOranEndBattleText, CeruleanCaveB1FOranAfterBattleScript
 CeruleanCaveB1FGrunt1TrainerHeader:
@@ -36,20 +33,6 @@ CeruleanCaveB1FGrunt2TrainerHeader:
 CeruleanCaveB1FGrunt3TrainerHeader:
 	trainer EVENT_BEAT_CERULEAN_CAVE_B1F_TRAINER_3, 2, CeruleanCaveB1FGrunt3BattleText, CeruleanCaveB1FGrunt3EndBattleText, CeruleanCaveB1FGrunt3AfterBattleText
 	db -1 ; end
-
-CeruleanCaveB1FMewtwoText:
-	text_asm
-	ld hl, MewtwoTrainerHeader
-	call TalkToTrainer
-	jp TextScriptEnd
-
-MewtwoBattleText:
-	text_far _MewtwoBattleText
-	text_asm
-	ld a, MEWTWO
-	call PlayCry
-	call WaitForSoundToFinish
-	jp TextScriptEnd
 
 ; Maitre Oran only fights once the player is Champion (game clear flag).
 CeruleanCaveB1FOranText:

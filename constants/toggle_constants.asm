@@ -361,7 +361,6 @@ ENDM
 	const TOGGLE_CERULEAN_CAVE_2F_ITEM_3       ; D0 X
 
 	toggle_consts_for CERULEAN_CAVE_B1F
-	const TOGGLE_MEWTWO                        ; D1 X
 	const TOGGLE_CERULEAN_CAVE_B1F_ITEM_1      ; D2 X
 	const TOGGLE_CERULEAN_CAVE_B1F_ITEM_2      ; D3 X
 
