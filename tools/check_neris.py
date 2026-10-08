@@ -19,6 +19,7 @@ Validates cross-table consistency without assembling:
   - Sighted trainer headers watch the object that talks through them
   - OPP_RIVAL1 map trainers take their team from the player's starter
   - Each legendary stands on one map only
+  - No trainer's after-battle text sets an event
 
 Usage: python3 tools/check_neris.py  (exit 1 on failure)
 """
@@ -802,6 +803,38 @@ def check_unique_legendaries():
         print(f'Legendaries: {len(seen)} species, one map each')
 
 
+def check_after_battle_events():
+    """A trainer header's after-battle text only runs when the player talks
+    to the beaten trainer again: an event set there is missed by a player
+    who walks away after the win (Oran's Mark of Neris once was). Set it in
+    a post-battle map script instead. A map with its own post-battle script
+    (call EndTrainerBattle) is trusted to show the text after the win, as
+    Lance's does; limitation: it is not checked to show that very text.
+    """
+    problems, headers = [], 0
+    for script in sorted((ROOT / 'scripts').glob('*.asm')):
+        lines = strip_comments(script.read_text()).splitlines()
+        if any(re.match(r'\s*call\s+EndTrainerBattle\b', l) for l in lines):
+            continue
+        blocks, label = {}, None
+        for line in lines:
+            if re.match(r'\w+:', line):
+                label = line.split(':')[0]
+            elif label:
+                blocks.setdefault(label, []).append(line)
+        for line in lines:
+            m = re.match(r'\s*trainer\s+EVENT_\w+,[^,]*,[^,]*,[^,]*,\s*(\w+)', line)
+            if not m:
+                continue
+            headers += 1
+            if any(re.match(r'\s*SetEvent\b', l) for l in blocks.get(m.group(1), [])):
+                problems.append(f'scripts/{script.name}: {m.group(1)} sets an event')
+    for p in problems:
+        err(f'after-battle text: {p}')
+    if not problems:
+        print(f'After-battle texts: {headers} trainer headers, none sets an event')
+
+
 def check_map_header_pointers():
     sym_path = ROOT / 'pokered.sym'
     rom_path = ROOT / 'pokered.gbc'
@@ -1205,6 +1238,7 @@ def main():
     check_trainer_sprites()
     check_rival_teams()
     check_unique_legendaries()
+    check_after_battle_events()
     check_map_header_pointers()
     check_text_lines()
     check_text_asm_flow()
