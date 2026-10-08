@@ -294,10 +294,11 @@ def check_species_completeness(species_entries):
     for const, idx in species_entries:
         if const is None or const in excluded:
             continue
-        stem = const.lower()
+        stem = const.lower().replace('_', '')  # NIDORAN_M -> nidoranm.asm
         bs_path = ROOT / 'data/pokemon/base_stats' / f'{stem}.asm'
         if not bs_path.exists():
-            continue  # already reported by check_pokemon_tables
+            problems.append(f'{const} (${idx:02X}): no data/pokemon/base_stats/{stem}.asm')
+            continue
         text = read(f'data/pokemon/base_stats/{stem}.asm')
         plain = strip_comments(text)
 
@@ -332,7 +333,8 @@ def check_species_completeness(species_entries):
         need(dex_num > 0, 'dex number (dex_order row)')
     playable = sum(1 for c, i in species_entries
                    if c and c not in excluded
-                   and (ROOT / 'data/pokemon/base_stats' / f'{c.lower()}.asm').exists())
+                   and (ROOT / 'data/pokemon/base_stats'
+                        / f"{c.lower().replace('_', '')}.asm").exists())
     if problems:
         for p in problems:
             err(p)
@@ -371,7 +373,7 @@ def check_placeholder_assets(species_entries):
     for const, idx in species_entries:
         if const is None or const in excluded:
             continue
-        stem = const.lower()
+        stem = const.lower().replace('_', '')
         bs_path = ROOT / 'data/pokemon/base_stats' / f'{stem}.asm'
         if not bs_path.exists():
             continue
@@ -382,7 +384,7 @@ def check_placeholder_assets(species_entries):
             missing.append(f'{fr} ({const}): no front pic INCBIN in base_stats')
             continue
         src = inc.group(1)
-        if src == stem:
+        if src.replace('.', '') == stem:  # mr.mime.pic
             continue
         if INTENTIONAL_BORROWS.get(const) == src:
             intentional.append(f'{fr} ({const}) borrows {src} sprite (intentional)')
