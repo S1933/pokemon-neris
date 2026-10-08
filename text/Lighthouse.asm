@@ -5,6 +5,15 @@ _LighthouseLunarisBattleText::
 	cont "de mille feux!"
 	done
 
+_LighthouseLunarisStaresText::
+	text "Lunaris te fixe"
+	line "en silence..."
+
+	para "Sans #MON, il"
+	line "ne daigne pas"
+	cont "se battre."
+	done
+
 _LighthouseQuakeText::
 	text "Le phare tremble!"
 	line "Un seisme secoue"

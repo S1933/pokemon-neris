@@ -41,9 +41,21 @@ LighthouseLunarisText:
 	call PrintText
 	jp TextScriptEnd
 .fightLunaris
+	ld a, [wPartyCount]
+	and a
+	jr nz, .hasParty
+	; no #MON to fight with: Lunaris only stares
+	ld hl, LighthouseLunarisStaresText
+	call PrintText
+	jp TextScriptEnd
+.hasParty
 	ld hl, LighthouseLunarisTrainerHeader
 	call TalkToTrainer
 	jp TextScriptEnd
+
+LighthouseLunarisStaresText:
+	text_far _LighthouseLunarisStaresText
+	text_end
 
 LighthouseQuakeText:
 	text_far _LighthouseQuakeText

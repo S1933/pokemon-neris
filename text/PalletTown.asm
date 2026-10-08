@@ -41,6 +41,25 @@ _PalletTownFisherText::
 	cont "et #MON par PC!"
 	done
 
+_PalletTownKeeperClosedText::
+	text "Le phare est"
+	line "ferme aux"
+	cont "debutants!"
+
+	para "Bats PIERRE a"
+	line "PEWTER, puis"
+	cont "reviens me voir."
+	done
+
+_PalletTownKeeperOpenText::
+	text "Le BADGE de"
+	line "PIERRE! Le phare"
+	cont "t'est ouvert."
+
+	para "Prends garde a"
+	line "son gardien..."
+	done
+
 _PalletTownOaksLabSignText::
 	text "LABORATOIRE"
 	line "de PROF.SYLVE"
