@@ -516,6 +516,13 @@ def check_warp_targets():
     print(f'Warp targets: {len(referenced)} distinct maps, all defined')
 
 
+def step_tile(bst, blk, w, x, y):
+    """Tile the engine reads for step (x, y) of a w-block-wide map: the
+    step's lower-left tile, at screen coord 8,9 under the player."""
+    block = blk[(y // 2) * w + x // 2]
+    return bst[block * 16 + ((y % 2) * 2 + 1) * 4 + (x % 2) * 2]
+
+
 def check_edge_warps():
     """A warp only fires (home/overworld.asm CheckWarpsNoCollision) if the
     tile under the player is a warp tile of the tileset
@@ -603,8 +610,7 @@ def check_edge_warps():
                 err(f'{label} warp {n} ({x},{y}) -> {dest}: outside the '
                     f'{2 * w}x{2 * h} step grid')
                 continue
-            block = blk[(y // 2) * w + x // 2]
-            tile = bst[tileset][block * 16 + ((y % 2) * 2 + 1) * 4 + (x % 2) * 2]
+            tile = step_tile(bst[tileset], blk, w, x, y)
             on_edge = x in (0, 2 * w - 1) or y in (0, 2 * h - 1)
             if tile not in tiles_of[tileset] and not on_edge:
                 err(f'{label} warp {n} ({x},{y}) -> {dest}: tile ${tile:02X} '
@@ -885,8 +891,7 @@ def check_port_lune():
     coll = tile_ids('data/tilesets/collision_tile_ids.asm', r'Overworld_Coll::')
 
     def tile(x, y):
-        block = blk[(y // 2) * 10 + x // 2]
-        return bst[block * 16 + ((y % 2) * 2 + 1) * 4 + (x % 2) * 2]
+        return step_tile(bst, blk, 10, x, y)
 
     def walkable(x, y):
         return 0 <= x < 20 and 0 <= y < 18 and tile(x, y) in coll
