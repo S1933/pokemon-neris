@@ -944,7 +944,8 @@ def check_port_lune():
       - the player's house stays whole: vanilla pret/pokered draws it with
         blocks $38 $39 / $3c $3d at block columns 2-3, rows 1-2, and grass
         $01 under its right half;
-      - every warp sits on an OVERWORLD door tile;
+      - every warp sits on an OVERWORLD door tile, and every door tile
+        has a warp;
       - walking with collisions from the house exit (5,6) reaches every
         warp and the north exit to Route 1 (row 0);
       - Oak spawns on screen of the player at the north exit;
@@ -985,6 +986,12 @@ def check_port_lune():
         if tile(x, y) not in doors:
             err(f'Port-Lune warp ({x},{y}) -> {dest}: tile ${tile(x, y):02X} '
                 'is not an OVERWORLD door tile')
+
+    # a door tile without a warp is a fake facade (the old 3-door tower)
+    fake = [(x, y) for y in range(18) for x in range(20)
+            if tile(x, y) in doors and (x, y) not in warps]
+    if fake:
+        err(f'Port-Lune: door tiles without a warp {fake}')
 
     # stepping on a warp leaves town: warps are reached, never crossed
     seen, todo = {(5, 6)}, [(5, 6)]
@@ -1063,8 +1070,8 @@ def check_port_lune():
                 'not on the OAKS_LAB warp')
 
     if len(errors) == before:
-        print(f'Port-Lune: player house whole, {len(warps)} warps on door '
-              'tiles, all reachable with the north exit, '
+        print(f'Port-Lune: player house whole, {len(warps)} warps on the '
+              f'{len(warps)} door tiles, all reachable with the north exit, '
               'opening cutscene on open steps')
 
 
