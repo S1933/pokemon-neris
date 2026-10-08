@@ -181,4 +181,4 @@ MonPartyData:
 	nybble ICON_MON      ; ELECTROX
 	nybble ICON_MON      ; FLAMELET
 	nybble ICON_SNAKE      ; DRAGONET
-	end_nybble_array NUM_POKEMON + 30
+	end_nybble_array NUM_NERIS_DEX

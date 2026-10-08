@@ -182,4 +182,4 @@ MonsterPalettes:
 	db PAL_YELLOWMON ; ELECTROX
 	db PAL_REDMON ; FLAMELET
 	db PAL_BLUEMON ; DRAGONET
-	assert_table_length NUM_POKEMON + 31
+	assert_table_length NUM_NERIS_DEX + 1

@@ -157,3 +157,7 @@
 	const DEX_MEW        ; 151
 
 DEF NUM_POKEMON EQU const_value - 1
+
+; Néris dex: the 151 originals plus the 30 new species, dex 152-181
+; (their numbers are listed in data/pokemon/dex_order.asm)
+DEF NUM_NERIS_DEX EQU NUM_POKEMON + 30
