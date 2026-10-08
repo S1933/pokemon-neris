@@ -23,7 +23,7 @@
 | Aquinou | Eau | Starter eau (lvl 5) | ✅ |
 | Verdillo | Plante | Starter plante (lvl 5) | ✅ |
 | Lunaris | Psy | Légendaire du Phare (lvl 70, statique) | ✅ |
-| Solaris | Feu/Vol | Légendaire du Mont Néris (lvl 70, statique) | ✅ |
+| Solaris | Psy | Légendaire du Mont Néris (lvl 70, statique) | ✅ |
 | + 25 autres | — | dex 152-181 : entrées, palettes, icônes | ✅ |
 
 ## 4. Histoire post-tournoi
