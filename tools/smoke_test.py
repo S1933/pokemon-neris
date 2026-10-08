@@ -7,7 +7,10 @@ Stages:
                starting town (wCurMap == 0, Port-Lune) and it stays there
                with no input for 2 seconds
   3. control : the Start menu opens (the game is interactive, not a cutscene)
-  4. battle  : the bot plays the opening (Prof. Sylve cutscene, starter,
+  4. lighthouse : with no starter, the bot walks up to the lighthouse
+               door; it is guarded until the first badge, so the player
+               stays in Port-Lune (wCurMap == 0) and no battle starts
+  5. battle  : the bot plays the opening (Prof. Sylve cutscene, starter,
                Kael in the lab), reaches the Route 1 grass and a wild
                battle starts with the right enemy sprite (--no-battle skips)
 
@@ -128,6 +131,14 @@ def main():
         # worst moment; the battle stage is the milestone being tested.
         print("WARN control: menu WRAM unavailable (continuing)")
 
+    from battle_check import run_stage_lighthouse
+    ok, msg = run_stage_lighthouse(pb, wram, syms)
+    print(f"lighthouse: {msg}")
+    if not ok:
+        print("FAIL lighthouse stage")
+        pb.stop()
+        return 1
+
     if not args.no_battle:
         from battle_check import run_stage_battle
         ok, msg = run_stage_battle(pb, wram, hold, syms)
@@ -136,11 +147,13 @@ def main():
         if not ok:
             print("FAIL battle stage")
             return 1
-        print("SMOKE TEST PASSED (boot, intro, world, interactivity, battle)")
+        print("SMOKE TEST PASSED (boot, intro, world, interactivity, "
+              "lighthouse, battle)")
         return 0
 
     pb.stop()
-    print("SMOKE TEST PASSED (boot, intro, world, interactivity)")
+    print("SMOKE TEST PASSED (boot, intro, world, interactivity, "
+          "lighthouse)")
     return 0
 
 
