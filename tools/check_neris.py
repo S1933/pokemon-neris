@@ -816,8 +816,6 @@ def check_dex_size():
     import glob
     allowed = {
         'constants/pokedex_constants.asm': 'defines NUM_POKEMON and NUM_NERIS_DEX',
-        'engine/events/pokedex_rating.asm': 'T3: rating table on the 151 dex',
-        'scripts/CeladonMansion3F.asm': 'T3: diploma threshold on the 151 dex',
     }
     problems = []
     for path in sorted(glob.glob(str(ROOT / '**' / '*.asm'), recursive=True)):
@@ -832,7 +830,7 @@ def check_dex_size():
     for p in problems:
         err(f'dex size: {p}')
     if not problems:
-        print(f'dex size: NUM_POKEMON only in {len(allowed)} allowed files')
+        print(f'dex size: NUM_POKEMON only in {", ".join(allowed)}')
 
 
 def check_blackout_fly_warps():
