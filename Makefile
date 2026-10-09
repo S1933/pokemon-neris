@@ -106,6 +106,7 @@ tools:
 check:
 	@python3 tools/check_neris.py
 	@python3 tools/check_rom.py
+	@python3 tools/check_stability.py
 
 registry:
 	@python3 tools/gen_registry.py
