@@ -1,3 +1,8 @@
+	object_const_def
+	const_export ACADEMYEAST_CURATOR
+	const_export ACADEMYEAST_STATUE_1
+	const_export ACADEMYEAST_STATUE_2
+
 AcademyEast_Object:
 	db $3 ; border block
 
