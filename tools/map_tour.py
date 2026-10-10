@@ -40,8 +40,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
-from battle_check import _free, _press, _close_box, REDS_HOUSE_2F  # noqa: E402
-from check_stability import parse_map_consts, parse_objects  # noqa: E402
+from battle_check import (_free, _press, _step,  # noqa: E402
+                         _first_move, _warps, _DIRS, walk_to_town)
+from check_stability import (parse_map_consts, parse_objects,  # noqa: E402
+                            parse_headers)
 
 DIV = 0xFF04        # rDIV: free-running timer, ticks even while the CPU HALTs
 BG_MAP = 0x9800     # BG tilemap (VRAM region 0 bytes), sampled for staleness
@@ -57,63 +59,107 @@ def load_symbols():
     return syms
 
 
-def warp_counts(map_labels):
-    """label -> number of warp_event in its objects file (0 = landing junk)."""
+def warp_counts(map_const_labels):
+    """const name (PALLETTOWN) -> number of warp_event in its objects file.
+    Object/header files are CamelCase (PalletTown.asm) while map_constants is
+    upper snake — resolve through the headers, as check_stability does."""
+    headers = parse_headers()
+    const_to_label = {h["const"]: lbl for lbl, h in headers.items()}
     counts = {}
-    for label in map_labels:
-        o = parse_objects(label)
-        counts[label] = len(o["warps"]) if o else 0
+    for const in map_const_labels:
+        lbl = const_to_label.get(const, const)
+        o = parse_objects(lbl)
+        counts[const] = len(o["warps"]) if o else 0
     return counts
 
 
-def boot_to_bedroom(pb, wram, max_frames=60 * 120):
-    """Mash through title + intro until the player stands in the bedroom
-    (REDS_HOUSE_2F). The intro hands control at any point, so this loop is
-    input-driven: A advances text, B sweeps the SNES hidden-event box."""
+def boot_to_town(pb, wram, max_frames=60 * 120):
+    """Mash through title + intro until the player stands, controllable, in
+    Port-Lune (map 0) — the same state the smoke test reaches. From there the
+    tour teleports, because Port-Lune has real door warps to repurpose as
+    launch pads (the bedroom spawn is not controllable until the intro fully
+    finishes)."""
     frames = 0
     while frames < max_frames:
-        if wram("wCurMap") == REDS_HOUSE_2F and wram("wYCoord"):
-            # make sure control really is ours before planting warps
-            for _ in range(30):
-                _press(pb, "a", 6)
-            return True, frames
-        _press(pb, "a", 14)
-        frames += 16
-        if frames % (16 * 10) < 16:
-            _close_box(pb)
-            frames += 44
+        _press(pb, "a", 45)
+        frames += 47
+        ok, _ = walk_to_town(pb, wram)
+        frames += 1
+        if ok:
+            # LoadMapData finishes writing wWarpEntries a few frames after
+            # the map id flips; settle before the tour reads them.
+            for _ in range(120):
+                pb.tick(1, False)
+            return True, frames + 120
     return False, frames
 
 
 def plant_warp(mem, syms, y, x, dst_warp, dst_map):
-    """Plant a single collision warp at step (y, x) leading to dest map."""
+    """Retarget a real warp entry — the engine only fires a warp when the
+    player steps onto an actual door/warp tile, so the tool repurposes the
+    current map's own first warp (a guaranteed door/warp tile) instead of
+    planting one on an arbitrary floor tile, which the tile gate rejects."""
     base = syms["wWarpEntries"][1]
-    mem[syms["wNumberOfWarps"][1]] = 1
-    mem[base + 0] = y
-    mem[base + 1] = x
     mem[base + 2] = dst_warp
     mem[base + 3] = dst_map
 
 
-def teleport_to(pb, wram, mem, syms, target, rounds=8):
-    """Bump into walls until LoadMapData lands the player on `target`.
-    Returns (map_id_now, success). A NEIGHBOUR map load (a pathier step
-    walked through a map connection) just moves the player; the caller's
-    next teleport continues chaining from wherever the player ended up."""
-    for _ in range(rounds):
+def teleport_to(pb, wram, mem, syms, target, budget=60 * 60):
+    """Retarget the current map's first warp to `target` and walk the player
+    onto it. Returns (map_id_now, success). The launch pad is a real door/
+    warp tile (CheckWarpsNoCollision fires WarpFound1 on it), so LoadMapData
+    loads `target` with full object/script state — the code a bad map breaks.
+
+    Random play leaves the game in a dirty state (a menu, a text box, a
+    cutscene, another map), so this first escapes whatever is open, steps the
+    player off the pad when they landed on it, then re-approaches it — the
+    step-ONTO-the-tile pattern is what actually triggers the warp."""
+    base = syms["wWarpEntries"][1]
+    n_addr = syms["wNumberOfWarps"][1]
+    frames = 0
+    # escape a lingering menu/text/cutscene before touching the pad
+    while not _free(wram) and frames < 60 * 6:
+        _press(pb, "b", 8)
+        _press(pb, "a", 8)
+        frames += 16
+    if mem[n_addr] == 0:
+        return wram("wCurMap"), False  # no launch pad on this map
+    door = (mem[base + 1], mem[base + 0])  # (x, y) of the first warp
+    start_map = wram("wCurMap")
+    # a warp lands the player ON its own pad: step off it so the walk can
+    # re-approach and re-fire CheckWarpsNoCollision
+    pos = (wram("wXCoord"), wram("wYCoord"))
+    if pos == door:
+        for key, _, _ in _DIRS:
+            _step(pb, wram, key)
+            if wram("wCurMap") != start_map:
+                return wram("wCurMap"), wram("wCurMap") == target
+            if (wram("wXCoord"), wram("wYCoord")) != door:
+                break
+    plant_warp(mem, syms, door[1], door[0], 1, target)
+    while frames < budget:
+        m = wram("wCurMap")
+        if m == target:
+            return m, True
+        if m != start_map:
+            return m, False  # drifted elsewhere; chain from here
         if not _free(wram):
+            _press(pb, "b", 6)
             _press(pb, "a", 6)
+            frames += 12
             continue
-        y, x = wram("wYCoord"), wram("wXCoord")
-        plant_warp(mem, syms, y, x, 1, target)
-        for key in ("down", "left", "down", "right", "up", "left"):
-            _press(pb, key, 12)
-            for _ in range(60):  # let the fade-out + LoadMapData finish
-                if wram("wCurMap") == target:
-                    return target, True
+        pos = (wram("wXCoord"), wram("wYCoord"))
+        w = 2 * wram("wCurMapWidth")
+        h = 2 * wram("wCurMapHeight")
+        avoid = _warps(pb, syms) - {door}
+        k = _first_move(pos, door, w, h, avoid)
+        if k is None:
+            k = _first_move(pos, door, w, h, set())
+            if k is None:  # map still loading / no reachable path
                 pb.tick(1, False)
-        # the planted warp was a non-starter: reload the map's live entries
-        # for the next round's plant to stay stable
+                frames += 1
+                continue
+        frames += _step(pb, wram, k)
     return wram("wCurMap"), False
 
 
@@ -126,7 +172,7 @@ def play_random(pb, wram, mem, seconds, rng, health):
     vram_hash = None
     pos = None
     keys = ["up", "up", "down", "down", "left", "right", "right", "left",
-            "a", "a", "a", "b", "b", "start"]
+            "a", "a", "a", "b", "b"]
     last_div = mem[DIV]
     frozen = 0
     iters = 0
@@ -202,26 +248,29 @@ def main():
     t0_map = None
 
     try:
-        ok, fr = boot_to_bedroom(pb, wram)
+        ok, fr = boot_to_town(pb, wram)
         if not ok:
-            print(f"FAIL intro: bedroom never reached after {fr} frames")
+            print(f"FAIL intro: Port-Lune never reached after {fr} frames")
             pb.stop()
             return 1
-        print(f"intro: bedroom reached after {fr} frames")
+        # Hub save state: every map is visited from a FRESH Port-Lune, so a
+        # 0-warp route (left only through connections) or a cutscene the
+        # random play walked into cannot poison the rest of the tour.
+        hub_state = "/tmp/neris_tour_hub.state"
+        with open(hub_state, "wb") as f:
+            pb.save_state(f)
+        print(f"intro: Port-Lune reached after {fr} frames (hub saved)")
         rng = random.Random(args.seed)
         for mid in maps:
+            with open(hub_state, "rb") as f:
+                pb.load_state(f)
             lbl, w, h = by_id[mid]
             line = f"  {mid:3d} {lbl}: "
             before = wram("wCurMap")
             landed, ok = teleport_to(pb, wram, mem, syms, mid)
             if not ok:
                 notes.append(f"{mid} {lbl}: teleport failed "
-                             f"(still on {before}; chain continues from "
-                             f"{landed})")
-                # any map change the stumble caused still counts as played
-                m_now = wram("wCurMap")
-                if m_now == mid:
-                    ok = True
+                             f"(was on {before}, now {landed}; chaining on)")
             if ok:
                 x, y = wram("wXCoord"), wram("wYCoord")
                 if not (0 <= x < 2 * w and 0 <= y < 2 * h):
