@@ -388,9 +388,22 @@ MtMoonB2FRocket4AfterBattleText:
 
 MtMoonB2FSolarisText:
 	text_asm
+	; Neris: Mont Neris is the post-game finale (chapter 3). Before the
+	; League, the level 70 Solaris only watches: it cannot be fought (and
+	; so cannot be lost for good) by an early-game team.
+	CheckEvent EVENT_BEAT_CHAMPION_RIVAL
+	jr nz, .fight
+	ld hl, MtMoonB2FSolarisWatchesText
+	call PrintText
+	jp TextScriptEnd
+.fight
 	ld hl, MtMoon3TrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
+
+MtMoonB2FSolarisWatchesText:
+	text_far _MtMoonB2FSolarisWatchesText
+	text_end
 
 MtMoonB2FSolarisBattleText:
 	text_far _MtMoonB2FSolarisBattleText

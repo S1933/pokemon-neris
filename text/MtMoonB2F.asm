@@ -133,6 +133,15 @@ _MtMoonB2FRocket4AfterBattleText::
 	cont "humains."
 	done
 
+_MtMoonB2FSolarisWatchesText::
+	text "Solaris brille"
+	line "en silence..."
+
+	para "Il attend un"
+	line "dresseur digne"
+	cont "de la LIGUE."
+	done
+
 _MtMoonB2FSolarisBattleText::
 	text "Solaris!"
 	line "Le soleil est"
