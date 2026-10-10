@@ -347,7 +347,7 @@ BillsPCMenuText:
 	db "@"
 
 BoxNoPCText:
-	db "BOITE No.@"
+	db "BOITE@"
 
 KnowsHMMove::
 ; returns whether mon with party index [wWhichPokemon] knows an HM move

@@ -12,6 +12,7 @@ ViridianCity_ScriptPointers:
 	dw_const ViridianCityPlayerMovingDownScript,         SCRIPT_VIRIDIANCITY_PLAYER_MOVING_DOWN
 
 ViridianCityDefaultScript:
+	call ViridianCityCheckAcademyOpenScript
 	call ViridianCityCheckGymOpenScript
 	jp ViridianCityCheckGotPokedexScript
 
@@ -105,6 +106,36 @@ ViridianCityOldManEndCatchTrainingScript:
 	ld [wViridianCityCurScript], a
 	ret
 
+; Neris: the Academy tournament (levels 57-58) is the endgame. Until the
+; 8th badge, a player stepping in front of its door (21,16) is turned
+; away to the west (the tile south of the door is a wall).
+ViridianCityCheckAcademyOpenScript:
+	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	ret nz
+	ld a, [wYCoord]
+	cp 16
+	ret nz
+	ld a, [wXCoord]
+	cp 21
+	ret nz
+	ld a, TEXT_VIRIDIANCITY_ACADEMY_CLOSED
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ldh [hJoyHeld], a
+	call StartSimulatingJoypadStates
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, PAD_LEFT
+	ld [wSimulatedJoypadStatesEnd], a
+	ld a, SPRITE_FACING_LEFT
+	ld [wSpritePlayerStateData1FacingDirection], a
+	xor a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_VIRIDIANCITY_PLAYER_MOVING_DOWN ; waits for the step to end
+	ld [wViridianCityCurScript], a
+	ret
+
 ViridianCityPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
@@ -142,6 +173,7 @@ ViridianCity_TextPointers:
 	dw_const ViridianCityGymSignText,                        TEXT_VIRIDIANCITY_GYM_SIGN
 	dw_const ViridianCityGymLockedText,                      TEXT_VIRIDIANCITY_GYM_LOCKED
 	dw_const ViridianCityOldManYouNeedToWeakenTheTargetText, TEXT_VIRIDIANCITY_OLD_MAN_YOU_NEED_TO_WEAKEN_THE_TARGET
+	dw_const ViridianCityAcademyClosedText,                  TEXT_VIRIDIANCITY_ACADEMY_CLOSED
 
 ViridianCityYoungster1Text:
 	text_far _ViridianCityYoungster1Text
@@ -322,6 +354,10 @@ ViridianCityTrainerTips2Text:
 
 ViridianCityGymSignText:
 	text_far _ViridianCityGymSignText
+	text_end
+
+ViridianCityAcademyClosedText:
+	text_far _ViridianCityAcademyClosedText
 	text_end
 
 ViridianCityGymLockedText:

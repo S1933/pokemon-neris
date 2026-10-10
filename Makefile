@@ -113,6 +113,12 @@ registry:
 	@python3 tools/gen_trainers.py
 	@python3 tools/gen_pic_banks.py
 
+# NERIS fuzz: emulator tour of every map (random play + crash detection).
+# Too slow for `check` — run explicitly.
+.PHONY: tour
+tour:
+	@python3 tools/map_tour.py
+
 
 RGBASMFLAGS += -Q8 -P includes.asm
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`

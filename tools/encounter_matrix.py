@@ -316,13 +316,30 @@ def fix(species):
     return species
 
 
+# Early game (before Cerulean): the 7 common grass slots keep the vanilla
+# species (base forms the starters can fight, ~90% of encounters) and only
+# the 3 rare slots (8-10, ~10%) get a Neris species. Rewriting every slot
+# put single-stage species with final-form stats (BST ~400) on Route 1 and
+# left the same 1-2 species in every patch of grass.
+MIXED_MAPS = {
+    "Route1", "Route22", "Route2", "ViridianForest", "Route3",
+    "MtMoon1F", "MtMoonB1F", "MtMoonB2F", "Route4",
+}
+COMMON_SLOTS = 7
+
+
 def rewrite_file(path, dry_run):
     text = path.read_text()
     lines = text.splitlines()
     out = []
     branch = None  # None / "RED" / "BLUE"
     changes = 0
+    grass_idx = None
     for line in lines:
+        if "def_grass_wildmons" in line:
+            grass_idx = 0
+        elif "end_grass_wildmons" in line:
+            grass_idx = None
         if "IF DEF(_RED)" in line:
             branch = "RED"
             out.append(line)
@@ -340,6 +357,12 @@ def rewrite_file(path, dry_run):
             out.append(line)
             continue
         indent, level, sep, species, tail = m.groups()
+        if grass_idx is not None:
+            slot = grass_idx % 10
+            grass_idx += 1
+            if path.stem in MIXED_MAPS and slot < COMMON_SLOTS:
+                out.append(line)
+                continue
         new_species = None
         if branch:
             pair = BRANCH_PAIRS.get(species)

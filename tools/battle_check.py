@@ -337,19 +337,40 @@ def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 600):
     if OAKS_LAB not in fought:
         return False, "wild battle reached without the Kael battle in the lab"
 
-    # let the battle intro play out a bit (the sprite buffers are checked
-    # while the enemy pic is still decompressed in them)
-    pb.tick(60 * 3, False)
+    # Sample the enemy sprite data DURING the battle intro: the pic is only
+    # briefly decompressed in the SRAM buffers, and a fixed 3-second wait
+    # before reading them raced the opening animation — the emulator's
+    # pacing decides whether the buffers are loaded yet, so the stage used
+    # to fail at random. Poll frame by frame across the intro and sample
+    # the moment the species id is up and the buffers hold data.
+    species = 0
+    front_ptr = 0
+    distinct = set()
+    sampled_frames = 0
+    buffer_syms = tuple(syms[s] for s in ("sSpriteBuffer0", "sSpriteBuffer1"))
+    hdr = _wram_addr(syms, "wMonHFrontSprite")
+    for _ in range(60 * 12):
+        if not species:
+            species = wram("wEnemyMonSpecies")
+        if species:
+            distinct = set()
+            for _, a in buffer_syms:
+                base = 0xA000 + (a & 0x1FFF)
+                distinct.update(bytes(pb.memory[base:base + 0x2A0]))
+            if len(distinct) >= 8:
+                front_ptr = pb.memory[hdr] | (pb.memory[hdr + 1] << 8)
+                break
+        pb.tick(1, False)
+        sampled_frames += 1
+    else:
+        return False, ("enemy sprite buffers still empty after the battle "
+                       f"intro ({sampled_frames} frames sampled)")
 
-    species = wram("wEnemyMonSpecies")
     const = id2const.get(species)
     if const is None:
         return False, f"unknown enemy species id {species:#04x}"
     exp = cr.parse_base_stats(const, dexval, types)
     front_label = exp["front_label"] + "PicFront"
-
-    hdr = _wram_addr(syms, "wMonHFrontSprite")
-    front_ptr = pb.memory[hdr] | (pb.memory[hdr + 1] << 8)
 
     want = cr.load_sym().get(front_label)
 
@@ -360,19 +381,12 @@ def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 600):
         return False, (f"enemy front sprite points to {got:#06x}, "
                        f"expected {front_label} at {want[1] & 0x3FFF:#06x}")
 
-    # decompressed sprite buffers live in SRAM (sSpriteBuffer0..2):
-    # neither empty nor uniform
-    distinct = set()
-    for symname in ("sSpriteBuffer0", "sSpriteBuffer1"):
-        _, a = syms[symname]
-        base = 0xA000 + (a & 0x1FFF)
-        distinct.update(bytes(pb.memory[base:base + 0x2A0]))
-    if len(distinct) < 8:
-        return False, (f"sprite buffers look empty ({len(distinct)} distinct "
-                       f"byte values)")
-    # the screen is still dark at 3s: capture "Wild ... appeared!", where
-    # the game waits for A
-    pb.tick(60 * 7, False)
+    # what is decompressed in SRAM was sampled live above (neither empty
+    # nor uniform); no second buffer read needed
+
+    # finish the intro (the "Wild ... appeared!" text waits for A a few
+    # seconds in), whatever time the sampling above has already spent
+    pb.tick(max(0, 60 * 10 - sampled_frames), False)
     pb.tick(1, True)
     shot = ROOT / "smoke_battle.png"
     pb.screen.image.save(shot)

@@ -180,6 +180,14 @@ _ViridianCityGymSignText::
 	line "#MON GYM"
 	done
 
+_ViridianCityAcademyClosedText::
+	text "ACADEMIE NERIS"
+	line "Tournoi reserve"
+	cont "aux dresseurs"
+	cont "qui ont les"
+	cont "8 BADGES."
+	done
+
 _ViridianCityGymLockedText::
 	text "Les portes du"
 	line "GYM sont"

@@ -6,14 +6,14 @@ sont ceux de la courbe vanilla (le boost +30 % est appliqué par
 
 | Zone | Espèces (niveau) |
 |---|---|
-| Route1 | ailesor (4), oiseaulo (3,4,6,7) |
-| Route2 | oiseaulo (3,4,6,7), ailesor (4), buggaie (4,6,7), floralys (4,7), serpicol (3,7) |
-| ViridianForest | buggaie (4,6,7), floraque (6), floralys (4,6,7,8), serpicol (4,6), electrox (4,7) |
-| Route3 | ailesor (7,8,10), oiseaulo (4,10,11), buggaie (7) |
-| MtMoon1F | chauvespi (8,10,11,12,13,15), petiroc (11), rocboul (13), floraque (11), clefairy (11) |
-| MtMoonB1F | chauvespi (10,11,12,13,15), rocboul (10,11,12), floraque (13), clefairy (12) |
-| MtMoonB2F | chauvespi (12,13,15,16), petiroc (12), rocboul (13), floraque (13,16), clefairy (13,16) |
-| Route4 | oiseaulo (11,13,16), ailesor (11,13,16), serpicol (8,11,13,16), rocboul (8,11,13,16) |
+| Route1 | pidgey (3,4), rattata (3,4), oiseaulo (6,7) |
+| Route2 | rattata (3,4,6,7), pidgey (4,6,7), weedle (4), oiseaulo (7), buggaie (6,7), caterpie (4,6,7) |
+| ViridianForest | weedle (4,6,7), kakuna (6,7,8), metapod (6,8), buggaie (4), floralys (6,7), caterpie (4,7), pikachu (4), electrox (7) |
+| Route3 | pidgey (8,10,11), spearow (7,8,10,11), oiseaulo (4,10), buggaie (7) |
+| MtMoon1F | zubat (8,10,11,12,13), geodude (11,13), floraque (11), chauvespi (15), clefairy (11) |
+| MtMoonB1F | zubat (10,11,12,13), geodude (10,11), paras (13), chauvespi (15), clefairy (12), rocboul (12) |
+| MtMoonB2F | zubat (12,13,15), geodude (12,13), paras (13,16), clefairy (13,16), chauvespi (16) |
+| Route4 | rattata (11,13,16), spearow (11,13,16), ekans (8,13), ailesor (16), serpicol (11,16), sandshrew (8,11,13,16) |
 | Route24 | buggaie (10,11), oiseaulo (16,17), floraque (16,17,19), psymini (11,13,16), floralys (10,11), ailesor (16), mentalis (13) |
 | Route25 | buggaie (10,11,12), oiseaulo (17), floraque (16,17,19), psymini (13,16), floralys (11,12), ailesor (17), mentalis (13,16), serpicol (10,11) |
 | DiglettsCave | terreux (20,21,23,24,25,26,28,29,38,41) |
