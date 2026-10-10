@@ -226,6 +226,9 @@ def main():
     labels, _ = parse_map_consts()
     by_id = {mid: (lbl, w, h) for lbl, (mid, w, h) in labels.items()}
     maps = sorted(by_id)
+    # UNUSED_MAP_* placeholders (0x0) are not real maps — they would only
+    # produce garbage-load notes; the tour visits the actual maps.
+    maps = [m for m in maps if not by_id[m][0].startswith("UNUSED_MAP")]
     if args.maps:
         want = {int(x) for x in args.maps.split(",")}
         maps = [m for m in maps if m in want]
