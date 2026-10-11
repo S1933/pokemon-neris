@@ -48,6 +48,16 @@ Route16SnorlaxPostBattleScript:
 	cp LOST_BATTLE
 	jp z, Route16ResetScripts
 	call UpdateSprites
+	; Neris: a Snorlax that was not caught goes back to sleep on the
+	; road, so it can be woken with the flute and tried again
+	ld a, SNORLAX
+	call IsMonOwned
+	jr nz, .owned
+	ld a, TOGGLE_ROUTE_16_SNORLAX
+	ld [wToggleableObjectIndex], a
+	predef ShowObject
+	jr .done
+.owned
 	ld a, [wBattleResult]
 	cp $2
 	jr z, .caught
@@ -56,6 +66,7 @@ Route16SnorlaxPostBattleScript:
 	call DisplayTextID
 .caught
 	SetEvent EVENT_BEAT_ROUTE16_SNORLAX
+.done
 	call Delay3
 	ld a, SCRIPT_ROUTE16_DEFAULT
 	ld [wRoute16CurScript], a
