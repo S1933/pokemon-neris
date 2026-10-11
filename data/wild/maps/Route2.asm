@@ -8,16 +8,16 @@ Route2WildMons:
 IF DEF(_RED)
 	db  4, WEEDLE
 	db  3, RATTATA
-	db  7, OISEAULO
-	db  6, BUGGAIE
 	db  7, BUGGAIE
+	db  6, OISEAULO
+	db  7, CATERPIE
 ENDC
 IF DEF(_BLUE)
 	db  4, CATERPIE
 	db  3, RATTATA
-	db  7, RATTATA
-	db  6, CATERPIE
-	db  7, CATERPIE
+	db  7, BUGGAIE
+	db  6, OISEAULO
+	db  7, WEEDLE
 ENDC
 	end_grass_wildmons
 

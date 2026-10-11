@@ -382,6 +382,11 @@ def rewrite_file(path, dry_run):
 
 
 def main():
+    if "--force" not in sys.argv:
+        print("encounter_matrix.py is superseded by tools/mix_encounters.py "
+              "(catch-them-all): running it would remove vanilla species "
+              "again. Use --force to run it anyway.")
+        return 0
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()

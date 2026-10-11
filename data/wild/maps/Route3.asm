@@ -7,7 +7,7 @@ Route3WildMons:
 	db  10, SPEAROW
 	db  11, PIDGEY
 	db  11, SPEAROW
-	db  4, OISEAULO
+	db  4, JIGGLYPUFF
 	db  7, BUGGAIE
 	db  10, OISEAULO
 	end_grass_wildmons

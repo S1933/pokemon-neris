@@ -1,20 +1,20 @@
 CeruleanCaveB1FWildMons:
 	def_grass_wildmons 25 ; encounter rate
-	db 72, TERRAKOR
-	db 72, TERREUX
-	db 72, ELECTROX
+	db 72, RHYDON
+	db 72, MAROWAK
+	db 72, ELECTRODE
 	db 84, CHANSEY
-	db 84, FLORAQUE
-	db 84, FULGURAX
+	db 84, PARASECT
+	db 84, RAICHU
 IF DEF(_RED)
-	db 75, SERPICOL
+	db 75, SANDSLASH
 ENDC
 IF DEF(_BLUE)
-	db 75, ROCBOUL
+	db 75, SANDSLASH
 ENDC
-	db 62, CRAMORIL
-	db 64, OBSCURAX
-	db 66, PYROFELIS
+	db 62, DITTO
+	db 64, TERRAKOR
+	db 66, CRAMORIL
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

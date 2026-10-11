@@ -8,8 +8,8 @@ MtMoonB2FWildMons:
 	db 13, PARAS
 	db 16, PARAS
 	db 13, CLEFAIRY
+	db 16, ZUBAT
 	db 16, CHAUVESPI
-	db 16, CLEFAIRY
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

@@ -7,9 +7,9 @@ MtMoonB1FWildMons:
 	db  12, ZUBAT
 	db 13, PARAS
 	db 13, ZUBAT
-	db 15, CHAUVESPI
+	db 15, ROCBOUL
 	db  12, CLEFAIRY
-	db  12, ROCBOUL
+	db  12, CHAUVESPI
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

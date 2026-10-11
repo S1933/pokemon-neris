@@ -1,25 +1,25 @@
 SafariZoneWestWildMons:
 	def_grass_wildmons 30 ; encounter rate
 IF DEF(_RED)
-	db 33, SERPICOL
-	db 34, OISEAULO
-	db 30, SERPICOL
-	db 32, FLORALYS
-	db 43, SERPICOL
-	db 34, FLORALYS
-	db 33, FLORAQUE
+	db 33, NIDORAN_M
+	db 34, DODUO
+	db 30, VENONAT
+	db 32, EXEGGCUTE
+	db 43, NIDORINO
+	db 34, NIDORINA
+	db 33, NIDORAN_F
 ENDC
 IF DEF(_BLUE)
-	db 33, GLACIETTE
-	db 34, AILESOR
-	db 30, SERPICOL
-	db 32, FLORAQUE
-	db 43, GLACIETTE
-	db 34, FLORAQUE
-	db 33, TERREUX
+	db 33, NIDORAN_F
+	db 34, DODUO
+	db 30, VENONAT
+	db 32, EXEGGCUTE
+	db 43, NIDORINA
+	db 34, NIDORINO
+	db 33, NIDORAN_M
 ENDC
-	db 41, VENOMBRU
-	db 34, MARAISOR
+	db 41, SQUIRTLE
+	db 34, TAUROS
 	db 37, KANGASKHAN
 	end_grass_wildmons
 
