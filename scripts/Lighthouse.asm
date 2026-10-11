@@ -31,6 +31,12 @@ LighthouseLunarisText:
 	predef PredefShakeScreenHorizontally
 	ld hl, LighthouseQuakeText
 	call PrintText
+	; Neris catch-them-all: Lunaris only leaves once it has been caught
+	; (never, in practice: a caught Lunaris is no longer here). Until then
+	; the quake ends in the battle, so the species cannot be missed.
+	ld a, MEWTWO
+	call IsMonOwned
+	jr z, .fightLunaris
 	ld a, TOGGLE_LIGHTHOUSE_LUNARIS
 	ld [wToggleableObjectIndex], a
 	predef HideObject
