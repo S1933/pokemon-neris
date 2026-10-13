@@ -1,13 +1,13 @@
 PokemonTower6FWildMons:
 	def_grass_wildmons 15 ; encounter rate
-	db 28, FANTOMIN
-	db 29, FANTOMIN
-	db 30, FANTOMIN
-	db 32, FANTOMIN
-	db 26, FANTOMIN
-	db 25, FANTOMIN
-	db 34, FANTOMIN
-	db 29, TERREUX
+	db 28, GASTLY
+	db 29, GASTLY
+	db 30, GASTLY
+	db 32, GASTLY
+	db 26, GASTLY
+	db 25, GASTLY
+	db 34, HAUNTER
+	db 29, CUBONE
 	db 32, TERREUX
 	db 37, FANTOMIN
 	end_grass_wildmons

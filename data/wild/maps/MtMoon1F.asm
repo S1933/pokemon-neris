@@ -6,9 +6,9 @@ MtMoon1FWildMons:
 	db  11, GEODUDE
 	db  8, ZUBAT
 	db 13, ZUBAT
-	db 13, GEODUDE
-	db  11, FLORAQUE
-	db 15, CHAUVESPI
+	db 13, CHAUVESPI
+	db  11, PARAS
+	db 15, FLORAQUE
 	db  11, CLEFAIRY
 	end_grass_wildmons
 

@@ -6,22 +6,22 @@ IF DEF(_RED)
 	db  6, RATTATA
 	db  6, NIDORAN_M
 	db  3, RATTATA
-	db  3, NIDORAN_M
+	db  3, TERREUX
 	db  4, SPEAROW
-	db  7, AILESOR
-	db  4, FLORAQUE
-	db  6, FLORAQUE
+	db  7, FLORAQUE
+	db  4, NIDORAN_F
+	db  6, AILESOR
 ENDC
 IF DEF(_BLUE)
 	db  4, NIDORAN_F
 	db  6, RATTATA
 	db  6, NIDORAN_F
 	db  3, RATTATA
-	db  3, NIDORAN_F
+	db  3, TERREUX
 	db  4, SPEAROW
-	db  7, SPEAROW
-	db  4, TERREUX
-	db  6, TERREUX
+	db  7, FLORAQUE
+	db  4, NIDORAN_M
+	db  6, AILESOR
 ENDC
 	end_grass_wildmons
 

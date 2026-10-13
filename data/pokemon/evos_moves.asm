@@ -637,7 +637,8 @@ SlowpokeEvosMoves:
 
 KadabraEvosMoves:
 ; Evolutions
-	db EVOLVE_TRADE, 1, ALAKAZAM
+	; Neris: trade evolution turned into level 40 (catch-them-all solo)
+	db EVOLVE_LEVEL, 40, ALAKAZAM
 	db 0
 ; Learnset
 	db 16, CONFUSION
@@ -650,7 +651,8 @@ KadabraEvosMoves:
 
 GravelerEvosMoves:
 ; Evolutions
-	db EVOLVE_TRADE, 1, GOLEM
+	; Neris: trade evolution turned into level 40 (catch-them-all solo)
+	db EVOLVE_LEVEL, 40, GOLEM
 	db 0
 ; Learnset
 	db 11, DEFENSE_CURL
@@ -675,7 +677,8 @@ ChanseyEvosMoves:
 
 MachokeEvosMoves:
 ; Evolutions
-	db EVOLVE_TRADE, 1, MACHAMP
+	; Neris: trade evolution turned into level 40 (catch-them-all solo)
+	db EVOLVE_LEVEL, 40, MACHAMP
 	db 0
 ; Learnset
 	db 20, LOW_KICK
@@ -1877,7 +1880,8 @@ MentalisEvosMoves:
 
 HaunterEvosMoves:
 ; Evolutions
-	db EVOLVE_TRADE, 1, GENGAR
+	; Neris: trade evolution turned into level 40 (catch-them-all solo)
+	db EVOLVE_LEVEL, 40, GENGAR
 	db 0
 ; Learnset
 	db 29, HYPNOSIS

@@ -7,8 +7,8 @@ Route1WildMons:
 	db  3, PIDGEY
 	db  4, PIDGEY
 	db  4, PIDGEY
-	db  6, OISEAULO
-	db  6, OISEAULO
+	db  6, RATTATA
+	db  6, PIDGEY
 	db  7, OISEAULO
 	end_grass_wildmons
 

@@ -1,28 +1,28 @@
 SeafoamIslandsB3FWildMons:
 	def_grass_wildmons 10 ; encounter rate
 IF DEF(_RED)
-	db 41, MARAISOR
-	db 41, GLACIETTE
-	db 43, MARAISOR
-	db 43, GLACIETTE
-	db 38, DRAGONET
-	db 41, GLACIETTE
-	db 41, DRAGONET
-	db 38, GLACIETTE
-	db 51, DRACOZELLE
+	db 41, SLOWPOKE
+	db 41, SEEL
+	db 43, KINGLER
+	db 43, STARYU
+	db 38, HORSEA
+	db 41, SHELLDER
+	db 41, KRABBY
+	db 38, PSYDUCK
+	db 51, SEADRA
 ENDC
 IF DEF(_BLUE)
-	db 41, MARAISOR
-	db 41, MARAISOR
-	db 43, MARAISOR
-	db 43, MARAISOR
-	db 38, MARAISOR
-	db 41, CRABEAU
-	db 41, MARAISOR
-	db 38, CRABEAU
-	db 51, MARAISOR
+	db 41, PSYDUCK
+	db 41, SEEL
+	db 43, SEADRA
+	db 43, SHELLDER
+	db 38, KRABBY
+	db 41, STARYU
+	db 41, HORSEA
+	db 38, SLOWPOKE
+	db 51, KINGLER
 ENDC
-	db 49, GLACIETTE
+	db 49, KABUTO
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

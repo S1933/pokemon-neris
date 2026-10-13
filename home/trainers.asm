@@ -196,6 +196,19 @@ EndTrainerBattle::
 	ld a, [wEnemyMonOrTrainerClass]
 	cp OPP_ID_OFFSET
 	jr nc, .skipRemoveSprite
+	; Neris: a static Pokemon (legendary, Voltorb...) that was knocked out
+	; or fled from without ever being caught stays for another try, so
+	; every species can still be caught.
+	call IsMonOwned
+	jr nz, .removeSprite
+	ld a, TRAINER_EVENT_FLAG_POINTER
+	call ReadTrainerHeaderInfo
+	ld a, [wTrainerHeaderFlagBit]
+	ld c, a
+	ld b, FLAG_RESET
+	call TrainerFlagAction ; not fought after all
+	jr .skipRemoveSprite
+.removeSprite
 	ld hl, wToggleableObjectList
 	ld de, $2
 	ld a, [wSpriteIndex]
@@ -209,6 +222,20 @@ EndTrainerBattle::
 	bit BIT_UNKNOWN_5_4, [hl]
 	res BIT_UNKNOWN_5_4, [hl]
 	ret nz
+
+; Neris: nz if species a is registered as owned in the Pokedex
+IsMonOwned::
+	ld [wPokedexNum], a
+	predef IndexToPokedex
+	ld a, [wPokedexNum]
+	dec a
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wPokedexOwned
+	predef FlagActionPredef
+	ld a, c
+	and a
+	ret
 
 ResetButtonPressedAndMapScript::
 	xor a

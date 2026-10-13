@@ -1,28 +1,28 @@
 SafariZoneEastWildMons:
 	def_grass_wildmons 30 ; encounter rate
 IF DEF(_RED)
-	db 32, PSYMINI
-	db 34, CRABEAU
-	db 29, FLORAQUE
-	db 33, FLORALYS
-	db 43, DRAGONET
-	db 30, FLORALYS
-	db 32, FLORAQUE
-	db 33, FLORAQUE
-	db 33, KANGASKHAN
-	db 37, BUGGAIE
+	db 32, NIDORAN_M
+	db 34, DODUO
+	db 29, PARAS
+	db 33, EXEGGCUTE
+	db 43, NIDORINO
+	db 30, NIDORINA
+	db 32, NIDORAN_F
+	db 33, PARASECT
+	db 33, BULBASAUR
+	db 37, SCYTHER
 ENDC
 IF DEF(_BLUE)
-	db 32, PSYMINI
-	db 34, CRABEAU
-	db 29, SERPICOL
-	db 33, FLORAQUE
-	db 43, DRAGONET
-	db 30, FLORAQUE
-	db 32, TERREUX
-	db 33, SERPICOL
-	db 33, KANGASKHAN
-	db 37, BUGGAIE
+	db 32, NIDORAN_F
+	db 34, DODUO
+	db 29, PARAS
+	db 33, EXEGGCUTE
+	db 43, NIDORINA
+	db 30, NIDORINO
+	db 32, NIDORAN_M
+	db 33, PARASECT
+	db 33, BULBASAUR
+	db 37, PINSIR
 ENDC
 	end_grass_wildmons
 
