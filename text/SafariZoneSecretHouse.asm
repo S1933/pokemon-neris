@@ -23,9 +23,9 @@ _SafariZoneSecretHouseFishingGuruReceivedHM03Text::
 _SafariZoneSecretHouseFishingGuruHM03ExplanationText::
 	text "HM03, c'est SURF!"
 
-	para "Les #MON pourront"
-	line "te faire traverser"
-	cont "l'eau!"
+	para "Les #MON"
+	line "pourront te faire"
+	cont "traverser l'eau!"
 
 	para "Et cette HM n'est"
 	line "pas a usage"

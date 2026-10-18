@@ -8,12 +8,12 @@ _Route4CooltrainerF1Text::
 _Route4CooltrainerF2BattleText::
 	text "Je viens"
 	line "chercher mon"
-	cont "#MON champignon!"
+	cont "#MON champignon"
 	done
 
 _Route4CooltrainerF2EndBattleText::
 	text "Oh! Mon mignon"
-	line "#MON champignon!"
+	line "#MON champignon"
 	prompt
 
 _Route4CooltrainerF2AfterBattleText::

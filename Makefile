@@ -112,6 +112,7 @@ check:
 	@python3 tools/check_rom.py
 	@python3 tools/check_stability.py
 	@python3 tools/check_dex.py --strict
+	@python3 tools/check_text_width.py
 
 registry:
 	@python3 tools/gen_registry.py

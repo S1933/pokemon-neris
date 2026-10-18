@@ -4,8 +4,8 @@ _CinnabarLabFishingGuruText::
 	cont "ici."
 
 	para "On nous apporte"
-	line "souvent des #MON"
-	cont "rares a examiner."
+	line "des #MON rares"
+	cont "a examiner."
 	done
 
 _CinnabarLabPhotoText::

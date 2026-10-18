@@ -37,8 +37,8 @@ _LavenderTownSuperNerdText::
 
 	para "Je crois que ce"
 	line "sont les esprits"
-	cont "des #MON tues par"
-	cont "les ROCKETs."
+	cont "des #MON tues"
+	cont "par les ROCKETs."
 	done
 
 _LavenderTownSignText::
@@ -65,7 +65,7 @@ _LavenderTownPokemonHouseSignText::
 
 _LavenderTownPokemonTowerSignText::
 	text "Que les ames des"
-	line "#MON reposent en"
-	cont "paix"
+	line "#MON reposent"
+	cont "en paix"
 	cont "TOUR #MON"
 	done

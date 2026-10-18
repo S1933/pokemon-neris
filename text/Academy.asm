@@ -26,7 +26,7 @@ _AcademyOranAfterBattleText::
 
 _AcademyChamp1BattleText::
 	text "Je m'entraine"
-	line " ici jour et"
+	line "ici jour et"
 	cont "nuit!"
 	done
 

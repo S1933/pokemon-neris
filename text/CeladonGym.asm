@@ -15,8 +15,8 @@ _CeladonGymErikaPreBattleText::
 
 	para "J'enseigne l'art"
 	line "de l'ikebana."
-	cont "Mes #MON sont de"
-	cont "type plante."
+	cont "Mes #MON sont"
+	cont "de type plante."
 
 	para "Oh, pardon, je"
 	line "ne savais pas que"
@@ -129,8 +129,8 @@ _CeladonGymAfterBattleText3::
 
 	para "Ils ont aussi"
 	line "l'avantage sur"
-	cont "les #MON roche et"
-	cont "sol!"
+	cont "les #MON roche"
+	cont "et sol!"
 	done
 
 _CeladonGymBattleText4::

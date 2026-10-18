@@ -115,7 +115,7 @@ _ViridianCityOldManHadMyCoffeeNowText::
 
 _ViridianCityOldManKnowHowToCatchPokemonText::
 	text "Je vois que tu"
-	line "utilises un #DEX."
+	line "utilises #DEX."
 
 	para "Quand tu attrapes"
 	line "un #MON, le"
@@ -151,9 +151,9 @@ _ViridianCitySignText::
 _ViridianCityTrainerTips1Text::
 	text "ASTUCES"
 
-	para "Attrape des #MON"
-	line "et agrandis ta"
-	cont "collection!"
+	para "Attrape des"
+	line "#MON et"
+	cont "agrandis ta"
 
 	para "Plus tu en as,"
 	line "plus il est"
@@ -171,8 +171,8 @@ _ViridianCityTrainerTips2Text::
 
 	para "Pour restaurer"
 	line "les PP, repose"
-	cont "tes #MON dans un"
-	cont "CENTRE #MON!"
+	cont "tes #MON dans"
+	cont "un CENTRE #MON!"
 	done
 
 _ViridianCityGymSignText::

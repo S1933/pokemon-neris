@@ -5,7 +5,7 @@ _CeruleanMartCooltrainerMText::
 	cont "#MON a l'ecart."
 
 	para "Mets le plus fort"
-	line "des #MON en tete"
+	line "#MON en tete"
 	cont "de liste pour de"
 	cont "meilleurs"
 	cont "resultats!"

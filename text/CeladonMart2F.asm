@@ -1,6 +1,6 @@
 _CeladonMart2FMiddleAgedManText::
 	text "SUPER REPEL tient"
-	line "les #MON faibles"
+	line "#MON faibles"
 	cont "a distance..."
 
 	para "C'est un REPEL"

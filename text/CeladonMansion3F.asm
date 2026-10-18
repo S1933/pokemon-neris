@@ -28,7 +28,7 @@ _CeladonMansion3FGameDesignerText::
 	para "Je suis le"
 	line "createur du jeu!"
 
-	para "Remplir ton #DEX"
+	para "Remplir le #DEX"
 	line "est difficile,"
 	cont "mais n'abandonne"
 	cont "pas!"

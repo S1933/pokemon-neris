@@ -24,7 +24,7 @@ _FuchsiaBillsGrandpasHouseBillsGrandpaText::
 _FuchsiaBillsGrandpasHouseYoungsterText::
 	text "BILL garde les"
 	line "donnees de ses"
-	cont "#MON sur son PC!"
+	cont "#MON sur son PC"
 
 	para "Il te les a"
 	line "montrees?"

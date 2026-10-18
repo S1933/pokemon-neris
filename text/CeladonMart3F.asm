@@ -1,6 +1,6 @@
 _CeladonMart3FClerkTM18PreReceiveText::
 	text "Oh, salut! J'ai"
-	line "enfin fini #MON!"
+	line "enfin fini #MON"
 
 	para "Pas encore"
 	line "termine? Ca"
@@ -28,7 +28,7 @@ _CeladonMart3FClerkTM18NoRoomText::
 	done
 
 _CeladonMart3FGameBoyKid1Text::
-	text "Les #MON captures"
+	text "#MON captures"
 	line "sont enregistres"
 	cont "avec un No. ID et"
 	cont "un DO, le nom du"

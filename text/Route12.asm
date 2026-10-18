@@ -64,8 +64,8 @@ _Route12CooltrainerMEndBattleText::
 
 _Route12CooltrainerMAfterBattleText::
 	text "J'aurais pu faire"
-	line "evoluer mon #MON"
-	cont "avec une MOON"
+	line "evoluer mon"
+	cont "#MON avec une"
 	cont "STONE!"
 	done
 
@@ -83,7 +83,7 @@ _Route12SuperNerdAfterBattleText::
 	text "L'eau conduit"
 	line "l'electricite,"
 	cont "alors electrise"
-	cont "les #MON marins!"
+	cont "les #MON marins"
 	done
 
 _Route12Fisher3BattleText::

@@ -75,8 +75,8 @@ _Route20Swimmer5AfterBattleText::
 
 _Route20Swimmer6BattleText::
 	text "Pourquoi tu montes"
-	line "un #MON? Tu sais"
-	cont "pas nager?"
+	line "un #MON? Tu"
+	cont "sais pas nager?"
 	done
 
 _Route20Swimmer6EndBattleText::
@@ -85,13 +85,13 @@ _Route20Swimmer6EndBattleText::
 	prompt
 
 _Route20Swimmer6AfterBattleText::
-	text "Monter un #MON a"
-	line "l'air si amusant!"
+	text "Monter un #MON"
+	line "a l'air amusant!"
 	done
 
 _Route20CooltrainerMBattleText::
 	text "Je suis venu sur"
-	line "mon #MON volant!"
+	line "mon #MON volant"
 	done
 
 _Route20CooltrainerMEndBattleText::

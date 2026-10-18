@@ -11,7 +11,7 @@ _CinnabarPokecenterCooltrainerFText::
 _CinnabarPokecenterGentlemanText::
 	text "As-tu des amis?"
 
-	para "Les #MON obtenus"
+	para "#MON obtenus"
 	line "par echange"
 	cont "grandissent vite."
 

@@ -66,8 +66,8 @@ _VermilionCityGambler2Text::
 	line "batiment sur ce"
 	cont "terrain."
 
-	para "Mon #MON tasse la"
-	line "terre."
+	para "Mon #MON tasse"
+	line "la terre."
 	done
 
 _VermilionCityMachopText::
