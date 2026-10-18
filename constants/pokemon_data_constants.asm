@@ -100,3 +100,9 @@ DEF WILDDATA_LENGTH EQU 1 + NUM_WILDMONS * 2
 ; PP in box_struct (see macros/ram.asm)
 DEF PP_UP_MASK EQU %11000000 ; number of PP Up used
 DEF PP_MASK    EQU %00111111 ; currently remaining PP
+
+; Néris save layout version, mixed into every SRAM checksum
+; (engine/menus/save.asm CalcCheckSum). Bump it whenever the saved
+; layout or the map object indices change. Must be non-zero.
+DEF NERIS_SAVE_SALT EQU $4E ; "N", layout 1
+	ASSERT NERIS_SAVE_SALT != 0

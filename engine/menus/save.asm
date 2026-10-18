@@ -296,7 +296,10 @@ SaveGameData::
 
 CalcCheckSum:
 ;Check Sum (result[1 byte] is complemented)
-	ld d, 0
+; Seeded with NERIS_SAVE_SALT: a save written by another layout (or by vanilla
+; pokered) fails the check and the game reports a destroyed file instead of
+; loading inconsistent data.
+	ld d, NERIS_SAVE_SALT
 .loop
 	ld a, [hli]
 	add d
