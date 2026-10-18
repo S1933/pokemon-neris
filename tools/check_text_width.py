@@ -11,8 +11,9 @@ import sys
 
 MAX = 18
 EXPAND = {  # placeholder -> rendered width (worst case)
-    '<PLAYER>': 7, '<RIVAL>': 7, '<TARGET>': 13, '<USER>': 13,
-    '<PKMN>': 7, '<TM>': 2, '<PC>': 2, '<ROCKET>': 6, '<TRAINER>': 7,
+    # <TARGET>/<USER>: "Ennemi " (7) + a 10-letter nickname (home/text.asm)
+    '<PLAYER>': 7, '<RIVAL>': 7, '<TARGET>': 17, '<USER>': 17,
+    '<PKMN>': 2, '<TM>': 2, '<PC>': 2, '<ROCKET>': 6, '<TRAINER>': 8,
 }
 CMD = re.compile(r'^\s*(text|line|cont|para|next)\s+"((?:[^"\\]|\\.)*)"')
 ALLOW = {  # (file, line) intentionally wider, with a reason
