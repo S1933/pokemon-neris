@@ -396,3 +396,182 @@ def run_stage_battle(pb, wram, hold, syms, max_frames=60 * 600):
                   f"screenshot {shot.relative_to(ROOT)}; reached after "
                   f"{frames} frames of play (starter taken, Kael fought "
                   f"in the lab)")
+
+
+# --------------------------------------------------------------------------
+# Standalone run (nightly): sweep a wild battle against every species.
+#
+# Until this entry point existed, `python tools/battle_check.py` (the
+# nightly "Battle checks" step) only imported the helpers and exited 0.
+
+def _tap(pb, key, wait):
+    pb.button_press(key)
+    pb.tick(6, False)
+    pb.button_release(key)
+    pb.tick(wait, False)
+
+
+def _flee(pb, wram, tries=60):
+    """Leave the current wild battle (RUN, then dismiss the texts)."""
+    for _ in range(tries):
+        if not wram("wIsInBattle"):
+            break
+        for k in ("b", "b", "down", "right", "a"):
+            _tap(pb, k, 15)
+        for _ in range(6):
+            _tap(pb, "a", 20)
+    for _ in range(10):  # let the overworld settle
+        _tap(pb, "b", 30)
+    return not wram("wIsInBattle")
+
+
+def sweep_species(pb, wram, syms, state, level, only=None):
+    """From a save state standing in grass, force every grass slot to one
+    species and fight it with random inputs. Returns a list of failures."""
+    import io
+    import random
+    dexval, types, id2const = _tables()
+    sym = cr.load_sym()
+    grass = _wram_addr(syms, "wGrassMons")
+    rate = _wram_addr(syms, "wGrassRate")
+    hdr = _wram_addr(syms, "wMonHFrontSprite")
+    failures, notes = [], []
+    tested = 0
+    for sp in sorted(id2const):
+        const = id2const[sp]
+        if const.startswith(("FOSSIL", "MON_GHOST", "NO_MON")):
+            continue
+        if only and const not in only:
+            continue
+        tested += 1
+        pb.load_state(io.BytesIO(state))
+        for i in range(10):
+            pb.memory[grass + 2 * i] = level
+            pb.memory[grass + 2 * i + 1] = sp
+        pb.memory[rate] = 255
+        rng = random.Random(sp * 1000 + level)
+        checked = False
+        problem = None
+        steps = 0
+        # walk back and forth in the grass, polling every frame
+        while not wram("wIsInBattle") and steps < 40:
+            key = ("left", "right")[steps % 2]
+            pb.button_press(key)
+            for _ in range(16):
+                pb.tick(1, False)
+                if wram("wIsInBattle"):
+                    break
+            pb.button_release(key)
+            steps += 1
+        if not wram("wIsInBattle"):
+            failures.append(f"L{level} {const}: no encounter")
+            continue
+        div, frozen, turns = None, 0, 0
+        while turns < 400:
+            if not checked and wram("wEnemyMonSpecies") == sp:
+                checked = True
+                exp = cr.parse_base_stats(const, dexval, types)
+                want = sym.get(exp["front_label"] + "PicFront")
+                got = (pb.memory[hdr] | (pb.memory[hdr + 1] << 8)) & 0x3FFF
+                if want is None or got != want[1] & 0x3FFF:
+                    problem = f"front sprite {got:#06x} != {exp['front_label']}PicFront"
+                t1 = wram("wEnemyMonType")
+                if t1 > 26:
+                    problem = f"enemy type {t1}"
+            try:
+                _tap(pb, rng.choice(("a", "a", "a", "b", "down", "up")), 16)
+            except Exception as e:  # emulator-level fault
+                problem = f"emulator exception: {e}"
+                break
+            d = pb.memory[0xFF04]
+            frozen = frozen + 1 if d == div else 0
+            div = d
+            if frozen > 20:
+                problem = "CPU frozen (DIV stopped)"
+                break
+            if not wram("wIsInBattle"):
+                break
+            turns += 1
+        if not checked and not problem:
+            problem = "enemy species never loaded"
+        if problem:
+            failures.append(f"L{level} {const}: {problem}")
+        elif wram("wIsInBattle"):
+            notes.append(f"L{level} {const}: still fighting after {turns} inputs")
+    return failures, notes, tested
+
+
+def main():
+    import argparse
+    import io
+    import logging
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--rom", default="pokered.gbc")
+    ap.add_argument("--levels", default="5,60",
+                    help="comma-separated enemy levels to sweep")
+    ap.add_argument("--species", default="",
+                    help="comma-separated species constants (default: all)")
+    args = ap.parse_args()
+
+    logging.getLogger("pyboy").setLevel(logging.ERROR)
+    from pyboy import PyBoy
+    syms = {}
+    for line in (ROOT / "pokered.sym").read_text().splitlines():
+        m = re.match(r"^([0-9A-Fa-f]{2}):([0-9a-fA-F]{4})\s+(\S+)$", line.strip())
+        if m:
+            syms[m.group(3)] = (int(m.group(1), 16), int(m.group(2), 16))
+    pb = PyBoy(str(ROOT / args.rom), window="null", sound_emulated=False)
+
+    def wram(s):
+        return pb.memory[syms[s][1]] if s in syms else None
+
+    def hold(keys, frames):
+        for k in keys:
+            pb.button(k)
+        for _ in range(frames):
+            pb.tick(1, False)
+        for k in keys:
+            pb.button(k)
+
+    pb.tick(60 * 8, False)
+    for _ in range(400):
+        hold(["a"], 45)
+        ok, msg = walk_to_town(pb, wram)
+        if ok:
+            break
+    else:
+        print(f"FAIL: Port-Lune never reached ({msg})")
+        return 1
+    pb.tick(120, False)
+    ok, msg = run_stage_lighthouse(pb, wram, syms)
+    if not ok:
+        print(f"FAIL lighthouse: {msg}")
+        return 1
+    ok, msg = run_stage_battle(pb, wram, hold, syms)
+    print(f"opening: {msg}")
+    if not ok or not _flee(pb, wram):
+        print("FAIL: could not reach (or leave) the first wild battle")
+        return 1
+    buf = io.BytesIO()
+    pb.save_state(buf)
+    only = {s.strip() for s in args.species.split(",") if s.strip()}
+    failures, notes = [], []
+    for level in (int(x) for x in args.levels.split(",")):
+        f, n, tested = sweep_species(pb, wram, syms, buf.getvalue(), level, only)
+        failures += f
+        notes += n
+        print(f"level {level}: {tested} species, {len(f)} failure(s), {len(n)} long battle(s)")
+    pb.stop()
+    for n in notes:
+        print("  note:", n)
+    for f in failures:
+        print("  FAIL:", f)
+    if failures:
+        print(f"battle_check: {len(failures)} failure(s)")
+        return 1
+    print("battle_check: every species battled without a fault")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
