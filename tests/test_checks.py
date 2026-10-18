@@ -40,6 +40,14 @@ def test_text_width_rejects_a_line_too_wide(tmp_path):
     assert '19 tiles' in r.stdout
 
 
+def test_text_width_rejects_done_after_terminator(tmp_path):
+    # Regression for PR #15: "@" then "done" stalled every attack text.
+    tree = text_tree(tmp_path, '_X::\n\ttext "@"\n\tdone\n')
+    r = run('check_text_width.py', tree)
+    assert r.returncode == 1
+    assert 'read as a text command' in r.stdout
+
+
 def map_tree(tmp_path, rom0_free, text_bank_free):
     (tmp_path / 'pokered.map').write_text(
         'SUMMARY:\n'
