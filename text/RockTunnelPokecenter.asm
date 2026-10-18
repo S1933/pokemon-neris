@@ -9,6 +9,6 @@ _RockTunnelPokecenterGentlemanText::
 
 _RockTunnelPokecenterFisherText::
 	text "J'ai vendu un"
-	line "NUGGET inutile"
+	line "PEPITE inutile"
 	cont "pour ¥5000!"
 	done

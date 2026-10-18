@@ -5,8 +5,8 @@ _SaffronPokecenterBeautyText::
 	done
 
 _SaffronPokecenterGentlemanText::
-	text "SILPH CO. est tres"
-	line "connu. C'est pour"
-	cont "ca que la TEAM"
-	cont "ROCKET est la!"
+	text "SYLPHE SARL est"
+	line "tres connu. C'est"
+	cont "pour ca que la"
+	cont "TEAM ROCKET y est!"
 	done

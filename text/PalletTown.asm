@@ -47,7 +47,7 @@ _PalletTownKeeperClosedText::
 	cont "debutants!"
 
 	para "Bats PIERRE a"
-	line "PEWTER, puis"
+	line "ARGENTA, puis"
 	cont "reviens me voir."
 	done
 

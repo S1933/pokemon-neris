@@ -63,7 +63,7 @@ _RocketHideoutB4FRocket2AfterBattleText::
 _RocketHideoutB4FRocket3BattleText::
 	text "L'ascenseur ne"
 	line "marche pas? Qui a"
-	cont "la LIFT KEY?"
+	cont "la CLE ASC.?"
 	done
 
 _RocketHideoutB4FRocket3EndBattleText::
@@ -73,5 +73,5 @@ _RocketHideoutB4FRocket3EndBattleText::
 _RocketHideoutB4FRocket3AfterBattleText::
 	text "Oh non! J'ai"
 	line "fait tomber la"
-	cont "LIFT KEY!"
+	cont "CLE ASC.!"
 	done

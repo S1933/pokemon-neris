@@ -1,14 +1,15 @@
 _Route1Youngster1MartSampleText::
 	text "Salut! Je"
 	line "travaille"
-	cont "au #MON MART."
+	cont "a la BOUTIQUE"
+	cont "#MON."
 
 	para "C'est une"
 	line "boutique"
 	cont "pratique,"
 	cont "passe nous"
 	cont "voir a"
-	cont "VIRIDIAN CITY."
+	cont "JADIELLE."
 
 	para "Tiens, je"
 	line "vais te"
@@ -57,7 +58,7 @@ _Route1Youngster2Text::
 _Route1SignText::
 	text "SENTIER EMBRUNS"
 	line "PORT-LUNE -"
-	cont "VIRIDIAN CITY"
+	cont "JADIELLE"
 	done
 
 _Route1KaelBattleText::

@@ -25,7 +25,7 @@ _BluesHouseDaisyBagFullText::
 
 _BluesHouseDaisyUseMapText::
 	text "Utilise la"
-	line "TOWN MAP pour"
+	line "CARTE pour"
 	cont "savoir ou tu es."
 	done
 

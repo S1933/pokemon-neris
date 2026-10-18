@@ -44,7 +44,7 @@ _RocketHideoutB1FRocket3EndBattleText::
 	prompt
 
 _RocketHideoutB1FRocket3AfterBattleText::
-	text "SILPH SCOPE?"
+	text "SCOPE SYLPHE?"
 	line "Je ne sais pas"
 	cont "ou c'est!"
 	done

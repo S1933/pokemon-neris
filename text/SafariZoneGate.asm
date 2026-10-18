@@ -1,6 +1,6 @@
 _SafariZoneGateSafariZoneWorker1Text::
 	text "Bienvenue au"
-	line "SAFARI ZONE!"
+	line "PARC SAFARI!"
 	done
 
 _SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText::
@@ -28,7 +28,7 @@ _SafariZoneGateSafariZoneWorker1ThatllBe500PleaseText::
 
 	para "<PLAYER> a"
 	line "recu 30"
-	cont "SAFARI BALLs!@"
+	cont "SAFARI BALLS!@"
 	text_end
 
 _SafariZoneGateSafariZoneWorker1CallYouOnThePAText::
@@ -39,7 +39,7 @@ _SafariZoneGateSafariZoneWorker1CallYouOnThePAText::
 	cont "parleur si tu"
 	cont "n'as plus de"
 	cont "temps ou de"
-	cont "SAFARI BALLs!"
+	cont "SAFARI BALLS!"
 	done
 
 _SafariZoneGateSafariZoneWorker1PleaseComeAgainText::
@@ -60,7 +60,7 @@ _SafariZoneGateSafariZoneWorker1LeavingEarlyText::
 
 _SafariZoneGateSafariZoneWorker1ReturnSafariBallsText::
 	text "Rends les"
-	line "SAFARI BALLs"
+	line "SAFARI BALLS"
 	cont "qu'il te"
 	cont "reste."
 	done
@@ -84,14 +84,14 @@ _SafariZoneGateSafariZoneWorker2FirstTimeHereText::
 	done
 
 _SafariZoneGateSafariZoneWorker2SafariZoneExplanationText::
-	text "Le SAFARI ZONE"
+	text "Le PARC SAFARI"
 	line "a 4 zones."
 
 	para "Chaque zone"
 	line "a des #MON"
 	cont "differents."
 	cont "Utilise des"
-	cont "SAFARI BALLs"
+	cont "SAFARI BALLS"
 	cont "pour les"
 	cont "attraper!"
 

@@ -1,6 +1,6 @@
 _SilphCo8FSilphWorkerMSilphIsFinishedText::
 	text "Je me demande si"
-	line "SILPH va"
+	line "SYLPHE va"
 	cont "s'en sortir..."
 	done
 
@@ -40,7 +40,7 @@ _SilphCo8FScientistAfterBattleText::
 	text "Alors, que"
 	line "penses-tu du"
 	cont "labyrinthe de"
-	cont "SILPH?"
+	cont "SYLPHE?"
 	done
 
 _SilphCo8FRocket2BattleText::

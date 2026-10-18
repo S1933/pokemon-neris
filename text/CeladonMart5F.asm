@@ -6,7 +6,7 @@ _CeladonMart5FGentlemanText::
 	para "Utilise CALCIUM"
 	line "pour augmenter"
 	cont "le SPECIAL."
-	para "Utilise CARBOS"
+	para "Utilise CARBONE"
 	line "pour la VITESSE."
 	done
 
@@ -14,10 +14,10 @@ _CeladonMart5FSailorText::
 	text "Je viens pour"
 	line "les boosters de"
 	cont "capacites #MON."
-	para "PROTEIN"
+	para "PROTEINE"
 	line "augmente"
 	cont "l'ATTAQUE."
-	para "IRON augmente"
+	para "FER augmente"
 	line "la DEFENSE!"
 	done
 

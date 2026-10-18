@@ -7,7 +7,7 @@ _CeladonMartRoofLittleGirlGiveHerWhichDrinkText::
 _CeladonMartRoofLittleGirlYayFreshWaterText::
 	text "Super!"
 
-	para "FRESH WATER!"
+	para "EAU FRAICHE!"
 
 	para "Merci!"
 
@@ -29,7 +29,7 @@ _CeladonMartRoofLittleGirlTM13ExplanationText::
 	para "@"
 	text_ram wStringBuffer
 	text " contient"
-	line "ICE BEAM!"
+	line "LASER GLACE!"
 
 	para "Ca peut geler"
 	line "la cible"
@@ -39,7 +39,7 @@ _CeladonMartRoofLittleGirlTM13ExplanationText::
 _CeladonMartRoofLittleGirlYaySodaPopText::
 	text "Super!"
 
-	para "SODA POP!"
+	para "SODA COOL!"
 
 	para "Merci!"
 
@@ -61,7 +61,7 @@ _CeladonMartRoofLittleGirlTM48ExplanationText::
 	para "@"
 	text_ram wStringBuffer
 	text " contient"
-	line "ROCK SLIDE!"
+	line "EBOULEMENT!"
 
 	para "Ca peut"
 	line "effrayer la"
@@ -72,7 +72,7 @@ _CeladonMartRoofLittleGirlTM48ExplanationText::
 _CeladonMartRoofLittleGirlYayLemonadeText::
 	text "Super!"
 
-	para "LEMONADE!"
+	para "LIMONADE!"
 
 	para "Merci!"
 
@@ -83,14 +83,14 @@ _CeladonMartRoofLittleGirlYayLemonadeText::
 
 _CeladonMartRoofLittleGirlReceivedTM49Text::
 	text "<PLAYER> obtient"
-	line "TM49!@"
+	line "CT49!@"
 	text_end
 
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
-	para "TM49 contient"
-	line "TRI ATTACK!@"
+	para "CT49 contient"
+	line "TRIPLATTAQUE!@"
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::

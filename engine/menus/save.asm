@@ -513,18 +513,18 @@ ChooseABoxText:
 	text_end
 
 BoxNames:
-	db   "BOX 1"
-	next "BOX 2"
-	next "BOX 3"
-	next "BOX 4"
-	next "BOX 5"
-	next "BOX 6"
-	next "BOX 7"
-	next "BOX 8"
-	next "BOX 9"
-	next "BOX10"
-	next "BOX11"
-	next "BOX12@"
+	db   "BTE 1"
+	next "BTE 2"
+	next "BTE 3"
+	next "BTE 4"
+	next "BTE 5"
+	next "BTE 6"
+	next "BTE 7"
+	next "BTE 8"
+	next "BTE 9"
+	next "BTE10"
+	next "BTE11"
+	next "BTE12@"
 
 BoxNoText:
 	db "BOITE No.@"

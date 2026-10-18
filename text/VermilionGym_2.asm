@@ -16,7 +16,7 @@ _VermilionGymLTSurgePostBattleAdviceText::
 
 _VermilionGymLTSurgeThunderBadgeInfoText::
 	text "Le"
-	line "THUNDERBADGE"
+	line "BADGE FOUDRE"
 	cont "booste la"
 	cont "VITESSE de"
 	cont "tes #MON!"
@@ -25,7 +25,7 @@ _VermilionGymLTSurgeThunderBadgeInfoText::
 	line "aussi a tes"
 	cont "#MON"
 	cont "d'utiliser"
-	cont "FLY a tout"
+	cont "VOL a tout"
 	cont "moment, gamin!"
 
 	para "T'es special,"
@@ -43,9 +43,9 @@ _VermilionGymLTSurgeReceivedTM24Text::
 _TM24ExplanationText::
 	text_start
 
-	para "La TM24"
+	para "La CT24"
 	line "contient"
-	cont "THUNDERBOLT!"
+	cont "TONNERRE!"
 
 	para "Apprends-la"
 	line "a un #MON"
@@ -68,7 +68,7 @@ _VermilionGymLTSurgeReceivedThunderBadgeText::
 
 	para "Bon, prends"
 	line "le"
-	cont "THUNDERBADGE!"
+	cont "BADGE FOUDRE!"
 	prompt
 
 _VermilionGymGentlemanBattleText::

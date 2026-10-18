@@ -1,7 +1,7 @@
 _SilphCo11FSilphPresidentText::
 	text "PRESIDENT: Merci"
 	line "de nous avoir"
-	cont "sauve, SILPH!"
+	cont "sauve, SYLPHE!"
 	para "Je n'oublierai"
 	line "jamais que tu"
 	cont "nous as sauves"
@@ -82,7 +82,7 @@ _SilphCo11FGiovanniYouRuinedOurPlansText::
 	text "Fichu!"
 	line "Tu as ruine"
 	cont "nos plans pour"
-	cont "SILPH!"
+	cont "SYLPHE!"
 	para "Mais la TEAM"
 	line "ROCKET ne"
 	cont "tombera jamais!"

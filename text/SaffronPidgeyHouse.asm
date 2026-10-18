@@ -10,7 +10,7 @@ _SaffronPidgeyHouseBrunetteGirlText::
 	done
 
 _SaffronPidgeyHousePidgeyText::
-	text "PIDGEY: Kurukkoo!@"
+	text "ROUCOOL: Kurukoo!@"
 	text_end
 
 _SaffronPidgeyHouseYoungsterText::
@@ -23,7 +23,7 @@ _SaffronPidgeyHouseYoungsterText::
 
 _SaffronPidgeyHousePaperText::
 	text "On m'a offert"
-	line "un PP UP."
+	line "un PP PLUS."
 
 	para "Il sert a"
 	line "augmenter"

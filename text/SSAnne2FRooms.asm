@@ -17,7 +17,7 @@ _SSAnne2FRoomsGentleman4Text::
 	done
 
 _SSAnne2FRoomsGrampsText::
-	text "L'attaque CUT"
+	text "L'attaque COUPE"
 	line "peut couper les"
 	cont "petits buissons."
 	done

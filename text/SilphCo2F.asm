@@ -20,8 +20,8 @@ _SilphCo2FSilphWorkerFReceivedTM36Text::
 	text_end
 
 _SilphCo2FSilphWorkerFTM36ExplanationText::
-	text "La TM36 est"
-	line "SELFDESTRUCT!"
+	text "La CT36 est"
+	line "DESTRUCTION!"
 
 	para "C'est"
 	line "puissant,"
@@ -41,7 +41,7 @@ _SilphCo2FScientist1BattleText::
 	text "A l'aide!"
 	line "Je suis un"
 	cont "employe de"
-	cont "SILPH."
+	cont "SYLPHE."
 	done
 
 _SilphCo2FScientist1EndBattleText::
@@ -53,7 +53,7 @@ _SilphCo2FScientist1EndBattleText::
 
 _SilphCo2FScientist1AfterBattleText::
 	text "Je bosse"
-	line "pour SILPH"
+	line "pour SYLPHE"
 	cont "et la TEAM"
 	cont "ROCKET!"
 	done
@@ -113,7 +113,7 @@ _SilphCo2FRocket2EndBattleText::
 	prompt
 
 _SilphCo2FRocket2AfterBattleText::
-	text "SILPH CO."
+	text "SYLPHE SARL"
 	line "va fusionner"
 	cont "avec la TEAM"
 	cont "ROCKET!"

@@ -1,7 +1,7 @@
 _DiglettsCaveRoute11GamblerText::
 	text "Quelle"
 	line "surprise! Les"
-	cont "DIGLETT ont"
+	cont "TAUPIQUEUR ont"
 	cont "creuse ce long"
 	cont "tunnel!"
 

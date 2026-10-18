@@ -24,7 +24,7 @@ CinnabarGymSetMapAndTiles:
 	jp LoadGymLeaderAndCityName
 
 .CityName:
-	db "CINNABAR ISLAND@"
+	db "ILE CRAMOISELE@"
 
 .LeaderName:
 	db "ARDO@"

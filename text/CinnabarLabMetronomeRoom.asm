@@ -1,6 +1,6 @@
 _CinnabarLabMetronomeRoomScientist1Text::
 	text "Tch-tch-tch!"
-	line "J'ai fait une TM"
+	line "J'ai fait une CT"
 	cont "geniale!"
 
 	para "Elle peut faire"
@@ -32,7 +32,7 @@ _CinnabarLabMetronomeRoomScientist1TM35NoRoomText::
 	done
 
 _CinnabarLabMetronomeRoomScientist2Text::
-	text "EEVEE peut"
+	text "EVOLI peut"
 	line "evoluer en 1 des"
 	cont "3 types de"
 	cont "#MON."
@@ -47,8 +47,9 @@ _CinnabarLabMetronomeRoomPCText::
 	para "Les 3 #MON"
 	line "oiseaux"
 	cont "legendaires sont"
-	cont "ARTICUNO, ZAPDOS"
-	cont "et MOLTRES."
+	cont "ARTIKODIN,"
+	cont "ELECTHOR et"
+	cont "SULFURA."
 
 	para "Leur repaire"
 	line "est inconnu."

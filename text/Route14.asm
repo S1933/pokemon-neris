@@ -1,6 +1,6 @@
 _Route14CooltrainerM1BattleText::
 	text "Utilise des"
-	line "TMs pour"
+	line "CT pour"
 	cont "apprendre de"
 	cont "bonnes"
 	cont "capacites!"
@@ -12,7 +12,7 @@ _Route14CooltrainerM1EndBattleText::
 	prompt
 
 _Route14CooltrainerM1AfterBattleText::
-	text "Tu as des HMs"
+	text "Tu as des CS"
 	line "non? Les"
 	cont "#MON"
 	cont "oublient"
@@ -42,13 +42,13 @@ _Route14CooltrainerM2AfterBattleText::
 	done
 
 _Route14CooltrainerM3BattleText::
-	text "Les TMs sont"
+	text "Les CT sont"
 	line "en vente a"
-	cont "CELADON!"
+	cont "CELADOPOLE!"
 
 	para "Mais peu"
 	line "de gens"
-	cont "ont des HMs!"
+	cont "ont des CS!"
 	done
 
 _Route14CooltrainerM3EndBattleText::
@@ -69,7 +69,7 @@ _Route14CooltrainerM4BattleText::
 	text "As-tu appris"
 	line "a tes #MON"
 	cont "oiseaux a"
-	cont "utiliser FLY?"
+	cont "utiliser VOL?"
 	done
 
 _Route14CooltrainerM4EndBattleText::
@@ -211,5 +211,5 @@ _Route14Biker4AfterBattleText::
 _Route14SignText::
 	text "ROUTE 14"
 	line "A l'ouest de"
-	cont "FUCHSIA CITY"
+	cont "PARMANIE"
 	done

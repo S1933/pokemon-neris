@@ -14,14 +14,14 @@ _PokemonTower1FMiddleAgedWomanText::
 _PokemonTower1FBaldingGuyText::
 	text "Je viens prier"
 	line "pour mon"
-	cont "CLEFAIRY."
+	cont "MELOFEE."
 
 	para "Snif! Je n'arrete"
 	line "pas de pleurer..."
 	done
 
 _PokemonTower1FGirlText::
-	text "Mon GROWLITHE..."
+	text "Mon CANINOS..."
 	line "Pourquoi es-tu"
 	cont "mort?"
 	done

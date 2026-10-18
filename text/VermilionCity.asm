@@ -3,7 +3,7 @@ _VermilionCityBeautyText::
 	line "attention a la"
 	cont "pollution!"
 
-	para "On dit que GRIMER"
+	para "On dit que TADMORV"
 	line "se multiplie dans"
 	cont "la boue toxique!"
 	done
@@ -37,7 +37,7 @@ _VermilionCitySailor1DoYouHaveATicketText::
 
 _VermilionCitySailor1FlashedTicketText::
 	text "<PLAYER> montre le"
-	line "S.S.TICKET!"
+	line "PASSE BATEAU!"
 
 	para "Parfait!"
 	line "Bienvenue sur le"
@@ -46,7 +46,7 @@ _VermilionCitySailor1FlashedTicketText::
 
 _VermilionCitySailor1YouNeedATicketText::
 	text "<PLAYER> n'a pas"
-	line "le S.S.TICKET"
+	line "le PASSE BATEAU"
 	cont "requis."
 
 	para "Desole!"
@@ -71,14 +71,14 @@ _VermilionCityGambler2Text::
 	done
 
 _VermilionCityMachopText::
-	text "MACHOP: Guoh!"
+	text "MACHOC: Guoh!"
 	line "Gogogoh!@"
 	text_end
 
 _VermilionCityMachopStompingTheLandFlatText::
 	text_start
 
-	para "Un MACHOP tasse la"
+	para "Un MACHOC tasse la"
 	line "terre."
 	done
 

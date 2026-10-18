@@ -160,7 +160,7 @@ _Route19Swimmer8EndBattleText::
 	prompt
 
 _Route19Swimmer8AfterBattleText::
-	text "LAPRAS est si"
+	text "LOKHLASS est si"
 	line "grand qu'il te"
 	cont "garde au sec"
 	cont "sur l'eau."

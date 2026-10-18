@@ -39,7 +39,7 @@ _SaffronGymSabrinaReceivedMarshBadgeText::
 	cont "pour gagner!"
 
 	para "Tu as gagne le"
-	line "MARSHBADGE!@"
+	line "BADGE MARAIS!@"
 	text_end
 
 _SaffronGymSabrinaPostBattleAdviceText::
@@ -52,7 +52,7 @@ _SaffronGymSabrinaPostBattleAdviceText::
 	done
 
 _SaffronGymSabrinaMarshBadgeInfoText::
-	text "Le MARSHBADGE"
+	text "Le BADGE MARAIS"
 	line "fait obeir"
 	cont "les #MON"
 	cont "jusqu'au L70!"
@@ -72,19 +72,19 @@ _SaffronGymSabrinaMarshBadgeInfoText::
 
 	para "Attends,"
 	line "prends cette"
-	cont "TM avec toi!"
+	cont "CT avec toi!"
 	done
 
 _SaffronGymSabrinaReceivedTM46Text::
 	text "<PLAYER> obtient"
-	line "TM46!@"
+	line "CT46!@"
 	text_end
 
 _TM46ExplanationText::
 	text_start
 
-	para "TM46, c'est"
-	line "PSYWAVE!"
+	para "CT46, c'est"
+	line "VAGUE PSY!"
 
 	para "Il lance"
 	line "de puissantes"
@@ -273,7 +273,7 @@ _SaffronGymYoungster3AfterBattleText::
 	text "Il y avait"
 	line "2 ARENES"
 	cont "#MON a"
-	cont "SAFFRON."
+	cont "SAFRANIA."
 
 	para "Le FIGHTING"
 	line "DOJO d'a"
@@ -288,7 +288,7 @@ _SaffronGymYoungster3AfterBattleText::
 _SaffronGymYoungster4BattleText::
 	text "L'ARENE"
 	line "#MON de"
-	cont "SAFFRON est"
+	cont "SAFRANIA est"
 	cont "celebre pour"
 	cont "ses psy!"
 

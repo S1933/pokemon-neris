@@ -14,7 +14,7 @@ _PokemonTower3FChanneler1AfterBattleText::
 	line "peuvent etre"
 	cont "identifies"
 	cont "avec le"
-	cont "SILPH SCOPE."
+	cont "SCOPE SYLPHE."
 	done
 
 _PokemonTower3FChanneler2BattleText::

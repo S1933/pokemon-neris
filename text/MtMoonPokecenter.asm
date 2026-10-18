@@ -23,7 +23,7 @@ _MtMoonPokecenterMagikarpSalesmanIGotADealText::
 	cont "juste pour toi!"
 
 	para "Je te laisse un"
-	line "super MAGIKARP"
+	line "super MAGICARPE"
 	cont "pour ¥500!"
 	cont "Qu'en dis-tu?"
 	done

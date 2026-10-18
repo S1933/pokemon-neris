@@ -123,14 +123,14 @@ _FightingDojoBlackbelt4AfterBattleText::
 
 _FightingDojoHitmonleePokeBallText::
 	text "Tu veux le"
-	line "HITMONLEE aux"
+	line "KICKLEE aux"
 	cont "coups de pied"
 	cont "puissants?"
 	done
 
 _FightingDojoHitmonchanPokeBallText::
 	text "Tu veux le"
-	line "HITMONCHAN aux"
+	line "TYGNON aux"
 	cont "poings"
 	cont "pistons?"
 	done

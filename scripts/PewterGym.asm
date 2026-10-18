@@ -17,7 +17,7 @@ PewterGym_Script:
 	jp LoadGymLeaderAndCityName
 
 .CityName:
-	db "PEWTER CITY@"
+	db "ARGENTA@"
 
 .LeaderName:
 	db "PIERRE@"

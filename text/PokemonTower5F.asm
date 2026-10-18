@@ -39,7 +39,7 @@ _PokemonTower5FChanneler3AfterBattleText::
 	done
 
 _PokemonTower5FChanneler4BattleText::
-	text "Zombies!"
+	text "Des zombies!"
 	done
 
 _PokemonTower5FChanneler4EndBattleText::

@@ -26,7 +26,7 @@ _SSAnneCaptainsRoomCaptainIFeelMuchBetterText::
 
 	para "Tu veux voir"
 	line "ma technique"
-	cont "CUT?"
+	cont "COUPE?"
 
 	para "Je te la"
 	line "montrerais"

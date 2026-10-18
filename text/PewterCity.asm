@@ -1,6 +1,6 @@
 _PewterCityCooltrainerFText::
 	text "On dit que les"
-	line "CLEFAIRY viennent"
+	line "MELOFEE viennent"
 	cont "de la lune!"
 
 	para "Ils sont apparus"
@@ -16,10 +16,10 @@ _PewterCityCooltrainerMText::
 	cont "serieux ici!"
 
 	para "Ce sont tous des"
-	line "BUG CATCHERs,"
-	cont "mais PIERRE du"
-	cont "PEWTER GYM est a"
-	cont "fond dedans!"
+	line "SCOUTS,"
+	cont "mais PIERRE de"
+	cont "l'ARENE d'ARGENTA"
+	cont "est a fond dedans!"
 	done
 
 _PewterCitySuperNerd1DidYouCheckOutMuseumText::
@@ -61,8 +61,9 @@ _PewterCitySuperNerd2ThatsRightText::
 
 _PewterCitySuperNerd2ImSprayingRepelText::
 	text "Je vaporise du"
-	line "REPEL pour tenir"
-	cont "les #MON loin"
+	line "REPOUSSE pour"
+	cont "tenir les #MON"
+	cont "loin"
 	cont "de mon jardin!"
 	done
 
@@ -99,7 +100,7 @@ _PewterCityPoliceNoticeSignText::
 	cont "fossiles au"
 	cont "MT.MOON! Merci"
 	cont "d'appeler la"
-	cont "POLICE de PEWTER"
+	cont "POLICE d'ARGENTA"
 	cont "si vous avez des"
 	cont "infos!"
 	done
@@ -107,12 +108,12 @@ _PewterCityPoliceNoticeSignText::
 _PewterCityMuseumSignText::
 	text "MUSEE DES"
 	line "SCIENCES DE"
-	cont "PEWTER"
+	cont "ARGENTA"
 	done
 
 _PewterCityGymSignText::
-	text "PEWTER CITY"
-	line "#MON GYM"
+	text "ARGENTA"
+	line "ARENE #MON"
 	cont "CHAMPION: PIERRE"
 
 	para "Le dresseur"
@@ -120,7 +121,7 @@ _PewterCityGymSignText::
 	done
 
 _PewterCitySignText::
-	text "PEWTER CITY"
+	text "ARGENTA"
 	line "Une ville grise"
 	cont "comme la pierre"
 	done

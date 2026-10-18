@@ -3,76 +3,34 @@
 ; Made redundant in English localization, where all are just "[mon]<LINE>used [move]!"
 
 MoveGrammar:
-; 0: originally "[mon]は<LINE>[move]を　つかった！" ("[mon]<LINE>used [move]!")
-	db SWORDS_DANCE
-	db GROWTH
-	db 0 ; end set
-
-; 1: originally "[mon]は<LINE>[move]を　した！" ("[mon]<LINE>did [move]!")
-	db RECOVER
-	db BIDE
-	db SELFDESTRUCT
-	db AMNESIA
-	db 0 ; end set
-
-; 2: originally "[mon]は<LINE>[move]した！" ("[mon]<LINE>did [move]!")
-	db MEDITATE
-	db AGILITY
-	db TELEPORT
-	db MIMIC
-	db DOUBLE_TEAM
-	db BARRAGE
-	db 0 ; end set
-
-; 3: originally "[mon]の<LINE>[move]　こうげき！" ("[mon]'s<LINE>[move] attack!")
-	db POUND
-	db SCRATCH
+; Neris (French): "<USER>" / "lance [move]!" is 19 tiles for a 12-letter
+; move name, so those moves use set 0, whose end text drops the "!".
+; Every other move falls through to set 1 ("!").
+	db KARATE_CHOP
+	db COMET_PUNCH
+	db FIRE_PUNCH
+	db THUNDERPUNCH
 	db VICEGRIP
-	db WING_ATTACK
-	db FLY
-	db BIND
-	db SLAM
-	db HORN_ATTACK
-	db BODY_SLAM
-	db WRAP
-	db THRASH
-	db TAIL_WHIP
-	db LEER
-	db BITE
-	db GROWL
-	db ROAR
-	db SING
-	db PECK
-	db COUNTER
-	db STRENGTH
-	db ABSORB
-	db STRING_SHOT
-	db EARTHQUAKE
-	db FISSURE
-	db DIG
-	db TOXIC
-	db SCREECH
-	db HARDEN
-	db MINIMIZE
-	db WITHDRAW
-	db DEFENSE_CURL
-	db METRONOME
-	db LICK
-	db CLAMP
+	db VINE_WHIP
+	db ROLLING_KICK
+	db SAND_ATTACK
+	db HEADBUTT
+	db FLAMETHROWER
+	db WATER_GUN
+	db AURORA_BEAM
+	db SEISMIC_TOSS
+	db MEGA_DRAIN
+	db RAZOR_LEAF
+	db SOLARBEAM
+	db POISONPOWDER
+	db THUNDER
+	db QUICK_ATTACK
+	db FIRE_BLAST
 	db CONSTRICT
-	db POISON_GAS
-	db LEECH_LIFE
-	db BUBBLE
-	db FLASH
-	db SPLASH
-	db ACID_ARMOR
+	db HI_JUMP_KICK
+	db GLARE
 	db FURY_SWIPES
-	db REST
-	db SHARPEN
-	db SLASH
-	db SUBSTITUTE
+	db HYPER_FANG
+	db TRI_ATTACK
 	db 0 ; end set
-
-; 4: originally "[mon]の<LINE>[move]!" ("[mon]'s<LINE>[move]!")
-; Any move not listed above uses this grammar.
 	db -1 ; end

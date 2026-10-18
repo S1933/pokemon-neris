@@ -27,9 +27,9 @@ _CeruleanGymMistyPreBattleText::
 	done
 
 _CeruleanGymMistyTM11ExplanationText::
-	text "La TM11"
+	text "La CT11"
 	line "enseigne"
-	cont "BUBBLEBEAM!"
+	cont "BULLES D'O!"
 
 	para "Utilise-la"
 	line "sur un #MON"
@@ -38,7 +38,7 @@ _CeruleanGymMistyTM11ExplanationText::
 
 _CeruleanGymMistyCascadeBadgeInfoText::
 	text "Le"
-	line "CASCADEBADGE"
+	line "BADGE CASCADE"
 	cont "fait obeir"
 	cont "tous les"
 	cont "#MON"
@@ -51,7 +51,7 @@ _CeruleanGymMistyCascadeBadgeInfoText::
 
 	para "En plus, tu"
 	line "peux utiliser"
-	cont "CUT quand"
+	cont "COUPE quand"
 	cont "tu veux!"
 
 	para "Tu peux"
@@ -64,13 +64,13 @@ _CeruleanGymMistyCascadeBadgeInfoText::
 
 	para "Et tu peux"
 	line "aussi avoir"
-	cont "ma TM"
+	cont "ma CT"
 	cont "preferee!"
 	done
 
 _CeruleanGymMistyReceivedTM11Text::
 	text "<PLAYER> recoit"
-	line "TM11!@"
+	line "CT11!@"
 	text_end
 
 _CeruleanGymMistyTM11NoRoomText::
@@ -88,7 +88,7 @@ _CeruleanGymMistyReceivedCascadeBadgeText::
 	para "Tres bien!"
 
 	para "Prends le"
-	line "CASCADEBADGE"
+	line "BADGE CASCADE"
 	cont "pour prouver"
 	cont "que tu m'as"
 	cont "battue!@"

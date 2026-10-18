@@ -1,16 +1,16 @@
 _CeladonMart2FMiddleAgedManText::
-	text "SUPER REPEL tient"
+	text "SUPEREPOUSSE tient"
 	line "#MON faibles"
 	cont "a distance..."
 
-	para "C'est un REPEL"
+	para "C'est un REPOUSSE"
 	line "plus puissant!"
 	done
 
 _CeladonMart2FGirlText::
 	text "Pour les longues"
 	line "sorties, prends"
-	cont "des REVIVE."
+	cont "des RAPPELS."
 	done
 
 _CeladonMart2FCurrentFloorSignText::

@@ -2,7 +2,7 @@ _PokemonTower6FGhostWasCubonesMotherText::
 	text "Le FANTOME etait"
 	line "l'ame sans repos"
 	cont "de la mere de"
-	cont "CUBONE!"
+	cont "OSSELAIT!"
 	done
 
 _PokemonTower6FSoulWasCalmedText::

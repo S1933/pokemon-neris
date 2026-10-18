@@ -69,7 +69,7 @@ LinkCableHelpText2:
 
 HowToLinkText:
 	db   "COMMENT LINK"
-	next "COLOSSEUM"
+	next "COLISEE"
 	next "ECHANGE"
 	next "ARRETER@"
 
@@ -186,7 +186,7 @@ ViridianSchoolBlackboardText2:
 
 StatusAilmentText1:
 	db   " SOM"
-	next " PSN"
+	next " EMP"
 	next " PAR@"
 
 StatusAilmentText2:

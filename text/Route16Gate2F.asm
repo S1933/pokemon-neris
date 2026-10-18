@@ -16,7 +16,7 @@ _Route16Gate2FLeftBinocularsText::
 	cont "jumelles."
 
 	para "C'est le"
-	line "CELADON DEPT."
+	line "GRAND MAGASIN"
 	cont "STORE!"
 	done
 

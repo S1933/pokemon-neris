@@ -1,14 +1,14 @@
 _VermilionPidgeyHouseYoungsterText::
 	text "Je fais"
 	line "voler mon"
-	cont "PIDGEY vers"
+	cont "ROUCOOL vers"
 	cont "SAFRANIA au"
 	cont "nord avec"
 	cont "une lettre!"
 	done
 
 _VermilionPidgeyHousePidgeyText::
-	text "PIDGEY: Kurukkoo!@"
+	text "ROUCOOL: Kurukoo!@"
 	text_end
 
 _VermilionPidgeyHouseLetterText::

@@ -13,11 +13,11 @@ _Route16FlyHouseBrunetteGirlText::
 
 _Route16FlyHouseBrunetteGirlReceivedHM02Text::
 	text "<PLAYER> obtient"
-	line "HM02!@"
+	line "CS02!@"
 	text_end
 
 _Route16FlyHouseBrunetteGirlHM02ExplanationText::
-	text "HM02 est FLY."
+	text "CS02 est VOL."
 	line "Elle te ramene"
 	cont "dans toute"
 	cont "ville."
@@ -33,5 +33,5 @@ _Route16FlyHouseBrunetteGirlHM02NoRoomText::
 	done
 
 _Route16FlyHouseFearowText::
-	text "FEAROW: Kyueen!"
+	text "RAPASDEPIC: Kyuu!"
 	done

@@ -1,5 +1,5 @@
 _Route15Gate2FOaksAideExpAllText::
-	text "EXP.ALL donne"
+	text "MULTI EXP donne"
 	line "des points EXP"
 	cont "a tous tes"
 	cont "#MON, meme"

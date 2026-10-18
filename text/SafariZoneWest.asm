@@ -6,7 +6,7 @@ _SafariZoneWestFindWardensTeethSignText::
 	text "AVIS DE RECHERCHE"
 
 	para "Veuillez trouver"
-	line "les GOLD TEETH"
+	line "les DENTS D'OR"
 	cont "perdues du"
 	cont "GARDIEN du PARC."
 	cont "Elles sont dans"

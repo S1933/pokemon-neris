@@ -1,6 +1,6 @@
 _CeladonCityLittleGirlText::
 	text "J'ai eu mon"
-	line "KOFFING a"
+	line "SMOGO a"
 	cont "CRAMOIS'ILE!"
 	para "Il est gentil,"
 	line "mais il crache"
@@ -51,12 +51,12 @@ _CeladonCityGramps3ReceivedTM41Text::
 	text_end
 
 _CeladonCityGramps3TM41ExplanationText::
-	text "TM41 enseigne"
-	line "SOFTBOILED!"
+	text "CT41 enseigne"
+	line "E-COQUE!"
 	para "Un seul #MON"
 	line "peut l'utiliser!"
 	para "Ce #MON est"
-	line "CHANSEY!"
+	line "LEVEINARD!"
 	done
 
 _CeladonCityGramps3TM41NoRoomText::
@@ -68,14 +68,14 @@ _CeladonCityGramps3TM41NoRoomText::
 _CeladonCityFisherText::
 	text "Voici mon"
 	line "fidele ami,"
-	cont "POLIWRATH!"
+	cont "TARTARD!"
 	para "Il a evolue de"
-	line "POLIWHIRL avec"
-	cont "une WATER STONE!"
+	line "TETARTE avec"
+	cont "une PIERRE EAU!"
 	done
 
 _CeladonCityPoliwrathText::
-	text "POLIWRATH: Ribi"
+	text "TARTARD: Ribi"
 	line "ribit!@"
 	text_end
 
@@ -93,11 +93,11 @@ _CeladonCityRocket2Text::
 
 _CeladonCityTrainerTips1Text::
 	text "ASTUCES"
-	para "X ACCURACY"
+	para "PRECISION"
 	line "augmente la"
 	cont "precision des"
 	cont "capacites!"
-	para "DIRE HIT"
+	para "MUSCLE"
 	line "augmente tes"
 	cont "chances de"
 	cont "critiques!"
@@ -137,7 +137,7 @@ _CeladonCityDeptStoreSignText::
 
 _CeladonCityTrainerTips2Text::
 	text "ASTUCES"
-	para "GUARD SPEC."
+	para "DEFENSE SPEC"
 	line "protege les"
 	cont "#MON des"
 	cont "attaques"

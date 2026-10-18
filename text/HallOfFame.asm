@@ -5,7 +5,7 @@ _HallOfFameOakText::
 	cont "<PLAYER>!"
 
 	para "Cet etage est le"
-	line "HALL OF FAME des"
+	line "PANTHEON des"
 	cont "#MON!"
 
 	para "Les champions de"
@@ -15,7 +15,7 @@ _HallOfFameOakText::
 
 	para "Leurs #MON sont"
 	line "aussi inscrits au"
-	cont "HALL OF FAME!"
+	cont "PANTHEON!"
 
 	para "<PLAYER>! Tu as"
 	line "travaille dur"
@@ -26,5 +26,5 @@ _HallOfFameOakText::
 	para "Felicitations,"
 	line "<PLAYER>, toi et"
 	cont "tes #MON etes"
-	cont "au HALL OF FAME!"
+	cont "au PANTHEON!"
 	done

@@ -4,5 +4,5 @@ _Route2TradeHouseScientistText::
 	cont "battre. Mais il"
 	cont "peut utiliser"
 	cont "des attaques"
-	cont "comme CUT!"
+	cont "comme COUPE!"
 	done

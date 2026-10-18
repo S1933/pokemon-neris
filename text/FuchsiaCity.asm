@@ -66,21 +66,21 @@ _FuchsiaCityGymSignText::
 	done
 
 _FuchsiaCityChanseySignText::
-	text "Nom: CHANSEY"
+	text "Nom: LEVEINARD"
 	para "L'attraper"
 	line "tient a la"
 	cont "chance."
 	prompt
 
 _FuchsiaCityVoltorbSignText::
-	text "Nom: VOLTORB"
+	text "Nom: VOLTORBE"
 	para "Le sosie"
 	line "d'une # BALL."
 	prompt
 
 _FuchsiaCityKangaskhanSignText::
 	text "Nom:"
-	line "KANGASKHAN"
+	line "KANGOUREX"
 	para "Un #MON"
 	line "maternel qui"
 	cont "eleve ses"
@@ -89,19 +89,19 @@ _FuchsiaCityKangaskhanSignText::
 	prompt
 
 _FuchsiaCitySlowpokeSignText::
-	text "Nom: SLOWPOKE"
+	text "Nom: RAMOLOSS"
 	para "Amical et tres"
 	line "lent."
 	prompt
 
 _FuchsiaCityLaprasSignText::
-	text "Nom: LAPRAS"
+	text "Nom: LOKHLASS"
 	para "Le roi des"
 	line "mers."
 	prompt
 
 _FuchsiaCityFossilSignOmanyteText::
-	text "Nom: OMANYTE"
+	text "Nom: AMONITA"
 	para "Un #MON"
 	line "ressuscite a"
 	cont "partir d'un"

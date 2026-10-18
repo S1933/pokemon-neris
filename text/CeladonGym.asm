@@ -10,8 +10,9 @@ _CeladonGymErikaPreBattleText::
 
 	para "Je m'appelle"
 	line "ERIKA. Je suis la"
-	cont "CHAMPION de"
-	cont "CELADON GYM."
+	cont "CHAMPIONNE de"
+	cont "l'ARENE de"
+	cont "CELADOPOLE."
 
 	para "J'enseigne l'art"
 	line "de l'ikebana."
@@ -36,7 +37,7 @@ _CeladonGymErikaReceivedRainbowBadgeText::
 
 	para "Je dois te"
 	line "remettre le"
-	cont "RAINBOWBADGE."
+	cont "BADGE PRISME."
 	prompt
 
 _CeladonGymErikaPostBattleAdviceText::
@@ -53,14 +54,14 @@ _CeladonGymErikaPostBattleAdviceText::
 	done
 
 _CeladonGymRainbowBadgeInfoText::
-	text "Le RAINBOWBADGE"
+	text "Le BADGE PRISME"
 	line "fera obeir les"
 	cont "#MON jusqu'au"
 	cont "niveau 50."
 
 	para "Il permet aussi"
 	line "d'utiliser"
-	cont "STRENGTH hors et"
+	cont "FORCE hors et"
 	cont "en combat."
 
 	para "Prends aussi"
@@ -77,8 +78,8 @@ _CeladonGymReceivedTM21Text::
 _TM21ExplanationText::
 	text_start
 
-	para "TM21 contient"
-	line "MEGA DRAIN."
+	para "CT21 contient"
+	line "MEGA-SANGSUE."
 
 	para "La moitie des"
 	line "degats infliges"
@@ -166,7 +167,7 @@ _CeladonGymEndBattleText5::
 _CeladonGymAfterBattleText5::
 	text "On n'utilise que"
 	line "des #MON plante"
-	cont "dans notre GYM!"
+	cont "dans notre ARENE!"
 
 	para "On s'en sert"
 	line "aussi pour faire"
@@ -212,8 +213,9 @@ _CeladonGymAfterBattleText7::
 	done
 
 _CeladonGymBattleText8::
-	text "Bienvenue au"
-	line "CELADON GYM!"
+	text "Bienvenue a"
+	line "l'ARENE de"
+	cont "CELADOPOLE!"
 
 	para "Ne sous-estime"
 	line "pas le pouvoir"

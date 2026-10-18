@@ -1,6 +1,7 @@
 _CeruleanMartCooltrainerMText::
-	text "Utilise REPEL pour"
-	line "tenir les insectes"
+	text "Utilise REPOUSSE"
+	line "pour tenir les"
+	cont "insectes"
 	cont "et les faibles"
 	cont "#MON a l'ecart."
 
@@ -13,7 +14,7 @@ _CeruleanMartCooltrainerMText::
 
 _CeruleanMartCooltrainerFText::
 	text "As-tu deja vu un"
-	line "RARE CANDY?"
+	line "SUPER BONBON?"
 
 	para "Parait que ca fait"
 	line "monter un #MON"

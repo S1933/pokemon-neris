@@ -43,7 +43,7 @@ _Route8SuperNerd2EndBattleText::
 
 _Route8SuperNerd2AfterBattleText::
 	text "Commence par"
-	line "GRIMER...et..."
+	line "TADMORV...et..."
 	cont "...et...puis..."
 	done
 
@@ -85,7 +85,7 @@ _Route8SuperNerd3AfterBattleText::
 	done
 
 _Route8CooltrainerF2BattleText::
-	text "MEOWTH est trop"
+	text "MIAOUSS est trop"
 	line "mignon, miaou,"
 	cont "miaou, miaou!"
 	done
@@ -96,7 +96,7 @@ _Route8CooltrainerF2EndBattleText::
 
 _Route8CooltrainerF2AfterBattleText::
 	text "Je trouve aussi"
-	line "que PIDGEY et"
+	line "que ROUCOOL et"
 	cont "RATTATA sont"
 	cont "mignons!"
 	done
@@ -150,14 +150,14 @@ _Route8CooltrainerF4EndBattleText::
 
 	para "Ne sois pas si"
 	line "mechant avec mon"
-	cont "CLEFAIRY!"
+	cont "MELOFEE!"
 	prompt
 
 _Route8CooltrainerF4AfterBattleText::
 	text "J'ai entendu que"
-	line "CLEFAIRY evolue"
+	line "MELOFEE evolue"
 	cont "s'il est expose a"
-	cont "une MOON STONE."
+	cont "une PIERRE LUNE."
 	done
 
 _Route8UndergroundSignText::

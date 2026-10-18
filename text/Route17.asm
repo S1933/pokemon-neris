@@ -63,7 +63,7 @@ _Route17Biker4AfterBattleText::
 	done
 
 _Route17Biker5BattleText::
-	text "Laisse VOLTORB"
+	text "Laisse VOLTORBE"
 	line "t'electriser!"
 	done
 
@@ -74,7 +74,7 @@ _Route17Biker5EndBattleText::
 
 _Route17Biker5AfterBattleText::
 	text "J'ai eu mon"
-	line "VOLTORB a la"
+	line "VOLTORBE a la"
 	cont "CENTRALE"
 	cont "abandonnee."
 	done

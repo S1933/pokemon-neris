@@ -18,7 +18,7 @@ _WardensHouseWardenGibberish3Text::
 
 _WardensHouseWardenGaveTheGoldTeethText::
 	text "<PLAYER> donne"
-	line "les GOLD TEETH"
+	line "les DENTS D'OR"
 	cont "au GARDIEN!@"
 	text_end
 
@@ -50,9 +50,9 @@ _WardensHouseWardenReceivedHM04Text::
 	text_end
 
 _WardensHouseWardenHM04ExplanationText::
-	text "GARDIEN: HM04"
+	text "GARDIEN: CS04"
 	line "enseigne"
-	cont "STRENGTH!"
+	cont "FORCE!"
 	para "Il permet aux"
 	line "#MON de"
 	cont "deplacer des"
@@ -63,10 +63,10 @@ _WardensHouseWardenHM04ExplanationText::
 	cont "MAISON SECRETE"
 	cont "du PARC SAFARI?"
 	para "Si oui, tu"
-	line "gagnes une HM!"
+	line "gagnes une CS!"
 	para "On dit que"
 	line "c'est la rare"
-	cont "HM SURF."
+	cont "CS SURF."
 	done
 
 _WardensHouseWardenHM04NoRoomText::

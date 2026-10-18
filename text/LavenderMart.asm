@@ -5,10 +5,10 @@ _LavenderMartBaldingGuyText::
 	cont "capacites des"
 	cont "#MON le temps"
 	cont "d'un combat."
-	para "X ATTACK,"
-	line "X DEFEND,"
-	cont "X SPEED et"
-	cont "X SPECIAL"
+	para "ATTAQUE,"
+	line "DEFENSE,"
+	cont "VITESSE et"
+	cont "SPECIAL"
 	cont "m'interessent."
 	para "Tu sais ou"
 	line "en trouver?"
@@ -16,14 +16,14 @@ _LavenderMartBaldingGuyText::
 
 _LavenderMartCooltrainerMReviveText::
 	text "Tu connais"
-	line "REVIVE? Ca"
+	line "RAPPEL? Ca"
 	cont "ranime tout"
 	cont "#MON K.O.!"
 	done
 
 _LavenderMartCooltrainerMNuggetText::
 	text "J'ai trouve"
-	line "un NUGGET en"
+	line "une PEPITE en"
 	cont "montagne."
 	para "Je le croyais"
 	line "inutile, mais"

@@ -85,7 +85,7 @@ _Museum1FScientist2TakeThisToAPokemonLabText::
 
 _Museum1FScientist2ReceivedOldAmberText::
 	text "<PLAYER> recoit"
-	line "l'OLD AMBER!@"
+	line "le VIEIL AMBRE!@"
 	text_end
 
 _Museum1FScientist2GetTheOldAmberCheckText::

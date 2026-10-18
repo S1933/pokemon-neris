@@ -37,7 +37,7 @@ _Route15CooltrainerF2EndBattleText::
 
 _Route15CooltrainerF2AfterBattleText::
 	text "J'ai peur"
-	line "des BIKERs,"
+	line "des MOTARDS,"
 	cont "ils sont si"
 	cont "laids et"
 	cont "mechants!"
@@ -81,7 +81,7 @@ _Route15CooltrainerM2AfterBattleText::
 	text "Tu sais que"
 	line "des attaques"
 	cont "comme"
-	cont "EARTHQUAKE"
+	cont "SEISME"
 	cont "n'ont aucun"
 	cont "effet sur"
 	cont "les oiseaux?"

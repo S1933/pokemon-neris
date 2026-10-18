@@ -7,6 +7,6 @@ _CeladonPokecenterGentlemanText::
 
 _CeladonPokecenterBeautyText::
 	text "J'ai grimpe la"
-	line "CYCLING ROAD"
-	cont "depuis FUCHSIA!"
+	line "PISTE CYCLABLE"
+	cont "depuis PARMANIE!"
 	done

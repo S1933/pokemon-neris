@@ -2,7 +2,7 @@ _UndergroundPathRoute7CopyUnusedGirlText::
 	text "Je veux aller au"
 	line "centre"
 	cont "commercial de"
-	cont "CELADON mais..."
+	cont "CELADOPOLE mais..."
 
 	para "Il y a plein de"
 	line "gens louches"
@@ -13,13 +13,13 @@ _UndergroundPathRoute7CopyUnusedTeamRocketHadAHideoutText::
 	text "La TEAM ROCKET"
 	line "avait une"
 	cont "cachette a"
-	cont "CELADON?"
+	cont "CELADOPOLE?"
 	done
 
 _UndergroundPathRoute7CopyUnusedMiddleAgedManText::
 	text "Tu viens faire"
 	line "des courses a"
-	cont "CELADON?"
+	cont "CELADOPOLE?"
 
 	para "Sors et va"
 	line "vers l'ouest!"

@@ -30,7 +30,7 @@ _BikeShopExchangedVoucherText::
 	text "<PLAYER> echange"
 	line "le BIKE"
 	cont "VOUCHER contre"
-	cont "un BICYCLE.@"
+	cont "une BICYCLETTE.@"
 	text_end
 
 _BikeShopComeAgainText::
@@ -42,7 +42,7 @@ _BikeShopClerkHowDoYouLikeYourBicycleText::
 	text "Comment"
 	line "trouves-tu ton"
 	cont "nouveau"
-	cont "BICYCLE?"
+	cont "BICYCLETTE?"
 	para "Tu peux rouler"
 	line "sur la PISTE"
 	cont "CYCLABLE et"

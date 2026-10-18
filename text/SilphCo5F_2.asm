@@ -24,8 +24,8 @@ _SilphCo5FRocket2EndBattleText::
 _SilphCo5FRocket2AfterBattleText::
 	text "Ca me"
 	line "rappelle."
-	para "KOFFING"
-	line "devient WEEZING"
+	para "SMOGO"
+	line "devient SMOGOGO"
 	cont "en evoluant!"
 	done
 

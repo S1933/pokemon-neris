@@ -36,13 +36,13 @@ _GameCornerClerk1CantAffordTheCoinsText::
 	done
 
 _GameCornerClerk1CoinCaseIsFullText::
-	text "Oups! Ta COIN"
-	line "CASE est pleine."
+	text "Oups! Ta BOITE"
+	line "JETON est pleine."
 	done
 
 _GameCornerClerk1DontHaveCoinCaseText::
 	text "Tu n'as pas de"
-	line "COIN CASE!"
+	line "BOITE JETON!"
 	done
 
 _GameCornerMiddleAgedMan1Text::
@@ -199,5 +199,5 @@ _GameCornerPosterSwitchBehindPosterText::
 _GameCornerOopsForgotCoinCaseText::
 	text "Oups! J'ai"
 	line "oublie la"
-	cont "COIN CASE!"
+	cont "BOITE JETON!"
 	done

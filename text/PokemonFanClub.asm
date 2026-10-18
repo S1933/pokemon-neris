@@ -11,7 +11,8 @@ _PokemonFanClubPikachuFanBetterText::
 	done
 
 _PokemonFanClubSeelFanNormalText::
-	text "J'adore mon SEEL!"
+	text "J'adore mon"
+	line "OTARIA!"
 
 	para "Il glapit quand"
 	line "je le serre dans"
@@ -21,7 +22,7 @@ _PokemonFanClubSeelFanNormalText::
 _PokemonFanClubSeelFanBetterText::
 	text "Oh la la!"
 
-	para "Mon SEEL est"
+	para "Mon OTARIA est"
 	line "bien plus"
 	cont "attirant!"
 	done
@@ -32,7 +33,7 @@ _PokemonFanClubPikachuText::
 	done
 
 _PokemonFanClubSeelText::
-	text "SEEL: Kyuoo!"
+	text "OTARIA: Kyuoo!"
 	done
 
 _PokemonFanClubChairmanIntroText::
@@ -58,7 +59,7 @@ _PokemonFanClubChairmanStoryText::
 	text "Bien!"
 	line "Alors ecoute!"
 
-	para "Mon RAPIDASH"
+	para "Mon GALOPA"
 	line "prefere..."
 
 	para "Il...mignon..."
@@ -95,16 +96,16 @@ _PokemonFanClubExplainBikeVoucherText::
 	text_start
 
 	para "Echange-le contre"
-	line "un BICYCLE!"
+	line "une BICYCLETTE!"
 
 	para "T'inquiete, mon"
-	line "FEAROW m'emmenera"
-	cont "ou je veux en"
-	cont "volant!"
+	line "RAPASDEPIC me"
+	cont "portera ou je"
+	cont "veux en volant!"
 
 	para "Donc je n'ai pas"
 	line "besoin de"
-	cont "BICYCLE!"
+	cont "BICYCLETTE!"
 
 	para "J'espere que tu"
 	line "aimes le velo!"

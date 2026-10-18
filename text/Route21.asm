@@ -21,13 +21,13 @@ _Route21Fisher2BattleText::
 
 _Route21Fisher2EndBattleText::
 	text "Zut,"
-	line "MAGIKARP!"
+	line "MAGICARPE!"
 	prompt
 
 _Route21Fisher2AfterBattleText::
 	text "Je n'attrape"
 	line "que des"
-	cont "MAGIKARP!"
+	cont "MAGICARPE!"
 	done
 
 _Route21Swimmer1BattleText::

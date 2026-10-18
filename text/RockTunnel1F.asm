@@ -65,8 +65,9 @@ _RockTunnel1FSuperNerdEndBattleText::
 
 _RockTunnel1FSuperNerdAfterBattleText::
 	text "Tant pis, je"
-	line "prendrai un ZUBAT"
-	cont "en route!"
+	line "prendrai un"
+	cont "NOSFERAPTI en"
+	cont "route!"
 	done
 
 _RockTunnel1FCooltrainerF1BattleText::
@@ -82,7 +83,7 @@ _RockTunnel1FCooltrainerF1EndBattleText::
 
 _RockTunnel1FCooltrainerF1AfterBattleText::
 	text "J'ai vu un"
-	line "MACHOP dans ce"
+	line "MACHOC dans ce"
 	cont "tunnel!"
 	done
 

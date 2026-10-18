@@ -12,7 +12,7 @@ _CeladonHotelBeautyText::
 	cont "mon frere et"
 	cont "mon copain."
 
-	para "CELADON est"
+	para "CELADOPOLE est"
 	line "une si jolie"
 	cont "ville!"
 	done

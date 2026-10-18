@@ -1,104 +1,105 @@
 _CableClubNPCPleaseComeAgainText::
-	text "Please come again!"
+	text "Revenez bientot!"
 	done
 
 _CableClubNPCMakingPreparationsText::
-	text "We're making"
-	line "preparations."
-	cont "Please wait."
+	text "Nous preparons"
+	line "la connexion."
+	cont "Patientez."
 	done
 
 _UsedStrengthText::
 	text_ram wNameBuffer
-	text " used"
-	line "STRENGTH.@"
+	text " utilise"
+	line "FORCE.@"
 	text_end
 
 _CanMoveBouldersText::
 	text_ram wNameBuffer
-	text " can"
-	line "move boulders."
+	text " peut"
+	line "deplacer les"
+	cont "rochers."
 	prompt
 
 _CurrentTooFastText::
-	text "The current is"
-	line "much too fast!"
+	text "Le courant est"
+	line "bien trop fort!"
 	prompt
 
 _CyclingIsFunText::
-	text "Cycling is fun!"
-	line "Forget SURFing!"
+	text "Le velo c'est fun!"
+	line "Oublie le SURF!"
 	prompt
 
 _FlashLightsAreaText::
-	text "A blinding FLASH"
-	line "lights the area!"
+	text "Un FLASH aveuglant"
+	line "eclaire les lieux!"
 	prompt
 
 _WarpToLastPokemonCenterText::
-	text "Warp to the last"
-	line "#MON CENTER."
+	text "Retour au dernier"
+	line "CENTRE #MON."
 	done
 
 _CannotUseTeleportNowText::
 	text_ram wNameBuffer
-	text " can't"
-	line "use TELEPORT now."
+	text " ne"
+	line "peut pas utiliser"
+	cont "TELEPORT ici."
 	prompt
 
 _CannotFlyHereText::
 	text_ram wNameBuffer
-	text " can't"
-	line "FLY here."
+	text " ne"
+	line "peut pas VOLER"
+	cont "ici."
 	prompt
 
 _NotHealthyEnoughText::
-	text "Not healthy"
-	line "enough."
+	text "Pas assez de PV."
 	prompt
 
 _NewBadgeRequiredText::
-	text "No! A new BADGE"
-	line "is required."
+	text "Non! Un nouveau"
+	line "BADGE est requis."
 	prompt
 
 _CannotUseItemsHereText::
-	text "You can't use items"
-	line "here."
+	text "Impossible"
+	line "d'utiliser des"
+	cont "objets ici."
 	prompt
 
 _CannotGetOffHereText::
-	text "You can't get off"
-	line "here."
+	text "Impossible de"
+	line "descendre ici."
 	prompt
 
 _GotMonText::
-	text "<PLAYER> got"
+	text "<PLAYER> obtient"
 	line "@"
 	text_ram wNameBuffer
 	text "!@"
 	text_end
 
 _SentToBoxText::
-	text "There's no more"
-	line "room for #MON!"
+	text "Plus de place"
+	line "pour les #MON!"
 	cont "@"
 	text_ram wBoxMonNicks
-	text " was"
-	cont "sent to #MON"
-	cont "BOX @"
+	text " est"
+	cont "envoye dans la"
+	cont "BOITE @"
 	text_ram wStringBuffer
-	text " on PC!"
+	text " du PC!"
 	done
 
 _BoxIsFullText::
-	text "There's no more"
-	line "room for #MON!"
-
-	para "The #MON BOX"
-	line "is full and can't"
-	cont "accept any more!"
-
-	para "Change the BOX at"
-	line "a #MON CENTER!"
+	text "Plus de place"
+	line "pour les #MON!"
+	para "La BOITE #MON"
+	line "est pleine!"
+	para "Change de BOITE"
+	line "dans un CENTRE"
+	cont "#MON!"
 	done

@@ -1,6 +1,6 @@
 _Route18Gate1FGuardYouNeedABicycleText::
 	text "Il te faut un"
-	line "BICYCLE pour"
+	line "BICYCLETTE pour"
 	cont "la PISTE"
 	cont "CYCLABLE!"
 	done

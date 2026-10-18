@@ -1,16 +1,16 @@
 _SaffronMartSuperNerdText::
-	text "MAX REPEL"
+	text "MAX REPOUSSE"
 	line "dure plus"
 	cont "longtemps"
 	cont "que SUPER"
-	cont "REPEL pour"
+	cont "REPOUSSE pour"
 	cont "eloigner les"
 	cont "#MON plus"
 	cont "faibles!"
 	done
 
 _SaffronMartCooltrainerFText::
-	text "REVIVE"
+	text "RAPPEL"
 	line "coute cher,"
 	cont "mais il"
 	cont "ranime les"
