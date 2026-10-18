@@ -52,9 +52,21 @@ jobs:
       - name: Map tour
         run: python tools/map_tour.py
 
+      - name: Smoke test (boot, world, lighthouse)
+        # Cheap (~3 s) and it is what puts the boot/battle screenshots in the
+        # artefact when the tours above fail before reaching one.
+        run: python tools/smoke_test.py
+
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: '*.png' # root-level screenshots only, not the 670 source PNGs
+          # Tool screenshots only: never the 670 source PNGs under gfx/ and
+          # docs/. A bare '*.png' uploaded nothing at all — the tools are what
+          # create the PNGs, and a failed tour creates none.
+          path: |
+            *.png
+            **/*.png
+            !gfx/**
+            !docs/**
