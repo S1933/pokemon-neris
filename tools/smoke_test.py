@@ -123,6 +123,10 @@ def main():
     menu_item = wram("wCurrentMenuItem")
     menu_active = menu_item is not None and 0 <= menu_item <= 4
     shot = ROOT / "smoke_test.png"
+    # Every other tick in this file passes render=False, which leaves the
+    # screen buffer black: render one frame before capturing, as
+    # battle_check.py does for its own screenshot.
+    pb.tick(1, True)
     pb.screen.image.save(shot)
     print(f"control: start menu cursor={menu_item}, screenshot saved to "
           f"{shot.relative_to(ROOT)}")
