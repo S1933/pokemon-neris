@@ -397,14 +397,17 @@ INCLUDE "data/pokemon/title_mons.asm"
 
 ; prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
-	hlcoord 7, 8
+; Neris: the word is 10 tiles wide (see gfx/title/red_version.1bpp), so it
+; starts at column 5 to stay centred and keep the same right margin as the
+; vanilla 8-tile word.
+	hlcoord 5, 8
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
 IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "NERIS" (10 tiles)
 ENDC
 IF DEF(_BLUE)
 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
