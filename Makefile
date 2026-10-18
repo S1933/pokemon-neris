@@ -39,8 +39,12 @@ RGBFIX  ?= $(RGBDS)rgbfix
 RGBGFX  ?= $(RGBDS)rgbgfx
 RGBLINK ?= $(RGBDS)rgblink
 
-RGBASMFLAGS  ?= -Weverything -Wtruncation=1
-RGBLINKFLAGS ?= -Weverything -Wtruncation=1
+# Warnings are errors: a new warning fails the build (and therefore CI).
+# Iterate locally with `make WERROR=`.
+WERROR ?= -Werror
+
+RGBASMFLAGS  ?= -Weverything -Wtruncation=1 $(WERROR)
+RGBLINKFLAGS ?= -Weverything -Wtruncation=1 $(WERROR)
 RGBFIXFLAGS  ?= -Weverything
 RGBGFXFLAGS  ?= -Weverything
 

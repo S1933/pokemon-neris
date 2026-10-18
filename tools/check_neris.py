@@ -476,6 +476,12 @@ def check_toggles():
               'counts aligned, object consts defined')
 
 
+# Vanilla quirks: files where the const_export and object_event counts legitimately
+# differ. SilphCo7F ships 12 const_export for 11 objects in pret/pokered (the extra
+# const is not addressed by any sprite); carried over unchanged by the fork.
+CONST_COUNT_EXCEPTIONS = {'SilphCo7F.asm': (12, 11)}
+
+
 def check_object_const_order():
     """Object consts are positional: the n-th const_export is the n-th
     object_event. A const whose TEXT_<const> belongs to another slot means
@@ -494,6 +500,8 @@ def check_object_const_order():
             continue
         maps += 1
         if len(consts) != len(texts):
+            if CONST_COUNT_EXCEPTIONS.get(obj.name) == (len(consts), len(texts)):
+                continue  # known vanilla delta, see the table above
             warnings.append(f'{obj.name}: {len(consts)} const_export for '
                             f'{len(texts)} object_event')
         for i, const in enumerate(consts):
