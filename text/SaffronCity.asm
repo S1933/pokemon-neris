@@ -32,7 +32,7 @@ _SaffronCityRocket6Text::
 	done
 
 _SaffronCityRocket7Text::
-	text "SILPH sous"
+	text "SYLPHE sous"
 	line "controle, on"
 	cont "exploitera les"
 	cont "#MON du monde"
@@ -63,9 +63,9 @@ _SaffronCitySilphWorkerFText::
 
 _SaffronCityGentlemanText::
 	text "J'ai fait venir"
-	line "mon PIDGEOT en"
+	line "mon ROUCARNAGE en"
 	cont "lisant l'affaire"
-	cont "SILPH."
+	cont "SYLPHE."
 
 	para "C'est deja"
 	line "fini? J'ai rate"
@@ -73,7 +73,7 @@ _SaffronCityGentlemanText::
 	done
 
 _SaffronCityPidgeotText::
-	text "PIDGEOT:"
+	text "ROUCARNAGE:"
 	line "Bi bibii!@"
 	text_end
 
@@ -81,7 +81,7 @@ _SaffronCityRockerText::
 	text "J'ai vu le BOSS"
 	line "ROCKET fuir le"
 	cont "batiment de"
-	cont "SILPH."
+	cont "SYLPHE."
 	done
 
 _SaffronCityRocket8Text::
@@ -115,7 +115,7 @@ _SaffronCityFightingDojoSignText::
 _SaffronCityGymSignText::
 	text "SAFRANIA"
 	line "ARENE #MON"
-	cont "LEADER: SAFIRA"
+	cont "CHAMPION: SAFIRA"
 
 	para "Le pro des"
 	line "#MON Psy!"
@@ -124,7 +124,7 @@ _SaffronCityGymSignText::
 _SaffronCityTrainerTips1Text::
 	text "ASTUCES"
 
-	para "FULL HEAL soigne"
+	para "TOTAL SOIN soigne"
 	line "tous les maux"
 	cont "comme le"
 	cont "sommeil et les"
@@ -139,7 +139,7 @@ _SaffronCityTrainerTips2Text::
 	text "ASTUCES"
 
 	para "La nouvelle"
-	line "GREAT BALL"
+	line "SUPER BALL"
 	cont "capture mieux."
 
 	para "Essaie-la sur"
@@ -154,12 +154,12 @@ _SaffronCitySilphCoSignText::
 
 _SaffronCityMrPsychicsHouseSignText::
 	text "MAISON DE"
-	line "MR.PSYCHIC"
+	line "MR.PSYKO"
 	done
 
 _SaffronCitySilphCoLatestProductSignText::
 	text "Le dernier"
-	line "produit SILPH!"
+	line "produit SYLPHE!"
 
 	para "Sortie a"
 	line "determiner..."

@@ -21,13 +21,13 @@ _SafariZoneSecretHouseFishingGuruReceivedHM03Text::
 	text_end
 
 _SafariZoneSecretHouseFishingGuruHM03ExplanationText::
-	text "HM03, c'est SURF!"
+	text "CS03, c'est SURF!"
 
 	para "Les #MON"
 	line "pourront te faire"
 	cont "traverser l'eau!"
 
-	para "Et cette HM n'est"
+	para "Et cette CS n'est"
 	line "pas a usage"
 	cont "unique! Tu peux"
 	cont "l'utiliser encore"

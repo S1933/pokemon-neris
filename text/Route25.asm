@@ -107,7 +107,7 @@ _Route25CooltrainerF2AfterBattleText::
 	text "Tu viens du"
 	line "MONT SELENITE?"
 	cont "Je peux avoir un"
-	cont "CLEFAIRY?"
+	cont "MELOFEE?"
 	done
 
 _Route25Hiker1BattleText::
@@ -123,7 +123,7 @@ _Route25Hiker1EndBattleText::
 	prompt
 
 _Route25Hiker1AfterBattleText::
-	text "Zut! Un ZUBAT"
+	text "Zut! Un NOSFERAPTI"
 	line "m'a mordu la-bas."
 	done
 

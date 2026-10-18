@@ -1,5 +1,5 @@
 _Museum2FYoungsterText::
-	text "MOON STONE?"
+	text "PIERRE LUNE?"
 
 	para "Qu'a-t-elle de si"
 	line "special?"
@@ -45,5 +45,5 @@ _Museum2FMoonStoneSignText::
 	text "Meteorite tombee"
 	line "sur le MONT"
 	cont "SELENITE."
-	cont "(MOON STONE?)"
+	cont "(PIERRE LUNE?)"
 	done

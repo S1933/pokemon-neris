@@ -31,5 +31,5 @@ _FuchsiaGymKogaReceivedSoulBadgeText::
 
 	para "Tiens!"
 	line "Prends le"
-	cont "SOULBADGE!"
+	cont "BADGE AME!"
 	prompt

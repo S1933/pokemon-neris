@@ -351,7 +351,7 @@ NewGameText:
 
 CableClubOptionsText:
 	db   "ECHANGE"
-	next "COLOSSEUM"
+	next "COLISEE"
 	next "ANNULE@"
 
 DisplayContinueGameInfo:

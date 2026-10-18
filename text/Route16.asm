@@ -104,7 +104,7 @@ _Route16Text7::
 	done
 
 _Route16SnorlaxWokeUpText::
-	text "SNORLAX s'est"
+	text "RONFLEX s'est"
 	line "reveille!"
 
 	para "Il attaque"
@@ -115,7 +115,7 @@ _Route16SnorlaxWokeUpText::
 _Route16SnorlaxReturnedToMountainsText::
 	text "Avec un grand"
 	line "baillement,"
-	cont "SNORLAX est"
+	cont "RONFLEX est"
 	cont "reparti vers"
 	cont "les montagnes!"
 	done

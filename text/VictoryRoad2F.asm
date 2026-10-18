@@ -3,7 +3,7 @@ _VictoryRoad2FMoltresBattleText::
 	text_end
 
 _VictoryRoad2FHikerBattleText::
-	text "VICTORY ROAD"
+	text "ROUTE VICTOIRE"
 	line "est le test"
 	cont "final des"
 	cont "dresseurs!"
@@ -54,7 +54,7 @@ _VictoryRoad2FCooltrainerMAfterBattleText::
 	text "Tu as gagne"
 	line "le droit"
 	cont "d'etre sur"
-	cont "VICTORY ROAD!"
+	cont "ROUTE VICTOIRE!"
 	done
 
 _VictoryRoad2FSuperNerd2BattleText::
@@ -79,7 +79,7 @@ _VictoryRoad2FSuperNerd2AfterBattleText::
 	done
 
 _VictoryRoad2FSuperNerd3BattleText::
-	text "VICTORY ROAD"
+	text "ROUTE VICTOIRE"
 	line "trop dure?"
 	done
 

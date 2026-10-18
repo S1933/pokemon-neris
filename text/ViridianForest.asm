@@ -15,7 +15,7 @@ _ViridianForestYoungster2BattleText::
 
 _ViridianForestYoungster2EndBattleText::
 	text "Non!"
-	line "CATERPIE ne"
+	line "CHENIPAN ne"
 	cont "fait pas le"
 	cont "poids!"
 	prompt

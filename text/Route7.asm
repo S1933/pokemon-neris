@@ -1,5 +1,5 @@
 _Route7UndergroundPathSignText::
 	text "SOUTERRAIN"
-	line "CELADON -"
+	line "CELADOPOLE -"
 	cont "LAVANVILLE"
 	done

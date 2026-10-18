@@ -3,20 +3,20 @@ _Route12Gate2FBrunetteGirlYouCanHaveThisText::
 	line "#MON sont a la"
 	cont "TOUR #MON."
 
-	para "Prends cette TM."
+	para "Prends cette CT."
 	line "Je n'en ai plus"
 	cont "besoin..."
 	prompt
 
 _Route12Gate2FBrunetteGirlReceivedTM39Text::
 	text "<PLAYER> recoit"
-	line "la TM39!@"
+	line "la CT39!@"
 	text_end
 
 _Route12Gate2FBrunetteGirlTM39ExplanationText::
-	text "La TM39 contient"
+	text "La CT39 contient"
 	line "une attaque"
-	cont "appelee SWIFT."
+	cont "appelee METEORES."
 
 	para "Elle est tres"
 	line "precise, utilise-"

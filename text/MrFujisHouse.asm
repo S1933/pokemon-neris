@@ -7,7 +7,7 @@ _MrFujisHouseSuperNerdMrFujiIsntHereText::
 _MrFujisHouseSuperNerdMrFujiHadBeenPrayingText::
 	text "MR.FUJI priait"
 	line "seul pour la"
-	cont "mere de CUBONE."
+	cont "mere de OSSELAIT."
 	done
 
 _MrFujisHouseLittleGirlThisIsMrFujisHouseText::
@@ -31,7 +31,7 @@ _MrFujisHouseLittleGirlPokemonAreNiceToHugText::
 	done
 
 _MrFujisHousePsyduckText::
-	text "PSYDUCK: Gwappa!@"
+	text "PSYKOKWAK: Gwappa!@"
 	text_end
 
 _MrFujisHouseNidorinoText::

@@ -48,7 +48,7 @@ _LavenderTownSignText::
 	done
 
 _LavenderTownSilphScopeSignText::
-	text "Nouveau SILPH"
+	text "Nouveau SYLPHE"
 	line "SCOPE!"
 
 	para "Rendez visible"

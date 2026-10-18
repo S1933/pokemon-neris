@@ -1,5 +1,5 @@
 _Route2GateOaksAideFlashExplanationText::
-	text "La HM FLASH"
+	text "La CS FLASH"
 	line "eclaire meme"
 	cont "les donjons les"
 	cont "plus sombres."

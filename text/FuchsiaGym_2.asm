@@ -1,5 +1,5 @@
 _FuchsiaGymKogaPostBattleAdviceText::
-	text "Sous TOXIC, les"
+	text "Sous TOXIK, les"
 	line "#MON souffrent"
 	cont "de plus en plus"
 	cont "au fil du"
@@ -12,7 +12,7 @@ _FuchsiaGymKogaPostBattleAdviceText::
 _FuchsiaGymKogaSoulBadgeInfoText::
 	text "Maintenant que"
 	line "tu as le"
-	cont "SOULBADGE, la"
+	cont "BADGE AME, la"
 	cont "DEFENSE de tes"
 	cont "#MON augmente!"
 
@@ -35,8 +35,8 @@ _FuchsiaGymKogaReceivedTM06Text::
 _FuchsiaGymKogaTM06ExplanationText::
 	text_start
 
-	para "TM06 contient"
-	line "TOXIC!"
+	para "CT06 contient"
+	line "TOXIK!"
 
 	para "C'est une"
 	line "technique"

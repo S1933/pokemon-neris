@@ -1,6 +1,6 @@
 _CinnabarMartSilphWorkerFText::
 	text "Ils n'ont pas de"
-	line "X ATTACK? C'est"
+	line "ATTAQUE? C'est"
 	cont "bien en combat!"
 	done
 

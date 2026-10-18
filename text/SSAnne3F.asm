@@ -4,6 +4,6 @@ _SSAnne3FSailorText::
 	cont "d'epee!"
 
 	para "Il enseigne"
-	line "meme CUT aux"
+	line "meme COUPE aux"
 	cont "#MON!"
 	done

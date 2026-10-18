@@ -34,7 +34,7 @@ _SafariZoneNorthTrainerTips2Text::
 _SafariZoneNorthTrainerTips3Text::
 	text "ASTUCES"
 
-	para "Gagne une HM"
+	para "Gagne une CS"
 	line "offerte en"
 	cont "trouvant la"
 	cont "MAISON"

@@ -10,7 +10,7 @@ _RocketHideoutB3FRocket1EndBattleText::
 	prompt
 
 _RocketHideoutB3FRocket1AfterBattleText::
-	text "Le SILPH SCOPE?"
+	text "Le SCOPE SYLPHE?"
 	line "La machine que le"
 	cont "BOSS a volee. Elle"
 	cont "est quelque part"
@@ -31,6 +31,6 @@ _RocketHideout3EndBattleText3::
 _RocketHide3AfterBattleText3::
 	text "Vas-y, avance!"
 	line "Mais il te faut la"
-	cont "LIFT KEY pour"
+	cont "CLE ASC. pour"
 	cont "l'ascenseur!"
 	done

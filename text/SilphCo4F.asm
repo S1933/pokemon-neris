@@ -42,7 +42,7 @@ _SilphCo4FScientistAfterBattleText::
 	text "Les portes sont"
 	line "verrouillees"
 	cont "electroniquement!"
-	cont "Une CARD KEY"
+	cont "Une CARTE MAGN."
 	cont "les ouvre!"
 	done
 

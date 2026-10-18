@@ -1,6 +1,6 @@
 _SilphCo3FSilphWorkerMWhatShouldIDoText::
 	text "Je travaille"
-	line "pour SILPH. Que"
+	line "pour SYLPHE. Que"
 	cont "dois-je faire?"
 	done
 
@@ -24,13 +24,13 @@ _SilphCo3FRocketAfterBattleText::
 	text "Un indice? Tu"
 	line "peux ouvrir les"
 	cont "portes avec une"
-	cont "CARD KEY!"
+	cont "CARTE MAGN.!"
 	done
 
 _SilphCo3FScientistBattleText::
 	text "Je soutiens la"
 	line "TEAM ROCKET plus"
-	cont "que SILPH!"
+	cont "que SYLPHE!"
 	done
 
 _SilphCo3FScientistEndBattleText::

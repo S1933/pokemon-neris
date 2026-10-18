@@ -25,7 +25,7 @@ _ViridianGymGiovanniReceivedEarthBadgeText::
 	cont "intense! Tu as"
 	cont "gagne! En preuve,"
 	cont "voici"
-	cont "l'EARTHBADGE!@"
+	cont "le BADGE TERRE!@"
 	text_end
 
 _ViridianGymGiovanniPostBattleAdviceText::
@@ -45,8 +45,9 @@ _ViridianGymGiovanniPostBattleAdviceText::
 	text_end
 
 _ViridianGymGiovanniEarthBadgeInfoText::
-	text "L'EARTHBADGE fait"
-	line "obeir les #MON"
+	text "Le BADGE TERRE"
+	line "fait obeir les"
+	cont "#MON"
 	cont "de tout niveau!"
 
 	para "C'est la preuve de"
@@ -64,14 +65,14 @@ _ViridianGymGiovanniEarthBadgeInfoText::
 
 _ViridianGymGiovanniReceivedTM27Text::
 	text "<PLAYER> recoit"
-	line "la TM27!@"
+	line "la CT27!@"
 	text_end
 
 _ViridianGymGiovanniTM27ExplanationText::
 	text_start
 
-	para "La TM27 est"
-	line "FISSURE! Elle met"
+	para "La CT27 est"
+	line "ABIME! Elle met"
 	cont "un #MON K.O. en"
 	cont "un seul coup!"
 

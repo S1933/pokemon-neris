@@ -87,7 +87,7 @@ _CeruleanCityRocketText::
 
 _CeruleanCityRocketReceivedTM28Text::
 	text "<PLAYER> recupere"
-	line "TM28!@"
+	line "CT28!@"
 	text_end
 
 _CeruleanCityRocketIBetterGetMovingText::
@@ -118,7 +118,7 @@ _CeruleanCityRocketIGiveUpText::
 
 _CeruleanCityRocketIllReturnTheTMText::
 	text "OK! Je te"
-	line "rends la TM"
+	line "rends la CT"
 	cont "que j'ai"
 	cont "volee!"
 	prompt
@@ -169,16 +169,16 @@ _CeruleanCityGuardText::
 	done
 
 _CeruleanCityCooltrainerF1SlowbroUseSonicboomText::
-	text "OK! SLOWBRO!"
+	text "OK! FLAGADOSS!"
 	line "Utilise"
 	cont "SONICBOOM!"
 	cont "Allez,"
-	cont "SLOWBRO,"
+	cont "FLAGADOSS,"
 	cont "concentre-toi!"
 	done
 
 _CeruleanCityCooltrainerF1SlowbroPunchText::
-	text "SLOWBRO,"
+	text "FLAGADOSS,"
 	line "coup de poing!"
 	cont "Non! T'as"
 	cont "encore tout"
@@ -186,8 +186,9 @@ _CeruleanCityCooltrainerF1SlowbroPunchText::
 	done
 
 _CeruleanCityCooltrainerF1SlowbroWithdrawText::
-	text "SLOWBRO, RETRAITE!"
-	line "Non! C'est faux!"
+	text "FLAGADOSS,"
+	line "RETRAITE!"
+	para "Non! C'est faux!"
 
 	para "C'est si dur de"
 	line "controler un"
@@ -201,30 +202,30 @@ _CeruleanCityCooltrainerF1SlowbroWithdrawText::
 	done
 
 _CeruleanCitySlowbroTookASnoozeText::
-	text "SLOWBRO fait"
+	text "FLAGADOSS fait"
 	line "une sieste..."
 	done
 
 _CeruleanCitySlowbroIsLoafingAroundText::
-	text "SLOWBRO"
+	text "FLAGADOSS"
 	line "flemmarde..."
 	done
 
 _CeruleanCitySlowbroTurnedAwayText::
-	text "SLOWBRO"
+	text "FLAGADOSS"
 	line "s'est"
 	cont "detourne..."
 	done
 
 _CeruleanCitySlowbroIgnoredOrdersText::
-	text "SLOWBRO"
+	text "FLAGADOSS"
 	line "ignore les"
 	cont "ordres..."
 	done
 
 _CeruleanCityCooltrainerF2Text::
 	text "Je veux un"
-	line "BICYCLE rouge"
+	line "BICYCLETTE rouge"
 	cont "vif!"
 
 	para "Je le garde a"

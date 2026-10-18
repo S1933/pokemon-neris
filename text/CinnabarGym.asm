@@ -12,7 +12,7 @@ _CinnabarGymBlainePreBattleText::
 	cont "monde!"
 
 	para "Hah! Prends"
-	line "des BURN HEAL!"
+	line "des ANTI-BRULE!"
 	done
 
 _CinnabarGymBlaineReceivedVolcanoBadgeText::
@@ -20,11 +20,11 @@ _CinnabarGymBlaineReceivedVolcanoBadgeText::
 	line "carbonise!"
 
 	para "Tu as gagne"
-	line "le VOLCANOBADGE!@"
+	line "le BADGE VOLCAN!@"
 	text_end
 
 _CinnabarGymBlainePostBattleAdviceText::
-	text "FIRE BLAST est"
+	text "DEFLAGRATION est"
 	line "la technique de"
 	cont "feu supreme!"
 
@@ -36,7 +36,7 @@ _CinnabarGymBlainePostBattleAdviceText::
 _CinnabarGymBlaineVolcanoBadgeInfoText::
 	text "Hah!"
 
-	para "Le VOLCANOBADGE"
+	para "Le BADGE VOLCAN"
 	line "augmente la"
 	cont "capacite SPECIAL"
 	cont "de tes #MON!"
@@ -55,8 +55,8 @@ _CinnabarGymBlaineReceivedTM38Text::
 _CinnabarGymBlaineTM38ExplanationText::
 	text_start
 
-	para "TM38 contient"
-	line "FIRE BLAST!"
+	para "CT38 contient"
+	line "DEFLAGRATION!"
 
 	para "Apprends-la a"
 	line "un #MON de feu!"
@@ -185,7 +185,7 @@ _CinnabarGymSuperNerd6AfterBattleText::
 	text "Nous, fans de"
 	line "#MON de feu,"
 	cont "aimons PONYTA"
-	cont "et NINETALES!"
+	cont "et FEUNARD!"
 	done
 
 _CinnabarGymSuperNerd7BattleText::

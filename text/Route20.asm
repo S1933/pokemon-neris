@@ -102,7 +102,7 @@ _Route20CooltrainerMEndBattleText::
 _Route20CooltrainerMAfterBattleText::
 	text "Mes oiseaux ne"
 	line "peuvent pas me"
-	cont "ramener en FLY!"
+	cont "ramener en VOL!"
 	done
 
 _Route20Swimmer7BattleText::
@@ -120,7 +120,7 @@ _Route20Swimmer7EndBattleText::
 _Route20Swimmer7AfterBattleText::
 	text "Mes perles"
 	line "grossiront-elles"
-	cont "dans un CLOYSTER?"
+	cont "dans un CRUSTABRI?"
 	done
 
 _Route20Swimmer8BattleText::

@@ -1,5 +1,5 @@
 _SSAnneB1FRoomsMachokeText::
-	text "MACHOKE: Gwoh!"
+	text "MACHOPEUR: Gwoh!"
 	line "Goggoh!@"
 	text_end
 
@@ -37,7 +37,7 @@ _SSAnneB1FRoomsSailor2EndBattleText::
 _SSAnneB1FRoomsSailor2AfterBattleText::
 	text "As-tu vu le"
 	line "FISHING GURU"
-	cont "a VERMILION"
+	cont "a CARMIN"
 	cont "CITY?"
 	done
 
@@ -129,12 +129,12 @@ _SSAnneB1FRoomsFisherAfterBattleText::
 
 _SSAnneB1FRoomsSuperNerdText::
 	text "Mon pote,"
-	line "MACHOKE,"
+	line "MACHOPEUR,"
 	cont "est super"
 	cont "fort!"
 
 	para "Il a la"
-	line "STRENGTH"
+	line "FORCE"
 	cont "pour bouger"
 	cont "de gros"
 	cont "rochers!"

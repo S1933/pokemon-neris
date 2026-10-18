@@ -38,9 +38,9 @@ _CopycatsHouse2FCopycatReceivedTM31Text::
 _CopycatsHouse2FCopycatTM31Explanation1Text::
 	text_start
 
-	para "La TM31"
+	para "La CT31"
 	line "contient"
-	cont "MIMIC,"
+	cont "COPIE,"
 	cont "mon prefere!"
 
 	para "Utilise-la"
@@ -51,7 +51,7 @@ _CopycatsHouse2FCopycatTM31Explanation1Text::
 _CopycatsHouse2FCopycatTM31Explanation2Text::
 	text "<PLAYER>: Salut!"
 	line "Merci pour"
-	cont "la TM31!"
+	cont "la CT31!"
 
 	para "<PLAYER>: Pardon?"
 
@@ -109,7 +109,7 @@ _CopycatsHouse2FPCMySecretsText::
 	cont "des poupees!"
 
 	para "#MON prefere:"
-	line "CLEFAIRY!"
+	line "MELOFEE!"
 	done
 
 _CopycatsHouse2FPCCantSeeText::

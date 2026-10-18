@@ -4,7 +4,7 @@ _Route12SnorlaxText::
 	done
 
 _Route12SnorlaxWokeUpText::
-	text "SNORLAX s'est"
+	text "RONFLEX s'est"
 	line "reveille!"
 
 	para "Il a attaque dans"
@@ -12,7 +12,7 @@ _Route12SnorlaxWokeUpText::
 	done
 
 _Route12SnorlaxCalmedDownText::
-	text "SNORLAX s'est"
+	text "RONFLEX s'est"
 	line "calme! Avec un"
 	cont "grand baillement,"
 	cont "il est retourne"
@@ -55,7 +55,7 @@ _Route12Fisher2AfterBattleText::
 
 _Route12CooltrainerMBattleText::
 	text "As-tu trouve une"
-	line "MOON STONE?"
+	line "PIERRE LUNE?"
 	done
 
 _Route12CooltrainerMEndBattleText::
@@ -133,7 +133,7 @@ _Route12Fisher5EndBattleText::
 
 _Route12Fisher5AfterBattleText::
 	text "J'attrape des"
-	line "MAGIKARP sans"
+	line "MAGICARPE sans"
 	cont "arret, mais ils"
 	cont "sont si faibles!"
 	done

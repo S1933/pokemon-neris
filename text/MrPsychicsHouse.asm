@@ -14,8 +14,8 @@ _MrPsychicsHouseMrPsychicReceivedTM29Text::
 	text_end
 
 _MrPsychicsHouseMrPsychicTM29ExplanationText::
-	text "TM29, c'est"
-	line "PSYCHIC!"
+	text "CT29, c'est"
+	line "PSYKO!"
 
 	para "Ca peut baisser"
 	line "la stat SPECIAL"

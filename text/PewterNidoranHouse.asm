@@ -23,5 +23,5 @@ _PewterNidoranHouseMiddleAgedManText::
 	cont "doue en combat!"
 
 	para "Si seulement on"
-	line "avait des BADGEs"
+	line "avait des BADGES"
 	done

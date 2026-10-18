@@ -15,8 +15,8 @@ _CeladonMart3FClerkReceivedTM18Text::
 	text_end
 
 _CeladonMart3FClerkTM18ExplanationText::
-	text "La TM18, c'est"
-	line "COUNTER! Pas comme"
+	text "La CT18, c'est"
+	line "RIPOSTE! Pas comme"
 	cont "le comptoir sur"
 	cont "lequel je"
 	cont "m'appuie!"
@@ -41,20 +41,21 @@ _CeladonMart3FGameBoyKid2Text::
 
 	para "Mon pote va"
 	line "m'echanger son"
-	cont "KANGASKHAN contre"
-	cont "mon GRAVELER!"
+	cont "KANGOUREX contre"
+	cont "mon GRAVALANCH!"
 	done
 
 _CeladonMart3FGameBoyKid3Text::
-	text "Allez GRAVELER!"
+	text "Allez GRAVALANCH!"
 
-	para "J'adore GRAVELER!"
+	para "J'adore les"
+	line "GRAVALANCH!"
 	line "Je les"
 	cont "collectionne!"
 
 	para "Hein?"
 
-	para "GRAVELER s'est"
+	para "GRAVALANCH s'est"
 	line "change en un autre"
 	cont "#MON!"
 	done

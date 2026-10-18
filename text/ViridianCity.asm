@@ -11,8 +11,9 @@ _ViridianCityYoungster1Text::
 	done
 
 _ViridianCityGambler1GymAlwaysClosedText::
-	text "Ce GYM #MON est"
-	line "toujours ferme."
+	text "Cette ARENE"
+	line "#MON est"
+	cont "toujours fermee."
 
 	para "Je me demande qui"
 	line "est le CHAMPION?"
@@ -20,7 +21,8 @@ _ViridianCityGambler1GymAlwaysClosedText::
 
 _ViridianCityGambler1GymLeaderReturnedText::
 	text "Le CHAMPION de"
-	line "VIRIDIAN GYM est"
+	line "l'ARENE de"
+	cont "JADIELLE est"
 	cont "revenu!"
 	done
 
@@ -36,9 +38,9 @@ ViridianCityYoungster2OkThenText::
 	done
 
 ViridianCityYoungster2CaterpieAndWeedleDescriptionText::
-	text "CATERPIE n'a pas"
+	text "CHENIPAN n'a pas"
 	line "de poison, mais"
-	cont "WEEDLE si."
+	cont "ASPICOT si."
 
 	para "Gare a sa POISON"
 	line "STING!"
@@ -53,11 +55,11 @@ _ViridianCityGirlHasntHadHisCoffeeYetText::
 
 _ViridianCityGirlWhenIGoShopText::
 	text "Pour aller"
-	line "shopper a PEWTER"
+	line "shopper a ARGENTA"
 	cont "CITY, je dois"
 	cont "suivre le sentier"
 	cont "sinueux de"
-	cont "VIRIDIAN FOREST."
+	cont "FORET DE JADE."
 	done
 
 _ViridianCityOldManSleepyPrivatePropertyText::
@@ -75,25 +77,25 @@ ViridianCityFisherYouCanHaveThisText::
 	cont "soleil."
 
 	para "J'ai reve d'un"
-	line "DROWZEE qui"
+	line "SOPORIFIK qui"
 	cont "mangeait mon"
 	cont "reve. Qu'est-ce"
 	cont "que c'est? D'ou"
-	cont "vient cette TM?"
+	cont "vient cette CT?"
 
 	para "C'est lugubre!"
 	line "Tiens, tu peux"
-	cont "avoir cette TM."
+	cont "avoir cette CT."
 	prompt
 
 _ViridianCityFisherReceivedTM42Text::
 	text "<PLAYER> recoit"
-	line "TM42!@"
+	line "CT42!@"
 	text_end
 
 _ViridianCityFisherTM42ExplanationText::
-	text "TM42 contient"
-	line "DREAM EATER..."
+	text "CT42 contient"
+	line "DEVOREVE..."
 	cont "...Zzz..."
 	done
 
@@ -143,7 +145,7 @@ _ViridianCityOldManYouNeedToWeakenTheTargetText::
 	done
 
 _ViridianCitySignText::
-	text "VIRIDIAN CITY"
+	text "JADIELLE"
 	line "Le Paradis"
 	cont "Toujours Vert"
 	done
@@ -176,8 +178,8 @@ _ViridianCityTrainerTips2Text::
 	done
 
 _ViridianCityGymSignText::
-	text "VIRIDIAN CITY"
-	line "#MON GYM"
+	text "JADIELLE"
+	line "ARENE #MON"
 	done
 
 _ViridianCityAcademyClosedText::
@@ -190,6 +192,6 @@ _ViridianCityAcademyClosedText::
 
 _ViridianCityGymLockedText::
 	text "Les portes du"
-	line "GYM sont"
+	line "ARENE sont"
 	cont "verrouillees..."
 	done

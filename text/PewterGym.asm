@@ -2,7 +2,7 @@ _PewterGymBrockPreBattleText::
 	text "PIERRE, c'est"
 	line "moi! Le"
 	cont "CHAMPION de"
-	cont "PEWTER!"
+	cont "ARGENTA!"
 
 	para "Je crois en"
 	line "la defense"

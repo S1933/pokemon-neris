@@ -28,7 +28,7 @@ _SSAnneKitchenCook4Text::
 _SSAnneKitchenCook5Text::
 	text "Tu as entendu"
 	line "parler de"
-	cont "SNORLAX?"
+	cont "RONFLEX?"
 	para "Il ne fait"
 	line "que manger et"
 	cont "dormir!"

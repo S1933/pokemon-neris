@@ -10,11 +10,11 @@ _PokemonTower7FMrFujiRescueText::
 	para "Je suis venu"
 	line "calmer l'ame de"
 	cont "la mere de"
-	cont "CUBONE."
+	cont "OSSELAIT."
 
 	para "Je crois que"
 	line "l'esprit de"
-	cont "MAROWAK est"
+	cont "OSSATUEUR est"
 	cont "parti dans"
 	cont "l'au-dela."
 

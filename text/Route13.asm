@@ -36,7 +36,7 @@ _Route13CooltrainerF1AfterBattleText::
 
 _Route13CooltrainerF2BattleText::
 	text "Wouah! Tes"
-	line "BADGEs sont"
+	line "BADGES sont"
 	cont "trop beaux!"
 	done
 
@@ -46,7 +46,7 @@ _Route13CooltrainerF2EndBattleText::
 	prompt
 
 _Route13CooltrainerF2AfterBattleText::
-	text "Ces BADGEs"
+	text "Ces BADGES"
 	line "viennent des"
 	cont "CHAMPIONS"
 	cont "d'ARENE!"
@@ -73,7 +73,7 @@ _Route13CooltrainerF3AfterBattleText::
 
 _Route13CooltrainerF4BattleText::
 	text "J'ai trouve"
-	line "CARBOS dans"
+	line "CARBONE dans"
 	cont "une grotte."
 	done
 
@@ -83,7 +83,7 @@ _Route13CooltrainerF4EndBattleText::
 	prompt
 
 _Route13CooltrainerF4AfterBattleText::
-	text "CARBOS a"
+	text "CARBONE a"
 	line "augmente la"
 	cont "VITESSE de mon"
 	cont "#MON."
@@ -172,8 +172,8 @@ _Route13CooltrainerM3EndBattleText::
 _Route13CooltrainerM3AfterBattleText::
 	text "J'aimerais"
 	line "voler comme"
-	cont "PIDGEY et"
-	cont "PIDGEOTTO..."
+	cont "ROUCOOL et"
+	cont "ROUCOUPS..."
 	done
 
 _Route13TrainerTips1Text::

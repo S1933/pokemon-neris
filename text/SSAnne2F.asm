@@ -62,7 +62,7 @@ _SSAnne2FRivalVictoryText::
 _SSAnne2FRivalCutMasterText::
 	text "<RIVAL>: On dit"
 	line "qu'il y a un"
-	cont "maitre de CUT"
+	cont "maitre de COUPE"
 	cont "a bord."
 
 	para "Mais ce"
@@ -70,7 +70,7 @@ _SSAnne2FRivalCutMasterText::
 	cont "vieil homme"
 	cont "malade!"
 
-	para "Mais CUT"
+	para "Mais COUPE"
 	line "est vraiment"
 	cont "utile!"
 

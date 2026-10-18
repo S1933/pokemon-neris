@@ -3,7 +3,7 @@ _Route11Gate2FOaksAideItemfinderDescriptionText::
 	line "objets au sol"
 	cont "invisibles."
 
-	para "L'ITEMFINDER"
+	para "Le CHERCH'OBJET"
 	line "detecte un"
 	cont "objet proche"
 	cont "de toi."

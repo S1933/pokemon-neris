@@ -46,13 +46,13 @@ _SilphCo6FSilphWorkerF2TeamRocketRanText::
 
 _SilphCo6FSilphWorkerM3TargetedSilphText::
 	text "Ils ont du viser"
-	line "SILPH pour nos"
+	line "SYLPHE pour nos"
 	cont "produits #MON."
 	done
 
 _SilphCo6FSilphWorkerM3WorkForSilphText::
 	text "Viens travailler"
-	line "pour SILPH quand"
+	line "pour SYLPHE quand"
 	cont "tu seras grand!"
 	done
 

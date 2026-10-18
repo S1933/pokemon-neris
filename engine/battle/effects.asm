@@ -530,8 +530,9 @@ MonsStatsRoseText:
 
 GreatlyRoseText:
 	text_pause
-	text_far _GreatlyRoseText
-; fallthrough
+	text_far _GreatlyRoseText ; Neris: whole French sentence
+	text_end
+
 RoseText:
 	text_far _RoseText
 	text_end
@@ -735,8 +736,9 @@ MonsStatsFellText:
 
 GreatlyFellText:
 	text_pause
-	text_far _GreatlyFellText
-; fallthrough
+	text_far _GreatlyFellText ; Neris: whole French sentence
+	text_end
+
 FellText:
 	text_far _FellText
 	text_end

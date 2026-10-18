@@ -9,7 +9,7 @@ _FuchsiaMartMiddleAgedManText::
 
 _FuchsiaMartCooltrainerFText::
 	text "Tu as essaye"
-	line "X SPEED? Ca"
+	line "VITESSE? Ca"
 	cont "accelere un"
 	cont "#MON en combat!"
 	done

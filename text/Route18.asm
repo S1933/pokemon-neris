@@ -14,7 +14,7 @@ _Route18CooltrainerM1EndBattleText::
 _Route18CooltrainerM1AfterBattleText::
 	text "J'aimerais"
 	line "avoir un"
-	cont "BICYCLE!"
+	cont "BICYCLETTE!"
 	done
 
 _Route18CooltrainerM2BattleText::

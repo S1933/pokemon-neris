@@ -16,13 +16,13 @@ _SafariZoneNorthRestHouseSafariZoneWorkerText::
 	done
 
 _SafariZoneNorthRestHouseGentlemanText::
-	text "Mon EEVEE a"
+	text "Mon EVOLI a"
 	line "evolue en"
-	cont "FLAREON!"
+	cont "PYROLI!"
 
-	para "Mais l'EEVEE"
+	para "Mais l'EVOLI"
 	line "d'un ami est"
 	cont "devenu un"
-	cont "VAPOREON!"
+	cont "AQUALI!"
 	cont "Pourquoi donc?"
 	done

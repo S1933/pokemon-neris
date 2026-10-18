@@ -27,7 +27,7 @@ _DexRatingText_Own10To19::
 	text "Tu es sur la"
 	line "bonne voie!"
 	cont "Obtiens une"
-	cont "FLASH HM"
+	cont "FLASH CS"
 	cont "de mon AIDE!"
 	done
 
@@ -45,7 +45,7 @@ _DexRatingText_Own30To39::
 	line "travailles"
 	cont "dur!"
 	cont "Obtiens un"
-	cont "ITEMFINDER"
+	cont "CHERCH'OBJET"
 	cont "de mon AIDE!"
 	done
 
@@ -62,7 +62,7 @@ _DexRatingText_Own50To59::
 	line "au moins 50"
 	cont "especes!"
 	cont "Recupere"
-	cont "EXP.ALL"
+	cont "MULTI EXP"
 	cont "aupres de"
 	cont "mon AIDE!"
 	done

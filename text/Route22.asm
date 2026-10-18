@@ -59,7 +59,7 @@ _Route22RivalBeforeBattleText2::
 	line "la LIGUE #MON?"
 
 	para "T'as tous les"
-	line "BADGEs aussi?"
+	line "BADGES aussi?"
 	cont "Genial!"
 
 	para "Alors je vais"
@@ -105,6 +105,6 @@ _Route22Rival2VictoryText::
 	prompt
 
 _Route22PokemonLeagueSignText::
-	text "#MON LEAGUE"
+	text "LIGUE #MON"
 	line "Porte d'entree"
 	done

@@ -11,7 +11,7 @@ _SilphCo7FSilphWorkerM1HaveThisPokemonText::
 	prompt
 
 _SilphCo7FSilphWorkerM1LaprasDescriptionText::
-	text "C'est LAPRAS."
+	text "C'est LOKHLASS."
 	line "Il est tres"
 	cont "intelligent."
 	para "On l'elevait au"
@@ -20,7 +20,7 @@ _SilphCo7FSilphWorkerM1LaprasDescriptionText::
 	cont "avec toi!"
 	para "Tu feras un bon"
 	line "dresseur pour"
-	cont "LAPRAS!"
+	cont "LOKHLASS!"
 	para "Il nage bien."
 	line "Il te portera!"
 	done
@@ -60,7 +60,7 @@ _SilphCo7FSilphWorkerM3ItWouldBeBadText::
 	text "Ce serait"
 	line "grave si la"
 	cont "TEAM ROCKET"
-	cont "prenait SILPH"
+	cont "prenait SYLPHE"
 	cont "ou nos #MON!"
 	done
 
@@ -105,7 +105,7 @@ _SilphCo7FScientistBattleText::
 	para "Tu m'as pris"
 	line "pour un"
 	cont "employe de"
-	cont "SILPH?"
+	cont "SYLPHE?"
 	done
 
 _SilphCo7FScientistEndBattleText::

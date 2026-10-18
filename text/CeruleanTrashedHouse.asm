@@ -7,12 +7,12 @@ _CeruleanTrashedHouseFishingGuruTheyStoleATMText::
 	cont "fait ici!"
 
 	para "Ils ont"
-	line "vole une TM"
+	line "vole une CT"
 	cont "pour apprendre"
 	cont "a un #MON a"
 	cont "creuser des"
 	cont "trous avec"
-	cont "DIG!"
+	cont "TUNNEL!"
 
 	para "Ca m'a"
 	line "coute une"
@@ -27,9 +27,9 @@ _CeruleanTrashedHouseFishingGuruWhatsLostIsLostText::
 
 	para "J'ai decide"
 	line "d'apprendre a"
-	cont "DIGLETT a"
+	cont "TAUPIQUEUR a"
 	cont "creuser avec"
-	cont "DIG sans TM!"
+	cont "TUNNEL sans CT!"
 	done
 
 _CeruleanTrashedHouseGirlText::
@@ -37,7 +37,7 @@ _CeruleanTrashedHouseGirlText::
 	line "ROCKET doit"
 	cont "creuser vers"
 	cont "les ennuis"
-	cont "avec DIG!"
+	cont "avec TUNNEL!"
 	done
 
 _CeruleanTrashedHouseWallHoleText::

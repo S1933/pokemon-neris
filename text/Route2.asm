@@ -6,5 +6,5 @@ _Route2SignText::
 
 _Route2DiglettsCaveSignText::
 	text "GROTTE"
-	line "DIGLETT"
+	line "TAUPIQUEUR"
 	done

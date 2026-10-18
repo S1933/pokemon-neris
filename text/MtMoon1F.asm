@@ -134,7 +134,7 @@ _MtMoon1FYoungster3EndBattleText::
 	prompt
 
 _MtMoon1FYoungster3AfterBattleText::
-	text "ZUBAT est"
+	text "NOSFERAPTI est"
 	line "coriace!"
 	cont "Mais il peut"
 	cont "etre utile"
@@ -144,7 +144,7 @@ _MtMoon1FYoungster3AfterBattleText::
 
 _MtMoon1FBewareZubatSign::
 	text "Attention!"
-	line "ZUBAT"
+	line "NOSFERAPTI"
 	cont "aspire le"
 	cont "sang!"
 	done

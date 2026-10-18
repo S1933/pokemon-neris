@@ -27,5 +27,5 @@ _Route11Youngster4AfterBattleText::
 	done
 
 _Route11DiglettsCaveSignText::
-	text "CAVE de DIGLETT"
+	text "CAVE de TAUPIQUEUR"
 	done

@@ -9,8 +9,8 @@ _PewterGymBrockPostBattleAdviceText::
 	cont "#MON tres"
 	cont "doue!"
 
-	para "Va au GYM de"
-	line "CERULEAN et teste"
+	para "Va a l'ARENE de"
+	line "AZURIA et teste"
 	cont "tes capacites!"
 	done
 
@@ -21,25 +21,25 @@ _PewterGymBrockWaitTakeThisText::
 
 _PewterGymReceivedTM34Text::
 	text "<PLAYER> recoit"
-	line "TM34!@"
+	line "CT34!@"
 	text_end
 
 _TM34ExplanationText::
 	text_start
 
-	para "Une TM contient"
+	para "Une CT contient"
 	line "une technique qui"
 	cont "peut etre apprise"
 	cont "a un #MON!"
 
-	para "Une TM ne sert"
+	para "Une CT ne sert"
 	line "qu'une fois! Donc"
 	cont "quand tu en uses"
 	cont "une, choisis bien"
 	cont "ton #MON!"
 
-	para "TM34 contient"
-	line "BIDE!"
+	para "CT34 contient"
+	line "PATIENCE!"
 
 	para "Ton #MON"
 	line "absorbera les"
@@ -58,10 +58,10 @@ _PewterGymBrockReceivedBoulderBadgeText::
 
 	para "En preuve de ta"
 	line "victoire, voici"
-	cont "le BOULDERBADGE!"
+	cont "le BADGE ROCHE!"
 
 	para "<PLAYER> recoit"
-	line "le BOULDERBADGE!@"
+	line "le BADGE ROCHE!@"
 	text_end
 
 _PewterGymBrockBoulderBadgeInfoText::

@@ -1,6 +1,6 @@
 _AgathaBeforeBattleText::
 	text "Je suis AGATHA"
-	line "du ELITE FOUR!"
+	line "du CONSEIL 4!"
 
 	para "PROF.SYLVE"
 	line "s'interesse"

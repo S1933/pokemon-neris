@@ -2,7 +2,7 @@ _Route4CooltrainerF1Text::
 	text "Aie! J'ai"
 	line "trebuche sur un"
 	cont "#MON rocheux,"
-	cont "GEODUDE!"
+	cont "RACAILLOU!"
 	done
 
 _Route4CooltrainerF2BattleText::

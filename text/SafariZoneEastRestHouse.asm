@@ -7,7 +7,7 @@ _SafariZoneEastRestHouseScientistText::
 
 _SafariZoneEastRestHouseRockerText::
 	text "J'ai attrape"
-	line "un CHANSEY!"
+	line "un LEVEINARD!"
 
 	para "Ca valait"
 	line "vraiment le"

@@ -2140,12 +2140,12 @@ DisplayBattleMenu::
 	ld bc, NAME_LENGTH
 	call CopyData
 ; the following simulates the keystrokes by drawing menus on screen
-	hlcoord 9, 14
+	hlcoord 5, 14
 	ld [hl], '▶'
 	ld c, 80
 	call DelayFrames
 	ld [hl], ' '
-	hlcoord 9, 16
+	hlcoord 5, 16
 	ld [hl], '▶'
 	ld c, 50
 	call DelayFrames
@@ -2170,9 +2170,9 @@ DisplayBattleMenu::
 	ld a, ' '
 	jr z, .safariLeftColumn
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
-	ldcoord_a 15, 14 ; clear upper cursor position in right column
-	ldcoord_a 15, 16 ; clear lower cursor position in right column
-	ld b, $9 ; top menu item X
+	ldcoord_a 13, 14 ; clear upper cursor position in right column
+	ldcoord_a 13, 16 ; clear lower cursor position in right column
+	ld b, $5 ; top menu item X (Neris: wider French menu)
 	jr .leftColumn_WaitForInput
 .safariLeftColumn
 	ldcoord_a 13, 14
@@ -2203,9 +2203,9 @@ DisplayBattleMenu::
 	ld a, ' '
 	jr z, .safariRightColumn
 ; put cursor in right column for normal battle menu (i.e. when it's not a Safari battle)
-	ldcoord_a 9, 14 ; clear upper cursor position in left column
-	ldcoord_a 9, 16 ; clear lower cursor position in left column
-	ld b, $f ; top menu item X
+	ldcoord_a 5, 14 ; clear upper cursor position in left column
+	ldcoord_a 5, 16 ; clear lower cursor position in left column
+	ld b, $d ; top menu item X (Neris: wider French menu)
 	jr .rightColumn_WaitForInput
 .safariRightColumn
 	ldcoord_a 1, 14 ; clear upper cursor position in left column
@@ -2446,6 +2446,7 @@ PartyMenuOrRockOrRun:
 	ld hl, wTopMenuItemY
 	ld a, $c
 	ld [hli], a ; wTopMenuItemY
+	ld a, $b ; Neris: wider French menu
 	ld [hli], a ; wTopMenuItemX
 	xor a
 	ld [hli], a ; wCurrentMenuItem

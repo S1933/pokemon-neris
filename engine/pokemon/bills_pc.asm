@@ -449,7 +449,7 @@ DisplayDepositWithdrawMenu:
 DepositPCText:  db "DEPOSER@"
 WithdrawPCText: db "RETIRER@"
 StatsCancelPCText:
-	db   "STATS"
+	db   "RESUME"
 	next "ANNULE@"
 
 SwitchOnText:

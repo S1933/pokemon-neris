@@ -1,5 +1,5 @@
 _CeladonMansion1FMeowthText::
-	text "MEOWTH: Meow!@"
+	text "MIAOUSS: Meow!@"
 	text_end
 
 _CeladonMansion1FGrannyText::
@@ -8,14 +8,14 @@ _CeladonMansion1FGrannyText::
 	cont "tiennent"
 	cont "compagnie."
 
-	para "MEOWTH"
+	para "MIAOUSS"
 	line "rapporte"
 	cont "meme de"
 	cont "l'argent!"
 	done
 
 _CeladonMansion1FClefairyText::
-	text "CLEFAIRY: Pi"
+	text "MELOFEE: Pi"
 	line "pippippi!@"
 	text_end
 
@@ -25,7 +25,7 @@ _CeladonMansion1FNidoranFText::
 	text_end
 
 _CeladonMansion1FManagersSuiteSignText::
-	text "CELADON MANSION"
+	text "MANOIR"
 	line "Bureau du"
 	cont "directeur"
 	done

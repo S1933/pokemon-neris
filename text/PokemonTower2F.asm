@@ -33,10 +33,10 @@ _PokemonTower2FRivalHowsYourDexText::
 	line "mon vieux?"
 	cont "Je viens"
 	cont "d'attraper un"
-	cont "CUBONE!"
+	cont "OSSELAIT!"
 
 	para "Je trouve pas"
-	line "le MAROWAK"
+	line "le OSSATUEUR"
 	cont "adulte, lui!"
 
 	para "J'doute qu'il"
@@ -54,7 +54,7 @@ _PokemonTower2FChannelerText::
 	cont "identifier ces"
 	cont "FANTOMES!"
 
-	para "Un SILPH SCOPE"
+	para "Un SCOPE SYLPHE"
 	line "pourrait les"
 	cont "demasquer."
 	done

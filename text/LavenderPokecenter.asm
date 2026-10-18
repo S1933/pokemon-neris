@@ -6,7 +6,7 @@ _LavenderPokecenterGentlemanText::
 
 _LavenderPokecenterLittleGirlText::
 	text "J'ai vu la mere de"
-	line "CUBONE mourir en"
+	line "OSSELAIT mourir en"
 	cont "tentant de fuir la"
 	cont "TEAM ROCKET!"
 	done

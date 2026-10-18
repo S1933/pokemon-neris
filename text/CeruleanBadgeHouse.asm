@@ -1,12 +1,12 @@
 _CeruleanBadgeHouseMiddleAgedManText::
-	text "Les BADGEs"
+	text "Les BADGES"
 	line "#MON sont"
 	cont "l'apanage des"
 	cont "dresseurs doues."
 	para "Je vois que tu"
 	line "en as au moins"
 	cont "un."
-	para "Ces BADGEs ont"
+	para "Ces BADGES ont"
 	line "des secrets"
 	cont "incroyables!"
 	prompt
@@ -14,7 +14,7 @@ _CeruleanBadgeHouseMiddleAgedManText::
 _CeruleanBadgeHouseMiddleAgedManWhichBadgeText::
 	text "Bien..."
 	para "Lequel des 8"
-	line "BADGEs veux-tu"
+	line "BADGES veux-tu"
 	cont "que je"
 	cont "decriye?"
 	done
@@ -43,7 +43,7 @@ _CeruleanBadgeHouseCascadeBadgeText::
 	cont "rebelles!"
 	para "Il permet"
 	line "aussi d'utiliser"
-	cont "CUT hors"
+	cont "COUPE hors"
 	cont "combat."
 	prompt
 
@@ -54,7 +54,7 @@ _CeruleanBadgeHouseThunderBadgeText::
 	cont "peu."
 	para "Il permet"
 	line "aussi d'utiliser"
-	cont "FLY hors"
+	cont "VOL hors"
 	cont "combat."
 	prompt
 
@@ -67,7 +67,7 @@ _CeruleanBadgeHouseRainbowBadgeText::
 	cont "rebelles!"
 	para "Il permet"
 	line "aussi d'utiliser"
-	cont "STRENGTH"
+	cont "FORCE"
 	cont "hors combat."
 	prompt
 

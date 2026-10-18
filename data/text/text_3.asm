@@ -1,141 +1,144 @@
 _FileDataDestroyedText::
-	text "The file data is"
-	line "destroyed!"
+	text "Les donnees de"
+	line "sauvegarde sont"
+	cont "detruites!"
 	prompt
 
 _WouldYouLikeToSaveText::
-	text "Would you like to"
-	line "SAVE the game?"
+	text "Voulez-vous"
+	line "SAUVER la partie?"
 	done
 
 _GameSavedText::
-	text "<PLAYER> saved"
-	line "the game!"
+	text "<PLAYER> a"
+	line "sauve la partie!"
 	done
 
 _OlderFileWillBeErasedText::
-	text "The older file"
-	line "will be erased to"
-	cont "save. Okay?"
+	text "L'ancienne partie"
+	line "sera effacee."
+	cont "D'accord?"
 	done
 
 _WhenYouChangeBoxText::
-	text "When you change a"
-	line "#MON BOX, data"
-	cont "will be saved."
-
-	para "Is that okay?"
+	text "Changer de BOITE"
+	line "#MON sauvegarde"
+	cont "la partie."
+	para "D'accord?"
 	done
 
 _ChooseABoxText::
-	text "Choose a"
-	line "<PKMN> BOX.@"
+	text "Choisis une"
+	line "BOITE <PKMN>.@"
 	text_end
 
 _EvolvedText::
 	text_ram wStringBuffer
-	text " evolved"
+	text " evolue"
 	done
 
 _IntoText::
 	text_start
-	line "into @"
+	line "en @"
 	text_ram wNameBuffer
 	text "!"
 	done
 
 _StoppedEvolvingText::
-	text "Huh? @"
+	text "Hein? @"
 	text_ram wStringBuffer
 	text_start
-	line "stopped evolving!"
+	line "n'evolue plus!"
 	prompt
 
 _IsEvolvingText::
-	text "What? @"
+	text "Quoi? @"
 	text_ram wStringBuffer
 	text_start
-	line "is evolving!"
+	line "evolue!"
 	done
 
 _FellAsleepText::
 	text "<TARGET>"
-	line "fell asleep!"
+	line "s'endort!"
 	prompt
 
 _AlreadyAsleepText::
-	text "<TARGET>'s"
-	line "already asleep!"
+	text "<TARGET>"
+	line "dort deja!"
 	prompt
 
 _PoisonedText::
 	text "<TARGET>"
-	line "was poisoned!"
+	line "est empoisonne!"
 	prompt
 
 _BadlyPoisonedText::
-	text "<TARGET>'s"
-	line "badly poisoned!"
+	text "<TARGET>"
+	line "est gravement"
+	cont "empoisonne!"
 	prompt
 
 _BurnedText::
 	text "<TARGET>"
-	line "was burned!"
+	line "est brule!"
 	prompt
 
 _FrozenText::
 	text "<TARGET>"
-	line "was frozen solid!"
+	line "est gele!"
 	prompt
 
 _FireDefrostedText::
-	text "Fire defrosted"
+	text "Le feu degele"
 	line "<TARGET>!"
 	prompt
 
 _MonsStatsRoseText::
-	text "<USER>'s"
+	text "<USER>"
 	line "@"
 	text_ram wStringBuffer
 	text "@"
 	text_end
 
 _GreatlyRoseText::
-	text "<SCROLL>greatly@"
-	text_end
+	text " monte"
+	cont "beaucoup!"
+	prompt
 
 _RoseText::
-	text " rose!"
+	text " monte!"
 	prompt
 
 _MonsStatsFellText::
-	text "<TARGET>'s"
+	text "<TARGET>"
 	line "@"
 	text_ram wStringBuffer
 	text "@"
 	text_end
 
 _GreatlyFellText::
-	text "<SCROLL>greatly@"
-	text_end
+	text " baisse"
+	cont "beaucoup!"
+	prompt
 
 _FellText::
-	text " fell!"
+	text " baisse!"
 	prompt
 
 _RanFromBattleText::
 	text "<USER>"
-	line "ran from battle!"
+	line "fuit le combat!"
 	prompt
 
 _RanAwayScaredText::
 	text "<TARGET>"
-	line "ran away scared!"
+	line "s'enfuit, apeure!"
 	prompt
 
 _WasBlownAwayText::
 	text "<TARGET>"
-	line "was blown away!"
+	line "est expulse!"
 	prompt
 
 _ChargeMoveEffectText::
@@ -144,121 +147,123 @@ _ChargeMoveEffectText::
 
 _MadeWhirlwindText::
 	text_start
-	line "made a whirlwind!"
+	line "cree un cyclone!"
 	prompt
 
 _TookInSunlightText::
 	text_start
-	line "took in sunlight!"
+	line "absorbe le soleil!"
 	prompt
 
 _LoweredItsHeadText::
 	text_start
-	line "lowered its head!"
+	line "baisse la tete!"
 	prompt
 
 _SkyAttackGlowingText::
 	text_start
-	line "is glowing!"
+	line "brille!"
 	prompt
 
 _FlewUpHighText::
 	text_start
-	line "flew up high!"
+	line "s'envole haut!"
 	prompt
 
 _DugAHoleText::
 	text_start
-	line "dug a hole!"
+	line "creuse un trou!"
 	prompt
 
 _BecameConfusedText::
 	text "<TARGET>"
-	line "became confused!"
+	line "devient confus!"
 	prompt
 
 _MimicLearnedMoveText::
 	text "<USER>"
-	line "learned"
+	line "apprend"
 	cont "@"
 	text_ram wNameBuffer
 	text "!"
 	prompt
 
 _MoveWasDisabledText::
-	text "<TARGET>'s"
+	text "<TARGET>:"
 	line "@"
 	text_ram wNameBuffer
-	text " was"
-	cont "disabled!"
+	text_start
+	cont "est bloquee!"
 	prompt
 
 _NothingHappenedText::
-	text "Nothing happened!"
+	text "Il ne se passe"
+	line "rien!"
 	prompt
 
 _NoEffectText::
-	text "No effect!"
+	text "Sans effet!"
 	prompt
 
 _ButItFailedText::
-	text "But, it failed! "
+	text "Mais cela echoue!"
 	prompt
 
 _DidntAffectText::
-	text "It didn't affect"
+	text "Ca n'affecte pas"
 	line "<TARGET>!"
 	prompt
 
 _IsUnaffectedText::
 	text "<TARGET>"
-	line "is unaffected!"
+	line "n'est pas affecte!"
 	prompt
 
 _ParalyzedMayNotAttackText::
-	text "<TARGET>'s"
-	line "paralyzed! It may"
-	cont "not attack!"
+	text "<TARGET>"
+	line "est paralyse! Il"
+	cont "peut rater son"
+	cont "attaque!"
 	prompt
 
 _SubstituteText::
-	text "It created a"
-	line "SUBSTITUTE!"
+	text "Un CLONAGE est"
+	line "cree!"
 	prompt
 
 _HasSubstituteText::
 	text "<USER>"
-	line "has a SUBSTITUTE!"
+	line "a deja un CLONAGE!"
 	prompt
 
 _TooWeakSubstituteText::
-	text "Too weak to make"
-	line "a SUBSTITUTE!"
+	text "Trop faible pour"
+	line "un CLONAGE!"
 	prompt
 
 _CoinsScatteredText::
-	text "Coins scattered"
-	line "everywhere!"
+	text "Des pieces"
+	line "s'eparpillent!"
 	prompt
 
 _GettingPumpedText::
-	text "<USER>'s"
-	line "getting pumped!"
+	text "<USER>"
+	line "se concentre!"
 	prompt
 
 _WasSeededText::
 	text "<TARGET>"
-	line "was seeded!"
+	line "est infecte!"
 	prompt
 
 _EvadedAttackText::
 	text "<TARGET>"
-	line "evaded attack!"
+	line "esquive l'attaque!"
 	prompt
 
 _HitWithRecoilText::
-	text "<USER>'s"
-	line "hit with recoil!"
+	text "<USER>"
+	line "subit le recul!"
 	prompt
 
 _ConvertedTypeText::
@@ -267,58 +272,62 @@ _ConvertedTypeText::
 	prompt
 
 _StatusChangesEliminatedText::
-	text "All STATUS changes"
-	line "are eliminated!"
+	text "Les changements"
+	line "de STATUT sont"
+	cont "annules!"
 	prompt
 
 _StartedSleepingEffect::
 	text "<USER>"
-	line "started sleeping!"
+	line "s'endort!"
 	done
 
 _FellAsleepBecameHealthyText::
 	text "<USER>"
-	line "fell asleep and"
-	cont "became healthy!"
+	line "s'endort et"
+	cont "regagne ses PV!"
 	done
 
 _RegainedHealthText::
 	text "<USER>"
-	line "regained health!"
+	line "regagne des PV!"
 	prompt
 
 _TransformedText::
 	text "<USER>"
-	line "transformed into"
+	line "se transforme en"
 	cont "@"
 	text_ram wNameBuffer
 	text "!"
 	prompt
 
 _LightScreenProtectedText::
-	text "<USER>'s"
-	line "protected against"
-	cont "special attacks!"
+	text "<USER>"
+	line "se protege contre"
+	cont "les attaques"
+	cont "speciales!"
 	prompt
 
 _ReflectGainedArmorText::
 	text "<USER>"
-	line "gained armor!"
+	line "gagne une armure!"
 	prompt
 
 _ShroudedInMistText::
-	text "<USER>'s"
-	line "shrouded in mist!"
+	text "<USER>"
+	line "est dans la brume!"
 	prompt
 
 _SuckedHealthText::
-	text "Sucked health from"
-	line "<TARGET>!"
+	text "L'energie de"
+	line "<TARGET>"
+	cont "est drainee!"
 	prompt
 
 _DreamWasEatenText::
-	text "<TARGET>'s"
-	line "dream was eaten!"
+	text "Le reve de"
+	line "<TARGET>"
+	cont "est devore!"
 	prompt
 
 _TradeCenterOpponentText::

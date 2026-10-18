@@ -1,5 +1,5 @@
 _SSAnne1FRoomsWigglytuffText::
-	text "WIGGLYTUFF: Puup"
+	text "GRODOUDOU: Puup"
 	line "pupuu!@"
 	text_end
 
@@ -84,7 +84,7 @@ _SSAnne1FRoomsCooltrainerFAfterBattleText::
 
 	para "Soigne-les"
 	line "dans un"
-	cont "#MON CENTER!"
+	cont "CENTRE #MON!"
 	done
 
 _SSAnne1FRoomsGirl1Text::
@@ -103,7 +103,7 @@ _SSAnne1FRoomsMiddleAgedManText::
 _SSAnne1FRoomsLittleGirlText::
 	text "Je voyage"
 	line "toujours avec"
-	cont "WIGGLYTUFF!"
+	cont "GRODOUDOU!"
 	done
 
 _SSAnne1FRoomsGirl2Text::
