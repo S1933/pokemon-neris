@@ -45,7 +45,7 @@ Route12DefaultScript:
 Route12SnorlaxPostBattleScript:
 	ld a, [wIsInBattle]
 	cp LOST_BATTLE
-	jr z, Route12ResetScripts
+	jr z, .lost
 	call UpdateSprites
 	; Neris: a Snorlax that was not caught goes back to sleep on the
 	; road, so it can be woken with the flute and tried again
@@ -71,6 +71,16 @@ Route12SnorlaxPostBattleScript:
 	ld [wRoute12CurScript], a
 	ld [wCurMapScript], a
 	ret
+.lost
+	; Neris: blacking out against an uncaught Snorlax must not make it
+	; vanish for good (it was hidden when the battle started)
+	ld a, SNORLAX
+	call IsMonOwned
+	jp nz, Route12ResetScripts
+	ld a, TOGGLE_ROUTE_12_SNORLAX
+	ld [wToggleableObjectIndex], a
+	predef ShowObject
+	jp Route12ResetScripts
 
 Route12_TextPointers:
 	def_text_pointers
