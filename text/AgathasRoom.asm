@@ -15,9 +15,9 @@ _AgathaBeforeBattleText::
 
 	para "Maintenant il"
 	line "joue avec son"
-	cont "#DEX! Il a tort!"
-	cont "Les #MON sont"
-	cont "faits pour"
+	cont "#DEX! Il a"
+	cont "tort! Les #MON"
+	cont "sont faits pour"
 	cont "combattre!"
 
 	para "<PLAYER>! Je vais"

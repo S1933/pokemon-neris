@@ -4,7 +4,7 @@ _SafariZoneCenterRestHouseGirlText::
 	done
 
 _SafariZoneCenterRestHouseScientistText::
-	text "J'attrape des #MON"
-	line "pour les offrir en"
-	cont "cadeau!"
+	text "J'attrape des"
+	line "#MON pour les"
+	cont "offrir en cadeau!"
 	done

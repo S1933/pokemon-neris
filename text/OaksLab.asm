@@ -66,7 +66,7 @@ _OaksLabLastMonText::
 _OaksLabOak1WhichPokemonDoYouWantText::
 	text "PROF.SYLVE:"
 	line "Alors, <PLAYER>,"
-	cont "quel #MON veux-tu?"
+	cont "tu veux lequel?"
 	done
 
 _OaksLabOak1YourPokemonCanFightText::

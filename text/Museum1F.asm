@@ -79,8 +79,8 @@ _Museum1FScientist2TakeThisToAPokemonLabText::
 	cont "demander!"
 
 	para "Emporte ceci dans"
-	line "un LABO #MON pour"
-	cont "l'examiner!"
+	line "un LABO #MON"
+	cont "pour l'examiner!"
 	prompt
 
 _Museum1FScientist2ReceivedOldAmberText::

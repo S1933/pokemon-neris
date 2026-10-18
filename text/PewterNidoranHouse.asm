@@ -7,9 +7,9 @@ _PewterNidoranHouseLittleBoyText::
 	done
 
 _PewterNidoranHouseMiddleAgedManText::
-	text "Notre #MON vient"
-	line "d'un echange, il"
-	cont "est dur a"
+	text "Notre #MON"
+	line "vient d'un echange"
+	cont "il est dur a"
 	cont "controler."
 
 	para "Un #MON obtenu"

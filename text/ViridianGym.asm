@@ -46,8 +46,8 @@ _ViridianGymGiovanniPostBattleAdviceText::
 
 _ViridianGymGiovanniEarthBadgeInfoText::
 	text "L'EARTHBADGE fait"
-	line "obeir les #MON de"
-	cont "tout niveau!"
+	line "obeir les #MON"
+	cont "de tout niveau!"
 
 	para "C'est la preuve de"
 	line "ta maitrise de"
@@ -72,8 +72,8 @@ _ViridianGymGiovanniTM27ExplanationText::
 
 	para "La TM27 est"
 	line "FISSURE! Elle met"
-	cont "un #MON K.O. en un"
-	cont "seul coup!"
+	cont "un #MON K.O. en"
+	cont "un seul coup!"
 
 	para "Je l'ai creee"
 	line "quand je"
@@ -121,9 +121,9 @@ _ViridianGymHiker1AfterBattleText::
 	done
 
 _ViridianGymRocker1BattleText::
-	text "Les #MON et moi,"
-	line "on fait de la"
-	cont "belle musique!"
+	text "Les #MON et"
+	line "moi, on fait de"
+	cont "la belle musique!"
 	done
 
 _ViridianGymRocker1EndBattleText::
@@ -244,8 +244,8 @@ _ViridianGymGuidePreBattleText::
 
 	para "J'ai entendu que"
 	line "les dresseurs ici"
-	cont "aiment les #MON de"
-	cont "type sol!"
+	cont "aiment les #MON"
+	cont "de type sol!"
 	done
 
 _ViridianGymGuidePostBattleText::

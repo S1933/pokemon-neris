@@ -58,7 +58,7 @@ _Route6CooltrainerM2EndBattleText::
 
 _Route6CooltrainerM2AfterBattleText::
 	text "Je devrais prendre"
-	line "plus de #MON avec"
+	line "des #MON avec"
 	cont "moi, par securite."
 	done
 

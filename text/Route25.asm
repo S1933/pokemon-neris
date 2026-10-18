@@ -92,8 +92,8 @@ _Route25Youngster3AfterBattleText::
 
 _Route25CooltrainerF2BattleText::
 	text "Mon ami a un"
-	line "#MON trop mignon."
-	cont "Je suis"
+	line "#MON trop"
+	cont "mignon. Je suis"
 	cont "jalouse!"
 	done
 

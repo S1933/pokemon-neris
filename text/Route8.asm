@@ -133,16 +133,16 @@ _Route8Gambler2EndBattleText::
 
 _Route8Gambler2AfterBattleText::
 	text "Le jeu et les"
-	line "#MON, c'est comme"
-	cont "les cacahuetes! On"
-	cont "ne peut pas"
-	cont "s'arreter!"
+	line "#MON, c'est"
+	cont "comme des"
+	cont "cacahuetes! On"
+	cont "n'arrete pas!"
 	done
 
 _Route8CooltrainerF4BattleText::
-	text "Quel est le #MON"
-	line "mignon, rond et"
-	cont "duveteux?"
+	text "Quel est le"
+	line "#MON mignon,"
+	cont "rond et duveteux?"
 	done
 
 _Route8CooltrainerF4EndBattleText::

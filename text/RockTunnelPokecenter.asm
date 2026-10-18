@@ -1,7 +1,7 @@
 _RockTunnelPokecenterGentlemanText::
-	text "Les types des #MON"
-	line "les rendent plus"
-	cont "forts que certains"
+	text "Les types des"
+	line "#MON les"
+	cont "rendent plus"
 	cont "types et plus"
 	cont "faibles que"
 	cont "d'autres!"

@@ -1,5 +1,5 @@
 _MtMoonPokecenterYoungsterText::
-	text "J'ai 6 # BALLs a"
+	text "J'ai 6 # BALLs"
 	line "ma ceinture."
 
 	para "Au maximum, tu"

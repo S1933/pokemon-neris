@@ -45,7 +45,7 @@ _PokemonFanClubChairmanIntroText::
 
 	para "Je suis tres"
 	line "difficile en"
-	cont "matiere de #MON!"
+	cont "matiere de #MON"
 
 	para "Alors..."
 

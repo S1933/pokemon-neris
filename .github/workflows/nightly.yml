@@ -1,0 +1,60 @@
+name: Nightly
+
+# The slow NERIS tours (emulator walk of every map, full battle checks) are too
+# long to gate a pull request, so they run here: nightly + on demand. Keep them
+# out of PR blocking until they have been green for two weeks.
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  tour:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Checkout rgbds
+        uses: actions/checkout@v7
+        with:
+          path: rgbds
+          ref: v1.0.4
+          repository: gbdev/rgbds
+
+      - name: Install rgbds
+        working-directory: rgbds
+        run: |
+          sudo apt-get update
+          sudo apt-get install -yq bison libpng-dev pkg-config
+          sudo make -j$(nproc) install
+
+      - name: Remove rgbds
+        run: rm -rf rgbds
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install emulator
+        run: python -m pip install --quiet pyboy==2.7.0 pillow==12.3.0
+
+      - name: Build and check
+        run: |
+          make -j$(nproc)
+          make check
+
+      - name: Battle checks
+        run: python tools/battle_check.py
+
+      - name: Map tour
+        run: python tools/map_tour.py
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: '**/*.png'
