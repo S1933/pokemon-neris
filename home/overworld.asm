@@ -370,6 +370,13 @@ OverworldLoopLessDelay::
 ; function to determine if there will be a battle and execute it (either a trainer battle or wild battle)
 ; sets carry if a battle occurred and unsets carry if not
 NewBattle::
+; Néris: a battle with an empty party can never resolve — the battle would
+; wait for a monster that cannot be sent out, leaving a garbled battle screen
+; and a frozen game (seen in Viridian Forest, where the grass keeps rolling
+; encounters). Refuse to start the battle instead.
+	ld a, [wPartyCount]
+	and a
+	jr z, .noBattle
 	ld a, [wStatusFlags3]
 	bit BIT_ON_DUNGEON_WARP, a
 	jr nz, .noBattle
