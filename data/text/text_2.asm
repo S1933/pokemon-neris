@@ -1053,9 +1053,13 @@ _UsedInsteadText::
 _MoveNameText::
 	text_ram wStringBuffer
 	text "@"
+	; Neris: end here so MoveNameText's text_asm picks the ending by move
+	; grammar. In English this fell through into _EndUsedMove1Text, so
+	; every move printed that ending.
+	text_end
 
-_EndUsedMove1Text:: ; 12-letter move names: no room for "!"
-	text "@"
+_EndUsedMove1Text:: ; 12-letter French move names: no room for "!"
+	text_start
 	done
 
 _EndUsedMove2Text::
