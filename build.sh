@@ -5,7 +5,10 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-docker run --rm -v "$PWD":/src -w /tmp debian:bookworm-slim bash -c '
+# Run as the invoking user: as root, every generated file (*.o, gfx/*.2bpp,
+# tools binaries) came out root-owned and the next build died with
+# "Failed to open object file ...: Permission denied".
+docker run --rm --user "$(id -u):$(id -g)" -v "$PWD":/src -w /tmp debian:bookworm-slim bash -c '
 set -e
 apt-get update -qq
 apt-get install -y -qq git make cmake g++ libpng-dev bison pkg-config python3 >/dev/null
